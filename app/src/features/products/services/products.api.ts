@@ -4,7 +4,11 @@ import type { Product } from "../types/products.types";
 // Get all products
 export const getProducts = async (): Promise<Product[]> => {
     try {
+        console.log("Calling API...")
+
         const response = await apiClient.get("/products")
+
+        console.log("API RESPONSE:", response)
 
         return response.data
     } catch(error) {

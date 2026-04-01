@@ -15,8 +15,9 @@ export const useProducts = () => {
             setProducts(data)
             
             setError(null)
-        } catch(error) {
-            setError("Error getting the products")
+        } catch(err: any) {
+            console.error("FULL ERROR:", err)
+            setError(err?.message || "Unknown error")
         } finally {
             setLoading(false)
         }
