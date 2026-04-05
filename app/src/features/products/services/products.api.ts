@@ -8,9 +8,9 @@ export const getProducts = async (): Promise<Product[]> => {
 
         const response = await apiClient.get("/products")
 
-        console.log("API RESPONSE:", response)
+        console.log("API RESPONSE:", response.data)
 
-        return response.data
+        return response.data.products
     } catch(error) {
         console.error("Error fetching products: ", error)
 

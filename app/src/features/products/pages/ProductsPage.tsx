@@ -21,7 +21,7 @@ export const ProductsPage = () => {
                     marginTop: "20px"
                 }}
             >
-                {products.map((product) => (
+                {Array.isArray(products) && products.map((product) => (
                     <ProductCard
                         key={product.id}
                         product={product}

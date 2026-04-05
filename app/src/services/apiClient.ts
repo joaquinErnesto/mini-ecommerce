@@ -2,7 +2,7 @@ import axios from "axios"
 
 // Create Axios instance
 export const apiClient = axios.create({
-    baseURL: "https://fakestoreapi.com",
+    baseURL: "https://dummyjson.com",
     headers: {
         "Content-Type": "application/json"
     },

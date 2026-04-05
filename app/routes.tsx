@@ -4,6 +4,7 @@ import { ProductsPage } from "./src/features/products/pages/ProductsPage";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <ProductsPage />
+        element: <ProductsPage />,
+        errorElement: <p>Something went wrong loading  products.</p>
     }
 ])
