@@ -13,6 +13,7 @@ export const getProducts = async (): Promise<Product[]> => {
         return response.data.products.map((p: any) => ({
             id: p.id,
             title: p.title,
+            description: p.description,
             price: p.price,
             image: p.thumbnail
         }))

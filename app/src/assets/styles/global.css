@@ -1,0 +1,19 @@
+:root {
+  /* Colors */
+  --color-primary: #ff6600; /* Newegg style */
+  --color-dark: #222;
+  --color-light: #f5f5f5;
+  --color-text: #333;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  /* Container */
+  --max-width: 1200px;
+}

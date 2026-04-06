@@ -42,6 +42,11 @@ export const ProductCard = ({ product, onAddToCart, onClick }: Props) => {
                 {product.title}
             </h3>
 
+            {/* Description */}
+            <p className="product-card-description">
+                {product.description}
+            </p>
+
             {/* Price */}
             <p>
                 ${product.price}
