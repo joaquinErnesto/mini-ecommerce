@@ -1,5 +1,6 @@
 import { useProducts } from "../hooks/useProducts";
 import { ProductCard } from "../components/ProductCard";
+import "./ProductsPage.css"
 
 export const ProductsPage = () => {
     const { products, loading, error } = useProducts()

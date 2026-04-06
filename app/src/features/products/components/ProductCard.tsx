@@ -1,4 +1,5 @@
 import type { Product } from "../types/products.types";
+import "./ProductCard.css"
 
 interface Props {
     product: Product;
@@ -17,20 +18,8 @@ export const ProductCard = ({ product, onAddToCart, onClick }: Props) => {
 
     return (
         <div
+            className="product-card-container"
             onClick={handleClick}
-            style={{
-                flex: "0 1 220px",
-                maxWidth: "250px",
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                padding: "16px",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                backgroundColor: "#fff",
-                transition: "transform .2s ease, box-shadow .2s ease"
-            }}
             onMouseEnter={(event) => {
                 event.currentTarget.style.transform = "translateY(-5px)"
                 event.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, .1)"
@@ -40,48 +29,21 @@ export const ProductCard = ({ product, onAddToCart, onClick }: Props) => {
                 event.currentTarget.style.boxShadow = "none"
             })}
         >
-            <div
-                style={{
-                    height: "160px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "10px"
-                }}
-            >
+            <div className="product-card-image-container">
                 {/* Image */}
                 <img 
                     src={product.image} 
                     alt={product.title} 
-                    style={{
-                        maxHeight: "100%",
-                        maxWidth: "100%",
-                        objectFit: "contain"
-                    }}
                 />
             </div>
 
             {/* Title */}
-            <h3
-                style={{
-                    fontSize: "14px",
-                    marginBottom: "8px",
-                    lineHeight: "1.4",
-                    height: "40px",
-                    overflow: "hidden"
-                }}
-            >
+            <h3>
                 {product.title}
             </h3>
 
             {/* Price */}
-            <p
-                style={{
-                    fontWeight: "bold",
-                    marginBottom: "10px",
-                    color: "#2c7a7b"
-                }}
-            >
+            <p>
                 ${product.price}
             </p>
 
@@ -90,15 +52,6 @@ export const ProductCard = ({ product, onAddToCart, onClick }: Props) => {
                 onClick={(e) => {
                     e.stopPropagation() // prevents triggering card click
                     handleAddToCart()
-                }}
-                style={{
-                    padding: "10px",
-                    border: "none",
-                    borderRadius: "6px",
-                    backgroundColor: "#333",
-                    color: "#fff",
-                    cursor: "pointer",
-                    transition: "background .2 ease"
                 }}
                 onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "#555"
