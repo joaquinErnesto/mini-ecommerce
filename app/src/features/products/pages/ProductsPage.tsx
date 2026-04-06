@@ -8,31 +8,52 @@ export const ProductsPage = () => {
     if (error) return <p>{error}</p>
 
     return (
-        <div style={{padding: "20px"}}>
-            <h1>
-                Products
-            </h1>
+        <div className="products-page-container"
+            style={{
+                display: "flex",
+                width: "100%",
+                border: "3px solid red"
+            }}
+        >
+            <div style={{
+                width: "100%",
+                maxWidth: "1200px",
+                margin: "0 auto",
+                padding: "20px",
+                textAlign: "center",
+                border: "3px solid black",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <h1 style={{ 
+                    textAlign: "center",
+                    marginBottom: "10px" 
+                }}>
+                    Products
+                </h1>
 
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                    gap: "16px",
-                    marginTop: "20px"
-                }}
-            >
-                {Array.isArray(products) && products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                        onClick={(id) => {
-                            console.log("Navigate to product:", id)
-                        }}
-                        onAddToCart={(prod) => {
-                            console.log("Add to cart:", prod)
-                        }}
-                    />
-                ))}
+                <div
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "20px",
+                        marginTop: "30px",
+                        justifyContent: "center"
+                    }}
+                >
+                    {Array.isArray(products) && products.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            onClick={(id) => {
+                                console.log("Navigate to product:", id)
+                            }}
+                            onAddToCart={(prod) => {
+                                console.log("Add to cart:", prod)
+                            }}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     )

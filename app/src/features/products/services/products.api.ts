@@ -10,7 +10,12 @@ export const getProducts = async (): Promise<Product[]> => {
 
         console.log("API RESPONSE:", response.data)
 
-        return response.data.products
+        return response.data.products.map((p: any) => ({
+            id: p.id,
+            title: p.title,
+            price: p.price,
+            image: p.thumbnail
+        }))
     } catch(error) {
         console.error("Error fetching products: ", error)
 
