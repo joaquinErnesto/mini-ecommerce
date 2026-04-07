@@ -29,7 +29,15 @@ export const getProductById = async (id: number) : Promise<Product> => {
     try {
         const response = await apiClient.get(`/products/${id}`)
 
-        return response.data
+        const p = response.data
+
+        return {
+            id: p.id,
+            title: p.title,
+            description: p.description,
+            price: p.price,
+            image: p.thumbnail
+        }
     } catch(error) {
         console.error(`Error fetching product with id ${id}: `, error)
 

@@ -20,9 +20,7 @@ export const ProductsPage = () => {
                         <ProductCard
                             key={product.id}
                             product={product}
-                            onClick={(id) => {
-                                console.log("Navigate to product:", id)
-                            }}
+            
                             onAddToCart={(prod) => {
                                 console.log("Add to cart:", prod)
                             }}

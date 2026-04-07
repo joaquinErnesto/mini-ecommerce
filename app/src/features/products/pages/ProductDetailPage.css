@@ -1,0 +1,93 @@
+.product-detail-page {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.product-detail-page > div {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Card like ProductCard but bigger */
+.product-detail-card {
+    display: flex;
+    gap: 30px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 24px;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    align-items: center;
+}
+
+/* Image section */
+.product-detail-image-container {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.25);
+
+    border: 1px solid #fff;
+    border-radius: 8px;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-detail-image-container img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* Info section */
+.product-detail-info {
+    flex: 1;
+    text-align: left;
+}
+
+.product-detail-info h1 {
+    color: #2288ff;
+    margin-bottom: 10px;
+}
+
+.product-detail-info .price {
+    font-size: 22px;
+    color: #ffaa22;
+    margin-bottom: 15px;
+}
+
+.product-detail-info .description {
+    color: #fff;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Button (reuse style idea) */
+.product-detail-info button {
+    background-color: #1a1a1a;
+    color: #fff;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 10px 16px;
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.product-detail-info button:hover {
+    background-color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .product-detail-card {
+        flex-direction: column;
+    }
+}

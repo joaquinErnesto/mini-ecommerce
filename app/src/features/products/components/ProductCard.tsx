@@ -1,15 +1,17 @@
 import type { Product } from "../types/products.types";
+import { useNavigate } from "react-router-dom";
 import "./ProductCard.css"
 
 interface Props {
     product: Product;
     onAddToCart?: (product: Product) => void;
-    onClick?: (id: number) => void;
 }
 
-export const ProductCard = ({ product, onAddToCart, onClick }: Props) => {
+export const ProductCard = ({ product, onAddToCart }: Props) => {
+    const navigate = useNavigate()
+
     const handleClick = () => {
-        if (onClick) onClick(product.id)
+        navigate(`/products/${product.id}`)
     }
 
     const handleAddToCart = () => {
