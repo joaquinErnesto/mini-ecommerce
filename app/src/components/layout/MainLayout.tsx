@@ -1,26 +1,24 @@
-type Props = {
-    children: React.ReactNode
-}
+import { Outlet } from "react-router-dom"
+import "./MainLayout.css"
 
-export const MainLayout = ({ children }: Props) => {
+export const MainLayout = () => {
     return (
         <div className="container">
-            {/* Navbar*/}
-
+            {/* Navbar */}
             <header>
-                {/* later: Navbar component */}
+                {/* Navbar here */}
             </header>
 
             {/* Main */}
             <main>
                 <div>
-                    {children}
+                    <Outlet /> {/* 👈 THIS is where pages render */}
                 </div>
             </main>
 
             {/* Footer */}
             <footer>
-                {/* later */}
+                {/* Footer */}
             </footer>
         </div>
     )

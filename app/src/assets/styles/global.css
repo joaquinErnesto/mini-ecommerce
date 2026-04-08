@@ -10,16 +10,6 @@
 
 :root {
   /* Colors */
-  --product-card-background-color: rgba(0, 0, 0, .2);
-  --product-card-image-background-color: rgba(255, 255, 255, .25);
-  --product-title-color: rgba(40, 100, 255, 1);
-  --product-description-color: rgba(255, 255, 255, 1);
-  --product-price-color: rgba(255, 180, 20, 1);
-  --product-button-text-color: rgba(255, 255, 255, 1);
-  --product-button-color: rgba(50, 50, 50, 1);
-
-
-
   --medium-black-color: rgba(0, 0, 0, .2);
   --medium-gray-color: rgba(255, 255, 255, .25);
   --gray-color: rgba(50, 50, 50, 1);
