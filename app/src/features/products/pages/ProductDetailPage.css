@@ -23,7 +23,7 @@
     
     padding: var(--spacing-lg);
 
-    background-color: var(--product-card-background-color);
+    background-color: var(--medium-black-color);
 
     align-items: center;
 }
@@ -31,7 +31,7 @@
 /* Image section */
 .product-detail-image-container {
     flex: 1;
-    background-color: var(--product-card-image-background-color);
+    background-color: var(--medium-gray-color);
 
     border: var(--product-card-image-border);
     
@@ -59,20 +59,20 @@
 }
 
 .product-detail-info h1 {
-    color: var(--product-title-color);
+    color: var(--blue-color);
 
     margin-bottom: var(--spacing-sm);
 }
 
 .product-detail-info .price {
     font-size: var(--letter-size-lg);
-    color: var(--product-price-color);
+    color: var(--yellow-color);
 
     margin-bottom: var(--spacing-md);
 }
 
 .product-detail-info .description {
-    color: var(--product-description-color);
+    color: var(--white-color);
 
     font-style: italic;
     
@@ -81,8 +81,8 @@
 
 /* Button (reuse style idea) */
 .product-detail-info button {
-    background-color: var(--product-button-color);
-    color: var(--product-button-text-color);
+    background-color: var(--gray-color);
+    color: var(--white-color);
 
     border: none;
     border-radius: var(--radius-md);
@@ -92,10 +92,6 @@
     cursor: pointer;
 
     /* transition: background 0.2s ease; */
-}
-
-.product-detail-info button:hover {
-    background-color: #333;
 }
 
 /* Responsive */

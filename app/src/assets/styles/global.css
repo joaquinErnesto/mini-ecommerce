@@ -20,6 +20,15 @@
 
 
 
+  --medium-black-color: rgba(0, 0, 0, .2);
+  --medium-gray-color: rgba(255, 255, 255, .25);
+  --gray-color: rgba(50, 50, 50, 1);
+  --blue-color: rgba(40, 100, 255, 1);
+  --white-color: rgba(255, 255, 255, 1);
+  --yellow-color: rgba(255, 180, 20, 1);
+
+
+
   /* Letter Sizes */
   --letter-size-sm: 7px;
   --letter-size-md: 14px;

@@ -15,13 +15,13 @@
     
     justify-content: space-between;
     
-    background-color: var(--product-card-background-color);
+    background-color: var(--medium-black-color);
 
     transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .product-card-image-container {
-    background-color: var(--product-card-image-background-color);
+    background-color: var(--medium-gray-color);
 
     border: var(--product-card-image-border);
     border-radius: var(--radius-sm);
@@ -45,11 +45,11 @@ h3 {
     
     overflow: hidden;
 
-    color: var(--product-title-color);
+    color: var(--blue-color);
 }
 
 .product-card-description {
-    color: var(--product-description-color);
+    color: var(--white-color);
 
     font-weight: 100;
     font-style: italic;
@@ -61,7 +61,7 @@ p {
     
     margin-bottom: var(--spacing-sm);
     
-    color: var(--product-price-color);
+    color: var(--yellow-color);
 }
 
 button {
@@ -74,7 +74,7 @@ button {
     font-weight: 500;
     font-family: inherit;
     
-    background-color: var(--product-button-color);
+    background-color: var(--gray-color);
     color: var(--product-button-text-color);
     
     cursor: pointer;
