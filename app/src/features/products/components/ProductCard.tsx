@@ -61,10 +61,10 @@ export const ProductCard = ({ product, onAddToCart }: Props) => {
                     handleAddToCart()
                 }}
                 onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#555"
+                    e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
                 }}
                 onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "#333"
+                    e.currentTarget.style.backgroundColor = "var(--product-button-color)"
                 }}
             >
                 Add to Cart

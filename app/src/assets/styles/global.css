@@ -1,3 +1,13 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
 :root {
   /* Colors */
   --product-card-background-color: rgba(0, 0, 0, .2);
@@ -5,21 +15,44 @@
   --product-title-color: rgba(40, 100, 255, 1);
   --product-description-color: rgba(255, 255, 255, 1);
   --product-price-color: rgba(255, 180, 20, 1);
+  --product-button-text-color: rgba(255, 255, 255, 1);
+  --product-button-color: rgba(50, 50, 50, 1);
+
+
+
+  /* Letter Sizes */
+  --letter-size-sm: 7px;
+  --letter-size-md: 14px;
+  --letter-size-lg: 21px;
+  --letter-size-xl: 42px;
+
+
 
   /* Borders */
   --product-card-border: 1px solid rgba(200, 200, 200, 1);
   --product-card-image-border: 1px solid rgba(255, 255, 255, 1);
+  --product-card-button-border: 1px solid transparent;
 
 
-  /* Spacing */
+
+  /* Radius */
+  --radius-sm: 5px;
+  --radius-md: 8px;
+
+
+
+  /* Spacings */
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
+  --spacing-xl: 32px;
 
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
 
-  /* Container */
-  --max-width: 1200px;
+
+  /* Containers */
+  --max-width-sm: 250px;
+  --max-width-md: 600px;
+  --max-width-lg: 1200px;
+
+  --max-height-sm: 400px;
 }

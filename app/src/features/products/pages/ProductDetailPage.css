@@ -1,25 +1,29 @@
 .product-detail-page {
     display: flex;
+
     justify-content: center;
+    
     width: 100%;
 }
 
 .product-detail-page > div {
     width: 100%;
-    max-width: 1200px;
-    padding: 20px;
+    max-width: var(--max-width-lg);
+    
+    padding: var(--spacing-lg);
 }
 
 /* Card like ProductCard but bigger */
 .product-detail-card {
     display: flex;
-    gap: 30px;
+    gap: var(--spacing-xl);
 
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 24px;
+    border: var(--product-card-border);
+    border-radius: var(--radius-md);
+    
+    padding: var(--spacing-lg);
 
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--product-card-background-color);
 
     align-items: center;
 }
@@ -27,58 +31,67 @@
 /* Image section */
 .product-detail-image-container {
     flex: 1;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--product-card-image-background-color);
 
-    border: 1px solid #fff;
-    border-radius: 8px;
-    padding: 20px;
+    border: var(--product-card-image-border);
+    
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
 
     display: flex;
+    
     justify-content: center;
     align-items: center;
 }
 
 .product-detail-image-container img {
     max-width: 100%;
-    max-height: 400px;
+    max-height: var(--max-height-sm);
+
     object-fit: contain;
 }
 
 /* Info section */
 .product-detail-info {
     flex: 1;
+
     text-align: left;
 }
 
 .product-detail-info h1 {
-    color: #2288ff;
-    margin-bottom: 10px;
+    color: var(--product-title-color);
+
+    margin-bottom: var(--spacing-sm);
 }
 
 .product-detail-info .price {
-    font-size: 22px;
-    color: #ffaa22;
-    margin-bottom: 15px;
+    font-size: var(--letter-size-lg);
+    color: var(--product-price-color);
+
+    margin-bottom: var(--spacing-md);
 }
 
 .product-detail-info .description {
-    color: #fff;
+    color: var(--product-description-color);
+
     font-style: italic;
-    margin-bottom: 20px;
+    
+    margin-bottom: var(--spacing-lg);
 }
 
 /* Button (reuse style idea) */
 .product-detail-info button {
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: var(--product-button-color);
+    color: var(--product-button-text-color);
 
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
 
-    padding: 10px 16px;
+    padding: var(--spacing-sm) var(--spacing-md);
+
     cursor: pointer;
 
-    transition: background 0.2s ease;
+    /* transition: background 0.2s ease; */
 }
 
 .product-detail-info button:hover {
