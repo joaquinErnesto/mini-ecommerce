@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Electric Noir | Admin Panel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#2c2c2c",
+                        "secondary-container": "#705d00",
+                        "on-tertiary-fixed-variant": "#5b3b00",
+                        "on-secondary": "#594a00",
+                        "on-error-container": "#ffa8a3",
+                        "background": "#0e0e0e",
+                        "tertiary-container": "#feaa00",
+                        "error-container": "#9f0519",
+                        "tertiary": "#ffbd5c",
+                        "on-secondary-fixed-variant": "#645300",
+                        "tertiary-dim": "#ec9e00",
+                        "on-background": "#ffffff",
+                        "error-dim": "#d7383b",
+                        "tertiary-fixed": "#feaa00",
+                        "surface": "#0e0e0e",
+                        "secondary-fixed-dim": "#edc600",
+                        "surface-container-lowest": "#000000",
+                        "tertiary-fixed-dim": "#ec9e00",
+                        "secondary-fixed": "#fdd400",
+                        "surface-container-high": "#20201f",
+                        "surface-dim": "#0e0e0e",
+                        "primary-fixed-dim": "#5a90ff",
+                        "on-error": "#490006",
+                        "on-secondary-fixed": "#433700",
+                        "on-primary-container": "#002053",
+                        "surface-container-low": "#131313",
+                        "outline": "#767575",
+                        "secondary-dim": "#edc600",
+                        "on-surface-variant": "#adaaaa",
+                        "on-tertiary": "#5c3b00",
+                        "on-secondary-container": "#fff7e7",
+                        "on-primary-fixed-variant": "#002966",
+                        "on-tertiary-container": "#503300",
+                        "primary-container": "#739eff",
+                        "surface-variant": "#262626",
+                        "on-primary-fixed": "#000000",
+                        "inverse-primary": "#0059cb",
+                        "secondary": "#fdd400",
+                        "outline-variant": "#484847",
+                        "error": "#ff716c",
+                        "surface-tint": "#89acff",
+                        "on-primary": "#002b6a",
+                        "inverse-surface": "#fcf9f8",
+                        "surface-container-highest": "#262626",
+                        "inverse-on-surface": "#565555",
+                        "surface-container": "#1a1a1a",
+                        "on-surface": "#ffffff",
+                        "primary-dim": "#0f6df3",
+                        "on-tertiary-fixed": "#331f00",
+                        "primary-fixed": "#739eff",
+                        "primary": "#89acff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0e0e0e; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2c2c2c; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-[#1a1a1a] z-40 border-r border-white/5">
+<div class="px-6 py-8">
+<h1 class="text-lg font-black text-[#89acff] uppercase tracking-tighter">Admin Panel</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">Management Console</p>
+</div>
+<nav class="flex-1 px-4 space-y-2 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 bg-[#2c2c2c] text-[#89acff] rounded-lg p-3 mx-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-[10px] font-bold">Users</span>
+</a>
+<a class="flex items-center gap-3 text-[#adaaaa] p-3 mx-2 hover:bg-[#2c2c2c] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-[10px] font-medium">Products</span>
+</a>
+<a class="flex items-center gap-3 text-[#adaaaa] p-3 mx-2 hover:bg-[#2c2c2c] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-[10px] font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 text-[#adaaaa] p-3 mx-2 hover:bg-[#2c2c2c] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-[10px] font-medium">Analytics</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<button class="w-full bg-gradient-to-r from-primary to-primary-dim text-on-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Product
+            </button>
+<div class="mt-8 flex items-center gap-3 p-2 bg-surface-container rounded-xl">
+<img alt="Admin Profile" class="w-10 h-10 rounded-full object-cover grayscale brightness-90" data-alt="close-up portrait of a sharp-dressed professional man with subtle studio lighting and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB82a4_vWPxn4j5HIV7Ey_o8ZbJbly3LVRsgZHkd14CzPsQbmhJWdRIhIMHZLYQ7lehHki-emBgDlflJZueJukpFi_-PF7IHShieOEB8yRxSSmTBcZRWg38L_SJmKCfffWXlF7I2MdVcJzxUmGSandFwR02kSUdmIbx_VlKF9ZxqTIuy1808ssaHXfMZUit99zRA00LLyTPbP853nFDTYIKu9rrx0AbpZrhVHEIXBGdkYU-WoECd0x46Xzs2CK8yZ1YybGlNNb_HNBj"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Alex Sterling</p>
+<p class="text-[10px] text-on-surface-variant truncate uppercase tracking-tighter">Chief Editor</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="md:ml-64 min-h-screen pb-12">
+<header class="flex justify-between items-center px-8 py-6 w-full sticky top-0 z-30 bg-[#0e0e0e]/70 backdrop-blur-xl border-b border-[#ffffff]/10">
+<div class="flex items-center gap-4">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Dashboard <span class="text-primary">.</span></h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-surface-container rounded-full px-4 py-2 border border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-48" placeholder="Search system..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</header>
+<section class="px-8 mt-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="group">group</span>
+</div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Total Users</p>
+<div class="flex items-end gap-2">
+<h3 class="text-4xl font-bold tracking-tight">12,842</h3>
+<span class="text-emerald-500 text-xs font-bold mb-1 flex items-center">+12%</span>
+</div>
+<div class="mt-4 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full shadow-[0_0_10px_rgba(137,172,255,0.4)]"></div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="payments">payments</span>
+</div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Total Sales</p>
+<div class="flex items-end gap-2">
+<h3 class="text-4xl font-bold tracking-tight text-secondary">$84,210</h3>
+<span class="text-emerald-500 text-xs font-bold mb-1 flex items-center">+8%</span>
+</div>
+<div class="mt-4 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[62%] rounded-full shadow-[0_0_10px_rgba(253,212,0,0.4)]"></div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="inventory">inventory</span>
+</div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Pending Orders</p>
+<div class="flex items-end gap-2">
+<h3 class="text-4xl font-bold tracking-tight">156</h3>
+<span class="text-tertiary text-xs font-bold mb-1 flex items-center">Active</span>
+</div>
+<div class="mt-4 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[30%] rounded-full shadow-[0_0_10px_rgba(255,189,92,0.4)]"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+<div class="lg:col-span-2 space-y-8">
+<div class="bg-surface-container p-8 rounded-2xl border border-white/5">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h4 class="text-lg font-bold">Sales Overview</h4>
+<p class="text-xs text-on-surface-variant">Revenue performance across key categories</p>
+</div>
+<select class="bg-surface-variant border-none text-xs rounded-lg px-3 py-2 text-on-surface focus:ring-1 focus:ring-primary">
+<option>Last 30 Days</option>
+<option>Last 6 Months</option>
+</select>
+</div>
+<div class="flex items-end justify-between h-48 gap-4 px-2">
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-surface-variant rounded-t-lg relative group transition-all h-[40%]">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Mon</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-surface-variant rounded-t-lg relative group transition-all h-[70%]">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Tue</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary rounded-t-lg relative group transition-all h-[95%] shadow-[0_0_20px_rgba(137,172,255,0.2)]">
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Wed</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-surface-variant rounded-t-lg relative group transition-all h-[55%]">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Thu</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-surface-variant rounded-t-lg relative group transition-all h-[80%]">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Fri</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-surface-variant rounded-t-lg relative group transition-all h-[45%]">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Sat</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-surface-variant rounded-t-lg relative group transition-all h-[60%]">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-t-lg"></div>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Sun</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-2xl overflow-hidden border border-white/5">
+<div class="px-8 py-6 flex justify-between items-center border-b border-white/5">
+<h4 class="text-lg font-bold">Recent Users</h4>
+<button class="text-primary text-xs uppercase tracking-widest font-bold hover:underline transition-all">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="text-left bg-surface-variant/30">
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">User</th>
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Email</th>
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Status</th>
+<th class="px-8 py-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Date Joined</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-8 py-4 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all" data-alt="studio headshot of a smiling young man in a minimalist dark setting with atmospheric highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGS3my9W0i_dLMg3Za1WQzIBTSO4S4o8sBf8pIz615x86bTMSKh_5v3SvxQ7z7IrMyGUBxOB3W0T61Ezd_wQ5QF0Mb5CKxtr58di4mm35Ij-udQ72jQwvdZL8FFLd-c5mFYgK7hRiBHKs1WAMqtGtiSf2Xrg2B-D75a5gzPT7aq_cD0TnToyfyAZlzyOjgHm66svTLOaS54fzigPt9fjr8lTtZrmfcG0kfKbTQMzuZhBVCFaX2e_I-Nl9imlm4A2O8D2q9IhOPuMGW"/>
+<span class="font-semibold text-sm">Marcus Vane</span>
+</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant">m.vane@noir.com</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded uppercase tracking-widest">Active</span>
+</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant">Oct 12, 2023</td>
+</tr>
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-8 py-4 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all" data-alt="professional portrait of a woman in low light with subtle blue rim lighting and polished aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlarQK2bcz9WSZ3nHZ0Lee9UPh73HWOhdUbzpYwbA6ZjIN7edN5aSPP0utGBE-QrbLqVQYxWslIYMW9OOqWuSc09_dGTTnebx1Hfkpva9oyaKflfDhwUmca8wmwEbCW0DBZm2kW62SXi8wKwE3a4ZuIR3A4KaIJXL0M165doS9Y02PSDBO_k_eug5dypEKrdiPx-sKlSyQ8mOXD81Au8ge3r94spxU5KP045QTuTg8K2cYaVzfEcCoA42mp0fXke6rRBIni_FoPWry"/>
+<span class="font-semibold text-sm">Elena Rossi</span>
+</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant">elena@techflow.io</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded uppercase tracking-widest">Active</span>
+</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant">Oct 11, 2023</td>
+</tr>
+<tr class="hover:bg-white/[0.02] transition-colors group">
+<td class="px-8 py-4 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all" data-alt="sharp close-up of a man in dark turtleneck with cinematic contrast and high-end tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrZ6AYj82_mDzIXGlHGfP5yQzPdCtJ6pBXD90m-OOkQb1I2U9e3kLOn6IB9FzT8J8LJfQDRqPssuNcruc2bXkVQhxFSYen2bdJaPteDdAd0sKsy3ldFkXrPFKsbPU7r13r7weetz9hPHdMq5OpMoISzrZuYzy7dwHeWiaALDje2mPZ4bDOIe8XizHvKtBowFgSDDiKnZlDYcsoznTz32IRUYsO_HfWZjVCkOHFmCoxbJ0uKNaJMVSVd3cglv-IK5BiXa7T7VZR7ZGw"/>
+<span class="font-semibold text-sm">Julian Thorne</span>
+</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant">j.thorne@global.net</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-white/5 text-on-surface-variant text-[10px] font-bold rounded uppercase tracking-widest">Pending</span>
+</td>
+<td class="px-8 py-4 text-sm text-on-surface-variant">Oct 09, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="bg-surface-container p-6 rounded-2xl border border-white/5">
+<h4 class="text-lg font-bold mb-6">Top Categories</h4>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="font-medium">Cyberwear</span>
+<span class="text-primary font-bold">42%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="font-medium">Digital Assets</span>
+<span class="text-secondary font-bold">28%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[28%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="font-medium">Neon Optics</span>
+<span class="text-tertiary font-bold">15%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[15%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-2xl border border-white/5 overflow-hidden relative">
+<div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/20 blur-3xl rounded-full"></div>
+<h4 class="text-lg font-bold mb-4">System Health</h4>
+<div class="flex items-center gap-4 mb-6">
+<div class="p-3 bg-primary/10 rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="dns">dns</span>
+</div>
+<div>
+<p class="text-sm font-bold">API Status</p>
+<p class="text-[10px] text-emerald-500 uppercase tracking-widest">Operational 99.9%</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-variant/50 rounded-xl">
+<span class="text-xs text-on-surface-variant">Latency</span>
+<span class="text-xs font-bold text-on-surface">14ms</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-variant/50 rounded-xl">
+<span class="text-xs text-on-surface-variant">Uptime</span>
+<span class="text-xs font-bold text-on-surface">342d 12h</span>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-surface-container to-[#2c2c2c] p-8 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+<div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h5 class="text-sm font-bold mb-2">Power User Rewards</h5>
+<p class="text-xs text-on-surface-variant mb-6 leading-relaxed">
+                            Generate monthly reports with one click and unlock advanced data visualization modules.
+                        </p>
+<button class="w-full py-3 bg-white text-black text-xs font-black uppercase tracking-widest rounded-xl hover:bg-secondary transition-colors">
+                            Upgrade Now
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="md:ml-64 bg-surface-container-lowest py-12 px-8 mt-auto border-t border-white/5">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-center md:text-left">
+<span class="text-md font-semibold text-[#89acff] tracking-tight">Electric Noir</span>
+<p class="text-on-surface-variant text-xs mt-2">© 2024 Electric Noir. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-[#adaaaa] text-sm hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#adaaaa] text-sm hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-[#adaaaa] text-sm hover:text-white transition-colors" href="#">System Logs</a>
+<a class="text-[#adaaaa] text-sm hover:text-white transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -12,6 +12,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
+                path: "products",
                 element: <ProductsPage />,
                 errorElement: <p>Something went wrong loading products.</p>
             },

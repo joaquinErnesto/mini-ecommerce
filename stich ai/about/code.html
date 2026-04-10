@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#edc600",
+                    "on-primary-fixed-variant": "#002966",
+                    "surface-dim": "#0e0e0e",
+                    "surface": "#0e0e0e",
+                    "on-background": "#ffffff",
+                    "inverse-surface": "#fcf9f8",
+                    "inverse-primary": "#0059cb",
+                    "tertiary-fixed-dim": "#ec9e00",
+                    "on-surface": "#ffffff",
+                    "primary-fixed-dim": "#5a90ff",
+                    "on-secondary": "#594a00",
+                    "surface-variant": "#262626",
+                    "surface-container-highest": "#262626",
+                    "surface-bright": "#2c2c2c",
+                    "on-error": "#490006",
+                    "error": "#ff716c",
+                    "secondary-dim": "#edc600",
+                    "tertiary-dim": "#ec9e00",
+                    "secondary": "#fdd400",
+                    "on-primary-fixed": "#000000",
+                    "on-secondary-container": "#fff7e7",
+                    "error-container": "#9f0519",
+                    "surface-container-low": "#131313",
+                    "on-tertiary-container": "#503300",
+                    "tertiary-fixed": "#feaa00",
+                    "surface-container-high": "#20201f",
+                    "on-primary": "#002b6a",
+                    "inverse-on-surface": "#565555",
+                    "tertiary": "#ffbd5c",
+                    "tertiary-container": "#feaa00",
+                    "surface-container-lowest": "#000000",
+                    "surface-container": "#1a1a1a",
+                    "outline-variant": "#484847",
+                    "background": "#0e0e0e",
+                    "on-surface-variant": "#adaaaa",
+                    "primary-dim": "#0f6df3",
+                    "on-tertiary-fixed": "#331f00",
+                    "outline": "#767575",
+                    "on-error-container": "#ffa8a3",
+                    "secondary-fixed": "#fdd400",
+                    "on-secondary-fixed": "#433700",
+                    "secondary-container": "#705d00",
+                    "on-tertiary": "#5c3b00",
+                    "on-primary-container": "#002053",
+                    "surface-tint": "#89acff",
+                    "on-tertiary-fixed-variant": "#5b3b00",
+                    "error-dim": "#d7383b",
+                    "primary": "#89acff",
+                    "primary-fixed": "#739eff",
+                    "primary-container": "#739eff",
+                    "on-secondary-fixed-variant": "#645300"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0e0e0e; color: #ffffff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { background: rgba(26, 26, 26, 0.7); backdrop-filter: blur(20px); }
+        .text-neon-shadow { text-shadow: 0 0 20px rgba(137, 172, 255, 0.3); }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-[#ffffff]/10 bg-[#1a1a1a]/70 backdrop-blur-xl shadow-[0_20px_40px_rgba(137,172,255,0.06)]">
+<div class="flex justify-between items-center h-20 px-8 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#89acff]">ELECTRIC_NOIR</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors font-plus-jakarta text-sm tracking-tight" href="#">Shop</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors font-plus-jakarta text-sm tracking-tight" href="#">Collections</a>
+<a class="text-[#89acff] border-b-2 border-[#89acff] pb-1 font-plus-jakarta text-sm tracking-tight" href="#">About</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors font-plus-jakarta text-sm tracking-tight" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="hover:bg-[#2c2c2c] transition-all duration-300 p-2 rounded-full active:scale-95 text-[#89acff]">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="hover:bg-[#2c2c2c] transition-all duration-300 p-2 rounded-full active:scale-95 text-[#89acff]">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[921px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-40" data-alt="abstract 3d fluid waves in deep blue and black matte finish with dramatic cinematic lighting and high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3M_c5ss4BlGPJBSryc1RyqVPfy0j7bwGfDUIPOZ-lxDkRPskpsC5X3R8y4oNmzKf9Efe9-Ex47j9qhOLTJYfRfKKYFztYR3EoltnaBZZdJw8VPRiSvbOjNk8yjg1_T-7PONtbj_l9QJvW2OtaHrBVxvBGIzkBACjnzjzo4wkhGUR7GE4Cc-rnY2wIG-8EBSnvPvpl4bA--6TIJoNB7Afe780DvtFLoPJZflINcGeIdEnq62ukSmTWtVC2UK2JbpBqucgQ5bW5897W"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background/0 via-background/60 to-background"></div>
+</div>
+<div class="relative z-10 text-center max-w-4xl px-8">
+<p class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-6">Manifesto v.01</p>
+<h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter text-on-background mb-8 leading-[0.9]">
+                    The <span class="text-primary italic">Digital</span> Curator
+                </h1>
+<p class="text-lg md:text-xl text-on-surface-variant font-light max-w-2xl mx-auto leading-relaxed">
+                    We reject the clutter of the modern marketplace. ELECTRIC NOIR is a sanctuary for the intentional—a gallery where technology meets high-art curation.
+                </p>
+</div>
+</section>
+<!-- Philosophy Section - Bento Grid Layout -->
+<section class="py-24 px-8 max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Content Card -->
+<div class="md:col-span-8 bg-surface-container rounded-xl p-12 flex flex-col justify-between border border-outline-variant/10">
+<div>
+<h2 class="text-4xl font-bold text-primary mb-6 tracking-tight">The Anti-Template</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Most commerce platforms are built for the masses, prioritizing volume over value. We built ELECTRIC NOIR for the selective. Every interaction is designed to feel like a walk through a private gallery at midnight—hushed, focused, and profoundly deep.
+                        </p>
+</div>
+<div class="flex gap-4">
+<span class="px-4 py-2 rounded-full border border-primary/20 text-primary text-xs font-label uppercase tracking-widest">Minimalism</span>
+<span class="px-4 py-2 rounded-full border border-primary/20 text-primary text-xs font-label uppercase tracking-widest">Intent</span>
+<span class="px-4 py-2 rounded-full border border-primary/20 text-primary text-xs font-label uppercase tracking-widest">Curation</span>
+</div>
+</div>
+<!-- Vertical Image Card -->
+<div class="md:col-span-4 bg-surface-container rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="ultra modern minimalist workspace with glowing blue neon light bar on dark charcoal wall and premium tech hardware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCZVxVPRsXlmwuh___wQHWg7Q28QPCNh3WryYq6OOadZwJaB0cEkFN1yOy01zmZaAEOkRnk2dHfSnSQZmB6ZLoVM7ZAXGF3-queCe3tdljp0D8TDXlHT8mLb84jvuLz8iO5fxmTQMZgQ3lrVt5IiZZsDRNcXnB8v8RxF08PvewhOhhUXfiYc_7ICpoW8NixEErtR7G6YAywKP0MYfxiBwrhdt3TNimyxr8_Prn1xdyN1mcAQ2oOCAVB16bss7CfuL7TLXM6ZCeey_A"/>
+<div class="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black to-transparent">
+<p class="text-secondary font-bold text-xl tracking-tighter">$ — PRESTIGE</p>
+</div>
+</div>
+<!-- Small Info Card -->
+<div class="md:col-span-4 bg-surface-bright rounded-xl p-8 border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">auto_awesome</span>
+<h3 class="text-xl font-bold text-on-surface mb-4">Luminescent Logic</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        Our UI utilizes light as a pathfinder. In a world of digital noise, we use primary blue accents to guide your journey through curated excellence.
+                    </p>
+</div>
+<!-- Wide Philosophy Card -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-8 flex items-center gap-12 overflow-hidden border border-outline-variant/10">
+<div class="flex-1">
+<h3 class="text-2xl font-bold text-on-surface mb-4">The Depth Principle</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                            Layering isn't just a design choice; it's our philosophy. We create depth through tonal shifts, moving from deep charcoal bases to elevated surfaces, mirroring the complexity of the products we curate.
+                        </p>
+</div>
+<div class="hidden lg:block w-1/3">
+<div class="aspect-square bg-gradient-to-br from-primary to-primary-dim rounded-full blur-3xl opacity-20"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Typography Statement Section -->
+<section class="py-32 bg-surface-container-lowest relative overflow-hidden">
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-[100px]"></div>
+<div class="max-w-4xl mx-auto px-8 text-center">
+<h2 class="text-xs font-label uppercase tracking-[0.5em] text-[#adaaaa] mb-12">The Electric Mandate</h2>
+<blockquote class="text-3xl md:text-5xl font-light leading-tight italic text-on-surface mb-12">
+                    "We do not sell products; we facilitate a <span class="text-primary font-bold not-italic">connection</span> between the visionary and the collector in a digital landscape that finally respects the silence."
+                </blockquote>
+<div class="h-[1px] w-24 bg-secondary mx-auto"></div>
+</div>
+</section>
+<!-- Product Highlight (Hybrid Section) -->
+<section class="py-24 px-8 max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="aspect-[4/5] bg-surface-variant rounded-xl overflow-hidden shadow-2xl shadow-primary/10">
+<img class="w-full h-full object-cover" data-alt="side view of a premium crimson sneaker on a minimalist dark stone pedestal with moody top lighting and atmospheric smoke" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ZfrdpZXYdLDWCxvd3IyPO8xLOGoXLMUKG70ymzM5B_gtrhT9RUM5649FPbO7WsVivQGu2jnm1uArhMil_Xjw0hblvs13Q3RBcU2TJQfYyshRHjc0YteNaxc1fvnWyoRxD4vwEnufW3LB2BOYUv6B2AqHuuzoi6OKzcgxJXyHde6vAN5TtNC3xnI3aIPLxXMW3TrI_7377eGN6ZL3zgDL3P0OI29UrO2-l1jfIljrk-5g4M7xnhTHwsuRIO1j70DJdECdzf6v__t9"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-surface-bright p-8 rounded-xl border border-outline-variant/20 backdrop-blur-xl">
+<p class="font-label text-[10px] text-primary tracking-widest mb-2">CURATED ITEM NO. 442</p>
+<p class="text-secondary font-bold text-2xl tracking-tighter">$1,240.00</p>
+</div>
+</div>
+<div class="space-y-8">
+<h2 class="text-5xl font-extrabold tracking-tighter text-primary">Precision Over <br/>Plurality</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                    Our selection process is rigorous. We look for items that embody the Electric Noir aesthetic: high performance, exceptional craft, and a visual language that speaks in whispers rather than shouts.
+                </p>
+<div class="space-y-4 pt-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">Limited Production Runs</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">Material-First Philosophy</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">Digital Authenticity Tokens</span>
+</div>
+</div>
+<button class="mt-8 px-10 py-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed font-bold rounded-md hover:scale-105 transition-transform duration-300">
+                    EXPLORE THE ARCHIVE
+                </button>
+</div>
+</section>
+<!-- Team / Curator Section -->
+<section class="py-24 bg-surface-container-low border-y border-outline-variant/10">
+<div class="max-w-screen-xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-on-surface tracking-tight mb-4">The Curators</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">A collective of designers, technologists, and artists shaping the noir aesthetic.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center group">
+<div class="aspect-square rounded-full overflow-hidden mb-6 grayscale group-hover:grayscale-0 transition-all duration-500 border-2 border-transparent group-hover:border-primary">
+<img class="w-full h-full object-cover" data-alt="portrait of a man with minimalist glasses and black turtleneck in dramatic studio lighting with dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5YsWxJtk9nR9QSTx-Won7SV0m4kxFh0Oc5DSOZrAhl2byG4xu3VdwhN__pg8bcBnIsYXqFnIKZ-7FrFhObI_Fr2f7oXbEYnjyF22aDu0G1a-ZLEP2U7lJnP4mUjiZZQh5iJNO-u619EYIRiYO6cp9XbQYeqKYNxFvAkmDeseVDctbakDY8AixLSD3QOyrOI3muLBu2W1n2pP9DzVvGoDJATgpao11TO3S2VViS2uG3Jv9JUhoIaopQNj75K7OCJgrCOhXdp-bU73u"/>
+</div>
+<h4 class="text-on-surface font-bold uppercase text-sm tracking-widest">ALEXIS NOIR</h4>
+<p class="text-primary text-xs font-label mt-1">Founder / Creative Lead</p>
+</div>
+<div class="text-center group">
+<div class="aspect-square rounded-full overflow-hidden mb-6 grayscale group-hover:grayscale-0 transition-all duration-500 border-2 border-transparent group-hover:border-primary">
+<img class="w-full h-full object-cover" data-alt="portrait of a woman with sleek modern hair and dark designer clothing in soft focused urban night lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhAKbKXQwdBHRSXKNC3R4biyLJr_SG_99PxUpPlYmxpsdps0Bj9ru9q_ZSLzHV0qNBN1c6P8mq8Jpn_iNhmtjOphgrVo4o_Z54vJ3AZlbw0VjreBMpcJOR5L52rmFUrxHuFLTMhR6qFt3JmMPRJgHqcVYFA9veYoPoXS-0W9JOneWTnTSyZ3iN1Sht3mBnMChxsSvcFeNntqvOH9rPthxWyKc1BW9qiuRL6oJJUmPr18ZAcvRt8Wv2UHqy1XFyUz7BWeOgz5HnxjlE"/>
+</div>
+<h4 class="text-on-surface font-bold uppercase text-sm tracking-widest">SARAH VOSS</h4>
+<p class="text-primary text-xs font-label mt-1">Head of Curation</p>
+</div>
+<div class="text-center group">
+<div class="aspect-square rounded-full overflow-hidden mb-6 grayscale group-hover:grayscale-0 transition-all duration-500 border-2 border-transparent group-hover:border-primary">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a designer in a dark studio with blue ambient lighting reflecting on their features" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiKmDIkaxfhyKjkCRHf6FmtrsB88ZTCd6cq5QP4BmNLMRJ9mgMPxoYEmZwAD1aoN_4zU7juD8TuLjQHPw1vUqVErrOXeHgxjy6vSoPD_X-4hxjkJvkNsRFfpoBwjjvzcLGfGLdtpI8M4YQI9RpkS42OrD7jZzHmRZJutJPoXCkRjxoPxNyGLtcqQJD_LAj5h7UBlXn2jy28dd-hJLHulgZ6A6sMd-E1zpXMY5TYDriZbQ3KW7aVyQPuKU29Fi8c38xff3Mb_LB_d_z"/>
+</div>
+<h4 class="text-on-surface font-bold uppercase text-sm tracking-widest">MARCUS CHEN</h4>
+<p class="text-primary text-xs font-label mt-1">Tech Architecture</p>
+</div>
+<div class="text-center group">
+<div class="aspect-square rounded-full overflow-hidden mb-6 grayscale group-hover:grayscale-0 transition-all duration-500 border-2 border-transparent group-hover:border-primary">
+<img class="w-full h-full object-cover" data-alt="portrait of a creative professional woman in elegant dark attire with a confident expression and cinematic rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsio1vqQImrNsVDH6Z4zk_cFvD0Cu2gn3ZijTDE1LqaKKQlLeLCu6jT4qVd-Zx9V1Le8F85ot0jA2RYG8OIfS4zTA8Dr_y6J1yHfcDE6LEQ2HoxEZozzeETr-T4u0bcbWYv8XFifzQDoe8eylvxlbOeIirdIT7u9AsisYfiVYhj5gv15iQ7_Qwp8qLlPaGGLyWA6QIdBLaRs9XtWwHufv96_6DPfzfV3PvUvknWbVR7GZ-IzNACx5g7zKpt6z8Vc-N_olxflhr-W28"/>
+</div>
+<h4 class="text-on-surface font-bold uppercase text-sm tracking-widest">ELENA ROSSI</h4>
+<p class="text-primary text-xs font-label mt-1">Global Partnerships</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-[#000000]">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-bold text-[#fdd400]">ELECTRIC NOIR</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Privacy Policy</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Terms of Service</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Shipping</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Returns</a>
+</div>
+<div class="font-plus-jakarta text-xs uppercase tracking-widest text-[#89acff] opacity-80">
+                © 2024 ELECTRIC NOIR. CURATED EXCELLENCE.
+            </div>
+</div>
+</footer>
+</body></html>

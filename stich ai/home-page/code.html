@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#edc600",
+                    "on-primary-fixed-variant": "#002966",
+                    "surface-dim": "#0e0e0e",
+                    "surface": "#0e0e0e",
+                    "on-background": "#ffffff",
+                    "inverse-surface": "#fcf9f8",
+                    "inverse-primary": "#0059cb",
+                    "tertiary-fixed-dim": "#ec9e00",
+                    "on-surface": "#ffffff",
+                    "primary-fixed-dim": "#5a90ff",
+                    "on-secondary": "#594a00",
+                    "surface-variant": "#262626",
+                    "surface-container-highest": "#262626",
+                    "surface-bright": "#2c2c2c",
+                    "on-error": "#490006",
+                    "error": "#ff716c",
+                    "secondary-dim": "#edc600",
+                    "tertiary-dim": "#ec9e00",
+                    "secondary": "#fdd400",
+                    "on-primary-fixed": "#000000",
+                    "on-secondary-container": "#fff7e7",
+                    "error-container": "#9f0519",
+                    "surface-container-low": "#131313",
+                    "on-tertiary-container": "#503300",
+                    "tertiary-fixed": "#feaa00",
+                    "surface-container-high": "#20201f",
+                    "on-primary": "#002b6a",
+                    "inverse-on-surface": "#565555",
+                    "tertiary": "#ffbd5c",
+                    "tertiary-container": "#feaa00",
+                    "surface-container-lowest": "#000000",
+                    "surface-container": "#1a1a1a",
+                    "outline-variant": "#484847",
+                    "background": "#0e0e0e",
+                    "on-surface-variant": "#adaaaa",
+                    "primary-dim": "#0f6df3",
+                    "on-tertiary-fixed": "#331f00",
+                    "outline": "#767575",
+                    "on-error-container": "#ffa8a3",
+                    "secondary-fixed": "#fdd400",
+                    "on-secondary-fixed": "#433700",
+                    "secondary-container": "#705d00",
+                    "on-tertiary": "#5c3b00",
+                    "on-primary-container": "#002053",
+                    "surface-tint": "#89acff",
+                    "on-tertiary-fixed-variant": "#5b3b00",
+                    "error-dim": "#d7383b",
+                    "primary": "#89acff",
+                    "primary-fixed": "#739eff",
+                    "primary-container": "#739eff",
+                    "on-secondary-fixed-variant": "#645300"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0e0e0e; color: #ffffff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { background: rgba(26, 26, 26, 0.7); backdrop-filter: blur(20px); }
+        .text-neon-blue { color: #89acff; text-shadow: 0 0 20px rgba(137, 172, 255, 0.3); }
+        .bg-noir-gradient { background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(14,14,14,1) 100%); }
+        .hero-mask { mask-image: linear-gradient(to bottom, black 60%, transparent 100%); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-[#ffffff]/10 shadow-[0_20px_40px_rgba(137,172,255,0.06)]">
+<div class="flex justify-between items-center h-20 px-8 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#89acff] font-headline">ELECTRIC_NOIR</div>
+<div class="hidden md:flex items-center space-x-10 font-plus-jakarta text-sm tracking-tight">
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Shop</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Collections</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">About</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-6">
+<div class="hidden lg:flex items-center bg-surface-container px-4 py-2 rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs w-32 placeholder:text-on-surface-variant" placeholder="Search Vault..." type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-[#89acff] active:scale-95 duration-200 hover:bg-[#2c2c2c] p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="text-[#89acff] active:scale-95 duration-200 hover:bg-[#2c2c2c] p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Atmospheric dark tech" class="w-full h-full object-cover hero-mask opacity-60" data-alt="Cinematic wide shot of a dark cyberpunk city street at night with glowing blue neon reflections on rain-slicked asphalt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1klTl3C3fxFNYa2Flw5ii5TKOIPMxx_qEMzq8yb4oKxs88L49rQhwaYmcEFykZdeOg1Q82_TS1-iqpFE3xeA-dQXhWbD2IF5iKqR8t039G8fxHo_Imj2PaYyVrjj6bQfuBJnwSiZGcXBUEsqBD2FD6K3UfihLl-KbWXZwelSvlB8R8wQLvHA7hlbQIzpjFCbdUWlHHiplAJhF8zoDZucza-xn_O09mZDY03BbM_AP8yKUcWfNeXJAozpaChzXPzfsZqdX3PGkqxbc"/>
+<div class="absolute inset-0 bg-noir-gradient"></div>
+</div>
+<div class="relative z-10 text-center px-4 max-w-4xl">
+<span class="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-6 block">Curated Excellence</span>
+<h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 font-headline leading-[0.9]">
+                    THE <span class="text-neon-blue italic">DIGITAL</span><br/>CURATOR
+                </h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                    A silent stage for high-performance aesthetics. Engineering the future of streetwear through intentional depth and neon precision.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<a class="group relative px-10 py-5 bg-gradient-to-r from-primary to-primary-dim text-on-primary-container font-bold rounded-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(137,172,255,0.4)]" href="#">
+<span class="relative z-10">Shop the Vault</span>
+</a>
+<a class="px-10 py-5 border border-outline-variant/30 hover:border-primary/50 text-on-surface font-medium rounded-lg transition-all" href="#">
+                        Explore Collections
+                    </a>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+<span class="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+</div>
+</section>
+<!-- Featured Collections - Bento Grid -->
+<section class="py-32 px-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<h2 class="text-4xl font-bold tracking-tight text-primary font-headline mb-4">Curated Selections</h2>
+<p class="text-on-surface-variant max-w-md">Our seasonal drops are engineered for those who appreciate the nuance of shadow and light.</p>
+</div>
+<div class="text-secondary font-bold text-sm tracking-widest uppercase">Volume 01 / Current</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
+<!-- Large Feature -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container">
+<img alt="Cyber apparel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Editorial fashion shot of a model wearing high-tech charcoal utility jacket in a dimly lit industrial setting with blue rim light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCL_qBW6cxAZteU1YK8n3YfXTVE1ptWec-WNoCW2UtrBW7BedImb8X5ScXyCzR2Q-BSInWfp5xiXAcXjfaom3xirEX2Co1ewgE01mSj-Wyaz0IL_F5AQkb3SxaDUsUNtqmC2SEwG_WM3iv7cc0AlqkrP0vz8PcsONLnJcL8nGHerbubFDdtJFepNcPiKDGEKkuoF5O1dUOJDYhyP4qlEMwnM024kmfGSDEbLa-1qEoagWTyrREiP0o6b3THCkb78whRxVN57bjsLq0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-10 left-10">
+<h3 class="text-3xl font-bold mb-2">Neon Archive</h3>
+<p class="text-on-surface-variant mb-6 max-w-xs">Performance fabrics meets midnight aesthetics.</p>
+<span class="text-secondary font-bold text-xl">$1,250.00</span>
+</div>
+</div>
+<!-- Small Feature Top -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container h-[400px] md:h-full">
+<img alt="Studio accessory" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of sleek futuristic black headphones on a dark obsidian base with a single sharp yellow highlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeq6ZZ9XxNSUqLy9fw-344R9uOAq_NXY1KFMYwsYBcgsdnEI3-5XZ2_bBdML69bB4ECpGrb9qX4Hxab4Isj3C4HFOkQpJZNABKJA-V7D-e1nMFdiugufX5cTv3sjM-BkkNb6i-gZwW3UUeOynBiTY3Q9FnjjV58ekMGWoBsZSJcOrLsoDSH44rHwTUU6_2jVli-4WGXJnHHLmdbm6fFsNwpG7WA97T37ElmBqQR3oapq0lP5JSNaJarVeGJmUUT9qdMk20KJh1bmRO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-8 left-8">
+<h3 class="text-xl font-bold mb-1">Sonic Core</h3>
+<span class="text-secondary font-bold">$490.00</span>
+</div>
+</div>
+<!-- Wide Bottom Feature -->
+<div class="md:col-span-12 group relative overflow-hidden rounded-xl bg-surface-container h-[300px]">
+<img alt="Luxury automotive" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Wide shot of a matte black luxury sports car in a minimalist concrete garage with cool blue overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7XDq2q5imZ81nBcQUYBYnrIc3bg6z70iMAnp5wk1oLOsvmlKxcDqPnkI0uK8oHyASsdvmOfdeSJWaKxM13lhTzMbWDJ2X6oEFURewoCsm8hJrbFZ4YNUZb_EYyabH7Esan9cXEMTEM1yxnhf-SEEdwRwwxcg2qe7GH31y0TGgTGL0broHib8GNvHV-8YC7zmL4eWYFCbeLzoQcxdN0LzrRBeQ9aQeCWwWCKTyoReMFEGWZXjopuS6cRuGBVBqbS8mSbgH_uZXEUgG"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-transparent to-transparent opacity-90"></div>
+<div class="absolute left-10 top-1/2 -translate-y-1/2">
+<span class="text-xs font-bold tracking-widest text-primary uppercase mb-2 block">Special Project</span>
+<h3 class="text-4xl font-bold tracking-tighter">THE NOIR 01</h3>
+<p class="text-on-surface-variant max-w-sm mt-2">Limited edition bespoke automotive integration.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Highlight Strip -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">token</span>
+</div>
+<h4 class="font-bold mb-2">Digital Provenance</h4>
+<p class="text-sm text-on-surface-variant">Every item verified via secure on-chain authentication.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">shutter_speed</span>
+</div>
+<h4 class="font-bold mb-2">Global Transit</h4>
+<p class="text-sm text-on-surface-variant">72-hour priority delivery to major metropolitan hubs.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h4 class="font-bold mb-2">Vault Storage</h4>
+<p class="text-sm text-on-surface-variant">Insured climate-controlled curation for collectibles.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">support_agent</span>
+</div>
+<h4 class="font-bold mb-2">Elite Concierge</h4>
+<p class="text-sm text-on-surface-variant">24/7 dedicated personal shopping assistance.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-8 overflow-hidden">
+<div class="max-w-screen-2xl mx-auto relative bg-[#1a1a1a] rounded-[2rem] p-16 md:p-32 flex flex-col items-center text-center shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 blur-[120px] -z-10"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 blur-[120px] -z-10"></div>
+<h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8">JOIN THE <span class="text-neon-blue">INNER CIRCLE</span></h2>
+<p class="text-on-surface-variant text-lg max-w-xl mb-12">Receive early access to limited drops and members-only curation events. No noise. Just signal.</p>
+<form class="w-full max-w-md flex flex-col sm:flex-row gap-4">
+<input class="flex-grow bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-6 py-4 text-sm focus:border-primary outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="ENTER EMAIL ADDRESS" type="email"/>
+<button class="bg-primary text-on-primary-container font-bold px-8 py-4 rounded-lg hover:bg-primary-dim transition-all whitespace-nowrap">SIGN UP</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#000000] w-full py-12 px-8">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 border-t border-[#1a1a1a] pt-12">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="text-lg font-bold text-[#fdd400] font-headline">ELECTRIC NOIR</div>
+<p class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa]">© 2024 ELECTRIC NOIR. CURATED EXCELLENCE.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-plus-jakarta text-xs uppercase tracking-widest">
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Terms of Service</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Shipping</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Returns</a>
+</div>
+<div class="flex gap-6">
+<a class="text-[#89acff] opacity-80 hover:opacity-100 transition-opacity" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="text-[#89acff] opacity-80 hover:opacity-100 transition-opacity" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

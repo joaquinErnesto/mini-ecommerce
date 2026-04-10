@@ -20,12 +20,16 @@ export const MainLayout = () => {
                             Home
                         </Link>
                         
-                        <Link to="/">
+                        <Link to="/products">
                             Products
                         </Link>
                         
                         <Link to="/cart">
                             Cart
+                        </Link>
+
+                        <Link to="/profile">
+                            Profile
                         </Link>
                     </nav>
 
@@ -51,6 +55,7 @@ export const MainLayout = () => {
                         <a href="#">Privacy</a>
                         <a href="#">Terms</a>
                         <a href="#">Contact</a>
+                        <a href="#">About</a>
                     </div>
 
                 </div>

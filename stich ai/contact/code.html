@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#edc600",
+                    "on-primary-fixed-variant": "#002966",
+                    "surface-dim": "#0e0e0e",
+                    "surface": "#0e0e0e",
+                    "on-background": "#ffffff",
+                    "inverse-surface": "#fcf9f8",
+                    "inverse-primary": "#0059cb",
+                    "tertiary-fixed-dim": "#ec9e00",
+                    "on-surface": "#ffffff",
+                    "primary-fixed-dim": "#5a90ff",
+                    "on-secondary": "#594a00",
+                    "surface-variant": "#262626",
+                    "surface-container-highest": "#262626",
+                    "surface-bright": "#2c2c2c",
+                    "on-error": "#490006",
+                    "error": "#ff716c",
+                    "secondary-dim": "#edc600",
+                    "tertiary-dim": "#ec9e00",
+                    "secondary": "#fdd400",
+                    "on-primary-fixed": "#000000",
+                    "on-secondary-container": "#fff7e7",
+                    "error-container": "#9f0519",
+                    "surface-container-low": "#131313",
+                    "on-tertiary-container": "#503300",
+                    "tertiary-fixed": "#feaa00",
+                    "surface-container-high": "#20201f",
+                    "on-primary": "#002b6a",
+                    "inverse-on-surface": "#565555",
+                    "tertiary": "#ffbd5c",
+                    "tertiary-container": "#feaa00",
+                    "surface-container-lowest": "#000000",
+                    "surface-container": "#1a1a1a",
+                    "outline-variant": "#484847",
+                    "background": "#0e0e0e",
+                    "on-surface-variant": "#adaaaa",
+                    "primary-dim": "#0f6df3",
+                    "on-tertiary-fixed": "#331f00",
+                    "outline": "#767575",
+                    "on-error-container": "#ffa8a3",
+                    "secondary-fixed": "#fdd400",
+                    "on-secondary-fixed": "#433700",
+                    "secondary-container": "#705d00",
+                    "on-tertiary": "#5c3b00",
+                    "on-primary-container": "#002053",
+                    "surface-tint": "#89acff",
+                    "on-tertiary-fixed-variant": "#5b3b00",
+                    "error-dim": "#d7383b",
+                    "primary": "#89acff",
+                    "primary-fixed": "#739eff",
+                    "primary-container": "#739eff",
+                    "on-secondary-fixed-variant": "#645300"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#1a1a1a]/70 backdrop-blur-xl border-b border-[#ffffff]/10 shadow-[0_20px_40px_rgba(137,172,255,0.06)]">
+<div class="flex justify-between items-center h-20 px-8 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#89acff]">ELECTRIC_NOIR</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-plus-jakarta text-sm tracking-tight text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Shop</a>
+<a class="font-plus-jakarta text-sm tracking-tight text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Collections</a>
+<a class="font-plus-jakarta text-sm tracking-tight text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">About</a>
+<a class="font-plus-jakarta text-sm tracking-tight text-[#89acff] border-b-2 border-[#89acff] pb-1" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-[#adaaaa] hover:text-[#ffffff] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="text-[#adaaaa] hover:text-[#ffffff] transition-colors active:scale-95 duration-200 relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-screen-2xl mx-auto">
+<!-- Hero Section -->
+<header class="mb-20 text-center md:text-left">
+<p class="text-primary font-label text-xs uppercase tracking-[0.2em] mb-4">Inquiries &amp; Collaboration</p>
+<h1 class="text-5xl md:text-7xl font-headline font-bold tracking-tighter text-on-surface mb-6">Connect with the <span class="text-primary">Noir</span>.</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+                Whether you're seeking a bespoke curation or need assistance with your latest acquisition, our digital concierge is at your service.
+            </p>
+</header>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Contact Info Panel -->
+<aside class="lg:col-span-4 flex flex-col gap-8">
+<div class="bg-surface-container p-8 rounded-xl border border-white/5 flex flex-col gap-8">
+<div>
+<h3 class="text-secondary font-label text-xs uppercase tracking-widest mb-4">Direct Contact</h3>
+<p class="text-2xl font-medium">curator@electricnoir.com</p>
+<p class="text-on-surface-variant mt-1">+1 (888) NOIR-STUDIO</p>
+</div>
+<div class="h-px bg-white/5"></div>
+<div>
+<h3 class="text-secondary font-label text-xs uppercase tracking-widest mb-4">Digital Presence</h3>
+<div class="flex flex-col gap-4">
+<a class="group flex items-center justify-between text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span>Instagram</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">north_east</span>
+</a>
+<a class="group flex items-center justify-between text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span>Behance</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">north_east</span>
+</a>
+<a class="group flex items-center justify-between text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span>LinkedIn</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">north_east</span>
+</a>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl h-64 bg-surface-container-high group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<img alt="A high-end minimal architecture office building with blue neon light reflecting on glass windows at night" class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-transform duration-700" data-alt="Modernist glass and steel building facade at night with subtle cyan neon lighting and deep noir shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA45qpZJOwfwTpFhiRaUTjWT-INxU7paLgccf3pB4aSE2GHHs_P-9p8x5QZC5xQFaLb-_fuSg7H5U77rvaF8a_2BNk6FapZth8rRHV-LZXEv4VNxKBKUaWpYKOVlIht0j-D0fC_be13fKejspky7VKD-NIt1LnxFiU0sf047QAsyRXBM77VwlOzNLMHOmjcPCPgHBy-XR9R7sNXmw1M_uV3RS-EZ84RROucf1_yfoT4Teool1bF9pJQbz8flEnoLQsPsKvSAGN4e8hg"/>
+<div class="absolute bottom-6 left-6 z-20">
+<p class="text-white font-bold text-lg tracking-tight">London Gallery</p>
+<p class="text-on-surface-variant text-sm">22 Shoreditch High St.</p>
+</div>
+</div>
+</aside>
+<!-- Form Section -->
+<section class="lg:col-span-8">
+<div class="bg-surface-container-low p-8 md:p-12 rounded-xl border border-white/5">
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant ml-1" for="name">Full Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-4 text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary focus:bg-surface-bright transition-all" id="name" placeholder="Alexander Sterling" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant ml-1" for="email">Electronic Mail</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg p-4 text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary focus:bg-surface-bright transition-all" id="email" placeholder="alex@nexus.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant ml-1" for="subject">Subject</label>
+<select class="w-full bg-surface-container-highest border-none rounded-lg p-4 text-on-surface focus:ring-1 focus:ring-primary focus:bg-surface-bright transition-all appearance-none" id="subject">
+<option>Curated Collection Inquiry</option>
+<option>Shipping &amp; Logistics</option>
+<option>Partnership Proposal</option>
+<option>Other</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant ml-1" for="message">Message</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-lg p-4 text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary focus:bg-surface-bright transition-all resize-none" id="message" placeholder="Describe your vision or inquiry here..." rows="6"></textarea>
+</div>
+<div class="flex items-center justify-between pt-4">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs uppercase tracking-widest font-label">Curators Online</span>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-dim text-on-primary-container px-10 py-4 font-bold rounded-lg shadow-[0_10px_20px_rgba(15,109,243,0.3)] active:scale-95 transition-all" type="submit">
+                                SEND MESSAGE
+                            </button>
+</div>
+</form>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#000000] w-full py-12 px-8 mt-24">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-bold text-[#fdd400]">ELECTRIC NOIR</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Privacy Policy</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Terms of Service</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Shipping</a>
+<a class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Returns</a>
+</div>
+<div class="font-plus-jakarta text-xs uppercase tracking-widest text-[#adaaaa]">
+                © 2024 ELECTRIC NOIR. CURATED EXCELLENCE.
+            </div>
+</div>
+</footer>
+</body></html>

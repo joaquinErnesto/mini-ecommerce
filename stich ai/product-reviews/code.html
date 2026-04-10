@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ElectricNoir | Product Reviews</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#feaa00",
+                        "outline": "#767575",
+                        "surface-variant": "#262626",
+                        "primary-fixed": "#739eff",
+                        "on-secondary-fixed-variant": "#645300",
+                        "tertiary": "#ffbd5c",
+                        "on-tertiary-fixed-variant": "#5b3b00",
+                        "on-error-container": "#ffa8a3",
+                        "outline-variant": "#484847",
+                        "on-tertiary-container": "#503300",
+                        "on-secondary-container": "#fff7e7",
+                        "tertiary-dim": "#ec9e00",
+                        "surface-container-high": "#20201f",
+                        "on-primary-fixed-variant": "#002966",
+                        "surface-container-lowest": "#000000",
+                        "secondary": "#fdd400",
+                        "primary-container": "#739eff",
+                        "on-surface": "#ffffff",
+                        "primary-fixed-dim": "#5a90ff",
+                        "primary-dim": "#0f6df3",
+                        "inverse-primary": "#0059cb",
+                        "error-container": "#9f0519",
+                        "on-primary-fixed": "#000000",
+                        "surface-container": "#1a1a1a",
+                        "surface-container-highest": "#262626",
+                        "on-secondary": "#594a00",
+                        "on-primary": "#002b6a",
+                        "on-background": "#ffffff",
+                        "on-tertiary-fixed": "#331f00",
+                        "inverse-on-surface": "#565555",
+                        "surface-container-low": "#131313",
+                        "secondary-dim": "#edc600",
+                        "error": "#ff716c",
+                        "secondary-fixed-dim": "#edc600",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary-fixed": "#433700",
+                        "background": "#0e0e0e",
+                        "tertiary-fixed-dim": "#ec9e00",
+                        "secondary-container": "#705d00",
+                        "primary": "#89acff",
+                        "secondary-fixed": "#fdd400",
+                        "on-surface-variant": "#adaaaa",
+                        "on-primary-container": "#002053",
+                        "tertiary-container": "#feaa00",
+                        "on-tertiary": "#5c3b00",
+                        "error-dim": "#d7383b",
+                        "surface-tint": "#89acff",
+                        "surface-dim": "#0e0e0e",
+                        "inverse-surface": "#fcf9f8",
+                        "surface": "#0e0e0e",
+                        "on-error": "#490006"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #89acff 0%, #0f6df3 100%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-[#0e0e0e]/70 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-[0_30px_60px_-15px_rgba(137,172,255,0.08)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto font-['Plus_Jakarta_Sans'] antialiased tracking-tight">
+<div class="text-2xl font-extrabold tracking-tighter text-[#89acff]">ElectricNoir</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Shop</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Curated</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors" href="#">Vault</a>
+</nav>
+<div class="flex items-center space-x-5">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-highest border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary/20 w-48" placeholder="Search archives..." type="text"/>
+</div>
+<button class="text-[#adaaaa] hover:bg-[#2c2c2c] p-2 rounded-full transition-all active:scale-95"><span class="material-symbols-outlined">shopping_bag</span></button>
+<button class="text-[#adaaaa] hover:bg-[#2c2c2c] p-2 rounded-full transition-all active:scale-95"><span class="material-symbols-outlined">person</span></button>
+</div>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto px-6 py-12 mb-24">
+<!-- Hero Section / Context -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row items-end justify-between gap-6">
+<div>
+<span class="text-primary text-[10px] uppercase tracking-[0.2em] font-bold mb-2 block">Verified Feedback</span>
+<h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-tight">Collector <span class="text-primary">Sentiments</span></h1>
+</div>
+<div class="text-on-surface-variant max-w-md text-sm md:text-base leading-relaxed">
+                    Explore the unedited thoughts of our global community. Every review is a testament to the Digital Curator philosophy.
+                </div>
+</div>
+</section>
+<!-- Grid Layout for Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Sidebar: Review Summary & Write Review -->
+<aside class="lg:col-span-4 space-y-8 sticky top-28">
+<!-- Review Summary Section -->
+<div class="bg-surface-container rounded-xl p-8 shadow-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-6xl font-extrabold tracking-tighter text-on-surface">4.8</span>
+<span class="text-on-surface-variant font-medium">/ 5.0</span>
+</div>
+<div class="flex gap-0.5 text-secondary mb-6">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-8 uppercase tracking-widest font-bold">Based on 1,248 Verified Curators</p>
+<!-- Distribution Bars -->
+<div class="space-y-4">
+<!-- 5 Stars -->
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-on-surface-variant w-4">5</span>
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[82%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant w-8 text-right">82%</span>
+</div>
+<!-- 4 Stars -->
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-on-surface-variant w-4">4</span>
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary/60 w-[12%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant w-8 text-right">12%</span>
+</div>
+<!-- 3 Stars -->
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-on-surface-variant w-4">3</span>
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary/30 w-[4%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant w-8 text-right">4%</span>
+</div>
+<!-- 2 Stars -->
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-on-surface-variant w-4">2</span>
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary/10 w-[1%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant w-8 text-right">1%</span>
+</div>
+<!-- 1 Star -->
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-on-surface-variant w-4">1</span>
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary/5 w-[1%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant w-8 text-right">1%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Write a Review Section -->
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10">
+<h3 class="text-xl font-bold tracking-tight mb-2 text-on-surface">Contribution</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Share your experience with the ElectricNoir vault.</p>
+<form class="space-y-6">
+<div>
+<label class="text-[10px] uppercase tracking-[0.1em] font-bold text-primary mb-3 block">Initial Rating</label>
+<div class="flex gap-2">
+<button class="text-secondary hover:scale-110 transition-transform" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-secondary hover:scale-110 transition-transform" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-secondary hover:scale-110 transition-transform" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-secondary hover:scale-110 transition-transform" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-outline-variant hover:scale-110 transition-transform hover:text-secondary" type="button"><span class="material-symbols-outlined">star</span></button>
+</div>
+</div>
+<div>
+<label class="text-[10px] uppercase tracking-[0.1em] font-bold text-primary mb-3 block">Your Perspective</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-xl text-sm p-4 focus:ring-1 focus:ring-primary/40 placeholder:text-outline-variant text-on-surface" placeholder="Detail your thoughts on the craftsmanship, delivery, and aesthetic impact..." rows="4"></textarea>
+</div>
+<button class="w-full py-4 primary-gradient text-on-primary font-bold text-sm rounded-xl active:scale-[0.98] transition-transform shadow-lg shadow-primary/20" type="button">
+                            Submit Review
+                        </button>
+</form>
+</div>
+</aside>
+<!-- Main: Customer Reviews List -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Filter/Sort Header -->
+<div class="flex items-center justify-between px-2 mb-8">
+<div class="flex items-center gap-6">
+<button class="text-sm font-bold text-primary border-b border-primary pb-1">Most Recent</button>
+<button class="text-sm font-bold text-on-surface-variant hover:text-on-surface transition-colors">Helpful</button>
+<button class="text-sm font-bold text-on-surface-variant hover:text-on-surface transition-colors">Critical</button>
+</div>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="text-xs font-bold uppercase tracking-widest">Filter</span>
+<span class="material-symbols-outlined text-lg">filter_list</span>
+</button>
+</div>
+<!-- Review Items -->
+<div class="space-y-6">
+<!-- Review 1 -->
+<article class="bg-surface-container rounded-xl p-8 hover:bg-surface-bright transition-all duration-300 group">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a stylish person with minimalist glasses and neutral expression in moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhQDML-yOniE-pPjHI6HkVMQrwIQSeNWza-X4SPDI2FOkBmyPIl2GAn2niXeIgsOGyuQYvskUa6T_0iQLpDutACigO27hqTI5nAywWbLkJorDW71ONJOO4bNFh-yEOc4DdADRKCcb2Le5TatYebNEXTHBUYJBz5jNd6WqWe-a7DfyFW-NlUPR4uvlgCp8JcJVhb0nVUqACfZKBIQQAMNKsAoliY9u3ci_UEn2hO58UiC1gO-9kxs8zFskqyp1Vosw4AeX9pCBpRmko"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Julian Thorne</h4>
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5 text-secondary text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-[10px] text-on-surface-variant/60 font-medium">Verified Curator</span>
+</div>
+</div>
+</div>
+<time class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">2 days ago</time>
+</div>
+<p class="text-on-surface-variant text-sm md:text-base leading-relaxed mb-6">
+                            The depth of the charcoal finish is unlike anything I've seen in mainstream pieces. It absorbs light in a way that truly honors the "Electric Noir" aesthetic. Delivery was seamless and the packaging felt like a ceremony in itself.
+                        </p>
+<div class="flex items-center gap-6 pt-6 border-t border-outline-variant/10">
+<button class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">thumb_up</span>
+                                HELPFUL (24)
+                            </button>
+<button class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+                                COMMENT
+                            </button>
+</div>
+</article>
+<!-- Review 2 -->
+<article class="bg-surface-container rounded-xl p-8 hover:bg-surface-bright transition-all duration-300">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="professional woman in late 20s with clean sleek hair looking forward confident expression warm indoor studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiKpiCiOKTv3K1GuJUsaG2b1_2LmwfymLKfkHXwBmQpGfnjjGQXOXbbrE_ELfsK8MslgIcgvS7By8_vH82hg1X_tmdLRXGK6BiDCjNJeMzxNGqR4-DXmqz0NCHndXzZBaTem_8cHanOQjtQ6AUp5nacz5dwm83ewwmMCnhtA0J0X_N_RsU4RsBei5_Ny-Nm-kY2QaNlxWVKvHkDA7a7CXTzkfLh1FDgG562FpzyWbGVwdUyjmTUu1xLK1qPrwAkh6p1i6KrgVaafZO"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Elena Vance</h4>
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5 text-secondary text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<span class="text-[10px] text-on-surface-variant/60 font-medium">Verified Curator</span>
+</div>
+</div>
+</div>
+<time class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">5 days ago</time>
+</div>
+<p class="text-on-surface-variant text-sm md:text-base leading-relaxed mb-6">
+                            Exceptional build quality. My only minor critique is the physical weight of the item, which makes mounting slightly more technical than expected. However, once in place, it's a masterpiece.
+                        </p>
+<div class="flex items-center gap-6 pt-6 border-t border-outline-variant/10">
+<button class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">thumb_up</span>
+                                HELPFUL (12)
+                            </button>
+<button class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+                                COMMENT
+                            </button>
+</div>
+</article>
+<!-- Review 3 (Review with image) -->
+<article class="bg-surface-container rounded-xl p-8 hover:bg-surface-bright transition-all duration-300">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/20 text-on-surface-variant flex items-center justify-center font-bold">
+                                    MK
+                                </div>
+<div>
+<h4 class="font-bold text-on-surface">Marcus Kray</h4>
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5 text-secondary text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-[10px] text-on-surface-variant/60 font-medium">Verified Curator</span>
+</div>
+</div>
+</div>
+<time class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">1 week ago</time>
+</div>
+<p class="text-on-surface-variant text-sm md:text-base leading-relaxed mb-6">
+                            Perfectly captures the neon essence. The contrast between the matte black surface and the glowing accents is exactly as pictured.
+                        </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="aspect-square rounded-xl overflow-hidden border border-outline-variant/20 hover:border-primary/40 transition-colors">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="minimalist interior scene showing a dark matte product piece with vibrant blue ambient light casting soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkqsH8vIReKb9toOW0Mu5G5BsfjLBCx0nkbK8wPVr7b0VYY9GtBT7BkJtHeysaIryI5rGf6wQCFpcNKvpteXCPfGk-YU7Q765TZ46519fgEU7BUYsxEFdfytbe2VnstLnd0j2NRTh6umkz7Q55WDmyHVDqGzWtRcpxU6_yXIf0_klcgC-aFP_4EDTlbrOfzPBQyAG6Sak43EWHp2sb-ByatN7q634J4sFvfbV4oiyi9i2isFTuoZp87oVpwmnVEQVlq8pJqyF3RlFd"/>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="close up detail of a high-end product texture matte finish with sharp geometric edges in dark charcoal color" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXbnGXi1PY-06Rt5ywyuD3RWjYCOhgd-Iz4mxHDhCU1SCornrS2llTOV-wl9UcFZ5E7TyndtzLRrgRNCpLxbWsxofnn7icYJerargpdpRVeW5n_9cz37ExoQa5zldiGR2uk11TS_fB8Tq8BpzNETFbnLqLXi01JLCnTMSRYrAUYn_CfFFQC93AfoiPlqX-rLysY_o9absAq9Oqu8z9oBiTSsjMkPwvhqkp4xnr8CRNCRg4sPT9fX9X5ToNqVvkjY4qp7Om0W_zmSMO"/>
+</div>
+</div>
+<div class="flex items-center gap-6 pt-6 border-t border-outline-variant/10">
+<button class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">thumb_up</span>
+                                HELPFUL (45)
+                            </button>
+<button class="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+                                COMMENT
+                            </button>
+</div>
+</article>
+<!-- Load More Button -->
+<div class="pt-8 flex justify-center">
+<button class="px-8 py-3 border border-outline-variant/30 text-on-surface text-[10px] uppercase tracking-[0.2em] font-bold rounded-full hover:bg-surface-bright transition-colors">
+                            Load Archives
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-[#1a1a1a]/80 backdrop-blur-2xl border-t border-[#89acff]/10 z-50 shadow-[0_-20px_40px_rgba(0,0,0,0.5)]">
+<button class="flex flex-col items-center justify-center text-[#adaaaa] px-4 py-1.5 hover:text-[#ffffff] transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.05em] font-bold">Gallery</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#adaaaa] px-4 py-1.5 hover:text-[#ffffff] transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.05em] font-bold">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#adaaaa] px-4 py-1.5 hover:text-[#ffffff] transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.05em] font-bold">Cart</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#89acff]/10 text-[#89acff] rounded-xl px-4 py-1.5 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.05em] font-bold">Profile</span>
+</button>
+</nav>
+</body></html>
