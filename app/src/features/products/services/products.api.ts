@@ -36,7 +36,16 @@ export const getProductById = async (id: number) : Promise<Product> => {
             title: p.title,
             description: p.description,
             price: p.price,
-            image: p.thumbnail
+            image: p.thumbnail,
+
+            discountPercentage: p.discountPercentage,
+            rating: p.rating,
+            stock: p.stock,
+            brand: p.brand,
+            weight: p.weight,
+            warranty: p.warrantyInformation,
+            shippingInformation: p.shippingInformation,
+            availabilityStatus: p.availabilityStatus
         }
     } catch(error) {
         console.error(`Error fetching product with id ${id}: `, error)

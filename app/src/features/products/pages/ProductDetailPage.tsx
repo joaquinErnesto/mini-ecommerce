@@ -49,6 +49,22 @@ export const ProductDetailPage = () => {
 
                     <p className="description">{product.description}</p>
 
+                    <p className="description">{product.discountPercentage}</p>
+
+                    <p className="description">{product.rating}</p>
+
+                    <p className="description">{product.stock}</p>
+
+                    <p className="description">{product.brand}</p>
+
+                    <p className="description">{product.weight}</p>
+
+                    <p className="description">{product.warranty}</p>
+
+                    <p className="description">{product.shippingInformation}</p>
+
+                    <p className="description">{product.availabilityStatus}</p>
+
                     <button
                         onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
