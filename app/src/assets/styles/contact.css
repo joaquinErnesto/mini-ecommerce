@@ -1,0 +1,44 @@
+.contact-page {
+  background-color: #0e0e0e;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* INPUT STYLE (reusable) */
+.input {
+  width: 100%;
+  background: #262626;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(40,100,255,1);
+  background: #2c2c2c;
+}
+
+/* BUTTON */
+.btn-primary {
+  background: linear-gradient(
+    90deg,
+    rgba(40,100,255,1),
+    rgba(40,100,255,0.7)
+  );
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(40,100,255,0.3);
+}

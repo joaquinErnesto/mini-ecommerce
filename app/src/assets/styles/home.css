@@ -1,13 +1,12 @@
 .home {
-    color: white;
-    background-color: #0e0e0e;
+    color: var(--white-color);
+    background-color: var(--medium-black-color);
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* ================= HERO ================= */
 .hero {
     height: 100vh;
-    background: url("https://dummyjson.com/image/i/products/4/thumbnail.jpg") center/cover no-repeat;
     position: relative;
 
     display: flex;
@@ -17,11 +16,11 @@
     overflow: hidden;
 }
 
-/* Gradient overlay (Tailwind: bg-gradient-to-b) */
+/* Overlay */
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), #0e0e0e);
+    background: linear-gradient(to bottom, transparent, var(--medium-black-color));
 }
 
 /* Content */
@@ -33,13 +32,13 @@
 }
 
 .hero-subtitle {
-    color: #89acff;
+    color: var(--blue-color);
     letter-spacing: 4px;
     font-size: 12px;
     text-transform: uppercase;
 }
 
-/* Bigger headline like Tailwind text-6xl / 8xl */
+/* Title */
 .hero h1 {
     font-size: 56px;
     font-weight: 800;
@@ -47,14 +46,13 @@
     line-height: 1.1;
 }
 
-/* Neon effect */
 .highlight {
-    color: #89acff;
-    text-shadow: 0 0 20px rgba(137, 172, 255, 0.5);
+    color: var(--blue-color);
+    text-shadow: 0 0 20px var(--medium-gray-color);
 }
 
 .hero p {
-    color: #aaa;
+    color: var(--medium-gray-color);
     font-size: 18px;
     line-height: 1.6;
 }
@@ -67,35 +65,36 @@
     justify-content: center;
 }
 
-/* Primary button (gradient like Tailwind) */
+/* Primary button */
 .primary-btn {
-    background: linear-gradient(90deg, #89acff, #5a90ff);
+    background: linear-gradient(90deg, var(--blue-color), var(--gray-color));
     border: none;
     padding: 14px 24px;
     cursor: pointer;
     font-weight: bold;
     border-radius: 8px;
     transition: all 0.3s ease;
+    color: var(--white-color);
 }
 
 .primary-btn:hover {
-    box-shadow: 0 0 25px rgba(137, 172, 255, 0.5);
+    box-shadow: 0 0 25px var(--medium-gray-color);
     transform: scale(1.05);
 }
 
 /* Secondary */
 .secondary-btn {
-    border: 1px solid #444;
+    border: 1px solid var(--gray-color);
     background: transparent;
-    color: white;
+    color: var(--white-color);
     padding: 14px 24px;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
 .secondary-btn:hover {
-    border-color: #89acff;
-    color: #89acff;
+    border-color: var(--blue-color);
+    color: var(--blue-color);
 }
 
 /* ================= FEATURED ================= */
@@ -112,20 +111,20 @@
 
 .featured-header h2 {
     font-size: 32px;
-    color: #89acff;
+    color: var(--blue-color);
 }
 
 .featured-header p {
-    color: #aaa;
+    color: var(--medium-gray-color);
 }
 
 .featured-header span {
-    color: #fdd400;
+    color: var(--yellow-color);
     font-size: 12px;
     letter-spacing: 2px;
 }
 
-/* Grid like Tailwind grid-cols-12 */
+/* Grid */
 .featured-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -139,10 +138,10 @@
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    background: #1a1a1a;
+    background: var(--gray-color);
 }
 
-/* Hover zoom effect */
+/* Image hover */
 .featured img {
     width: 100%;
     height: 100%;
@@ -156,14 +155,14 @@
     transform: scale(1.05);
 }
 
-/* Overlay like Tailwind gradient */
+/* Overlay */
 .featured-big::after,
 .featured-small::after,
 .featured-wide::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    background: linear-gradient(to top, var(--medium-black-color), transparent);
 }
 
 /* Info */
@@ -174,19 +173,14 @@
     z-index: 2;
 }
 
-.featured-info h3,
-.featured-info h4 {
-    margin: 0;
-}
-
 .featured-info span {
-    color: #fdd400;
+    color: var(--yellow-color);
     font-weight: bold;
 }
 
 /* ================= FEATURES STRIP ================= */
 .features-strip {
-    background: #1a1a1a;
+    background: var(--gray-color);
     padding: 60px 20px;
 }
 
@@ -205,7 +199,7 @@
 }
 
 .feature p {
-    color: #aaa;
+    color: var(--medium-gray-color);
     font-size: 14px;
 }
 
@@ -221,7 +215,7 @@
 }
 
 .cta p {
-    color: #aaa;
+    color: var(--medium-gray-color);
 }
 
 /* Form */
@@ -236,29 +230,30 @@
 .cta input {
     padding: 12px;
     width: 260px;
-    background: #111;
-    border: 1px solid #333;
-    color: white;
+    background: var(--medium-black-color);
+    border: 1px solid var(--gray-color);
+    color: var(--white-color);
     border-radius: 8px;
 }
 
 .cta input:focus {
-    border-color: #89acff;
+    border-color: var(--blue-color);
     outline: none;
 }
 
 .cta button {
-    background: #89acff;
+    background: var(--blue-color);
     border: none;
     padding: 12px 24px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
+    color: var(--white-color);
 }
 
 .cta button:hover {
-    background: #5a90ff;
+    background: var(--gray-color);
 }
 
 /* ================= RESPONSIVE ================= */
