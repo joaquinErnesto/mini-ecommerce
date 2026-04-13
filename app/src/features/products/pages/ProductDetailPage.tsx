@@ -45,36 +45,38 @@ export const ProductDetailPage = () => {
                 <div className="product-detail-info">
                     <h1>{product.title}</h1>
 
-                    <p className="price">${product.price}</p>
+                    <p className="price"><span className="property-title">Price: </span>${product.price}</p>
 
-                    <p className="description">{product.description}</p>
+                    <p className="property"><span>Description:</span> {product.description}</p>
 
-                    <p className="description">{product.discountPercentage}</p>
+                    <p className="property"><span>Discount Percentage:</span> {product.discountPercentage}</p>
 
-                    <p className="description">{product.rating}</p>
+                    <p className="property"><span>Rating:</span> {product.rating}</p>
 
-                    <p className="description">{product.stock}</p>
+                    <p className="property"><span>Stock:</span> {product.stock}</p>
 
-                    <p className="description">{product.brand}</p>
+                    <p className="property"><span>Brand:</span> {product.brand}</p>
 
-                    <p className="description">{product.weight}</p>
+                    <p className="property"><span>Weight:</span> {product.weight}</p>
 
-                    <p className="description">{product.warranty}</p>
+                    <p className="property"><span>Warranty:</span> {product.warranty}</p>
 
-                    <p className="description">{product.shippingInformation}</p>
+                    <p className="property"><span>Shipping Information:</span> {product.shippingInformation}</p>
 
-                    <p className="description">{product.availabilityStatus}</p>
+                    <p className="property"><span>Availability Status:</span> {product.availabilityStatus}</p>
 
-                    <button
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = "var(--product-button-color)"
-                        }}
-                    >
-                        Add to Cart
-                    </button>
+                    <div className="button-container">
+                        <button
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = "var(--gray-color)"
+                            }}
+                        >
+                            Add to Cart
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
