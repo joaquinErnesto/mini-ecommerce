@@ -41,20 +41,6 @@ export const FeaturedSection = () => {
                 {bigProduct && (
                     <div className="featured-big">
                         <img src={bigProduct.image} alt={bigProduct.title} />
-
-                        <div className="featured-info">
-                            <h3>
-                                {bigProduct.title}
-                            </h3>
-
-                            <p>
-                                {bigProduct.description}
-                            </p>
-
-                            <span>
-                                {bigProduct.price}    
-                            </span>
-                        </div>
                     </div>
                 )}
 
@@ -62,16 +48,6 @@ export const FeaturedSection = () => {
                 {smallProduct && (
                     <div className="featured-small">
                         <img src={smallProduct.image} alt={smallProduct.title} />
-
-                        <div className="featured-info">
-                            <h4>
-                                {smallProduct.title}
-                            </h4>
-                            
-                            <span>
-                                {smallProduct.price}
-                            </span>
-                        </div>
                     </div>
                 )}
 
@@ -79,16 +55,6 @@ export const FeaturedSection = () => {
                 {wideProduct && (
                     <div className="featured-wide">
                         <img src={wideProduct.image} alt={wideProduct.title} />
-
-                        <div className="featured-info">
-                            <h3>
-                                {wideProduct.title}
-                            </h3>
-
-                            <p>
-                                {wideProduct.description}
-                            </p>
-                        </div>
                     </div>
                 )}    
             </div>
