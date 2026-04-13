@@ -1,0 +1,141 @@
+.home {
+    color: white;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url("https://dummyjson.com/image/i/products/4/thumbnail.jpg") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, #0e0e0e);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    max-width: 600px;
+}
+
+.hero-subtitle {
+    color: #89acff;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 20px 0;
+}
+
+.highlight {
+    color: #89acff;
+}
+
+.hero p {
+    color: #aaa;
+}
+
+.hero-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.primary-btn {
+    background: #89acff;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    border: 1px solid #555;
+    background: transparent;
+    color: white;
+    padding: 12px 20px;
+}
+
+/* FEATURED */
+.featured {
+    padding: 60px 20px;
+}
+
+.featured-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.featured-big,
+.featured-small,
+.featured-wide {
+    position: relative;
+    overflow: hidden;
+}
+
+.featured img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+/* FEATURES STRIP */
+.features-strip {
+    background: #1a1a1a;
+    padding: 40px 20px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    text-align: center;
+}
+
+/* CTA */
+.cta {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.cta-form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cta input {
+    padding: 10px;
+    width: 250px;
+}
+
+.cta button {
+    background: #89acff;
+    border: none;
+    padding: 10px 20px;
+}

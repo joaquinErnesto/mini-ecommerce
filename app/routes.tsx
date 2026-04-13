@@ -3,6 +3,7 @@ import { MainLayout } from "./src/components/layout/MainLayout";
 
 import { ProductsPage } from "./src/features/products/pages/ProductsPage";
 import { ProductDetailPage } from "./src/features/products/pages/ProductDetailPage";
+import { HomePage } from "./src/components/home/HomePage/HomePage";
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
+                element: <HomePage />,
+                errorElement: <p>Something went wrong loading products.</p>
+            },
+            {
                 path: "products",
                 element: <ProductsPage />,
                 errorElement: <p>Something went wrong loading products.</p>
