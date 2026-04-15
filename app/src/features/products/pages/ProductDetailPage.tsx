@@ -2,10 +2,14 @@ import "./ProductDetailPage.css"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getProductById } from "../services/products.api"
+import { useCart } from "../../cart/context/useCart"
+import { useNavigate } from "react-router-dom"
 import type { Product } from "../types/products.types"
 
 export const ProductDetailPage = () => {
     const { id } = useParams()
+    const { addToCart } = useCart()
+    const navigate = useNavigate()
     
     const [product, setProduct] = useState<Product | null>(null)
     const [loading, setLoading] = useState(true)
@@ -31,6 +35,18 @@ export const ProductDetailPage = () => {
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
     if (!product) return <p>Product not found</p>
+
+    const handleAddToCart = () => {
+        addToCart({
+            id: product.id,
+            title: product.title,
+            description: product.description,
+            price: product.price,
+            image: product.image
+        })
+
+        navigate("/cart")
+    }
 
     return (
         <div className="product-detail-page">
@@ -73,6 +89,7 @@ export const ProductDetailPage = () => {
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.backgroundColor = "var(--gray-color)"
                             }}
+                            onClick={handleAddToCart}
                         >
                             Add to Cart
                         </button>
