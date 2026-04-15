@@ -1,0 +1,36 @@
+.cart-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px 40px;
+}
+
+.cart-page h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.cart-page p {
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.cart-right {
+  position: sticky;
+  top: 120px;
+}
+
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-right {
+    position: static;
+  }
+}

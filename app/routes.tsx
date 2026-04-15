@@ -8,6 +8,7 @@ import { PrivacyPage } from "./src/components/privacy/PrivacyPage/PrivacyPage";
 import { TermsPage } from "./src/components/terms/TermsPage/TermsPage";
 import { ContactPage } from "./src/components/contact/ContactPage";
 import { AboutPage } from "./src/components/about/AboutPage";
+import { CartPage } from "./src/features/cart/pages/CartPage";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +50,11 @@ export const router = createBrowserRouter([
                 path: "products/:id",
                 element: <ProductDetailPage />,
                 errorElement: <p>Something went wrong loading product.</p>
+            },
+            {
+                path: "cart",
+                element: <CartPage />,
+                errorElement: <p>Something went wrong loading product.</p> 
             }
         ]
     }

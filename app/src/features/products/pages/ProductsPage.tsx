@@ -1,9 +1,11 @@
 import { useProducts } from "../hooks/useProducts";
 import { ProductCard } from "../components/ProductCard";
+// import { useCart } from "../../cart/context/useCart";
 import "./ProductsPage.css"
 
 export const ProductsPage = () => {
     const { products, loading, error } = useProducts()
+    
 
     if (loading) return <p>Loading products...</p>
     if (error) return <p>{error}</p>
