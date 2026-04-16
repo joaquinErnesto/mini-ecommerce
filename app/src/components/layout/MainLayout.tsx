@@ -50,7 +50,9 @@ export const MainLayout = () => {
                                 border: "1px solid white"
                             }}
                         >
-                            Cart
+                            <span>
+                                Cart
+                            </span>
 
                             <div
                                 className="cart-icon-container"
