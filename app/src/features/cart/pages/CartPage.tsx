@@ -2,6 +2,7 @@ import React from "react";
 import { CartList } from "../components/CartList/CartList";
 import { OrderSummary } from "../components/OrderSummary/OrderSummary";
 import { useCart } from "../context/useCart";
+import { EmptyCart } from "../components/EmptyCart/EmptyCart";
 import "./CartPage.css";
 
 export const CartPage: React.FC = () => {
@@ -14,6 +15,10 @@ export const CartPage: React.FC = () => {
 
   const tax = subtotal * 0.08;
 
+  if (items.length === 0) {
+    return <EmptyCart />
+  }
+  
   return (
     <div className="cart-page">
       <h1>Shopping Bag</h1>
