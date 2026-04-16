@@ -1,0 +1,20 @@
+.shipping-form {
+  background: var(--gray-color);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--medium-gray-color);
+}
+
+.shipping-form h2 {
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.grid .full {
+  grid-column: span 2;
+}

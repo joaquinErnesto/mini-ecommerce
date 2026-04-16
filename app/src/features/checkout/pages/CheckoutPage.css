@@ -1,0 +1,26 @@
+.checkout-page {
+  min-height: 100vh;
+  background-color: var(--gray-color);
+  color: var(--white-color);
+}
+
+.checkout-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.checkout-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.checkout-right {
+  position: sticky;
+  top: 100px;
+}

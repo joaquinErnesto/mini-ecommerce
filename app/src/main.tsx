@@ -7,11 +7,14 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from "../routes.tsx"
 
 import { CartProvider } from './features/cart/context/CartProvider.tsx'
+import { CheckoutProvider } from './features/checkout/context/CheckoutProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <CartProvider>
-      <RouterProvider router={router}/>
+        <CheckoutProvider>
+          <RouterProvider router={router}/>
+        </CheckoutProvider>
     </CartProvider>
   </StrictMode>,
 )

@@ -1,0 +1,18 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--medium-gray-color);
+}
+
+.input-field input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: var(--medium-black-color);
+  color: var(--white-color);
+}

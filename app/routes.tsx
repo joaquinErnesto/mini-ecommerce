@@ -55,7 +55,12 @@ export const router = createBrowserRouter([
             {
                 path: "cart",
                 element: <CartPage />,
-                errorElement: <p>Something went wrong loading product.</p> 
+                errorElement: <p>Something went wrong loading cart.</p> 
+            },
+            {
+                path: "checkout",
+                element: <CheckoutPage />,
+                errorElement: <p>Something went wrong loading checkout.</p>
             }
         ]
     }

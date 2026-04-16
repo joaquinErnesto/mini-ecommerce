@@ -1,15 +1,30 @@
-import { useCheckout } from "../context/useCheckout";
+import "./CheckoutPage.css";
+import { ShippingForm } from "../components/ShippingForm/ShippingForm";
+import { PaymentMethod } from "../components/PaymentMethod/PaymentMethod";
+import { CheckoutSummary } from "../components/CheckoutSummary/CheckoutSummary";
 
 export const CheckoutPage = () => {
-  const { state } = useCheckout();
+    return (
+        <div className="checkout-page">
+            <main className="checkout-container">
 
-  return (
-    <div>
-      <h1>Checkout</h1>
+                {/* LEFT */}
+                <div className="checkout-left">
+                <section>
+                    <h1>Finalize Your Selection</h1>
+                    <p>Complete your purchase</p>
+                </section>
 
-      <p>Step: {state.step}</p>
+                <ShippingForm />
+                <PaymentMethod />
+                </div>
 
-      {/* We will replace this later with real components */}
-    </div>
-  );
+                {/* RIGHT */}
+                <div className="checkout-right">
+                <CheckoutSummary />
+                </div>
+
+            </main>
+        </div>
+    );
 };

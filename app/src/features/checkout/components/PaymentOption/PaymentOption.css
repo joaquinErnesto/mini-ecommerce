@@ -1,0 +1,19 @@
+.payment-option {
+  flex: 1;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--medium-gray-color);
+  background: var(--medium-black-color);
+  color: var(--white-color);
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.payment-option:hover {
+  border-color: var(--white-color);
+}
+
+.payment-option.active {
+  border: 2px solid var(--blue-color);
+}

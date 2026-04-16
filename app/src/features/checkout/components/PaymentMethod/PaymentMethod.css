@@ -1,0 +1,15 @@
+.payment-method {
+  background: var(--gray-color);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--medium-gray-color);
+}
+
+.payment-method h2 {
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+}
