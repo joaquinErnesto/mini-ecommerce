@@ -16,6 +16,8 @@ export const ProductCard = ({ product, onAddToCart }: Props) => {
 
     const handleAddToCart = () => {
         if (onAddToCart) onAddToCart(product)
+
+        alert("Product added to cart!")
     }
 
     return (

@@ -1,7 +1,19 @@
 import { Outlet, Link } from "react-router-dom"
+import { useCart } from "../../features/cart/context/useCart"
+import { useNavigate } from "react-router-dom"
 import "./MainLayout.css"
 
 export const MainLayout = () => {
+    const { items } = useCart()
+    const navigate = useNavigate()
+    const totalItems = items.reduce(
+        (acc, item) => acc + item.quantity, 0
+    )
+
+    const borderStyle = {
+        border: "1px solid white"
+    }
+
     return (
         <div className="container">
             
@@ -16,19 +28,64 @@ export const MainLayout = () => {
 
                     {/* Navigation */}
                     <nav className="nav-links">
-                        <Link to="/">
+                        <Link 
+                            to="/"
+                            style={borderStyle}
+                        >
                             Home
                         </Link>
                         
-                        <Link to="/products">
+                        <Link 
+                            to="/products"
+                            style={borderStyle}
+                        >
                             Products
                         </Link>
                         
-                        <Link to="/cart">
+                        <Link 
+                            to="/cart" 
+                            style={{
+                                display: "flex", 
+                                flexDirection: "row",
+                                border: "1px solid white"
+                            }}
+                        >
                             Cart
+
+                            <div
+                                className="cart-icon-container"
+                                onClick={() => navigate("/cart")}
+                                style={{
+                                    border: "1px solid red"
+                                }}
+                            >
+                                <span 
+                                    className="material-symbols-outlined"
+                                    style={{
+                                        border: "1px solid blue",
+                                        height: "100%"
+                                    }}
+                                >
+                                    shopping_cart
+                                </span>
+
+                                {totalItems > 0 && (
+                                    <span
+                                        className="cart-badge"
+                                        style={{
+                                            border: "1px solid yellow"
+                                        }}
+                                    >
+                                        {totalItems}
+                                    </span>
+                                )}
+                            </div>
                         </Link>
 
-                        <Link to="/profile">
+                        <Link 
+                            to="/profile"
+                            style={borderStyle}
+                        >
                             Profile
                         </Link>
                     </nav>

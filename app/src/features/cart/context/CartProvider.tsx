@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import type { CartItem } from "../types/cart.types";
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    try {
+      const stored = localStorage.getItem("cart")
+
+      return stored ? JSON.parse(stored) : []
+    } catch {
+      return []
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(items))
+  }, [items])
 
   const addToCart = (product: Omit<CartItem, "quantity">) => {
     setItems((prev) => {
