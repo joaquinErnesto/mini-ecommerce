@@ -9,6 +9,7 @@ import { TermsPage } from "./src/components/terms/TermsPage/TermsPage";
 import { ContactPage } from "./src/components/contact/ContactPage";
 import { AboutPage } from "./src/components/about/AboutPage";
 import { CartPage } from "./src/features/cart/pages/CartPage";
+import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
 
 export const router = createBrowserRouter([
     {
