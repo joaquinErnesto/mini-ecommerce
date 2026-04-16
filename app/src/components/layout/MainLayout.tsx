@@ -44,9 +44,8 @@ export const MainLayout = () => {
                         
                         <Link 
                             to="/cart" 
+                            className="cart-link"
                             style={{
-                                display: "flex", 
-                                flexDirection: "row",
                                 border: "1px solid white"
                             }}
                         >
@@ -78,7 +77,7 @@ export const MainLayout = () => {
                                             border: "1px solid yellow"
                                         }}
                                     >
-                                        {totalItems}
+                                        ({totalItems})
                                     </span>
                                 )}
                             </div>
