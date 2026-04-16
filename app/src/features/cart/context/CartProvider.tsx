@@ -18,7 +18,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem("cart", JSON.stringify(items))
   }, [items])
 
-  const addToCart = (product: Omit<CartItem, "quantity">) => {
+  const addToCart = (product: Product) => {
     setItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
 
@@ -30,7 +30,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         );
       }
 
-      return [...prev, { ...product, quantity: 1 }];
+      return [
+        ...prev, 
+        {
+          id: product.id,
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          image: product.image,
+          quantity: 1
+        }
+      ];
     });
   };
 

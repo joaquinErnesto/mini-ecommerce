@@ -37,13 +37,7 @@ export const ProductDetailPage = () => {
     if (!product) return <p>Product not found</p>
 
     const handleAddToCart = () => {
-        addToCart({
-            id: product.id,
-            title: product.title,
-            description: product.description,
-            price: product.price,
-            image: product.image
-        })
+        addToCart(product)
 
         navigate("/cart")
     }

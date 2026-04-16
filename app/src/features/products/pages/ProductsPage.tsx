@@ -25,13 +25,7 @@ export const ProductsPage = () => {
                             product={product}
             
                             onAddToCart={(prod) => 
-                                addToCart({
-                                    id: prod.id,
-                                    title: prod.title,
-                                    description: prod.description,
-                                    price: prod.price,
-                                    image: prod.image
-                                })
+                                addToCart(prod)
                             }
                         />
                     ))}
