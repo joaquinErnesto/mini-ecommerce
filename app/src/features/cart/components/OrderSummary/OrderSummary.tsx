@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./OrderSummary.css";
 
 interface Props {
@@ -13,6 +14,7 @@ export const OrderSummary: React.FC<Props> = ({
   shipping,
 }) => {
   const total = subtotal + tax + shipping;
+  const navigate = useNavigate()
 
   return (
     <div className="summary">
@@ -40,7 +42,12 @@ export const OrderSummary: React.FC<Props> = ({
         <span>${total.toFixed(2)}</span>
       </div>
 
-      <button className="checkout-btn">Proceed to Checkout</button>
+      <button 
+        className="checkout-btn"
+        onClick={() => navigate('/checkout')}  
+      >
+        Proceed to Checkout
+      </button>
     </div>
   );
 };

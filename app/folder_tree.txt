@@ -1,0 +1,282 @@
+Listado de rutas de carpetas para el volumen Documentos
+El n£mero de serie del volumen es A328-E5B0
+D:.
+³   .gitignore
+³   eslint.config.js
+³   folder_tree.txt
+³   index.html
+³   package-lock.json
+³   package.json
+³   README.md
+³   routes.tsx
+³   tsconfig.app.json
+³   tsconfig.json
+³   tsconfig.node.json
+³   vite.config.ts
+³   
+ÃÄÄÄnode_modules
+ÃÄÄÄpublic
+³       vite.svg
+³       
+ÀÄÄÄsrc
+    ³   App.css
+    ³   App.tsx
+    ³   index.css
+    ³   main.tsx
+    ³   
+    ÃÄÄÄassets
+    ³   ³   react.svg
+    ³   ³   
+    ³   ÃÄÄÄicons
+    ³   ÃÄÄÄillustrations
+    ³   ÃÄÄÄimages
+    ³   ³   ÀÄÄÄcart
+    ³   ³           cart-1.jpg
+    ³   ³           cart-2.jpg
+    ³   ³           cart-3.jpg
+    ³   ³           cart-4.jpg
+    ³   ³           cart-5.jpg
+    ³   ³           cart-6.jpg
+    ³   ³           cart-7.jpg
+    ³   ³           
+    ³   ÀÄÄÄstyles
+    ³           about.css
+    ³           contact.css
+    ³           global.css
+    ³           home.css
+    ³           privacy.css
+    ³           terms.css
+    ³           
+    ÃÄÄÄcomponents
+    ³   ÃÄÄÄabout
+    ³   ³   ³   AboutPage.tsx
+    ³   ³   ³   
+    ³   ³   ÀÄÄÄAboutPage
+    ³   ³       ÃÄÄÄAboutHero
+    ³   ³       ³       AboutHero.tsx
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄPhilosophyGrid
+    ³   ³       ³       PhilosophyGrid.tsx
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄProductHighlight
+    ³   ³       ³       ProductHighlight.tsx
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄQuoteSection
+    ³   ³       ³       QuoteSection.tsx
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄTag
+    ³   ³       ³       Tag.tsx
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄTeamMember
+    ³   ³       ³       TeamMember.tsx
+    ³   ³       ³       
+    ³   ³       ÀÄÄÄTeamSection
+    ³   ³               TeamSection.tsx
+    ³   ³               
+    ³   ÃÄÄÄcontact
+    ³   ³   ³   ContactPage.tsx
+    ³   ³   ³   
+    ³   ³   ÀÄÄÄContactPage
+    ³   ³       ÃÄÄÄContactCard
+    ³   ³       ³       ContactCard.tsx
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄContactForm
+    ³   ³       ³       ContactForm.tsx
+    ³   ³       ³       
+    ³   ³       ÃÄÄÄContactHeader
+    ³   ³       ³       ContactHeader.tsx
+    ³   ³       ³       
+    ³   ³       ÀÄÄÄContactInfoPanel
+    ³   ³               ContactInfoPanel.tsx
+    ³   ³               
+    ³   ÃÄÄÄhome
+    ³   ³   ÃÄÄÄCTASection
+    ³   ³   ³       CTASection.tsx
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄFeaturedSection
+    ³   ³   ³       FeaturedSection.tsx
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄFeaturesStrip
+    ³   ³   ³       FeaturesStrip.tsx
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄHeroSection
+    ³   ³   ³       HeroSection.tsx
+    ³   ³   ³       
+    ³   ³   ÀÄÄÄHomePage
+    ³   ³           HomePage.tsx
+    ³   ³           
+    ³   ÃÄÄÄlayout
+    ³   ³       MainLayout.css
+    ³   ³       MainLayout.tsx
+    ³   ³       
+    ³   ÃÄÄÄprivacy
+    ³   ³   ÀÄÄÄPrivacyPage
+    ³   ³       ³   PrivacyPage.tsx
+    ³   ³       ³   
+    ³   ³       ÃÄÄÄPrivacyHeader
+    ³   ³       ³       PrivacyHeader.tsx
+    ³   ³       ³       
+    ³   ³       ÀÄÄÄPrivacyLayout
+    ³   ³           ÃÄÄÄPrivacyContent
+    ³   ³           ³   ³   PrivacyContent.tsx
+    ³   ³           ³   ³   
+    ³   ³           ³   ÃÄÄÄFeatureItem
+    ³   ³           ³   ³       FeatureItem.tsx
+    ³   ³           ³   ³       
+    ³   ³           ³   ÃÄÄÄInfoCard
+    ³   ³           ³   ³       InfoCard.tsx
+    ³   ³           ³   ³       
+    ³   ³           ³   ÃÄÄÄRightsList
+    ³   ³           ³   ³       RightsList.tsx
+    ³   ³           ³   ³       
+    ³   ³           ³   ÀÄÄÄSectionBlock
+    ³   ³           ³           SectionBlock.tsx
+    ³   ³           ³           
+    ³   ³           ÀÄÄÄSidebarNav
+    ³   ³                   SidebarNav.tsx
+    ³   ³                   
+    ³   ÀÄÄÄterms
+    ³       ÀÄÄÄTermsPage
+    ³           ³   TermsPage.tsx
+    ³           ³   
+    ³           ÃÄÄÄTermsCTA
+    ³           ³       TermsCTA.tsx
+    ³           ³       
+    ³           ÃÄÄÄTermsHeader
+    ³           ³       TermsHeader.tsx
+    ³           ³       
+    ³           ÀÄÄÄTermsSection
+    ³                   TermsSection.tsx
+    ³                   
+    ÃÄÄÄconfig
+    ÃÄÄÄcontext
+    ÃÄÄÄfeatures
+    ³   ÃÄÄÄadmin
+    ³   ³   ÃÄÄÄcomponents
+    ³   ³   ÃÄÄÄhooks
+    ³   ³   ÃÄÄÄpages
+    ³   ³   ³       ProductDetailPage.css
+    ³   ³   ³       ProductDetailPage.tsx
+    ³   ³   ³       ProductsPage.css
+    ³   ³   ³       ProductsPage.tsx
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄservices
+    ³   ³   ³       products.api.ts
+    ³   ³   ³       
+    ³   ³   ÀÄÄÄtypes
+    ³   ³           products.types.ts
+    ³   ³           
+    ³   ÃÄÄÄcart
+    ³   ³   ÃÄÄÄcomponents
+    ³   ³   ³   ÃÄÄÄCartItem
+    ³   ³   ³   ³       CartItem.css
+    ³   ³   ³   ³       CartItem.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÃÄÄÄCartList
+    ³   ³   ³   ³       CartList.css
+    ³   ³   ³   ³       CartList.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÃÄÄÄEmptyCart
+    ³   ³   ³   ³       EmptyCart.css
+    ³   ³   ³   ³       EmptyCart.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÀÄÄÄOrderSummary
+    ³   ³   ³           OrderSummary.css
+    ³   ³   ³           OrderSummary.tsx
+    ³   ³   ³           
+    ³   ³   ÃÄÄÄcontext
+    ³   ³   ³       CartContext.ts
+    ³   ³   ³       CartProvider.tsx
+    ³   ³   ³       useCart.ts
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄpages
+    ³   ³   ³       CartPage.css
+    ³   ³   ³       CartPage.tsx
+    ³   ³   ³       
+    ³   ³   ÀÄÄÄtypes
+    ³   ³           cart.types.ts
+    ³   ³           
+    ³   ÃÄÄÄcheckout
+    ³   ³   ÃÄÄÄcomponents
+    ³   ³   ³   ÃÄÄÄCheckoutSummary
+    ³   ³   ³   ³       CheckoutSummary.css
+    ³   ³   ³   ³       CheckoutSummary.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÃÄÄÄInputField
+    ³   ³   ³   ³       InputField.css
+    ³   ³   ³   ³       InputField.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÃÄÄÄPaymentMethod
+    ³   ³   ³   ³       PaymentMethod.css
+    ³   ³   ³   ³       PaymentMethod.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÃÄÄÄPaymentOption
+    ³   ³   ³   ³       PaymentOption.css
+    ³   ³   ³   ³       PaymentOption.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÃÄÄÄShippingForm
+    ³   ³   ³   ³       ShippingForm.css
+    ³   ³   ³   ³       ShippingForm.tsx
+    ³   ³   ³   ³       
+    ³   ³   ³   ÀÄÄÄSummaryItem
+    ³   ³   ³           SummaryItem.css
+    ³   ³   ³           SummaryItem.tsx
+    ³   ³   ³           
+    ³   ³   ÃÄÄÄcontext
+    ³   ³   ³       CheckoutContext.ts
+    ³   ³   ³       CheckoutProvider.tsx
+    ³   ³   ³       useCheckout.ts
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄpages
+    ³   ³   ³       CheckoutPage.css
+    ³   ³   ³       CheckoutPage.tsx
+    ³   ³   ³       
+    ³   ³   ÀÄÄÄtypes
+    ³   ³           checkout.types.ts
+    ³   ³           
+    ³   ÃÄÄÄhome
+    ³   ³   ÃÄÄÄcomponents
+    ³   ³   ³       ProductCard.css
+    ³   ³   ³       ProductCard.tsx
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄhooks
+    ³   ³   ³       useProducts.ts
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄpages
+    ³   ³   ³       ProductDetailPage.css
+    ³   ³   ³       ProductDetailPage.tsx
+    ³   ³   ³       ProductsPage.css
+    ³   ³   ³       ProductsPage.tsx
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄservices
+    ³   ³   ³       products.api.ts
+    ³   ³   ³       
+    ³   ³   ÀÄÄÄtypes
+    ³   ³           products.types.ts
+    ³   ³           
+    ³   ÀÄÄÄproducts
+    ³       ÃÄÄÄcomponents
+    ³       ³       ProductCard.css
+    ³       ³       ProductCard.tsx
+    ³       ³       
+    ³       ÃÄÄÄhooks
+    ³       ³       useProducts.ts
+    ³       ³       
+    ³       ÃÄÄÄpages
+    ³       ³       ProductDetailPage.css
+    ³       ³       ProductDetailPage.tsx
+    ³       ³       ProductsPage.css
+    ³       ³       ProductsPage.tsx
+    ³       ³       
+    ³       ÃÄÄÄservices
+    ³       ³       products.api.ts
+    ³       ³       
+    ³       ÀÄÄÄtypes
+    ³               products.types.ts
+    ³               
+    ÃÄÄÄhooks
+    ÃÄÄÄservices
+    ³       apiClient.ts
+    ³       
+    ÃÄÄÄtypes
+    ÀÄÄÄutils

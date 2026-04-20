@@ -11,5 +11,13 @@
 
 .options {
   display: flex;
+  flex-direction: column;
   gap: 10px;
+}
+
+/* TABLET + */
+@media (min-width: 768px) {
+  .options {
+    flex-direction: row;
+  }
 }

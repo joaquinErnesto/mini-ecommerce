@@ -7,11 +7,11 @@
 .checkout-container {
   max-width: 1200px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 20px;
 
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 30px;
 }
 
 .checkout-left {
@@ -21,6 +21,28 @@
 }
 
 .checkout-right {
-  position: sticky;
-  top: 100px;
+  position: static;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .checkout-container {
+    padding: 30px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .checkout-container {
+    grid-template-columns: 2fr 1fr;
+    padding: 40px;
+  }
+}
+
+/* ONLY desktop sticky */
+@media (min-width: 1024px) {
+  .checkout-right {
+    position: sticky;
+    top: 100px;
+  }
 }
