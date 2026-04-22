@@ -1,9 +1,11 @@
 import "./CheckoutSummary.css";
 import { useCart } from "../../../cart/context/useCart";
+import { useCheckout } from "../../context/useCheckout";
 import { SummaryItem } from "../SummaryItem/SummaryItem";
 
 export const CheckoutSummary = () => {
-  const { items } = useCart();
+  const { items, clearCart } = useCart();
+  const { state, resetCheckout } = useCheckout()
 
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -12,6 +14,33 @@ export const CheckoutSummary = () => {
 
   const tax = subtotal * 0.08;
   const total = subtotal + tax;
+
+  const handlerOrder = () => {
+    if (!items.length) {
+      alert("Cart is empty")
+
+      return
+    }
+
+    console.log("ORDER PLACED")
+
+    if (!state.shipping.fullName || !state.payment.cardHolder) {
+      alert("Complete checkout steps first")
+
+      return
+    }
+
+    console.log("ORDER:", {
+      items,
+      shipping: state.shipping,
+      payment: state.payment
+    })
+
+    alert("Order placed successfully!")
+
+    clearCart()
+    resetCheckout()
+  }
 
   return (
     <div className="summary">
@@ -27,7 +56,10 @@ export const CheckoutSummary = () => {
         <h3>Total: ${total.toFixed(2)}</h3>
       </div>
 
-      <button className="checkout-btn">
+      <button 
+        className="checkout-btn"
+        onClick={handlerOrder}
+      >
         Place Order
       </button>
     </div>

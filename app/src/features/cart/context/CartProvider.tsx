@@ -58,8 +58,18 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
+  const clearCart = () => {
+    setItems([])
+  }
+
   return (
-    <CartContext.Provider value={{ items, addToCart, updateQuantity, removeItem }}>
+    <CartContext.Provider value={{ 
+      items, 
+      addToCart, 
+      updateQuantity, 
+      removeItem, 
+      clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
