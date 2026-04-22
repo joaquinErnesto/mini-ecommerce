@@ -6,13 +6,15 @@ import { PaymentOption } from "../PaymentOption/PaymentOption";
 export const PaymentMethod = () => {
   const { setPayment, setStep } = useCheckout()
 
-  const [selected, setSelected] = useState("Card")
+  const [selected, setSelected] = useState<string | null>(null)
 
   const handleSelect = (method: string) => {
     setSelected(method)
   }
 
   const handleContinue = () => {
+    if (!selected) return
+    
     setPayment({
       cardNumber: "demo",
       cardHolder: selected,
@@ -51,7 +53,10 @@ export const PaymentMethod = () => {
           Back
         </button>
         
-        <button onClick={handleContinue}>
+        <button 
+          onClick={handleContinue}
+          disabled={!selected}
+        >
           Continue
         </button>
       </div>

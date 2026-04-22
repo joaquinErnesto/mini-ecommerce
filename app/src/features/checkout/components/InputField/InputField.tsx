@@ -5,6 +5,7 @@ interface Props {
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
   full?: boolean;
   error?: string
@@ -15,6 +16,7 @@ export const InputField = ({
   name,
   value,
   onChange,
+  onBlur,
   placeholder,
   full,
   error
@@ -27,6 +29,7 @@ export const InputField = ({
         name={name}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
         placeholder={placeholder} 
       />
 

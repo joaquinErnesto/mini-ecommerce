@@ -30,3 +30,7 @@
   font-size: 12px;
   margin-top: 5px;
 }
+
+.input-field.error input {
+  border: 1px solid #ff4d4f;
+}
