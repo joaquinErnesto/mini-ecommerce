@@ -12,7 +12,21 @@
 .input-field input {
   padding: 10px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid transparent;
   background: var(--medium-black-color);
   color: var(--white-color);
+}
+
+.input-field input:focus {
+  outline: none;
+}
+
+.input-field.error input {
+  border: 1px solid #ff4d4f;
+}
+
+.error {
+  color: #ff4d4f;
+  font-size: 12px;
+  margin-top: 5px;
 }

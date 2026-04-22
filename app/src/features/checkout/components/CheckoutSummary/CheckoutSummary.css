@@ -22,3 +22,8 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.checkout-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

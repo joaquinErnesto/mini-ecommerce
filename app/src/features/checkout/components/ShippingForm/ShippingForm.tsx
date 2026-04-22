@@ -14,17 +14,26 @@ export const ShippingForm = () => {
     zipCode: ""
   })
 
+  const [errors, setErrors] = useState<{ [key: string]: string}>({})
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({...form, [e.target.name]: e.target.value })
   }
   
   const handleSubmit = () => {
-    // Basic validation
-    if (!form.fullName || !form.address) {
-      alert("Please fill requiered fields")
+    const newErrors: { [key: string]: string } = {}
 
-      return
+    if (!form.fullName) {
+      newErrors.fullName = "Full name is required"
     }
+
+    if (!form.address) {
+      newErrors.address = "Address is required"
+    }
+
+    setErrors(newErrors)
+
+    if (Object.keys(newErrors).length > 0) return
 
     setShipping(form)
     setStep(2)
@@ -42,6 +51,7 @@ export const ShippingForm = () => {
           onChange={handleChange} 
           placeholder="John Doe"
           full 
+          error={errors.fullName}
         />
 
         <InputField 
@@ -51,6 +61,7 @@ export const ShippingForm = () => {
           onChange={handleChange}
           placeholder="123 Main St" 
           full
+          error={errors.address}
         />
 
         <InputField 
@@ -60,6 +71,7 @@ export const ShippingForm = () => {
           onChange={handleChange}
           placeholder="New York" 
           full 
+          error={errors.city}
         />
 
         <InputField 
@@ -67,7 +79,8 @@ export const ShippingForm = () => {
           name="country"
           value={form.country}
           onChange={handleChange}
-          placeholder="USA" 
+          placeholder="USA"
+          error={errors.country} 
         />
 
         <InputField 
@@ -75,7 +88,8 @@ export const ShippingForm = () => {
           name="zipCode"
           value={form.zipCode}
           onChange={handleChange}
-          placeholder="10001" 
+          placeholder="10001"
+          error={errors.zipCode} 
         />
       </div>
 

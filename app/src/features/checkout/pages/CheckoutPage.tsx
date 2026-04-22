@@ -18,6 +18,20 @@ export const CheckoutPage = () => {
                         <p>Complete your purchase</p>
                     </section>
 
+                    <div className="step-indicator">
+                        <span className={state.step >= 1 ? "active" : ""}>
+                            Shipping
+                        </span>
+
+                        <span className={state.step >= 2 ? "active" : ""}>
+                            Payment
+                        </span>
+
+                        <span className={state.step >= 3 ? "active" : ""}>
+                            Review
+                        </span>
+                    </div>
+
                     {state.step === 1 && <ShippingForm />}
                     {state.step === 2 && <PaymentMethod />}
                     {state.step === 3 && <h2>Review your order</h2>}

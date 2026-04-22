@@ -46,7 +46,15 @@ export const PaymentMethod = () => {
         />
       </div>
 
-      <button onClick={handleContinue}>Continue</button>
+      <div className="action-buttons">
+        <button onClick={() => setStep(1)}>
+          Back
+        </button>
+        
+        <button onClick={handleContinue}>
+          Continue
+        </button>
+      </div>
     </div>
   );
 };

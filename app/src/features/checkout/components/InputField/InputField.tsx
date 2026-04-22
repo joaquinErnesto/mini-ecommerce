@@ -7,6 +7,7 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   full?: boolean;
+  error?: string
 }
 
 export const InputField = ({ 
@@ -14,11 +15,12 @@ export const InputField = ({
   name,
   value,
   onChange,
-  placeholder, 
-  full 
+  placeholder,
+  full,
+  error
 }: Props) => {
   return (
-    <div className={`input-field ${full ? "full" : ""}`}>
+    <div className={`input-field ${full ? "full" : ""} ${error ? "error" : ""}`}>
       <label htmlFor={name}>{label}</label>
       <input 
         id={name}
@@ -27,6 +29,8 @@ export const InputField = ({
         onChange={onChange}
         placeholder={placeholder} 
       />
+
+      {error && <span className="error">{error}</span>}
     </div>
   );
 };

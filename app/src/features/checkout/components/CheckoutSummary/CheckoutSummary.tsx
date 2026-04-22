@@ -2,10 +2,12 @@ import "./CheckoutSummary.css";
 import { useCart } from "../../../cart/context/useCart";
 import { useCheckout } from "../../context/useCheckout";
 import { SummaryItem } from "../SummaryItem/SummaryItem";
+import { useState } from "react";
 
 export const CheckoutSummary = () => {
   const { items, clearCart } = useCart();
   const { state, resetCheckout } = useCheckout()
+  const [success, setSuccess] = useState(false)
 
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -36,11 +38,16 @@ export const CheckoutSummary = () => {
       payment: state.payment
     })
 
-    alert("Order placed successfully!")
-
+    setSuccess(true)
     clearCart()
     resetCheckout()
   }
+
+  if (success) {
+    return <h2>Order placed successfully!</h2>
+  }
+
+  const isValid = items.length > 0 && state.shipping.fullName && state.payment.cardHolder
 
   return (
     <div className="summary">
@@ -59,6 +66,7 @@ export const CheckoutSummary = () => {
       <button 
         className="checkout-btn"
         onClick={handlerOrder}
+        disabled={!isValid}
       >
         Place Order
       </button>

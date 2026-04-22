@@ -15,6 +15,12 @@
   gap: 10px;
 }
 
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
 /* TABLET + */
 @media (min-width: 768px) {
   .options {
