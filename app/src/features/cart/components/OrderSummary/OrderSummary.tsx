@@ -43,7 +43,7 @@ export const OrderSummary: React.FC<Props> = ({
       </div>
 
       <button 
-        className="checkout-btn"
+        className="btn-primary"
         onClick={() => navigate('/checkout')}  
       >
         Proceed to Checkout

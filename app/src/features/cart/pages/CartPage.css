@@ -1,23 +1,23 @@
 .cart-page {
-  max-width: 1200px;
+  max-width: var(--max-width-lg);
   margin: 0 auto;
-  padding: 120px 20px 40px;
+  padding: var(--spacing-xl) var(--spacing-md);
 }
 
 .cart-page h1 {
-  font-size: 32px;
-  margin-bottom: 5px;
+  font-size: var(--letter-size-xl);
+  margin-bottom: var(--spacing-sm);
 }
 
 .cart-page p {
-  color: #aaa;
-  margin-bottom: 30px;
+  color: var(--medium-gray-color);
+  margin-bottom: var(--spacing-lg);
 }
 
 .cart-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  gap: var(--spacing-xl);
 }
 
 .cart-right {

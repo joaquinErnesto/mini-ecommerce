@@ -49,11 +49,15 @@ export const PaymentMethod = () => {
       </div>
 
       <div className="action-buttons">
-        <button onClick={() => setStep(1)}>
+        <button 
+          className="btn-secondary" 
+          onClick={() => setStep(1)}
+        >
           Back
         </button>
         
         <button 
+          className="btn-primary"
           onClick={handleContinue}
           disabled={!selected}
         >

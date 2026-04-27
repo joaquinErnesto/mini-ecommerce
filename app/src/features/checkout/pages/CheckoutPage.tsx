@@ -1,6 +1,7 @@
 import "./CheckoutPage.css";
 import { ShippingForm } from "../components/ShippingForm/ShippingForm";
 import { PaymentMethod } from "../components/PaymentMethod/PaymentMethod";
+import { ReviewStep } from "../components/ReviewStep/ReviewStep";
 import { CheckoutSummary } from "../components/CheckoutSummary/CheckoutSummary";
 import { useCheckout } from "../context/useCheckout";
 
@@ -34,7 +35,7 @@ export const CheckoutPage = () => {
 
                     {state.step === 1 && <ShippingForm />}
                     {state.step === 2 && <PaymentMethod />}
-                    {state.step === 3 && <h2>Review your order</h2>}
+                    {state.step === 3 && <ReviewStep />}
                 </div>
 
                 {/* RIGHT */}

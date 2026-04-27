@@ -26,6 +26,14 @@
   grid-column: span 1;
 }
 
+.form-actions {
+  margin-top: var(--spacing-lg);
+
+  display: flex;
+
+  justify-content: flex-end;
+}
+
 /* TABLET */
 @media (min-width: 768px) {
   .grid {

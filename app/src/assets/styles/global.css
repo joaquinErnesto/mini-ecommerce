@@ -81,3 +81,44 @@ img {
   --font-weight-medium: 500;
   --font-weight-bold: 600;
 }
+
+
+
+/* Button System */
+
+.btn-primary {
+  padding: var(--spacing-md);
+  
+  border-radius: var(--radius-md);
+  border: none;
+
+  background: var(--blue-color);
+  color: var(--white-color);
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: opacity .2s ease;
+}
+
+.btn-primary:hover {
+  opacity: .85;
+}
+
+.btn-primary:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: var(--spacing-md);
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--medium-gray-color);
+
+  background: transparent;
+  color: var(--white-color);
+
+  cursor: pointer;
+}

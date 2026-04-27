@@ -2,9 +2,11 @@ import "./ShippingForm.css";
 import { InputField } from "../InputField/InputField";
 import { useState } from "react";
 import { useCheckout } from "../../context/useCheckout";
+import { useCart } from "../../../cart/context/useCart";
 
 export const ShippingForm = () => {
   const { setShipping, setStep } = useCheckout()
+  const { items } = useCart()
 
   const [form, setForm] = useState({
     fullName: "",
@@ -19,34 +21,65 @@ export const ShippingForm = () => {
   const [touched, setTouched] = useState<{ [key: string]: boolean}>({})
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({...form, [e.target.name]: e.target.value })
-  }
+    const updatedForm = {
+      ...form,
+      [e.target.name]: e.target.value
+    };
+
+    setForm(updatedForm);
+
+    const newErrors = validate(updatedForm);
+    setErrors(newErrors);
+  };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setTouched({ ...touched, [e.target.name]: true })
   }
   
   const handleSubmit = () => {
-    const newErrors = validate()
+    if (!items.length) {
+      alert("Your cart is empty");
+      return;
+    }
 
-    setErrors(newErrors)
+    const newErrors = validate();
 
-    if (Object.keys(newErrors).length > 0) return
+    setErrors(newErrors);
 
-    setShipping(form)
-    setStep(2)
-  }
+    // 🔥 mark all fields as touched
+    setTouched({
+      fullName: true,
+      address: true,
+      city: true,
+      country: true,
+      zipCode: true
+    });
 
-  const validate = () => {
-    const newErrors: { [key: string]: string } = {}
+    if (Object.keys(newErrors).length > 0) return;
 
-    if (!form.fullName) newErrors.fullName = "Full name is requiered"
-    if (!form.address) newErrors.address = "Address is required"
+    setShipping(form);
+    setStep(2);
+  };
 
-    return newErrors
-  }
+  const validate = (data = form) => {
+    const newErrors: { [key: string]: string } = {};
 
-  const isValid = Object.keys(validate()).length === 0
+    if (!data.fullName) newErrors.fullName = "Full name is required";
+    if (!data.address) newErrors.address = "Address is required";
+    if (!data.city) newErrors.city = "City is required";
+    if (!data.country) newErrors.country = "Country is required";
+    if (!data.zipCode) newErrors.zipCode = "Zip code is required";
+
+    return newErrors;
+  };
+
+  const isValid =
+    items.length > 0 &&
+    form.fullName &&
+    form.address &&
+    form.city &&
+    form.country &&
+    form.zipCode;
 
   return (
     <div className="shipping-form">
@@ -109,12 +142,15 @@ export const ShippingForm = () => {
         />
       </div>
 
-      <button 
-        onClick={handleSubmit}
-        disabled={!isValid}
-      >
-        Continue
-      </button>
+      <div className="form-actions">
+        <button 
+          className="btn-primary"
+          onClick={handleSubmit}
+          disabled={!isValid}
+        >
+          Continue
+        </button>
+      </div>
     </div>
   );
 };

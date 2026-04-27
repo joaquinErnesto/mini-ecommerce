@@ -18,7 +18,10 @@ export const EmptyCart = () => {
         Looks like you haven't added anything yet.
       </p>
 
-      <button onClick={() => navigate("/products")}>
+      <button 
+        className="btn-primary"
+        onClick={() => navigate("/products")}
+      >
         Browse Products
       </button>
     </div>
