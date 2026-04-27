@@ -5,13 +5,13 @@
 }
 
 .checkout-container {
-  max-width: 1200px;
+  max-width: var(--max-width-lg);
   margin: auto;
-  padding: 20px;
+  padding: var(--spacing-lg);
 
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: var(--spacing-xl);
 }
 
 .checkout-left {
@@ -29,13 +29,30 @@
 
 .step-indicator span {
   opacity: 0.4;
-  transition: 0.2s ease;
+
+  position: relative;
+
+  transition: var(--transition-fast);
 }
 
 .step-indicator span.active {
   opacity: 1;
   font-weight: bold;
   color: var(--blue-color)
+}
+
+.step-indicator span.active::after {
+  content: "";
+  position: absolute;
+  
+  left: 0;
+  bottom: -4px;
+
+  width: 100%;
+
+  height: 2px;
+
+  background: var(--blue-color);
 }
 
 .checkout-right {

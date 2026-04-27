@@ -1,8 +1,15 @@
 .shipping-form {
-  background: var(--gray-color);
-  padding: 20px;
-  border-radius: 10px;
+  background: var(--medium-black-color);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
   border: 1px solid var(--medium-gray-color);
+  box-shadow: var(--shadow-md);
+
+  transition: var(--transition-fast);
+}
+
+.shipping-form:hover {
+  transform: translateY(-2px);
 }
 
 .shipping-form h2 {
@@ -12,7 +19,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 15px;
+  gap: var(--spacing-md);
 }
 
 .grid .full {

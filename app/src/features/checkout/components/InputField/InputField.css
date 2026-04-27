@@ -10,27 +10,27 @@
 }
 
 .input-field input {
-  padding: 10px;
-  border-radius: 6px;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   background: var(--medium-black-color);
   color: var(--white-color);
+
+  transition: var(--transition-fast);
 }
 
 .input-field input:focus {
   outline: none;
+  border: 1px solid var(--blue-color);
+  box-shadow: 0 0 0 2px rgba(40, 100, 255, 0.2);
 }
 
 .input-field.error input {
-  border: 1px solid #ff4d4f;
+  border: 1px solid var(--error-color);
 }
 
 .error {
-  color: #ff4d4f;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.input-field.error input {
-  border: 1px solid #ff4d4f;
+  color: var(--error-color);
+  font-size: var(--letter-size-md);
+  margin-top: 4px;
 }

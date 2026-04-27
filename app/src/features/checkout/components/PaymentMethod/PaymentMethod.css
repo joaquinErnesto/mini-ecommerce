@@ -1,8 +1,15 @@
 .payment-method {
-  background: var(--gray-color);
-  padding: 20px;
-  border-radius: 10px;
+  background: var(--medium-black-color);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
   border: 1px solid var(--medium-gray-color);
+  box-shadow: var(--shadow-md);
+
+  transition: var(--transition-fast);
+}
+
+.payment-method:hover {
+  transform: translateY(-2px);
 }
 
 .payment-method h2 {
@@ -18,7 +25,24 @@
 .action-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+
+  margin-top: var(--spacing-lg);
+  gap: var(--spacing-md);
+}
+
+.action-buttons button:first-child {
+  background: transparent;
+  border: 1px solid var(--medium-gray-color);
+  color: var(--white-color);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  transition: var(--transition-fast);
+}
+
+.action-buttons button:first-child:hover {
+  border-color: var(--white-color);
 }
 
 /* TABLET + */

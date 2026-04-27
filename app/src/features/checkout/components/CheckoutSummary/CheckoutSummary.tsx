@@ -7,7 +7,7 @@ import { useState } from "react";
 export const CheckoutSummary = () => {
   const { items, clearCart } = useCart();
   const { state, resetCheckout } = useCheckout()
-  const [success, setSuccess] = useState(false)
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -17,34 +17,55 @@ export const CheckoutSummary = () => {
   const tax = subtotal * 0.08;
   const total = subtotal + tax;
 
-  const handlerOrder = () => {
-    if (!items.length) {
-      alert("Cart is empty")
+  const handlerOrder = async () => {
+    if (!isValid) return
 
-      return
+    setStatus("loading")
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+    
+      console.log("ORDER:", {
+        items,
+        shipping: state.shipping,
+        payment: state.payment
+      })
+
+      setStatus("success")
+
+      clearCart()
+      resetCheckout()
+    } catch (err) {
+      setStatus("error")
     }
-
-    console.log("ORDER PLACED")
-
-    if (!state.shipping.fullName || !state.payment.cardHolder) {
-      alert("Complete checkout steps first")
-
-      return
-    }
-
-    console.log("ORDER:", {
-      items,
-      shipping: state.shipping,
-      payment: state.payment
-    })
-
-    setSuccess(true)
-    clearCart()
-    resetCheckout()
   }
 
-  if (success) {
-    return <h2>Order placed successfully!</h2>
+  if (status === "success") {
+    return (
+      <div className="success-state">
+        <h2>
+          Order placed successfully!
+        </h2>
+
+        <p>
+          Thank you for your purchase.
+        </p>
+      </div>
+    )
+  }
+
+  if (status === "error") {
+    return (
+      <div className="error-state">
+        <h2>
+          Something went wrong
+        </h2>
+
+        <button onClick={() => setStatus("idle")}>
+          Try again
+        </button>
+      </div>
+    )
   }
 
   const isValid = items.length > 0 && state.shipping.fullName && state.payment.cardHolder
@@ -57,6 +78,12 @@ export const CheckoutSummary = () => {
         <SummaryItem key={item.id} item={item} />
       ))}
 
+      {items.length === 0 && (
+        <p className="empty-message">
+          Your cart is empty
+        </p>
+      )}
+
       <div className="totals">
         <p>Subtotal: ${subtotal.toFixed(2)}</p>
         <p>Tax: ${tax.toFixed(2)}</p>
@@ -66,9 +93,9 @@ export const CheckoutSummary = () => {
       <button 
         className="checkout-btn"
         onClick={handlerOrder}
-        disabled={!isValid}
+        disabled={!isValid || status === "loading"}
       >
-        Place Order
+        {status === "loading" ? "Placing order..." : "Place Order"}
       </button>
     </div>
   );
