@@ -4,9 +4,26 @@ import { PaymentMethod } from "../components/PaymentMethod/PaymentMethod";
 import { ReviewStep } from "../components/ReviewStep/ReviewStep";
 import { CheckoutSummary } from "../components/CheckoutSummary/CheckoutSummary";
 import { useCheckout } from "../context/useCheckout";
+import { useEffect } from "react";
 
 export const CheckoutPage = () => {
-    const { state } = useCheckout()
+    const { state, setStep } = useCheckout()
+
+    useEffect(() => {
+        // If trying to access step 2 without shipping
+        if (state.step === 2 && !state.shipping.fullName) {
+            setStep(1)
+        }
+        
+        // If trying step 3 without payment
+        if (state.step === 3 && !state.payment.cardHolder) {
+            setStep(2)
+        }
+    }, [state, setStep])
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [state.step])
 
     return (
         <div className="checkout-page">

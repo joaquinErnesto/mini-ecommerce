@@ -44,7 +44,11 @@ export const OrderSummary: React.FC<Props> = ({
 
       <button 
         className="btn-primary"
-        onClick={() => navigate('/checkout')}  
+        disabled={subtotal === 0}
+        onClick={() => {
+          if (subtotal === 0) return
+          navigate('/checkout')
+        }}  
       >
         Proceed to Checkout
       </button>

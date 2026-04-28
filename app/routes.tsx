@@ -10,6 +10,7 @@ import { ContactPage } from "./src/components/contact/ContactPage";
 import { AboutPage } from "./src/components/about/AboutPage";
 import { CartPage } from "./src/features/cart/pages/CartPage";
 import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
+import { CheckoutGuard } from "./src/features/checkout/guards/CheckoutGuard";
 
 export const router = createBrowserRouter([
     {
@@ -59,7 +60,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "checkout",
-                element: <CheckoutPage />,
+                element: (
+                    <CheckoutGuard>
+                        <CheckoutPage />
+                    </CheckoutGuard>
+                ),
                 errorElement: <p>Something went wrong loading checkout.</p>
             }
         ]
