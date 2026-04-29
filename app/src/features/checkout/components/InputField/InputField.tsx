@@ -8,7 +8,8 @@ interface Props {
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
   full?: boolean;
-  error?: string
+  error?: string;
+  inputMode?: React.HtmlHTMLAttributes<HTMLInputElement>["inputMode"]
 }
 
 export const InputField = ({ 
@@ -19,7 +20,8 @@ export const InputField = ({
   onBlur,
   placeholder,
   full,
-  error
+  error,
+  inputMode
 }: Props) => {
   return (
     <div className={`input-field ${full ? "full" : ""} ${error ? "error" : ""}`}>
@@ -31,6 +33,7 @@ export const InputField = ({
         onChange={onChange}
         onBlur={onBlur}
         placeholder={placeholder} 
+        inputMode={inputMode}
       />
 
       {error && <span className="error">{error}</span>}

@@ -6,10 +6,24 @@ export interface ShippingInfo {
   zipCode: string;
 }
 
+export type PaymentMethodType = "Card" | "Crypto" | "Transfer"
+
 export interface PaymentInfo {
-  cardNumber: string;
-  cardHolder: string;
-  expiry: string;
+  method: PaymentMethodType;
+
+  // Card
+  cardNumber?: string;
+  cardHolder?: string;
+  expiry?: string;
+
+  // Crypto
+  walletAddress?: string;
+  network?: string;
+
+  // Transfer
+  bankName?: string;
+  accountNumber?: string;
+  accountHolder?: string;
 }
 
 export interface CheckoutState {

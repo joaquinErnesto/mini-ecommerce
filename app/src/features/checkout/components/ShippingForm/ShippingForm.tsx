@@ -62,16 +62,34 @@ export const ShippingForm = () => {
   };
 
   const validate = (data = form) => {
-    const newErrors: { [key: string]: string } = {};
+  const newErrors: { [key: string]: string } = {};
 
-    if (!data.fullName) newErrors.fullName = "Full name is required";
-    if (!data.address) newErrors.address = "Address is required";
-    if (!data.city) newErrors.city = "City is required";
-    if (!data.country) newErrors.country = "Country is required";
-    if (!data.zipCode) newErrors.zipCode = "Zip code is required";
+  if (!data.fullName.trim()) {
+    newErrors.fullName = "Full name is required";
+  } else if (data.fullName.length < 3) {
+    newErrors.fullName = "Too short";
+  }
 
-    return newErrors;
-  };
+  if (!data.address.trim()) {
+    newErrors.address = "Address is required";
+  }
+
+  if (!data.city.trim()) {
+    newErrors.city = "City is required";
+  }
+
+  if (!data.country.trim()) {
+    newErrors.country = "Country is required";
+  }
+
+  if (!data.zipCode.trim()) {
+    newErrors.zipCode = "Zip code is required";
+  } else if (!/^\d{5}$/.test(data.zipCode)) {
+    newErrors.zipCode = "Invalid zip code (5 digits)";
+  }
+
+  return newErrors;
+};
 
   const isValid =
     items.length > 0 &&
@@ -148,7 +166,7 @@ export const ShippingForm = () => {
           onClick={handleSubmit}
           disabled={!isValid}
         >
-          Continue
+          {items.length === 0 ? "Add items to cart" : "Continue"}
         </button>
       </div>
     </div>
