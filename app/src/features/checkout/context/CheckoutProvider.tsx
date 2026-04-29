@@ -12,10 +12,20 @@ const initialState: CheckoutState = {
     zipCode: "",
   },
   payment: {
+    method: "Card", // ✅ REQUIRED
+
     cardNumber: "",
     cardHolder: "",
-    expiry: "",
-  },
+    expMonth: "",
+    expYear: "",
+
+    walletAddress: "",
+    network: "",
+
+    bankName: "",
+    accountNumber: "",
+    accountHolder: ""
+  }
 };
 
 export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -24,12 +34,27 @@ export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       const stored = localStorage.getItem("checkout")
       const parsed = stored ? JSON.parse(stored) : initialState
 
-      if (parsed.step === 2 && !parsed.shipping.fullName) {
-        return { ...parsed, step: 1 }
-      }
+      if (parsed.step === 3) {
+        if (
+          parsed.payment.method === "Card" &&
+          !parsed.payment.cardHolder
+        ) {
+          return { ...parsed, step: 2 }
+        }
 
-      if (parsed.step === 3 && !parsed.payment.cardHolder) {
-        return { ...parsed, step: 2 }
+        if (
+          parsed.payment.method === "Crypto" &&
+          !parsed.payment.walletAddress
+        ) {
+          return { ...parsed, step: 2 }
+        }
+
+        if (
+          parsed.payment.method === "Transfer" &&
+          !parsed.payment.accountHolder
+        ) {
+          return { ...parsed, step: 2 }
+        }
       }
 
       return parsed

@@ -29,6 +29,20 @@
   gap: 12px;
 }
 
+.expiry-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.select-field {
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--medium-black-color);
+  color: var(--white-color);
+  border: 1px solid var(--medium-gray-color);
+}
+
 .action-buttons {
   display: flex;
   justify-content: space-between;

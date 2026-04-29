@@ -14,7 +14,8 @@ export interface PaymentInfo {
   // Card
   cardNumber?: string;
   cardHolder?: string;
-  expiry?: string;
+  expMonth?: string;
+  expYear?: string;
 
   // Crypto
   walletAddress?: string;
