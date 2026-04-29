@@ -1,0 +1,370 @@
+|   mini e-commerce project architecture.docx
+|   phases.docx
+|   tree_output.txt
+|   
+/app
+|   |   .gitignore
+|   |   eslint.config.js
+|   |   folder_tree.txt
+|   |   index.html
+|   |   package-lock.json
+|   |   package.json
+|   |   README.md
+|   |   routes.tsx
+|   |   tsconfig.app.json
+|   |   tsconfig.json
+|   |   tsconfig.node.json
+|   |   vite.config.ts
+|   |   
+|   /node_modules
+|   /public
+|   |       vite.svg
+|   |       
+|   /src
+|       |   App.css
+|       |   App.tsx
+|       |   index.css
+|       |   main.tsx
+|       |   
+|       /assets
+|       |   |   react.svg
+|       |   |   
+|       |   /icons
+|       |   /illustrations
+|       |   /images
+|       |   |   /cart
+|       |   |           cart-1.jpg
+|       |   |           cart-2.jpg
+|       |   |           cart-3.jpg
+|       |   |           cart-4.jpg
+|       |   |           cart-5.jpg
+|       |   |           cart-6.jpg
+|       |   |           cart-7.jpg
+|       |   |           
+|       |   /styles
+|       |           about.css
+|       |           contact.css
+|       |           global.css
+|       |           home.css
+|       |           privacy.css
+|       |           terms.css
+|       |           
+|       /components
+|       |   /about
+|       |   |   |   AboutPage.tsx
+|       |   |   |   
+|       |   |   /AboutPage
+|       |   |       /AboutHero
+|       |   |       |       AboutHero.tsx
+|       |   |       |       
+|       |   |       /PhilosophyGrid
+|       |   |       |       PhilosophyGrid.tsx
+|       |   |       |       
+|       |   |       /ProductHighlight
+|       |   |       |       ProductHighlight.tsx
+|       |   |       |       
+|       |   |       /QuoteSection
+|       |   |       |       QuoteSection.tsx
+|       |   |       |       
+|       |   |       /Tag
+|       |   |       |       Tag.tsx
+|       |   |       |       
+|       |   |       /TeamMember
+|       |   |       |       TeamMember.tsx
+|       |   |       |       
+|       |   |       /TeamSection
+|       |   |               TeamSection.tsx
+|       |   |               
+|       |   /contact
+|       |   |   |   ContactPage.tsx
+|       |   |   |   
+|       |   |   /ContactPage
+|       |   |       /ContactCard
+|       |   |       |       ContactCard.tsx
+|       |   |       |       
+|       |   |       /ContactForm
+|       |   |       |       ContactForm.tsx
+|       |   |       |       
+|       |   |       /ContactHeader
+|       |   |       |       ContactHeader.tsx
+|       |   |       |       
+|       |   |       /ContactInfoPanel
+|       |   |               ContactInfoPanel.tsx
+|       |   |               
+|       |   /home
+|       |   |   /CTASection
+|       |   |   |       CTASection.tsx
+|       |   |   |       
+|       |   |   /FeaturedSection
+|       |   |   |       FeaturedSection.tsx
+|       |   |   |       
+|       |   |   /FeaturesStrip
+|       |   |   |       FeaturesStrip.tsx
+|       |   |   |       
+|       |   |   /HeroSection
+|       |   |   |       HeroSection.tsx
+|       |   |   |       
+|       |   |   /HomePage
+|       |   |           HomePage.tsx
+|       |   |           
+|       |   /layout
+|       |   |       MainLayout.css
+|       |   |       MainLayout.tsx
+|       |   |       
+|       |   /privacy
+|       |   |   /PrivacyPage
+|       |   |       |   PrivacyPage.tsx
+|       |   |       |   
+|       |   |       /PrivacyHeader
+|       |   |       |       PrivacyHeader.tsx
+|       |   |       |       
+|       |   |       /PrivacyLayout
+|       |   |           /PrivacyContent
+|       |   |           |   |   PrivacyContent.tsx
+|       |   |           |   |   
+|       |   |           |   /FeatureItem
+|       |   |           |   |       FeatureItem.tsx
+|       |   |           |   |       
+|       |   |           |   /InfoCard
+|       |   |           |   |       InfoCard.tsx
+|       |   |           |   |       
+|       |   |           |   /RightsList
+|       |   |           |   |       RightsList.tsx
+|       |   |           |   |       
+|       |   |           |   /SectionBlock
+|       |   |           |           SectionBlock.tsx
+|       |   |           |           
+|       |   |           /SidebarNav
+|       |   |                   SidebarNav.tsx
+|       |   |                   
+|       |   /terms
+|       |       /TermsPage
+|       |           |   TermsPage.tsx
+|       |           |   
+|       |           /TermsCTA
+|       |           |       TermsCTA.tsx
+|       |           |       
+|       |           /TermsHeader
+|       |           |       TermsHeader.tsx
+|       |           |       
+|       |           /TermsSection
+|       |                   TermsSection.tsx
+|       |                   
+|       /config
+|       /context
+|       /features
+|       |   /admin
+|       |   |   /components
+|       |   |   /hooks
+|       |   |   /pages
+|       |   |   |       ProductDetailPage.css
+|       |   |   |       ProductDetailPage.tsx
+|       |   |   |       ProductsPage.css
+|       |   |   |       ProductsPage.tsx
+|       |   |   |       
+|       |   |   /services
+|       |   |   |       products.api.ts
+|       |   |   |       
+|       |   |   /types
+|       |   |           products.types.ts
+|       |   |           
+|       |   /cart
+|       |   |   /components
+|       |   |   |   /CartItem
+|       |   |   |   |       CartItem.css
+|       |   |   |   |       CartItem.tsx
+|       |   |   |   |       
+|       |   |   |   /CartList
+|       |   |   |   |       CartList.css
+|       |   |   |   |       CartList.tsx
+|       |   |   |   |       
+|       |   |   |   /EmptyCart
+|       |   |   |   |       EmptyCart.css
+|       |   |   |   |       EmptyCart.tsx
+|       |   |   |   |       
+|       |   |   |   /OrderSummary
+|       |   |   |           OrderSummary.css
+|       |   |   |           OrderSummary.tsx
+|       |   |   |           
+|       |   |   /context
+|       |   |   |       CartContext.ts
+|       |   |   |       CartProvider.tsx
+|       |   |   |       useCart.ts
+|       |   |   |       
+|       |   |   /pages
+|       |   |   |       CartPage.css
+|       |   |   |       CartPage.tsx
+|       |   |   |       
+|       |   |   /types
+|       |   |           cart.types.ts
+|       |   |           
+|       |   /checkout
+|       |   |   /components
+|       |   |   |   /CheckoutSummary
+|       |   |   |   |       CheckoutSummary.css
+|       |   |   |   |       CheckoutSummary.tsx
+|       |   |   |   |       
+|       |   |   |   /InputField
+|       |   |   |   |       InputField.css
+|       |   |   |   |       InputField.tsx
+|       |   |   |   |       
+|       |   |   |   /PaymentMethod
+|       |   |   |   |       PaymentMethod.css
+|       |   |   |   |       PaymentMethod.tsx
+|       |   |   |   |       
+|       |   |   |   /PaymentOption
+|       |   |   |   |       PaymentOption.css
+|       |   |   |   |       PaymentOption.tsx
+|       |   |   |   |       
+|       |   |   |   /ReviewStep
+|       |   |   |   |       ReviewStep.css
+|       |   |   |   |       ReviewStep.tsx
+|       |   |   |   |       
+|       |   |   |   /ShippingForm
+|       |   |   |   |       ShippingForm.css
+|       |   |   |   |       ShippingForm.tsx
+|       |   |   |   |       
+|       |   |   |   /SummaryItem
+|       |   |   |           SummaryItem.css
+|       |   |   |           SummaryItem.tsx
+|       |   |   |           
+|       |   |   /context
+|       |   |   |       CheckoutContext.ts
+|       |   |   |       CheckoutProvider.tsx
+|       |   |   |       useCheckout.ts
+|       |   |   |       
+|       |   |   /guards
+|       |   |   |       CheckoutGuard.tsx
+|       |   |   |       
+|       |   |   /pages
+|       |   |   |       CheckoutPage.css
+|       |   |   |       CheckoutPage.tsx
+|       |   |   |       
+|       |   |   /types
+|       |   |           checkout.types.ts
+|       |   |           
+|       |   /home
+|       |   |   /components
+|       |   |   |       ProductCard.css
+|       |   |   |       ProductCard.tsx
+|       |   |   |       
+|       |   |   /hooks
+|       |   |   |       useProducts.ts
+|       |   |   |       
+|       |   |   /pages
+|       |   |   |       ProductDetailPage.css
+|       |   |   |       ProductDetailPage.tsx
+|       |   |   |       ProductsPage.css
+|       |   |   |       ProductsPage.tsx
+|       |   |   |       
+|       |   |   /services
+|       |   |   |       products.api.ts
+|       |   |   |       
+|       |   |   /types
+|       |   |           products.types.ts
+|       |   |           
+|       |   /products
+|       |       /components
+|       |       |       ProductCard.css
+|       |       |       ProductCard.tsx
+|       |       |       
+|       |       /hooks
+|       |       |       useProducts.ts
+|       |       |       
+|       |       /pages
+|       |       |       ProductDetailPage.css
+|       |       |       ProductDetailPage.tsx
+|       |       |       ProductsPage.css
+|       |       |       ProductsPage.tsx
+|       |       |       
+|       |       /services
+|       |       |       products.api.ts
+|       |       |       
+|       |       /types
+|       |               products.types.ts
+|       |               
+|       /hooks
+|       /services
+|       |       apiClient.ts
+|       |       
+|       /types
+|       /utils
+/errors
+|       error-1.png
+|       
+/guide
+|       Development Roadmap_ Building a Mini E-Commerce App with DummyJSON.docx
+|       
+/screens
+|       screen-1.png
+|       screen-2.png
+|       screen-3.png
+|       
+/stich ai
+    |   about.zip
+    |   admin-dashboard.zip
+    |   checkout.zip
+    |   contact.zip
+    |   home-page.zip
+    |   login.zip
+    |   privacy-policy.zip
+    |   product-reviews.zip
+    |   shopping-cart.zip
+    |   sign-up.zip
+    |   terms-and-conditions.zip
+    |   
+    /about
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /admin-dashboard
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /checkout
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /contact
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /home-page
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /login
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /privacy-policy
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /product-reviews
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /shopping-cart
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /sign-up
+    |       code.html
+    |       DESIGN.md
+    |       screen.png
+    |       
+    /terms-and-conditions
+            code.html
+            DESIGN.md
+            screen.png
+            
