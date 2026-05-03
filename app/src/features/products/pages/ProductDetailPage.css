@@ -1,45 +1,37 @@
 .product-detail-page {
     display: flex;
-
     justify-content: center;
-    
     width: 100%;
 }
 
-.product-detail-page > div {
+.product-detail-container {
     width: 100%;
     max-width: var(--max-width-lg);
-    
     padding: var(--spacing-lg);
 }
 
-/* Card like ProductCard but bigger */
-.product-detail-card {
-    display: flex;
-    gap: var(--spacing-xl);
-
-    border: var(--product-card-border);
-    border-radius: var(--radius-md);
-    
-    padding: var(--spacing-lg);
-
-    background-color: var(--medium-black-color);
-
-    align-items: center;
+/* 🔥 MAIN LAYOUT */
+.product-detail-main {
+  display: grid;
+  gap: var(--spacing-xl);
 }
 
-/* Image section */
+/* Desktop layout */
+@media (min-width: 768px) {
+  .product-detail-main {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch; /* 🔥 equal height */
+  }
+}
+
+/* Image */
 .product-detail-image-container {
-    flex: 1;
     background-color: var(--medium-gray-color);
-
     border: var(--product-card-image-border);
     border-radius: var(--radius-md);
-
     padding: var(--spacing-lg);
 
     display: flex;
-    
     justify-content: center;
     align-items: center;
 }
@@ -47,87 +39,75 @@
 .product-detail-image-container img {
     max-width: 100%;
     max-height: var(--max-height-sm);
-
     object-fit: contain;
 }
 
-/* Info section */
+/* Info */
 .product-detail-info {
-    flex: 1;
-
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-detail-info h1 {
     color: var(--blue-color);
     text-align: center;
-
     margin-bottom: var(--spacing-xl);
 }
 
 .product-detail-info .price {
     font-size: var(--letter-size-lg);
     color: var(--yellow-color);
-
-    /* margin-bottom: var(--spacing-xl); */
-
     font-weight: 100;
     font-style: italic;
 }
 
 .product-detail-info .price .property-title {
     color: var(--white-color);
-
     font-weight: bold;
-    font-style: normal;
-    font-size: var(--letter-size-lg);
 }
 
 .product-detail-info .property {
     color: var(--white-color);
-
     font-weight: 100;
     font-style: italic;
     font-size: var(--letter-size-lg);
 }
 
 .product-detail-info .property span {
-    color: var(--white-color);
-
     font-weight: bold;
-    font-style: normal;
-    font-size: var(--letter-size-lg);
 }
 
-/* Button (reuse style idea) */
+/* DETAILS GRID */
+.details-grid {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Button */
 .product-detail-info .button-container {
     display: flex;
-
     justify-content: center;
-
     margin-top: var(--spacing-xl);
-    padding: var(--spacing-sm) var(--spacing-md);
 }
 
 .product-detail-info button {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
     background-color: var(--gray-color);
     color: var(--white-color);
-
     border: none;
     border-radius: var(--radius-md);
-
     padding: var(--spacing-sm) var(--spacing-md);
-
     cursor: pointer;
-
-    /* transition: background 0.2s ease; */
 }
 
+/* 🔥 REVIEWS FULL WIDTH */
 .reviews-section {
   margin-top: var(--spacing-xl);
   padding: var(--spacing-lg);
@@ -143,9 +123,15 @@
 }
 
 .reviews-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: var(--spacing-md);
+}
+
+/* 🔥 nicer on desktop */
+@media (min-width: 768px) {
+  .reviews-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .review-card {
@@ -172,11 +158,4 @@
 .review-date {
   font-size: var(--letter-size-md);
   opacity: 0.7;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .product-detail-card {
-        flex-direction: column;
-    }
 }
