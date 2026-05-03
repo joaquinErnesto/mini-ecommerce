@@ -44,49 +44,75 @@ export const ProductDetailPage = () => {
 
     return (
         <div className="product-detail-page">
-            <div className="product-detail-card">
-                
-                {/* Image */}
-                <div className="product-detail-image-container">
-                    <img src={product.image} alt={product.title} />
-                </div>
+            <div className="product-detail-container">
 
-                {/* Info */}
-                <div className="product-detail-info">
-                    <h1>{product.title}</h1>
+                {/* TOP SECTION */}
+                <div className="product-detail-main">
+                    
+                    {/* Image */}
+                    <div className="product-detail-image-container">
+                        <img src={product.image} alt={product.title} />
+                    </div>
 
-                    <p className="price"><span className="property-title">Price: </span>${product.price}</p>
+                    {/* Info */}
+                    <div className="product-detail-info">
+                        <h1>{product.title}</h1>
 
-                    <p className="property"><span>Description:</span> {product.description}</p>
+                        <p className="price"><span className="property-title">Price: </span>${product.price}</p>
 
-                    <p className="property"><span>Discount Percentage:</span> {product.discountPercentage}</p>
+                        <p className="property"><span>Description:</span> {product.description}</p>
 
-                    <p className="property"><span>Rating:</span> {product.rating}</p>
+                        <p className="property"><span>Discount Percentage:</span> {product.discountPercentage}</p>
 
-                    <p className="property"><span>Stock:</span> {product.stock}</p>
+                        <p className="property"><span>Rating:</span> {product.rating}</p>
 
-                    <p className="property"><span>Brand:</span> {product.brand}</p>
+                        <p className="property"><span>Stock:</span> {product.stock}</p>
 
-                    <p className="property"><span>Weight:</span> {product.weight}</p>
+                        <p className="property"><span>Brand:</span> {product.brand}</p>
 
-                    <p className="property"><span>Warranty:</span> {product.warranty}</p>
+                        <p className="property"><span>Weight:</span> {product.weight}</p>
 
-                    <p className="property"><span>Shipping Information:</span> {product.shippingInformation}</p>
+                        <p className="property"><span>Warranty:</span> {product.warranty}</p>
 
-                    <p className="property"><span>Availability Status:</span> {product.availabilityStatus}</p>
+                        <p className="property"><span>Shipping Information:</span> {product.shippingInformation}</p>
 
-                    <div className="button-container">
-                        <button
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = "var(--gray-color)"
-                            }}
-                            onClick={handleAddToCart}
-                        >
-                            Add to Cart
-                        </button>
+                        <p className="property"><span>Availability Status:</span> {product.availabilityStatus}</p>
+
+                        <div className="button-container">
+                            <button
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.backgroundColor = "var(--gray-color)"
+                                }}
+                                onClick={handleAddToCart}
+                            >
+                                Add to Cart
+                            </button>
+                        </div>
+
+                        {/* REVIEWS SECTION */}
+                        <div className="reviews-section">
+                        <h2>Customer Reviews</h2>
+
+                        {product.reviews && product.reviews.length > 0 ? (
+                            <div className="reviews-list">
+                            {product.reviews.map((review, index) => (
+                                <div key={index} className="review-card">
+                                <p className="review-name">{review.reviewerName}</p>
+                                <p className="review-rating">⭐ {review.rating}/5</p>
+                                <p className="review-comment">"{review.comment}"</p>
+                                <p className="review-date">
+                                    {new Date(review.date).toLocaleDateString()}
+                                </p>
+                                </div>
+                            ))}
+                            </div>
+                        ) : (
+                            <p>No reviews yet</p>
+                        )}
+                        </div>
                     </div>
                 </div>
             </div>

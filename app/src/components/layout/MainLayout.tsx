@@ -10,9 +10,9 @@ export const MainLayout = () => {
         (acc, item) => acc + item.quantity, 0
     )
 
-    const borderStyle = {
+    /* const borderStyle = {
         border: "1px solid white"
-    }
+    } */
 
     return (
         <div className="container">
@@ -30,14 +30,12 @@ export const MainLayout = () => {
                     <nav className="nav-links">
                         <Link 
                             to="/"
-                            style={borderStyle}
                         >
                             Home
                         </Link>
                         
                         <Link 
                             to="/products"
-                            style={borderStyle}
                         >
                             Products
                         </Link>
@@ -45,9 +43,6 @@ export const MainLayout = () => {
                         <Link 
                             to="/cart" 
                             className="cart-link"
-                            style={{
-                                border: "1px solid white"
-                            }}
                         >
                             <span>
                                 Cart
@@ -56,14 +51,10 @@ export const MainLayout = () => {
                             <div
                                 className="cart-icon-container"
                                 onClick={() => navigate("/cart")}
-                                style={{
-                                    border: "1px solid red"
-                                }}
                             >
                                 <span 
                                     className="material-symbols-outlined"
                                     style={{
-                                        border: "1px solid blue",
                                         height: "100%"
                                     }}
                                 >
@@ -73,9 +64,6 @@ export const MainLayout = () => {
                                 {totalItems > 0 && (
                                     <span
                                         className="cart-badge"
-                                        style={{
-                                            border: "1px solid yellow"
-                                        }}
                                     >
                                         ({totalItems})
                                     </span>
@@ -85,7 +73,6 @@ export const MainLayout = () => {
 
                         <Link 
                             to="/profile"
-                            style={borderStyle}
                         >
                             Profile
                         </Link>

@@ -36,6 +36,7 @@ export const getProductById = async (id: number) : Promise<Product> => {
             title: p.title,
             description: p.description,
             price: p.price,
+            category: p.category,
             image: p.thumbnail,
 
             discountPercentage: p.discountPercentage,
@@ -45,7 +46,9 @@ export const getProductById = async (id: number) : Promise<Product> => {
             weight: p.weight,
             warranty: p.warrantyInformation,
             shippingInformation: p.shippingInformation,
-            availabilityStatus: p.availabilityStatus
+            availabilityStatus: p.availabilityStatus,
+
+            reviews: p.reviews
         }
     } catch(error) {
         console.error(`Error fetching product with id ${id}: `, error)
