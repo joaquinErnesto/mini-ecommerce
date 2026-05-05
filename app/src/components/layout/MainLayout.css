@@ -14,6 +14,12 @@
     backdrop-filter: blur(8px); /* optional but looks 🔥 */
     
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition: box-shadow .2s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
 }
 
 .navbar-content {
@@ -96,6 +102,8 @@ main {
     flex: 1;
     display: flex;
     justify-content: center;
+
+    padding-top: 10px;
 }
 
 main > div {

@@ -32,3 +32,14 @@ export interface CheckoutState {
   shipping: ShippingInfo;
   payment: PaymentInfo;
 }
+
+export interface SubmitOrderPayload {
+  payment: any // we’ll refine later
+  shipping: any
+  items: any[]
+}
+
+export interface SubmitOrderResponse {
+  success: boolean
+  orderId: string
+}

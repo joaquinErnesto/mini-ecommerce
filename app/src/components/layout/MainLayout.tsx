@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { Outlet, Link } from "react-router-dom"
 import { useCart } from "../../features/cart/context/useCart"
 import { useNavigate } from "react-router-dom"
@@ -10,6 +11,17 @@ export const MainLayout = () => {
         (acc, item) => acc + item.quantity, 0
     )
 
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10)
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
     /* const borderStyle = {
         border: "1px solid white"
     } */
@@ -18,7 +30,7 @@ export const MainLayout = () => {
         <div className="container">
             
             {/* Navbar */}
-            <header className="navbar">
+            <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
                 <div className="navbar-content">
 
                     {/* Logo / Brand */}
