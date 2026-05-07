@@ -16,8 +16,16 @@ export const CheckoutPage = () => {
         }
         
         // If trying step 3 without payment
-        if (state.step === 3 && !state.payment.cardHolder) {
-            setStep(2)
+        if (state.step === 3) {
+        const method = state.payment.method
+
+            if (
+                (method === "Card" && !state.payment.cardHolder) ||
+                (method === "Crypto" && !state.payment.walletAddress) ||
+                (method === "Transfer" && !state.payment.accountHolder)
+            ) {
+                setStep(2)
+            }
         }
     }, [state, setStep])
 

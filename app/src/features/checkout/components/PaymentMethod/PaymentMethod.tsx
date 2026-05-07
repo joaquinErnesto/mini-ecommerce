@@ -1,8 +1,9 @@
 import "./PaymentMethod.css";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useCheckout } from "../../context/useCheckout";
 import { PaymentOption } from "../PaymentOption/PaymentOption";
 import { InputField } from "../InputField/InputField";
+import { submitOrder } from "../../services/checkout.api";
 
 export const PaymentMethod = () => {
   const [cardNumber, setCardNumber] = useState("")
@@ -11,8 +12,10 @@ export const PaymentMethod = () => {
   const [expYear, setExpYear] = useState("")
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({})
+  const [loading, setLoading] = useState(false)
+  const [apiError, setApiError] = useState<string | null>(null)
 
-  const { setPayment, setStep } = useCheckout()
+  const { state, setPayment, setStep } = useCheckout()
 
   const [selected, setSelected] = useState<"Card" | "Crypto" | "Transfer" | "">("")
 
@@ -31,7 +34,7 @@ export const PaymentMethod = () => {
     setSelected(method)
   }
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (!selected) return
 
     const newErrors = validate()
@@ -39,26 +42,57 @@ export const PaymentMethod = () => {
 
     if (Object.keys(newErrors).length > 0) return
 
-    setPayment({
-      method: selected,
+    setLoading(true)
+    setApiError(null)
 
-      cardNumber,
-      cardHolder,
-      expMonth,
-      expYear,
+    try {
+      const result = await submitOrder({
+        payment: {
+          method: selected,
+          cardNumber,
+          cardHolder,
+          expMonth,
+          expYear,
+          walletAddress,
+          network,
+          bankName,
+          accountNumber,
+          accountHolder
+        },
+        shipping: state.shipping,
+        items: [] // connect cart later
+      })
 
-      walletAddress,
-      network,
+      console.log("✅ Order success:", result)
 
-      bankName,
-      accountNumber,
-      accountHolder
-    })
+      setPayment({
+        method: selected,
+        cardNumber,
+        cardHolder,
+        expMonth,
+        expYear,
+        walletAddress,
+        network,
+        bankName,
+        accountNumber,
+        accountHolder
+      })
 
-    setStep(3)
+      setStep(3)
+
+    } catch (err: unknown) {
+      console.error("❌ Order failed:", err)
+      if (err instanceof Error) {
+        setApiError(err.message)
+      } else {
+        setApiError("Something went wrong")
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const validate = (data?: Partial<{
+  const validate = useCallback((data?: Partial<{
     cardNumber: string
     cardHolder: string
     expMonth: string
@@ -66,69 +100,123 @@ export const PaymentMethod = () => {
 
     walletAddress: string
     network: string
-    bankName: string
 
+    bankName: string
     accountNumber: string
     accountHolder: string
   }>) => {
+
     const newErrors: { [key: string]: string } = {}
 
-    // Use fallback to current state
+    // Merge current state with incoming data
     const values = {
       cardNumber,
       cardHolder,
       expMonth,
       expYear,
+
       walletAddress,
       network,
+
       bankName,
       accountNumber,
       accountHolder,
-      ...data // override only what's passed
+
+      ...data
     }
+
+    // =========================
+    // CARD VALIDATION
+    // =========================
     if (selected === "Card") {
-      const digitsOnly = cardNumber.replace(/\s/g, "")
 
-      if (!digitsOnly) newErrors.cardNumber = "Required"
-      else if (!/^\d{16}$/.test(digitsOnly))
+      const digitsOnly = values.cardNumber.replace(/\s/g, "")
+
+      // Card Number
+      if (!digitsOnly) {
+        newErrors.cardNumber = "Required"
+      } else if (!/^\d{16}$/.test(digitsOnly)) {
         newErrors.cardNumber = "Must be 16 digits"
+      }
 
-      if (!cardHolder) newErrors.cardHolder = "Required"
+      // Card Holder
+      if (!values.cardHolder) {
+        newErrors.cardHolder = "Required"
+      } else if (values.cardHolder.length > 50) {
+        newErrors.cardHolder = "Too long"
+      } else if (!/^[a-zA-Z\s]+$/.test(values.cardHolder)) {
+        newErrors.cardHolder = "Only letters"
+      }
 
-      // Month
-      const month = Number(expMonth)
+      // Expiration Month
+      const currentDate = new Date()
+      const currentMonth = currentDate.getMonth() + 1
+      const currentYear = currentDate.getFullYear()
 
-      if (!expMonth) newErrors.expMonth = "Required"
-      else if (month < 1 || month > 12)
+      const month = Number(values.expMonth)
+      const year = Number(values.expYear)
+
+      if (!values.expMonth) {
+        newErrors.expMonth = "Required"
+      } else if (month < 1 || month > 12) {
         newErrors.expMonth = "Invalid month"
+      }
 
-      // Year
-      const year = Number(expYear)
+      // Expiration Year
+      if (!values.expYear) {
+        newErrors.expYear = "Required"
+      } else if (!/^\d{4}$/.test(values.expYear)) {
+        newErrors.expYear = "Must be 4 digits"
+      } else if (year < currentYear) {
+        newErrors.expYear = "Card expired"
+      }
 
-      if (!expYear) newErrors.expYear = "Required"
-      else if (year < 1 || year > 12)
-        newErrors.expYear = "Invalid year"
+      // Full Expiration Check
+      if (
+        year === currentYear &&
+        month < currentMonth
+      ) {
+        newErrors.expMonth = "Expired"
+      }
     }
- 
+
+    // =========================
+    // CRYPTO VALIDATION
+    // =========================
     if (selected === "Crypto") {
-      if (!walletAddress) newErrors.walletAddress = "Required"
-      else if (walletAddress.length < 26 || walletAddress.length > 42)
-        newErrors.walletAddress = "Invalid length"
-      else if (!/^[a-zA-Z0-9]+$/.test(walletAddress)) 
-        newErrors.walletAddress = "Invalid characters"
 
-      if (!network) newErrors.network = "Required"
+      if (!values.walletAddress) {
+        newErrors.walletAddress = "Required"
+      } else if (
+        values.walletAddress.length < 26 ||
+        values.walletAddress.length > 42
+      ) {
+        newErrors.walletAddress = "Invalid length"
+      } else if (!/^[a-zA-Z0-9]+$/.test(values.walletAddress)) {
+        newErrors.walletAddress = "Invalid characters"
+      }
+
+      if (!values.network) {
+        newErrors.network = "Required"
+      }
     }
 
+    // =========================
+    // TRANSFER VALIDATION
+    // =========================
     if (selected === "Transfer") {
-      if (!values.bankName) newErrors.bankName = "Required"
-      else if (values.bankName.length > 50)
-        newErrors.bankName = "Too long"
-      else if (!/^[a-zA-Z\s]+$/.test(values.bankName))
-        newErrors.bankName = "Only letters"
 
-      // 🔥 FIXED ACCOUNT NUMBER VALIDATION
-      const digitsOnly = values.accountNumber.replace(/\s/g, "")
+      // Bank Name
+      if (!values.bankName) {
+        newErrors.bankName = "Required"
+      } else if (values.bankName.length > 50) {
+        newErrors.bankName = "Too long"
+      } else if (!/^[a-zA-Z\s]+$/.test(values.bankName)) {
+        newErrors.bankName = "Only letters"
+      }
+
+      // Account Number
+      const digitsOnly = (values.accountNumber || "").replace(/\s/g, "")
 
       if (!digitsOnly) {
         newErrors.accountNumber = "Required"
@@ -136,27 +224,73 @@ export const PaymentMethod = () => {
         newErrors.accountNumber = "Must be 20 digits"
       }
 
-      if (!values.accountHolder) newErrors.accountHolder = "Required"
-      else if (values.accountHolder.length > 50)
+      // Account Holder
+      if (!values.accountHolder) {
+        newErrors.accountHolder = "Required"
+      } else if (values.accountHolder.length > 50) {
         newErrors.accountHolder = "Too long"
-      else if (!/^[a-zA-Z\s]+$/.test(values.accountHolder))
+      } else if (!/^[a-zA-Z\s]+$/.test(values.accountHolder)) {
         newErrors.accountHolder = "Only letters"
+      }
     }
 
     return newErrors
-  }
+
+  }, [
+    selected,
+
+    cardNumber,
+    cardHolder,
+    expMonth,
+    expYear,
+
+    walletAddress,
+    network,
+
+    bankName,
+    accountNumber,
+    accountHolder
+  ])
+
+  useEffect(() => {
+    const validationErrors = validate()
+
+    setErrors(validationErrors)
+  }, [
+    expMonth,
+    expYear,
+
+    walletAddress,
+    network,
+
+    bankName,
+    accountNumber,
+    accountHolder,
+    validate
+  ])
 
   const isValid =
     selected === "Card"
-      ? cardNumber &&
-        cardHolder &&
-        expMonth && 
-        expYear &&
-        Object.keys(errors).length === 0
+      ? !!(
+          cardNumber &&
+          cardHolder &&
+          expMonth &&
+          expYear &&
+          Object.keys(errors).length === 0
+        )
       : selected === "Crypto"
-      ? walletAddress && network && Object.keys(errors).length === 0
+      ? !!(
+          walletAddress &&
+          network &&
+          Object.keys(errors).length === 0
+        )
       : selected === "Transfer"
-      ? bankName && accountNumber && accountHolder && Object.keys(errors).length === 0
+      ? !!(
+          bankName &&
+          accountNumber &&
+          accountHolder &&
+          Object.keys(errors).length === 0
+        )
       : false
 
   const formatCardNumber = (value: string) => {
@@ -284,7 +418,8 @@ export const PaymentMethod = () => {
                     label="Year"
                     name="expYear"
                     value={expYear}
-                    onChange={(e) => setExpYear(e.target.value.replace(/\D/g, "").slice(0, 2))}
+                    onChange={(e) => 
+                      setExpYear(e.target.value.replace(/\D/g, "").slice(0, 4))}
                     onBlur={() => setTouched({ ...touched, expYear: true })}
                     error={touched.expYear ? errors.expYear : ""}
                     placeholder="YY"
@@ -375,6 +510,12 @@ export const PaymentMethod = () => {
           )}
         </div>
 
+      {apiError && (
+        <p style={{ color: "red", textAlign: "center" }}>
+          {apiError}
+        </p>
+      )}
+      
       <div className="action-buttons">
         <button 
           className="btn-secondary" 
@@ -386,9 +527,9 @@ export const PaymentMethod = () => {
         <button 
           className="btn-primary"
           onClick={handleContinue}
-          disabled={!isValid}
+          disabled={!isValid || loading}
         >
-          Continue
+          {loading ? "Processing..." : "Continue"}
         </button>
       </div>
     </div>

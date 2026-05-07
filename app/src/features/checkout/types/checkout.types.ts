@@ -1,3 +1,5 @@
+import type { CartItem } from "../../cart/types/cart.types";
+
 export interface ShippingInfo {
   fullName: string;
   address: string;
@@ -34,9 +36,9 @@ export interface CheckoutState {
 }
 
 export interface SubmitOrderPayload {
-  payment: any // we’ll refine later
-  shipping: any
-  items: any[]
+  payment: PaymentInfo // we’ll refine later
+  shipping: ShippingInfo
+  items: CartItem[]
 }
 
 export interface SubmitOrderResponse {

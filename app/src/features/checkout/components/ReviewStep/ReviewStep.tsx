@@ -2,6 +2,7 @@ import "./ReviewStep.css";
 import { useCheckout } from "../../context/useCheckout";
 import { useCart } from "../../../cart/context/useCart";
 import { SummaryItem } from "../SummaryItem/SummaryItem";
+import { submitOrder } from "../../services/checkout.api";
 import { useState } from "react";
 
 export const ReviewStep = () => {
@@ -9,6 +10,14 @@ export const ReviewStep = () => {
   const { items, clearCart } = useCart();
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  if (items.length === 0 && status !== "success") {
+    return (
+      <div>
+        <h2>Your cart is empty</h2>
+      </div>
+    )
+  }
 
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -22,19 +31,22 @@ export const ReviewStep = () => {
     setStatus("loading");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      console.log("ORDER:", {
+      const response = await submitOrder({
         items,
         shipping: state.shipping,
         payment: state.payment
       });
 
+      console.log("✅ ORDER SUCCESS:", response);
+
       setStatus("success");
+
+      // ✅ Clean everything AFTER success
       clearCart();
       resetCheckout();
 
-    } catch {
+    } catch (error: any) {
+      console.error("❌ ORDER FAILED:", error.message);
       setStatus("error");
     }
   };
@@ -44,6 +56,13 @@ export const ReviewStep = () => {
       <div className="review-success">
         <h2>🎉 Order confirmed!</h2>
         <p>Your order has been placed successfully.</p>
+
+        <button
+          className="btn-primary"
+          onClick={() => window.location.href = "/products"}
+        >
+          Continue Shopping
+        </button>
       </div>
     );
   }

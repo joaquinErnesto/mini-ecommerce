@@ -60,6 +60,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const clearCart = () => {
     setItems([])
+    localStorage.removeItem("cart") // ✅ ensure cleanup
   }
 
   return (
