@@ -7,6 +7,8 @@ import { CardPaymentForm } from "./CardPaymentForm/CardPaymentForm";
 import { CryptoPaymentForm } from "./CryptoPaymentForm/CryptoPaymentForm";
 import { TransferPaymentForm } from "./TransferPaymentForm/TransferPaymentForm";
 
+import toast from "react-hot-toast";
+
 export const PaymentMethod = () => {
   const [cardNumber, setCardNumber] = useState("")
   const [cardHolder, setCardHolder] = useState("")
@@ -35,11 +37,19 @@ export const PaymentMethod = () => {
   }
 
   const handleContinue = () => {
-    if (!selected) return
+    if (!selected) {
+      toast.error("Please select a payment method")
+
+      return
+    }
 
     const newErrors = validate()
 
-    if (Object.keys(newErrors).length > 0) return
+    if (Object.keys(newErrors).length > 0) {
+      toast.error("Please fix the payment form errors")
+
+      return
+    }
 
     setPayment({
       method: selected,
@@ -54,6 +64,7 @@ export const PaymentMethod = () => {
       accountHolder
     })
 
+    toast.success("Payment method saved")
     setStep(3)
   }
 

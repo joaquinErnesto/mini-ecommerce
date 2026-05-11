@@ -3,6 +3,7 @@ import { InputField } from "../InputField/InputField";
 import { useState } from "react";
 import { useCheckout } from "../../context/useCheckout";
 import { useCart } from "../../../cart/context/useCart";
+import toast from "react-hot-toast";
 
 export const ShippingForm = () => {
   const { setShipping, setStep } = useCheckout()
@@ -38,7 +39,7 @@ export const ShippingForm = () => {
   
   const handleSubmit = () => {
     if (!items.length) {
-      alert("Your cart is empty");
+      toast.error("Your cart is empty");
       return;
     }
 
@@ -57,6 +58,7 @@ export const ShippingForm = () => {
 
     if (Object.keys(newErrors).length > 0) return;
 
+    toast.success("Shipping information saved")
     setShipping(form);
     setStep(2);
   };

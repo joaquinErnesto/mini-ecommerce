@@ -4,6 +4,7 @@ import { useCart } from "../../../cart/context/useCart";
 import { SummaryItem } from "../SummaryItem/SummaryItem";
 import { submitOrder } from "../../services/checkout.api";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export const ReviewStep = () => {
   const { state, setStep, resetCheckout } = useCheckout();
@@ -30,23 +31,31 @@ export const ReviewStep = () => {
   const handleConfirm = async () => {
     setStatus("loading");
 
+    const orderPromise = submitOrder({
+      items,
+      shipping: state.shipping,
+      payment: state.payment
+    });
+
+    toast.promise(orderPromise, {
+      loading: "Processing your order...",
+      success: "Order confirmed successfully!",
+      error: "Payment failed. Please try again."
+    });
+
     try {
-      const response = await submitOrder({
-        items,
-        shipping: state.shipping,
-        payment: state.payment
-      });
+      const response = await orderPromise;
 
       console.log("✅ ORDER SUCCESS:", response);
 
       setStatus("success");
 
-      // ✅ Clean everything AFTER success
       clearCart();
       resetCheckout();
 
     } catch (error: any) {
       console.error("❌ ORDER FAILED:", error.message);
+
       setStatus("error");
     }
   };

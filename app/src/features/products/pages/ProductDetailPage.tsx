@@ -5,6 +5,7 @@ import { getProductById } from "../services/products.api"
 import { useCart } from "../../cart/context/useCart"
 import { useNavigate } from "react-router-dom"
 import type { Product } from "../types/products.types"
+import toast from "react-hot-toast"
 
 export const ProductDetailPage = () => {
     const { id } = useParams()
@@ -38,6 +39,9 @@ export const ProductDetailPage = () => {
 
     const handleAddToCart = () => {
         addToCart(product)
+
+        toast.success("Product added to cart")
+
         navigate("/cart")
     }
 

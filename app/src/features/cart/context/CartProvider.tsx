@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import type { CartItem } from "../types/cart.types";
 import type { Product } from "../../products/types/products.types";
+import toast from "react-hot-toast";
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>(() => {
@@ -19,19 +20,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [items])
 
   const addToCart = (product: Product) => {
-    setItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+    const existing = items.find((item) => item.id === product.id)
 
+    setItems((prev) => {
       if (existing) {
         return prev.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
-        );
+        )
       }
 
       return [
-        ...prev, 
+        ...prev,
         {
           id: product.id,
           title: product.title,
@@ -40,9 +41,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
           image: product.image,
           quantity: 1
         }
-      ];
-    });
-  };
+      ]
+    })
+
+    toast.success(`${product.title} added to cart`)
+  }
 
   const updateQuantity = (id: number, delta: number) => {
     setItems((prev) =>
@@ -55,12 +58,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const removeItem = (id: number) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
+    const removedItem = items.find((item) => item.id === id)
+
+    setItems((prev) => prev.filter((item) => item.id !== id))
+
+    if (removedItem) {
+      toast.success(`${removedItem.title} removed from cart`)
+    }
   };
 
   const clearCart = () => {
     setItems([])
     localStorage.removeItem("cart") // ✅ ensure cleanup
+    toast.success("Cart cleared")
   }
 
   return (

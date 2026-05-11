@@ -1,5 +1,6 @@
 import type { Product } from "../types/products.types";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import "./ProductCard.css"
 
 interface Props {
@@ -17,7 +18,7 @@ export const ProductCard = ({ product, onAddToCart }: Props) => {
     const handleAddToCart = () => {
         if (onAddToCart) onAddToCart(product)
 
-        alert("Product added to cart!")
+        toast.success("Product added to cart!")
     }
 
     return (
