@@ -1,21 +1,21 @@
 import "./PaymentMethod.css";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useCheckout } from "../../context/useCheckout";
 import { PaymentOption } from "../PaymentOption/PaymentOption";
-import { InputField } from "../InputField/InputField";
-import { submitOrder } from "../../services/checkout.api";
+
+import { CardPaymentForm } from "./CardPaymentForm/CardPaymentForm";
+import { CryptoPaymentForm } from "./CryptoPaymentForm/CryptoPaymentForm";
+import { TransferPaymentForm } from "./TransferPaymentForm/TransferPaymentForm";
 
 export const PaymentMethod = () => {
   const [cardNumber, setCardNumber] = useState("")
   const [cardHolder, setCardHolder] = useState("")
   const [expMonth, setExpMonth] = useState("")
   const [expYear, setExpYear] = useState("")
-  const [errors, setErrors] = useState<{ [key: string]: string }>({})
+  
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({})
-  const [loading, setLoading] = useState(false)
-  const [apiError, setApiError] = useState<string | null>(null)
 
-  const { state, setPayment, setStep } = useCheckout()
+  const { setPayment, setStep } = useCheckout()
 
   const [selected, setSelected] = useState<"Card" | "Crypto" | "Transfer" | "">("")
 
@@ -34,62 +34,27 @@ export const PaymentMethod = () => {
     setSelected(method)
   }
 
-  const handleContinue = async () => {
+  const handleContinue = () => {
     if (!selected) return
 
     const newErrors = validate()
-    setErrors(newErrors)
 
     if (Object.keys(newErrors).length > 0) return
 
-    setLoading(true)
-    setApiError(null)
+    setPayment({
+      method: selected,
+      cardNumber,
+      cardHolder,
+      expMonth,
+      expYear,
+      walletAddress,
+      network,
+      bankName,
+      accountNumber,
+      accountHolder
+    })
 
-    try {
-      const result = await submitOrder({
-        payment: {
-          method: selected,
-          cardNumber,
-          cardHolder,
-          expMonth,
-          expYear,
-          walletAddress,
-          network,
-          bankName,
-          accountNumber,
-          accountHolder
-        },
-        shipping: state.shipping,
-        items: [] // connect cart later
-      })
-
-      console.log("✅ Order success:", result)
-
-      setPayment({
-        method: selected,
-        cardNumber,
-        cardHolder,
-        expMonth,
-        expYear,
-        walletAddress,
-        network,
-        bankName,
-        accountNumber,
-        accountHolder
-      })
-
-      setStep(3)
-
-    } catch (err: unknown) {
-      console.error("❌ Order failed:", err)
-      if (err instanceof Error) {
-        setApiError(err.message)
-      } else {
-        setApiError("Something went wrong")
-      }
-    } finally {
-      setLoading(false)
-    }
+    setStep(3)
   }
 
   const validate = useCallback((data?: Partial<{
@@ -252,22 +217,7 @@ export const PaymentMethod = () => {
     accountHolder
   ])
 
-  useEffect(() => {
-    const validationErrors = validate()
-
-    setErrors(validationErrors)
-  }, [
-    expMonth,
-    expYear,
-
-    walletAddress,
-    network,
-
-    bankName,
-    accountNumber,
-    accountHolder,
-    validate
-  ])
+  const errors = validate()
 
   const isValid =
     selected === "Card"
@@ -343,12 +293,6 @@ export const PaymentMethod = () => {
     const formatted = formatAccountNumber(e.target.value)
 
     setAccountNumber(formatted)
-
-    const newErrors = validate({
-      accountNumber: formatted
-    })
-
-    setErrors((prev) => ({ ...prev, ...newErrors }))
   }
   
   return (
@@ -378,143 +322,60 @@ export const PaymentMethod = () => {
       {/* Dynamic Payment Form */}
         <div className="payment-form">
 
-          {/* CARD */}
-            {selected === "Card" && (
-              <>
-                <InputField
-                  label="Card Number"
-                  name="cardNumber"
-                  value={cardNumber}
-                  onChange={handleCardNumberChange}
-                  onBlur={() => setTouched({ ...touched, cardNumber: true })}
-                  error={touched.cardNumber ? errors.cardNumber : ""}
-                  placeholder="1234 5678 9012 3456"
-                  full
-                />
+          {selected === "Card" && (
+            <CardPaymentForm
+              cardNumber={cardNumber}
+              cardHolder={cardHolder}
+              expMonth={expMonth}
+              expYear={expYear}
 
-                <InputField
-                  label="Card Holder"
-                  name="cardHolder"
-                  value={cardHolder}
-                  onChange={handleCardHolderChange}
-                  onBlur={() => setTouched({ ...touched, cardHolder: true })}
-                  error={touched.cardHolder ? errors.cardHolder : ""}
-                  placeholder="John Doe"
-                  full
-                />
+              touched={touched}
+              errors={errors}
 
-                <div className="expiry-group">
-                  <InputField
-                    label="Month"
-                    name="expMonth"
-                    value={expMonth}
-                    onChange={(e) => setExpMonth(e.target.value.replace(/\D/g, "").slice(0, 2))}
-                    onBlur={() => setTouched({ ...touched, expMonth: true })}
-                    error={touched.expMonth ? errors.expMonth : ""}
-                    placeholder="MM"
-                  />
+              onCardNumberChange={handleCardNumberChange}
+              onCardHolderChange={handleCardHolderChange}
 
-                  <InputField
-                    label="Year"
-                    name="expYear"
-                    value={expYear}
-                    onChange={(e) => 
-                      setExpYear(e.target.value.replace(/\D/g, "").slice(0, 4))}
-                    onBlur={() => setTouched({ ...touched, expYear: true })}
-                    error={touched.expYear ? errors.expYear : ""}
-                    placeholder="YY"
-                  />
-                </div>
-              </>
-            )}
+              setExpMonth={setExpMonth}
+              setExpYear={setExpYear}
 
-          {/* CRYPTO */}
+              setTouched={setTouched}
+            />
+          )}
+
           {selected === "Crypto" && (
-            <>
-              <InputField
-                label="Wallet Address"
-                name="walletAddress"
-                value={walletAddress}
-                onChange={(e) => setWalletAddress(e.target.value.replace(/[^a-zA-Z0-9]/g, "").slice(0, 42))}
-                onBlur={() => setTouched({ ...touched, walletAddress: true })}
-                error={touched.walletAddress ? errors.walletAddress : ""}
-                placeholder="0x1234..."
-                full
-              />
+            <CryptoPaymentForm
+              walletAddress={walletAddress}
+              network={network}
 
-              <select
-                value={network}
-                onChange={(e) => setNetwork(e.target.value)}
-                onBlur={() => setTouched({ ...touched, network: true })}
-                className="select-field"
-              >
-                <option value="">
-                  Select network
-                </option>
-                
-                <option value="Ethereum">
-                  Ethereum
-                </option>
-                
-                <option value="Bitcoin">
-                  Bitcoin
-                </option>
-                
-                <option value="Solana">
-                  Solana
-                </option>
-              </select>
+              touched={touched}
+              errors={errors}
 
-              {touched.network && errors.network && (
-                <span className="error">{errors.network}</span>
-              )}
-            </>
+              setWalletAddress={setWalletAddress}
+              setNetwork={setNetwork}
+
+              setTouched={setTouched}
+            />
           )}
 
-          {/* TRANSFER */}
           {selected === "Transfer" && (
-            <>
-              <InputField
-                label="Bank Name"
-                name="bankName"
-                value={bankName}
-                onChange={(e) => setBankName(e.target.value.replace(/[^a-zA-Z\s]/g, "").slice(0, 50))}
-                onBlur={() => setTouched({ ...touched, bankName: true })}
-                error={touched.bankName ? errors.bankName : ""}
-                placeholder="Bank of America"
-                full
-              />
+            <TransferPaymentForm
+              bankName={bankName}
+              accountNumber={accountNumber}
+              accountHolder={accountHolder}
 
-              <InputField
-                label="Account Number"
-                name="accountNumber"
-                value={accountNumber}
-                onChange={handleAccountNumberChange}
-                onBlur={() => setTouched({ ...touched, accountNumber: true })}
-                error={touched.accountNumber ? errors.accountNumber : ""}
-                placeholder="123456789"
-                full
-              />
+              touched={touched}
+              errors={errors}
 
-              <InputField
-                label="Account Holder"
-                name="accountHolder"
-                value={accountHolder}
-                onChange={(e) => setAccountHolder(e.target.value.replace(/[^a-zA-Z\s]/g, "").slice(0, 50))}
-                onBlur={() => setTouched({ ...touched, accountHolder: true })}
-                error={touched.accountHolder ? errors.accountHolder : ""}
-                placeholder="John Doe"
-                full
-              />
-            </>
+              setBankName={setBankName}
+              setAccountHolder={setAccountHolder}
+
+              onAccountNumberChange={handleAccountNumberChange}
+
+              setTouched={setTouched}
+            />
           )}
-        </div>
 
-      {apiError && (
-        <p style={{ color: "red", textAlign: "center" }}>
-          {apiError}
-        </p>
-      )}
+        </div>
       
       <div className="action-buttons">
         <button 
@@ -527,9 +388,9 @@ export const PaymentMethod = () => {
         <button 
           className="btn-primary"
           onClick={handleContinue}
-          disabled={!isValid || loading}
+          disabled={!isValid}
         >
-          {loading ? "Processing..." : "Continue"}
+          Continue
         </button>
       </div>
     </div>
