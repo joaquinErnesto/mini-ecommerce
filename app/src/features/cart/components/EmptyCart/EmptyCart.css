@@ -7,6 +7,8 @@
   text-align: center;
   padding: 60px 20px;
   gap: 16px;
+
+  animation: fadeInUp .5s ease;
 }
 
 .empty-icon {
@@ -27,7 +29,7 @@
   margin-top: var(--spacing-sm);
   padding: 10px 18px;
 
-  background-color: var(--color-primary);
+  background-color: var(--blue-color);
   color: white;
 
   border: none;
@@ -39,4 +41,6 @@
 
 .empty-cart button:hover {
   opacity: 0.85;
+
+  transform: translateY(-2px);
 }

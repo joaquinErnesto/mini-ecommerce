@@ -1,0 +1,53 @@
+.product-card-skeleton {
+  flex: 0 1 220px;
+
+  max-width: 250px;
+
+  padding: var(--spacing-md);
+
+  border-radius: var(--radius-md);
+
+  background: var(--medium-black-color);
+
+  border: var(--product-card-border);
+}
+
+.skeleton {
+  border-radius: var(--radius-sm);
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.08) 25%,
+    rgba(255,255,255,.18) 50%,
+    rgba(255,255,255,.08) 75%
+  );
+
+  background-size: 200% 100%;
+
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-image {
+  height: 180px;
+  margin-bottom: var(--spacing-md);
+}
+
+.skeleton-title {
+  height: 20px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.skeleton-description {
+  height: 50px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.skeleton-price {
+  height: 20px;
+  width: 40%;
+  margin-bottom: var(--spacing-md);
+}
+
+.skeleton-button {
+  height: 40px;
+}
