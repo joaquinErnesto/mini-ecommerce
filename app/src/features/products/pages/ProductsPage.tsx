@@ -1,5 +1,5 @@
 import { useProducts } from "../hooks/useProducts";
-import { ProductCard } from "../components/ProductCard";
+import { ProductCard } from "../components/ProductCard/ProductCard";
 // import { useCart } from "../../cart/context/useCart";
 import "./ProductsPage.css"
 import { useCart } from "../../cart/context/useCart";

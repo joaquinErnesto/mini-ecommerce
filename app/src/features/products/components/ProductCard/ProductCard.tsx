@@ -1,4 +1,4 @@
-import type { Product } from "../types/products.types";
+import type { Product } from "../../types/products.types";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "./ProductCard.css"
@@ -25,14 +25,6 @@ export const ProductCard = ({ product, onAddToCart }: Props) => {
         <div
             className="product-card-container"
             onClick={handleClick}
-            onMouseEnter={(event) => {
-                event.currentTarget.style.transform = "translateY(-5px)"
-                event.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, .1)"
-            }}
-            onMouseLeave={(event => {
-                event.currentTarget.style.transform = "translateY(0)"
-                event.currentTarget.style.boxShadow = "none"
-            })}
         >
             <div className="product-card-image-container">
                 {/* Image */}

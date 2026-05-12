@@ -79,12 +79,6 @@ export const ProductDetailPage = () => {
 
                         <div className="button-container">
                             <button
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.backgroundColor = "var(--gray-color)"
-                                }}
                                 onClick={handleAddToCart}
                             >
                                 Add to Cart
