@@ -11,6 +11,7 @@ import { AboutPage } from "./src/components/about/AboutPage";
 import { CartPage } from "./src/features/cart/pages/CartPage";
 import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
 import { CheckoutGuard } from "./src/features/checkout/guards/CheckoutGuard";
+import { LoginPage } from "./src/features/auth/pages/LoginPage";
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +67,11 @@ export const router = createBrowserRouter([
                     </CheckoutGuard>
                 ),
                 errorElement: <p>Something went wrong loading checkout.</p>
+            },
+            {
+                path: "profile",
+                element: <LoginPage />,
+                errorElement: <p>Something went wrong loading login.</p>
             }
         ]
     }

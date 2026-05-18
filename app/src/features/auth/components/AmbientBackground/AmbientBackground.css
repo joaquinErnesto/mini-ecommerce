@@ -1,0 +1,28 @@
+.ambient {
+  position: absolute;
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+.ambient-primary {
+  width: 500px;
+  height: 500px;
+
+  top: -10%;
+  right: -10%;
+
+  background: rgba(137, 172, 255, 0.12);
+}
+
+.ambient-secondary {
+  width: 400px;
+  height: 400px;
+
+  bottom: -10%;
+  left: -10%;
+
+  background: rgba(253, 212, 0, 0.08);
+}

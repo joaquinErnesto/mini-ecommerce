@@ -1,0 +1,10 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+.login-form-button {
+  padding-top: 8px;
+}

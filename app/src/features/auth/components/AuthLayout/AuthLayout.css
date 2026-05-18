@@ -1,0 +1,22 @@
+.auth-layout {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: var(--spacing-lg);
+
+  background-color: var(--background-color);
+}
+
+.auth-layout-content {
+  width: 100%;
+  max-width: 480px;
+
+  position: relative;
+  z-index: 10;
+}

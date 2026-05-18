@@ -1,0 +1,45 @@
+.auth-button {
+  width: 100%;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 16px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  font-weight: bold;
+
+  color: #001b44;
+
+  background: linear-gradient(
+    to right,
+    var(--blue-color),
+    #0f6df3
+  );
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease,
+    box-shadow .2s ease;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 30px rgba(40,100,255,.3);
+}
+
+.auth-button:active {
+  transform: scale(.98);
+}
+
+.auth-button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
