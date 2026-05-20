@@ -13,6 +13,9 @@ import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
 import { CheckoutGuard } from "./src/features/checkout/guards/CheckoutGuard";
 import { LoginPage } from "./src/features/auth/pages/LoginPage";
 
+import { ProtectedRoute } from "./src/features/auth/guards/ProtectedRoutes";
+import { GuestRoute } from "./src/features/auth/guards/GuestRoutes";
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -62,15 +65,21 @@ export const router = createBrowserRouter([
             {
                 path: "checkout",
                 element: (
-                    <CheckoutGuard>
-                        <CheckoutPage />
-                    </CheckoutGuard>
+                    <ProtectedRoute>
+                        <CheckoutGuard>
+                            <CheckoutPage />
+                        </CheckoutGuard>
+                    </ProtectedRoute>
                 ),
                 errorElement: <p>Something went wrong loading checkout.</p>
             },
             {
                 path: "profile",
-                element: <LoginPage />,
+                element: (
+                    <GuestRoute>
+                        <LoginPage />
+                    </GuestRoute>
+                ),
                 errorElement: <p>Something went wrong loading login.</p>
             }
         ]

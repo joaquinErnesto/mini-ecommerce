@@ -57,6 +57,29 @@
     color: var(--color-primary);
 }
 
+/* USER SECTION */
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-avatar {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: 2px solid rgba(255, 255, 255, 0.2);
+
+    transition: transform .2s ease;
+}
+
+.navbar-avatar:hover {
+    transform: scale(1.05);
+}
+
 .cart-link {
     display: flex;
     align-items: center;
@@ -80,22 +103,22 @@
     align-items: center;
 }
 
-/* Badge */
-/* .cart-badge {
-    position: absolute;
+.logout-button {
+    background: transparent;
+    border: none;
 
-    top: -6px;
-    right: -10px;
+    color: var(--color-text-primary);
 
-    background-color: #ff4d4f;
-    color: white;
+    cursor: pointer;
 
-    padding: 2px 5px;
-    border-radius: 50%;
+    font-size: inherit;
 
-    min-width: 16px;
-    text-align: center;
-} */
+    transition: color .2s ease;
+}
+
+.logout-button:hover {
+    color: #ff6b6b;
+}
 
 /* MAIN */
 main {

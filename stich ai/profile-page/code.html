@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile | Electric Noir</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#002053",
+                        "tertiary-container": "#feaa00",
+                        "secondary-fixed": "#fdd400",
+                        "on-secondary-container": "#fff7e7",
+                        "on-tertiary-fixed": "#331f00",
+                        "secondary": "#fdd400",
+                        "on-tertiary-container": "#503300",
+                        "inverse-on-surface": "#565555",
+                        "surface-variant": "#262626",
+                        "surface-dim": "#0e0e0e",
+                        "tertiary-fixed-dim": "#ec9e00",
+                        "secondary-fixed-dim": "#edc600",
+                        "error-dim": "#d7383b",
+                        "primary-container": "#739eff",
+                        "surface-container-lowest": "#000000",
+                        "surface-bright": "#2c2c2c",
+                        "surface-container-high": "#20201f",
+                        "on-primary-fixed": "#000000",
+                        "surface-tint": "#89acff",
+                        "inverse-primary": "#0059cb",
+                        "on-secondary-fixed": "#433700",
+                        "on-surface": "#ffffff",
+                        "on-background": "#ffffff",
+                        "primary-fixed": "#739eff",
+                        "on-error-container": "#ffa8a3",
+                        "on-surface-variant": "#adaaaa",
+                        "surface-container": "#1a1a1a",
+                        "inverse-surface": "#fcf9f8",
+                        "outline-variant": "#484847",
+                        "on-primary-fixed-variant": "#002966",
+                        "error-container": "#9f0519",
+                        "on-tertiary": "#5c3b00",
+                        "surface-container-highest": "#262626",
+                        "on-secondary": "#594a00",
+                        "primary-fixed-dim": "#5a90ff",
+                        "primary-dim": "#0f6df3",
+                        "surface": "#0e0e0e",
+                        "primary": "#89acff",
+                        "secondary-container": "#705d00",
+                        "on-tertiary-fixed-variant": "#5b3b00",
+                        "tertiary-dim": "#ec9e00",
+                        "background": "#0e0e0e",
+                        "on-secondary-fixed-variant": "#645300",
+                        "on-primary": "#002b6a",
+                        "secondary-dim": "#edc600",
+                        "surface-container-low": "#131313",
+                        "tertiary": "#ffbd5c",
+                        "on-error": "#490006",
+                        "outline": "#767575",
+                        "error": "#ff716c",
+                        "tertiary-fixed": "#feaa00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(14, 14, 14, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #89acff 0%, #0f6df3 100%);
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(137, 172, 255, 0.2);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0e0e0e; }
+        ::-webkit-scrollbar-thumb { background: #2c2c2c; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #89acff; }
+    </style>
+</head>
+<body class="bg-surface overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50 bg-[#0e0e0e]/70 backdrop-blur-xl border-b border-[#ffffff]/10 shadow-[0_20px_40px_rgba(137,172,255,0.05)]">
+<div class="text-xl font-bold text-[#89acff] tracking-tight">Electric Noir</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#adaaaa] hover:text-[#89acff] transition-colors duration-300 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Home</a>
+<a class="text-[#adaaaa] hover:text-[#89acff] transition-colors duration-300 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Products</a>
+<a class="text-[#adaaaa] hover:text-[#89acff] transition-colors duration-300 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Cart</a>
+<a class="text-[#89acff] border-b-2 border-[#89acff] pb-1 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#adaaaa] hover:text-[#89acff] transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="text-[#89acff] active:scale-95">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+</button>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-6 py-12 md:flex gap-12">
+<!-- Sidebar Navigation / Left Column -->
+<aside class="w-full md:w-64 flex-shrink-0 mb-12 md:mb-0">
+<div class="sticky top-24">
+<div class="flex items-center gap-4 mb-10">
+<div class="relative group">
+<div class="w-20 h-20 rounded-full overflow-hidden border-2 border-primary ring-4 ring-primary/10">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a stylish young man with a focused expression, set against a dark, moody background with subtle blue neon rim lighting. The aesthetic is high-end digital noir with deep shadows and sharp, clean details reflecting the Electric Noir brand identity. The lighting is dramatic, emphasizing textures and sophisticated facial features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQIDYKtCmNnQcM8vel6HXSk_DN5MNXKQd1MjPf4QhEVdEhKQwHD0GY1tNutgSlxsKeHhtmpvoRMsvrxxX8evC-WYWlZLFF8JuH1bbjLU8BvO95N8u0lIbF6US068Vx6esUkm4ieMx54Ab-slV8QzvtkbO-a1dYPZJldhIAGhROu5WmirTEfH34RCyo_ZbtYPKUeYFAGCSrhs7CgGzUgWDdB4TqrYE6o8qkGZuSh9isWea8bhfAT_TdkBzSg3gUI5xooDh04mtZIkSh"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-on-primary-fixed p-1.5 rounded-full shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<div>
+<h1 class="text-xl font-bold text-on-surface">Alex Chen</h1>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            Master Curator
+                        </p>
+</div>
+</div>
+<nav class="space-y-1">
+<button class="w-full flex items-center gap-3 bg-surface-bright text-primary rounded-lg p-3 transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium">Account Info</span>
+</button>
+<button class="w-full flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-bright hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span>Orders</span>
+</button>
+<button class="w-full flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-bright hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span>Security</span>
+</button>
+<button class="w-full flex items-center gap-3 text-on-surface-variant p-3 hover:bg-surface-bright hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Preferences</span>
+</button>
+</nav>
+<div class="mt-12 pt-12 border-t border-white/5">
+<button class="flex items-center gap-2 text-error hover:text-error-dim transition-colors px-3 py-2">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 space-y-12">
+<!-- Section: Personal Information -->
+<section class="bg-surface-container rounded-xl p-8 transition-all hover:shadow-[0_0_50px_rgba(137,172,255,0.03)] border border-white/5" id="personal-info">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold mb-2 block">Identity Details</span>
+<h2 class="text-2xl font-bold text-on-surface">Personal Information</h2>
+</div>
+<button class="text-primary text-sm hover:underline">Edit Profile</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="block text-xs uppercase tracking-widest text-on-surface-variant font-medium">Full Name</label>
+<div class="bg-surface-container-highest rounded-lg p-4 border border-white/5 text-on-surface">Alex Chen</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs uppercase tracking-widest text-on-surface-variant font-medium">Email Address</label>
+<div class="bg-surface-container-highest rounded-lg p-4 border border-white/5 text-on-surface">alex.c@curator.noir</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs uppercase tracking-widest text-on-surface-variant font-medium">Phone Number</label>
+<div class="bg-surface-container-highest rounded-lg p-4 border border-white/5 text-on-surface">+1 (555) 902-3000</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs uppercase tracking-widest text-on-surface-variant font-medium">Location</label>
+<div class="bg-surface-container-highest rounded-lg p-4 border border-white/5 text-on-surface">Metropolis, Digital Sector 7</div>
+</div>
+</div>
+</section>
+<!-- Section: Order History (Bento Style) -->
+<section id="orders">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold mb-2 block">Acquisitions</span>
+<h2 class="text-2xl font-bold text-on-surface">Recent Orders</h2>
+</div>
+<button class="text-primary text-sm hover:underline">View All History</button>
+</div>
+<div class="space-y-4">
+<!-- Order Item 1 -->
+<div class="group bg-surface-container-low hover:bg-surface-bright transition-all p-5 rounded-xl flex flex-wrap md:flex-nowrap items-center gap-6 border border-white/5">
+<div class="w-16 h-16 bg-surface-container-highest rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="High-end professional product photography of a sleek, futuristic sneaker with neon blue accents. The shoe is set against a dark charcoal studio background with subtle floor reflections. The lighting is sharp, highlighting the premium materials and the Electric Noir aesthetic of vibrant colors against a moody backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyup4-Wt32sIB9WsNfCULGEh0LyE2FCZg0eJNrG753mzO_NsHhN9euZM2OcDcRtZeYDMl1SoCe9mINJaNZR-0CiGnNgD0HgiB5a15NObdIKkOFVeFWMnOH1kRWhb9QQ88fVn8YLJowQHtgnokJzKNbt4emWZWjmLMgnJB0pCV_HSwIgvvz1bxRLEhx2lqTrUg2I7PTkcnmBKlH8ksKsXr5Ps00FBykFQxuOix7zWh3Ab72vC5pHvVmWVVNY7KG8gMeqwRPeZLwb_jw"/>
+</div>
+<div class="flex-1 min-w-[200px]">
+<h3 class="font-bold text-on-surface text-lg">Neon Stryde V2</h3>
+<p class="text-on-surface-variant text-sm">Order #EN-98210 • May 14, 2024</p>
+</div>
+<div class="px-3 py-1 bg-on-primary-container text-primary rounded-full text-xs font-bold uppercase tracking-tighter">
+                            Delivered
+                        </div>
+<div class="text-xl font-bold text-secondary text-right min-w-[100px]">
+                            $249.00
+                        </div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Order Item 2 -->
+<div class="group bg-surface-container-low hover:bg-surface-bright transition-all p-5 rounded-xl flex flex-wrap md:flex-nowrap items-center gap-6 border border-white/5">
+<div class="w-16 h-16 bg-surface-container-highest rounded overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A minimalist designer watch with a black matte finish and glowing blue hands. The product is placed on a textured dark slate surface with deep shadows and soft, cinematic lighting that creates a high-contrast Electric Noir feel. The focus is on the precision and the sophisticated, moody color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbpQl-Jc80JhlSjunro-VH5bfN0IGTbRFlZz7d-E4DIxDLJfztu60enfn0QRbPuLIfcLgCklP1Yg25jLqRzn8XsMspomgxAj7W8Y0xofvdXrKhrY3nXT6Loo0KXJWR-hLSlwqARPVpattz-Ute0BFuqXSI5Bgt8mWNjbtmclPab3PHZyY00Z7vQ3sjEWl8eVc_PHNglNvJ-fL6SguvIys3sO1YUDvPy7o92HJj2hMe0YZ_nNBHza7IxGJuI1v1lkrkfTRuowh1qw_Q"/>
+</div>
+<div class="flex-1 min-w-[200px]">
+<h3 class="font-bold text-on-surface text-lg">Midnight Chronograph</h3>
+<p class="text-on-surface-variant text-sm">Order #EN-97554 • April 28, 2024</p>
+</div>
+<div class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-tighter">
+                            Processed
+                        </div>
+<div class="text-xl font-bold text-secondary text-right min-w-[100px]">
+                            $595.00
+                        </div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Security & Preferences (Horizontal Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Security -->
+<section class="bg-surface-container rounded-xl p-8 border border-white/5">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h2 class="text-xl font-bold text-on-surface">Security</h2>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-bold text-on-surface">Password</p>
+<p class="text-on-surface-variant text-sm">Last changed 4 months ago</p>
+</div>
+<button class="bg-surface-bright text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-surface-container-highest transition-colors">Update</button>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-bold text-on-surface">2-Factor Authentication</p>
+<p class="text-on-surface-variant text-sm">Enhanced security for your account</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Preferences -->
+<section class="bg-surface-container rounded-xl p-8 border border-white/5">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<h2 class="text-xl font-bold text-on-surface">Preferences</h2>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-bold text-on-surface">Curation Newsletter</p>
+<p class="text-on-surface-variant text-sm">Weekly drops and exclusive previews</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-bold text-on-surface">Push Notifications</p>
+<p class="text-on-surface-variant text-sm">Real-time order and status updates</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Danger Zone -->
+<div class="bg-error/5 border border-error/10 rounded-xl p-8">
+<h2 class="text-xl font-bold text-error mb-4">Danger Zone</h2>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<p class="text-on-surface-variant text-sm max-w-md">Deleting your account will permanently remove all your order history and curation status. This action cannot be undone.</p>
+<button class="bg-error/10 text-error border border-error/20 hover:bg-error hover:text-white transition-all px-6 py-3 rounded-lg font-bold text-sm">Delete Account</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#000000] py-12 px-6 mt-20 border-t border-[#ffffff]/5">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="space-y-4 text-center md:text-left">
+<div class="text-md font-semibold text-[#89acff]">Electric Noir</div>
+<p class="text-[#adaaaa] font-['Plus_Jakarta_Sans'] text-sm">© 2024 Electric Noir. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors text-sm font-['Plus_Jakarta_Sans']" href="#">Privacy Policy</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors text-sm font-['Plus_Jakarta_Sans']" href="#">Terms of Service</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors text-sm font-['Plus_Jakarta_Sans']" href="#">Shipping Policy</a>
+<a class="text-[#adaaaa] hover:text-[#ffffff] transition-colors text-sm font-['Plus_Jakarta_Sans']" href="#">Returns</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#adaaaa] cursor-pointer hover:text-[#89acff]" data-icon="language">language</span>
+<span class="material-symbols-outlined text-[#adaaaa] cursor-pointer hover:text-[#89acff]" data-icon="public">public</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for input focus effects
+        const inputs = document.querySelectorAll('.bg-surface-container-highest');
+        inputs.forEach(input => {
+            input.addEventListener('mouseenter', () => {
+                input.style.borderColor = 'rgba(137, 172, 255, 0.2)';
+            });
+            input.addEventListener('mouseleave', () => {
+                input.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+            });
+        });
+
+        // Toggle Switch Logic Sim
+        const toggles = document.querySelectorAll('input[type="checkbox"]');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const parent = this.closest('label');
+                if (this.checked) {
+                    console.log('Preference Enabled');
+                } else {
+                    console.log('Preference Disabled');
+                }
+            });
+        });
+    </script>
+</body></html>

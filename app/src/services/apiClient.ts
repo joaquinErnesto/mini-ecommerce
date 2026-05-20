@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getAuthUser } from "../features/auth/utils/authStorage"
 
 // Create Axios instance
 export const apiClient = axios.create({
@@ -12,7 +13,14 @@ export const apiClient = axios.create({
 // Request interceptor
 apiClient.interceptors.request.use(
     (config) => {
+        const authUser = getAuthUser()
+
+        if (authUser?.accessToken) {
+            config.headers.Authorization = `Bearer ${authUser.accessToken}`
+        }
+
         console.log("Request sent:", config)
+        
         return config
     },
     (error) => {

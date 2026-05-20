@@ -8,9 +8,12 @@ export const loginRequest = async (
   credentials: LoginCredentials
 ): Promise<AuthUser> => {
   try {
-    const response = await apiClient.post(
+    const response = await apiClient.post<AuthUser>(
       "/auth/login",
-      credentials
+      {
+        ...credentials,
+        expiresInMins: 30
+      }
     )
 
     return response.data

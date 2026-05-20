@@ -3,10 +3,13 @@ import { Outlet, Link } from "react-router-dom"
 import { useCart } from "../../features/cart/context/useCart"
 import { useNavigate } from "react-router-dom"
 import "./MainLayout.css"
+import { useAuth } from "../../features/auth/context/useAuth"
 
 export const MainLayout = () => {
     const { items } = useCart()
     const navigate = useNavigate()
+    const { isAuthenticated, user, logout } = useAuth()
+
     const totalItems = items.reduce(
         (acc, item) => acc + item.quantity, 0
     )
@@ -22,9 +25,10 @@ export const MainLayout = () => {
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
-    /* const borderStyle = {
-        border: "1px solid white"
-    } */
+    const handleLogout = () => {
+        logout()
+        navigate("/")
+    }
 
     return (
         <div className="container">
@@ -83,11 +87,32 @@ export const MainLayout = () => {
                             </div>
                         </Link>
 
-                        <Link 
-                            to="/profile"
-                        >
-                            Profile
-                        </Link>
+                        {isAuthenticated ? (
+                            <>
+                                <div className="navbar-user">
+                                    <img 
+                                        src={user?.image} 
+                                        alt={user?.firstName} 
+                                        className="navbar-avatar"
+                                    />
+
+                                    <Link to="/profile">
+                                        {user?.firstName}
+                                    </Link>
+                                </div>
+
+                                <button
+                                    className="logout-button"
+                                    onClick={handleLogout}
+                                >
+                                    Logout
+                                </button>  
+                            </>
+                        ) : (
+                            <Link to="/profile">
+                                Login
+                            </Link>
+                        )}
                     </nav>
 
                 </div>
@@ -109,10 +134,21 @@ export const MainLayout = () => {
                     </p>
 
                     <div className="footer-links">
-                        <a href="/privacy">Privacy</a>
-                        <a href="/terms">Terms</a>
-                        <a href="/contact">Contact</a>
-                        <a href="/about">About</a>
+                        <Link to="/privacy">
+                            Privacy
+                        </Link>
+                        
+                        <Link to="/terms">
+                            Terms
+                        </Link>
+
+                        <Link to="/contact">
+                            Contact
+                        </Link>
+
+                        <Link to="/about">
+                            About
+                        </Link>
                     </div>
 
                 </div>

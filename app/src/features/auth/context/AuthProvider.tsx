@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { AuthContext } from "./AuthContext"
 import type {
     LoginCredentials,
@@ -19,20 +19,14 @@ interface Props {
 
 export const AuthProvider = ({ children }: Props) => {
 
-    const [user, setUser] = useState<AuthUser | null>(null)
+    const [user, setUser] = useState<AuthUser | null>(
+        () => getAuthUser()
+    )
 
-    const [loading, setLoading] = useState(true)
+    const loading = false
 
     // Restore session
-    useEffect(() => {
-        const storedUser = getAuthUser()
-
-        if (storedUser) {
-            setUser(storedUser)
-        }
-
-        setLoading(false)
-    }, [])
+    
 
     // LOGIN
     const login = async (
@@ -51,6 +45,8 @@ export const AuthProvider = ({ children }: Props) => {
         removeAuthUser()
         setUser(null)
     }
+
+    const isAuthenticated = Boolean(user)
 
     return (
         <AuthContext.Provider

@@ -13,9 +13,9 @@ import { AuthProvider } from './features/auth/context/AuthProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <CartProvider>
-      <CheckoutProvider>
-        <AuthProvider>
+    <AuthProvider>
+      <CartProvider>
+        <CheckoutProvider>
 
             {/* GLOBAL TOASTER */}
             <Toaster
@@ -44,9 +44,9 @@ createRoot(document.getElementById('root')!).render(
             />
 
             <RouterProvider router={router} />
-            
-        </AuthProvider>
-      </CheckoutProvider>
-    </CartProvider>
+              
+        </CheckoutProvider>
+      </CartProvider>
+    </AuthProvider>
   </StrictMode>,
 )

@@ -34,10 +34,14 @@ export const LoginForm = () => {
     const handleSubmit = async (
         e: React.FormEvent
     ) => {
-
         e.preventDefault()
 
-        if (!form.username || !form.password) {
+        if (loading) return
+        
+        if (
+            !form.username.trim() || 
+            !form.password.trim()
+        ) {
             toast.error("All fields are required")
             return
         }
