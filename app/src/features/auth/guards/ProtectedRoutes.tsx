@@ -23,7 +23,7 @@ export const ProtectedRoute = ({
 
     // Not authenticated
     if (!isAuthenticated) {
-        return <Navigate to="/profile" replace />
+        return <Navigate to="/login" replace />
     }
 
     // Authenticated

@@ -1,0 +1,33 @@
+.profile-layout-container {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 2rem;
+
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+.profile-layout-sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.profile-layout-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .profile-layout-container {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-layout-sidebar {
+    position: static;
+  }
+}

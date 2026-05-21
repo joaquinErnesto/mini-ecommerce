@@ -18,12 +18,23 @@ export const GuestRoute = ({
 
     // Optional loading state
     if (loading) {
-        return <p>Loading...</p>
+        return (
+            <div
+                style={{
+                    minHeight: "60vh",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+            >
+                <p>Loading profile...</p>
+            </div>
+        )
     }
 
     // Already authenticated
     if (isAuthenticated) {
-        return <Navigate to="/" replace />
+        return <Navigate to="/profile" replace />
     }
 
     // Not authenticated

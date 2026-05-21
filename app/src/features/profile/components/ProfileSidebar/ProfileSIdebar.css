@@ -1,0 +1,111 @@
+.profile-sidebar-container {
+  background: rgba(20, 20, 20, 0.9);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+
+  padding: 2rem;
+
+  backdrop-filter: blur(16px);
+}
+
+.profile-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  margin-bottom: 2rem;
+}
+
+.profile-sidebar-avatar-wrapper {
+  position: relative;
+}
+
+.profile-sidebar-avatar {
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 3px solid var(--primary-color);
+}
+
+.profile-sidebar-edit-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  background: var(--primary-color);
+  color: black;
+}
+
+.profile-sidebar-user h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-sidebar-user p {
+  color: #9ca3af;
+}
+
+.profile-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.profile-sidebar-nav button {
+  border: none;
+
+  background: transparent;
+  color: #d1d5db;
+
+  padding: 1rem;
+
+  border-radius: 12px;
+
+  text-align: left;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.profile-sidebar-nav button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-sidebar-nav button.active {
+  background: rgba(59, 130, 246, 0.2);
+  color: white;
+}
+
+.profile-sidebar-logout {
+  margin-top: 2rem;
+
+  width: 100%;
+
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+
+  padding: 1rem;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.profile-sidebar-logout:hover {
+  background: rgba(239, 68, 68, 0.2);
+}

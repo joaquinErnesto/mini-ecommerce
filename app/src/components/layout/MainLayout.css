@@ -166,3 +166,32 @@ main > div {
 .footer-links a:hover {
     color: var(--color-primary);
 }
+
+/* =========================
+   RESPONSIVE NAVBAR
+========================= */
+
+@media (max-width: 768px) {
+
+    .navbar-content {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

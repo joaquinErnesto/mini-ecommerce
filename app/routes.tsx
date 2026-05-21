@@ -12,6 +12,7 @@ import { CartPage } from "./src/features/cart/pages/CartPage";
 import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
 import { CheckoutGuard } from "./src/features/checkout/guards/CheckoutGuard";
 import { LoginPage } from "./src/features/auth/pages/LoginPage";
+import { ProfilePage } from "./src/features/profile/pages/ProfilePage";
 
 import { ProtectedRoute } from "./src/features/auth/guards/ProtectedRoutes";
 import { GuestRoute } from "./src/features/auth/guards/GuestRoutes";
@@ -74,13 +75,22 @@ export const router = createBrowserRouter([
                 errorElement: <p>Something went wrong loading checkout.</p>
             },
             {
-                path: "profile",
+                path: "login",
                 element: (
                     <GuestRoute>
                         <LoginPage />
                     </GuestRoute>
                 ),
                 errorElement: <p>Something went wrong loading login.</p>
+            },
+            {
+                path: "profile",
+                element: (
+                    <ProtectedRoute>
+                        <ProfilePage />
+                    </ProtectedRoute>
+                ),
+                errorElement: <p>Something went wrong loading profile.</p>
             }
         ]
     }

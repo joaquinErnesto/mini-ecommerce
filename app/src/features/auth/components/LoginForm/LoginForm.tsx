@@ -57,7 +57,7 @@ export const LoginForm = () => {
 
             toast.success("Welcome back!")
 
-            navigate("/")
+            navigate("/profile")
 
         } catch (error) {
 

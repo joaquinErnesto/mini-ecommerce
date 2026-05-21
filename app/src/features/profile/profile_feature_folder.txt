@@ -1,0 +1,43 @@
+Listado de rutas de carpetas para el volumen Documentos
+El n£mero de serie del volumen es A328-E5B0
+D:.
+³   profile_feature_folder.txt
+³   
+ÃÄÄÄcomponents
+³   ÃÄÄÄInfoCard
+³   ³       InfoCard.css
+³   ³       InfoCard.tsx
+³   ³       
+³   ÃÄÄÄOrderCard
+³   ³       OrderCard.css
+³   ³       OrderCard.tsx
+³   ³       
+³   ÃÄÄÄPreferenceToggle
+³   ³       PreferenceToggle.css
+³   ³       PreferenceToggle.tsx
+³   ³       
+³   ÃÄÄÄProfileHeader
+³   ³       ProfileHeader.css
+³   ³       ProfileHeader.tsx
+³   ³       
+³   ÃÄÄÄProfileLayout
+³   ³       ProfileLayout.css
+³   ³       ProfileLayout.tsx
+³   ³       
+³   ÃÄÄÄProfileSection
+³   ³       ProfileSection.css
+³   ³       ProfileSection.tsx
+³   ³       
+³   ÀÄÄÄProfileSidebar
+³           ProfileSIdebar.css
+³           ProfileSidebar.tsx
+³           
+ÃÄÄÄhooks
+ÃÄÄÄpages
+³       ProfilePage.tsx
+³       
+ÃÄÄÄservices
+ÃÄÄÄtypes
+³       profile.types.ts
+³       
+ÀÄÄÄutils

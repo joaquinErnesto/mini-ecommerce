@@ -1,6 +1,5 @@
 import type { Product } from "../../types/products.types";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 import "./ProductCard.css"
 
 interface Props {
@@ -17,8 +16,6 @@ export const ProductCard = ({ product, onAddToCart }: Props) => {
 
     const handleAddToCart = () => {
         if (onAddToCart) onAddToCart(product)
-
-        toast.success("Product added to cart!")
     }
 
     return (
@@ -51,15 +48,10 @@ export const ProductCard = ({ product, onAddToCart }: Props) => {
 
             {/* Button */}
             <button
+                className="product-card-button"
                 onClick={(e) => {
                     e.stopPropagation() // prevents triggering card click
                     handleAddToCart()
-                }}
-                onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgba(80, 80, 80, 1)"
-                }}
-                onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "var(--gray-color)"
                 }}
             >
                 Add to Cart

@@ -92,3 +92,31 @@
     
     cursor: pointer;
 }
+
+.product-card-button {
+    background-color: var(--gray-color);
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px 16px;
+
+    color: white;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease;
+}
+
+.product-card-button:hover {
+    background-color: rgba(80, 80, 80, 1);
+
+    transform: translateY(-2px);
+}
+
+.product-card-button:active {
+    transform: scale(0.98);
+}
