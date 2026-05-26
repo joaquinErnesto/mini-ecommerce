@@ -19,3 +19,19 @@ export interface Product {
 
   reviews?: Comment[];
 }
+
+export interface Review {
+  rating: number
+  comment: string
+  date: string
+  reviewerName: string
+  reviewerEmail: string
+}
+
+export interface DummyProductApi {
+    id: number
+    title: string
+    description: string
+    price: number
+    thumbnail: string
+}

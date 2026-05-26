@@ -8,10 +8,10 @@ interface Props {
 export const OrderCard = ({ order }: Props) => {
   return (
     <article className="order-card-container">
-      <img
+      {/* <img
         src={order.image}
         alt={order.productName}
-      />
+      /> */}
 
       <div className="order-card-info">
         <h3>

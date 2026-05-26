@@ -45,7 +45,7 @@
   cursor: pointer;
 
   background: var(--primary-color);
-  color: black;
+  color: var(--yellow-color);
 }
 
 .profile-sidebar-user h2 {

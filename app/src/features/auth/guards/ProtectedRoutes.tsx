@@ -3,29 +3,51 @@ import type { ReactNode } from "react"
 
 import { useAuth } from "../context/useAuth"
 
+import { AuthLoader } from
+  "../components/AuthLoader/AuthLoader"
+
+import { AUTH_ROUTES } from "../constants/auth.constants"
+
 interface Props {
-    children: ReactNode
+  children: ReactNode
 }
 
 export const ProtectedRoute = ({
-    children
+  children
 }: Props) => {
 
-    const {
-        isAuthenticated,
-        loading
-    } = useAuth()
+  const {
+    isAuthenticated,
+    loading
+  } = useAuth()
 
-    // Optional loading state
-    if (loading) {
-        return <p>Loading...</p>
-    }
+  /**
+   * Checking session
+   */
+  if (loading) {
 
-    // Not authenticated
-    if (!isAuthenticated) {
-        return <Navigate to="/login" replace />
-    }
+    return (
+      <AuthLoader
+        text="Restoring session..."
+      />
+    )
+  }
 
-    // Authenticated
-    return children
+  /**
+   * Not authenticated
+   */
+  if (!isAuthenticated) {
+
+    return (
+      <Navigate
+        to={AUTH_ROUTES.LOGIN}
+        replace
+      />
+    )
+  }
+
+  /**
+   * Authenticated
+   */
+  return children
 }

@@ -24,14 +24,14 @@ export const useProfile = () => {
 
       setError(null)
 
-    } catch (err: any) {
-
-      console.error("Profile fetch error:", err)
-
-      setError(
-        err?.message || "Failed to load profile"
-      )
-
+    } catch (err: unknown) {
+      
+      if (err instanceof Error) {
+        setError(err.message)
+      } else {
+        setError("Failed to load profile")
+      }
+      
     } finally {
 
       setLoading(false)

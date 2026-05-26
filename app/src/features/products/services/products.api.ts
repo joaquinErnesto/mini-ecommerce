@@ -1,5 +1,6 @@
 import { apiClient } from "../../../services/apiClient";
 import type { Product } from "../types/products.types";
+import type { DummyProductApi } from "../types/products.types"
 
 // Get all products
 export const getProducts = async (): Promise<Product[]> => {
@@ -10,7 +11,7 @@ export const getProducts = async (): Promise<Product[]> => {
 
         console.log("API RESPONSE:", response.data)
 
-        return response.data.products.map((p: any) => ({
+        return response.data.products.map((p: DummyProductApi) => ({
             id: p.id,
             title: p.title,
             description: p.description,

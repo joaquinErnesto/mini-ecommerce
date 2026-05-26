@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import "./MainLayout.css"
 import { useAuth } from "../../features/auth/context/useAuth"
 
-import userImage from "../../assets/images/user/user-1.png"
+/* import userImage from "../../assets/images/user/user-1.png" */
 
 export const MainLayout = () => {
     const { items } = useCart()
@@ -92,14 +92,6 @@ export const MainLayout = () => {
                         {isAuthenticated ? (
                             <>
                                 <div className="navbar-user">
-                                    <img 
-                                        src={
-                                            user?.image || userImage
-                                        } 
-                                        alt={user?.firstName} 
-                                        className="navbar-avatar"
-                                    />
-
                                     <Link to="/profile">
                                         {user?.firstName}
                                     </Link>

@@ -1,44 +1,26 @@
-export interface UserAddress {
-  address: string
-  city: string
-  state: string
-  postalCode: string
-  country: string
-}
-
-export interface UserCompany {
-  name: string
-  department: string
-  title: string
+export interface AuthTokens {
+  accessToken: string
+  refreshToken: string
 }
 
 export interface AuthUser {
   id: number
 
-  firstName: string
-  lastName: string
-  maidenName?: string
-
-  age: number
-  gender: string
-
-  email: string
-  phone: string
-
   username: string
 
-  birthDate: string
+  email: string
+
+  firstName: string
+  lastName: string
 
   image: string
-  
-  role: string
 
-  address: UserAddress
+  role?: string
+}
 
-  company: UserCompany
-
-  accessToken: string
-  refreshToken: string
+export interface AuthSession {
+  user: AuthUser
+  tokens: AuthTokens
 }
 
 export interface LoginCredentials {
@@ -46,14 +28,37 @@ export interface LoginCredentials {
   password: string
 }
 
+export type AuthStatus =
+  | "checking"
+  | "authenticated"
+  | "unauthenticated"
+
+export interface LoginResponse {
+  accessToken: string
+  refreshToken: string
+}
+
+export interface RefreshTokenResponse {
+  accessToken: string
+  refreshToken?: string
+}
+
 export interface AuthContextType {
   user: AuthUser | null
-  
+
+  status: AuthStatus
+
   isAuthenticated: boolean
-  
+
   loading: boolean
 
-  login: (credentials: LoginCredentials) => Promise<void>
-  
+  login: (
+    credentials: LoginCredentials
+  ) => Promise<void>
+
   logout: () => void
+
+  restoreSession: () => Promise<void>
+
+  refreshAccessToken: () => Promise<AuthSession>
 }

@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
+
 import { useAuth } from "../../../auth/context/useAuth"
 
-import "./ProfileSidebar.css"
+import { AUTH_MESSAGES, AUTH_ROUTES } from "../../../auth/constants/auth.constants"
+
+import "./ProfileSIdebar.css"
 
 import userImage from "../../../../assets/images/user/user-1.png"
 
@@ -15,9 +19,14 @@ export const ProfileSidebar = () => {
   } = useAuth()
 
   const handleLogout = () => {
+
     logout()
 
-    navigate("/login")
+    toast.success(AUTH_MESSAGES.LOGOUT_SUCCESS)
+
+    navigate(AUTH_ROUTES.LOGIN, {
+      replace: true
+    })
   }
 
   return (
@@ -28,9 +37,7 @@ export const ProfileSidebar = () => {
         <div className="profile-sidebar-avatar-wrapper">
 
           <img
-            src={
-                user?.image || userImage
-            }
+            src={userImage}
             alt={user?.firstName}
             className="profile-sidebar-avatar"
           />
@@ -47,7 +54,7 @@ export const ProfileSidebar = () => {
           </h2>
 
           <p>
-            {user?.role}
+            Customer
           </p>
         </div>
 

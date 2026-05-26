@@ -15,22 +15,28 @@ export const useProducts = () => {
             setProducts(data)
             
             setError(null)
-        } catch(err: any) {
+        } catch (err: unknown) {
+
             console.error("FULL ERROR:", err)
-            setError(err?.message || "Unknown error")
+
+            if (err instanceof Error) {
+                setError(err.message)
+            } else {
+                setError("Unknown error")
+            }
         } finally {
-            setLoading(false)
+                    setLoading(false)
+                }
+            }
+
+            useEffect(() => {
+                gettingProducts()
+            }, [])
+
+            return {
+                products,
+                loading,
+                error,
+                refetch: gettingProducts
+            }
         }
-    }
-
-    useEffect(() => {
-        gettingProducts()
-    }, [])
-
-    return {
-        products,
-        loading,
-        error,
-        refetch: gettingProducts
-    }
-}

@@ -1,22 +1,50 @@
-import type { AuthUser } from "../types/auth.types"
+import type {
+  AuthSession
+} from "../types/auth.types"
 
-const AUTH_STORAGE_KEY = "auth_user"
+import {
+  AUTH_STORAGE_KEY
+} from "../constants/auth.constants"
 
-export const saveAuthUser = (user: AuthUser) => {
+/**
+ * SAVE SESSION
+ */
+export const saveSession = (
+  session: AuthSession
+) => {
   localStorage.setItem(
     AUTH_STORAGE_KEY,
-    JSON.stringify(user)
+    JSON.stringify(session)
   )
 }
 
-export const getAuthUser = (): AuthUser | null => {
-  const storedUser = localStorage.getItem(AUTH_STORAGE_KEY)
+/**
+ * GET SESSION
+ */
+export const getSession =
+  (): AuthSession | null => {
 
-  if (!storedUser) return null
+    const storedSession =
+      localStorage.getItem(
+        AUTH_STORAGE_KEY
+      )
 
-  return JSON.parse(storedUser)
+    if (!storedSession) {
+      return null
+    }
+
+    try {
+      return JSON.parse(storedSession)
+    } catch {
+      return null
+    }
 }
 
-export const removeAuthUser = () => {
-  localStorage.removeItem(AUTH_STORAGE_KEY)
+/**
+ * REMOVE SESSION
+ */
+export const removeSession = () => {
+  localStorage.removeItem(
+    AUTH_STORAGE_KEY
+  )
 }

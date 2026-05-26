@@ -2,6 +2,7 @@ Listado de rutas de carpetas para el volumen Documentos
 El n£mero de serie del volumen es A328-E5B0
 D:.
 ³   profile_feature_folder.txt
+³   profile_feature_folder_tree.txt
 ³   
 ÃÄÄÄcomponents
 ³   ÃÄÄÄInfoCard
@@ -33,10 +34,14 @@ D:.
 ³           ProfileSidebar.tsx
 ³           
 ÃÄÄÄhooks
+³       useProfile.ts
+³       
 ÃÄÄÄpages
 ³       ProfilePage.tsx
 ³       
 ÃÄÄÄservices
+³       profile.service.ts
+³       
 ÃÄÄÄtypes
 ³       profile.types.ts
 ³       

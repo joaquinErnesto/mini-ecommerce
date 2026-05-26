@@ -3,40 +3,51 @@ import type { ReactNode } from "react"
 
 import { useAuth } from "../context/useAuth"
 
+import { AuthLoader } from
+  "../components/AuthLoader/AuthLoader"
+
+import { AUTH_ROUTES } from "../constants/auth.constants"
+
 interface Props {
-    children: ReactNode
+  children: ReactNode
 }
 
 export const GuestRoute = ({
-    children
+  children
 }: Props) => {
 
-    const {
-        isAuthenticated,
-        loading
-    } = useAuth()
+  const {
+    isAuthenticated,
+    loading
+  } = useAuth()
 
-    // Optional loading state
-    if (loading) {
-        return (
-            <div
-                style={{
-                    minHeight: "60vh",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center"
-                }}
-            >
-                <p>Loading profile...</p>
-            </div>
-        )
-    }
+  /**
+   * Checking session
+   */
+  if (loading) {
 
-    // Already authenticated
-    if (isAuthenticated) {
-        return <Navigate to="/profile" replace />
-    }
+    return (
+      <AuthLoader
+        text="Checking authentication..."
+      />
+    )
+  }
 
-    // Not authenticated
-    return children
+  /**
+   * Already authenticated
+   */
+  if (isAuthenticated) {
+
+    return (
+      <Navigate
+        to={AUTH_ROUTES.PROFILE}
+        replace
+      />
+    )
+  }
+
+  /**
+   * Guest only
+   */
+  return children
 }

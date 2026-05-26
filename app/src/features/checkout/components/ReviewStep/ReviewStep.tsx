@@ -53,10 +53,13 @@ export const ReviewStep = () => {
       clearCart();
       resetCheckout();
 
-    } catch (error: any) {
-      console.error("❌ ORDER FAILED:", error.message);
+    } catch (error: unknown) {
 
-      setStatus("error");
+      if (error instanceof Error) {
+        console.error("❌ ORDER FAILED:", error.message)
+      }
+
+      setStatus("error")
     }
   };
 

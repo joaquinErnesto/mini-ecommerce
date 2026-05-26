@@ -7,6 +7,8 @@ import { AuthButton } from "../AuthButton/AuthButton"
 
 import { useAuth } from "../../context/useAuth"
 
+import { AUTH_MESSAGES, AUTH_ROUTES } from "../../constants/auth.constants"
+
 import "./LoginForm.css"
 
 export const LoginForm = () => {
@@ -55,15 +57,15 @@ export const LoginForm = () => {
                 password: form.password
             })
 
-            toast.success("Welcome back!")
+            toast.success(AUTH_MESSAGES.LOGIN_SUCCESS)
 
-            navigate("/profile")
+            navigate(AUTH_ROUTES.PROFILE)
 
         } catch (error) {
 
             console.error(error)
 
-            toast.error("Invalid credentials")
+            toast.error(AUTH_MESSAGES.LOGIN_ERROR)
 
         } finally {
             setLoading(false)

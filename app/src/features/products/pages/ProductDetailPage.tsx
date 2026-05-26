@@ -23,7 +23,7 @@ export const ProductDetailPage = () => {
 
                 const data = await getProductById(Number(id))
                 setProduct(data)
-            } catch (err) {
+            } catch {
                 setError("Error loading product")
             } finally {
                 setLoading(false)
