@@ -18,6 +18,21 @@ export const ProfileSidebar = () => {
     logout
   } = useAuth()
 
+  const scrollToSection = (
+    sectionId: string
+  ) => {
+
+    const element =
+      document.getElementById(sectionId)
+
+    if (!element) return
+
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    })
+  }
+
   const handleLogout = () => {
 
     logout()
@@ -62,19 +77,36 @@ export const ProfileSidebar = () => {
 
       <nav className="profile-sidebar-nav">
 
-        <button className="active">
+        <button 
+          className="active"
+          onClick={() => 
+            scrollToSection("account-info")
+          }
+        >
           Account Info
         </button>
 
-        <button>
+        <button
+         onClick={() => 
+          scrollToSection("orders")
+         }
+        >
           Orders
         </button>
 
-        <button>
+        <button
+          onClick={() => 
+            scrollToSection("security")
+          }
+        >
           Security
         </button>
 
-        <button>
+        <button
+          onClick={() => 
+            scrollToSection("preferences")
+          }
+        >
           Preferences
         </button>
 

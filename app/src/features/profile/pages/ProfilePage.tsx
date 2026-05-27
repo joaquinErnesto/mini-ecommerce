@@ -1,4 +1,5 @@
 import { useProfile } from "../hooks/useProfile"
+import { useNavigate } from "react-router-dom"
 
 import { ProfileLayout } from "../components/ProfileLayout/ProfileLayout"
 import { ProfileSidebar } from "../components/ProfileSidebar/ProfileSidebar"
@@ -8,6 +9,8 @@ import { InfoCard } from "../components/InfoCard/InfoCard"
 import { OrderCard } from "../components/OrderCard/OrderCard"
 import { PreferenceToggle } from "../components/PreferenceToggle/PreferenceToggle"
 
+import "./ProfilePage.css"
+
 export const ProfilePage = () => {
 
   const {
@@ -16,6 +19,8 @@ export const ProfilePage = () => {
     error,
     refetch
   } = useProfile()
+
+  const navigate = useNavigate()
 
   if (loading) {
     return (
@@ -45,54 +50,58 @@ export const ProfilePage = () => {
     >
 
       {/* PERSONAL INFO */}
-      <ProfileSection>
+      <div id="account-info">
+        <ProfileSection>
 
-        <ProfileHeader
-          badge="Identity Details"
-          title="Personal Information"
-          action="Edit Profile"
-        />
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "1.5rem"
-          }}
-        >
-
-          <InfoCard
-            label="Full Name"
-            value={profile.fullName}
+          <ProfileHeader
+            badge="Identity Details"
+            title="Personal Information"
+            action="Edit Profile"
           />
 
-          <InfoCard
-            label="Email"
-            value={profile.email}
-          />
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(250px, 1fr))",
+              gap: "1.5rem"
+            }}
+          >
 
-          <InfoCard
-            label="Phone"
-            value={profile.phone}
-          />
+            <InfoCard
+              label="Full Name"
+              value={profile.fullName}
+            />
 
-          <InfoCard
-            label="Location"
-            value={profile.location}
-          />
+            <InfoCard
+              label="Email"
+              value={profile.email}
+            />
 
-        </div>
+            <InfoCard
+              label="Phone"
+              value={profile.phone}
+            />
 
-      </ProfileSection>
+            <InfoCard
+              label="Location"
+              value={profile.location}
+            />
+
+          </div>
+
+        </ProfileSection>
+      </div>    
 
       {/* ORDERS */}
-      <div>
+      <div 
+        id="orders"
+        className="order-section"
+      >
 
         <ProfileHeader
           badge="Acquisitions"
           title="Recent Orders"
-          action="View All"
         />
 
         <div
@@ -129,6 +138,17 @@ export const ProfilePage = () => {
           )}
 
         </div>
+        
+        <div className="view-all-button-container">
+          <button
+            className="view-all-button"
+            onClick={() =>
+              navigate("/profile/orders")
+            }
+          >
+            View All
+          </button>
+        </div>
 
       </div>
 
@@ -143,62 +163,66 @@ export const ProfilePage = () => {
       >
 
         {/* SECURITY */}
-        <ProfileSection>
+        <div id="security">
+          <ProfileSection>
 
-          <ProfileHeader
-            badge="Protection"
-            title="Security"
-          />
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.5rem"
-            }}
-          >
-
-            <PreferenceToggle
-              title="2-Factor Authentication"
-              description="Enhanced security for your account"
-              checked={profile.preferences.twoFactorAuth}
+            <ProfileHeader
+              badge="Protection"
+              title="Security"
             />
 
-          </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem"
+              }}
+            >
 
-        </ProfileSection>
+              <PreferenceToggle
+                title="2-Factor Authentication"
+                description="Enhanced security for your account"
+                checked={profile.preferences.twoFactorAuth}
+              />
+
+            </div>
+
+          </ProfileSection>
+        </div>
 
         {/* PREFERENCES */}
-        <ProfileSection>
+        <div id="preferences">
+          <ProfileSection>
 
-          <ProfileHeader
-            badge="Customization"
-            title="Preferences"
-          />
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1.5rem"
-            }}
-          >
-
-            <PreferenceToggle
-              title="Newsletter"
-              description="Weekly drops and updates"
-              checked={profile.preferences.newsletter}
+            <ProfileHeader
+              badge="Customization"
+              title="Preferences"
             />
 
-            <PreferenceToggle
-              title="Push Notifications"
-              description="Receive realtime updates"
-              checked={profile.preferences.pushNotifications}
-            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem"
+              }}
+            >
 
-          </div>
+              <PreferenceToggle
+                title="Newsletter"
+                description="Weekly drops and updates"
+                checked={profile.preferences.newsletter}
+              />
 
-        </ProfileSection>
+              <PreferenceToggle
+                title="Push Notifications"
+                description="Receive realtime updates"
+                checked={profile.preferences.pushNotifications}
+              />
+
+            </div>
+
+          </ProfileSection>
+        </div>
 
       </div>
 

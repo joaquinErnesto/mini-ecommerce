@@ -1,0 +1,32 @@
+/* .order-section {
+    border: 1px solid white;
+} */
+
+.view-all-button-container {
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid white; */
+}
+
+.view-all-button {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* border: 1px solid var(--white-color); */
+    border-radius: var(--radius-md);
+
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--primary-color);
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    padding: var(--spacing-md);
+    margin: var(--spacing-md);
+
+    transition: 0.25s ease;
+}
+
+.view-all-button:hover {
+  transform: translateY(2px);
+  background: rgba(255, 255, 255, 0.05);
+}
