@@ -1,8 +1,9 @@
-import type { OrderItem } from "../../types/profile.types"
+import type { Order } from "../../../orders/types/order.types"
+
 import "./OrderCard.css"
 
 interface Props {
-  order: OrderItem
+  order: Order
 }
 
 export const OrderCard = ({ order }: Props) => {

@@ -3,6 +3,10 @@ import { useCheckout } from "../../context/useCheckout";
 import { useCart } from "../../../cart/context/useCart";
 import { SummaryItem } from "../SummaryItem/SummaryItem";
 import { submitOrder } from "../../services/checkout.api";
+
+import { createOrder } from "../../../orders/services/orders.service";
+import { getSession } from "../../../auth/utils/authStorage";
+
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -47,6 +51,17 @@ export const ReviewStep = () => {
       const response = await orderPromise;
 
       console.log("✅ ORDER SUCCESS:", response);
+
+      const session =
+        getSession()
+
+      if (session) {
+
+        createOrder(
+          session.user.id,
+          items
+        )
+      }
 
       setStatus("success");
 

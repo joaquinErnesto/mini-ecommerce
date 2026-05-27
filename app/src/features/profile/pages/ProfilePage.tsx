@@ -103,12 +103,30 @@ export const ProfilePage = () => {
           }}
         >
 
-          {profile.orders.map((order) => (
-            <OrderCard
-              key={order.id}
-              order={order}
-            />
-          ))}
+          {profile.orders.length === 0 ? (
+
+            <div
+              style={{
+                padding: "2rem",
+                border: "1px dashed #374151",
+                borderRadius: "16px",
+                textAlign: "center",
+                color: "#9ca3af"
+              }}
+            >
+              No orders yet.
+            </div>
+
+          ) : (
+
+            profile.orders.map((order) => (
+              <OrderCard
+                key={order.id}
+                order={order}
+              />
+            ))
+
+          )}
 
         </div>
 

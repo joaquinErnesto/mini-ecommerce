@@ -1,11 +1,5 @@
-export interface OrderItem {
-  id: string
-  productName: string
-  image: string
-  date: string
-  status: "Delivered" | "Processed" | "Pending"
-  total: number
-}
+import type { Order }
+from "../../orders/types/order.types"
 
 export interface UserPreferences {
   newsletter: boolean
@@ -20,6 +14,8 @@ export interface ProfileData {
   location: string
   role: string
   image: string
+
   preferences: UserPreferences
-  orders: OrderItem[]
+
+  orders: Order[]
 }
