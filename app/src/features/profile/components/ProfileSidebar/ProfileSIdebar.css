@@ -83,7 +83,7 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-.profile-sidebar-nav button.active {
+.profile-sidebar-nav button.active:hover {
   background: rgba(59, 130, 246, 0.2);
   color: white;
 }

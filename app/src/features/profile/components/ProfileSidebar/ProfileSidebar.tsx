@@ -87,14 +87,16 @@ export const ProfileSidebar = () => {
         </button>
 
         <button
-         onClick={() => 
-          scrollToSection("orders")
-         }
+          className="active"
+          onClick={() => 
+            scrollToSection("orders")
+          }
         >
           Orders
         </button>
 
         <button
+          className="active"
           onClick={() => 
             scrollToSection("security")
           }
@@ -103,6 +105,7 @@ export const ProfileSidebar = () => {
         </button>
 
         <button
+          className="active"
           onClick={() => 
             scrollToSection("preferences")
           }
