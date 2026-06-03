@@ -1,0 +1,39 @@
+.orders-filters {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .75rem;
+
+    margin-bottom: 2rem;
+}
+
+.orders-filters button {
+    border: none;
+
+    cursor: pointer;
+
+    padding:
+      .75rem 1rem;
+
+    border-radius: 999px;
+
+    background:
+      rgba(255,255,255,.04);
+
+    color: #9ca3af;
+
+    font-weight: 600;
+
+    transition: .25s;
+}
+
+.orders-filters button:hover {
+    color: white;
+}
+
+.orders-filters button.active {
+    background: #89acff;
+
+    color: black;
+}

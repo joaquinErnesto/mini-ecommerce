@@ -16,7 +16,7 @@ export const AuthLoader = ({
         <div className="auth-loader-spinner" />
 
         <h2>
-          ELECTRIC NOIR
+          Mini E-Commerce
         </h2>
 
         <p>

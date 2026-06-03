@@ -1,0 +1,43 @@
+.orders-header {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+.orders-header-badge {
+    color: #89acff;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+.orders-header h1 {
+    font-size: 3rem;
+
+    font-weight: 800;
+
+    color: white;
+
+    margin: 0;
+}
+
+.orders-header p {
+    color: #9ca3af;
+
+    margin-top: .5rem;
+}
+
+@media (max-width: 768px) {
+
+    .orders-header h1 {
+        font-size: 2rem;
+    }
+}

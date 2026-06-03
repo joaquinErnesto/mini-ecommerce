@@ -7,9 +7,9 @@ export const ContactInfoPanel = () => {
       {/* CONTACT */}
       <ContactCard title="Direct Contact">
         <p className="text-2xl font-medium text-white">
-          curator@electricnoir.com
+          support@mini-ecommerce.com
         </p>
-        <p className="text-gray-400">+1 (888) NOIR-STUDIO</p>
+        <p className="text-gray-400">+1 (888) 123-4567</p>
       </ContactCard>
 
       {/* SOCIAL */}

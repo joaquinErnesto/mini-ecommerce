@@ -9,8 +9,8 @@ export const LoginPage = () => {
     <AuthLayout>
       <AuthCard>
         <AuthHeader
-          title="ELECTRIC NOIR"
-          subtitle="Digital Curator Portal"
+          title="Mini E-Commerce"
+          subtitle="Product Marketplace Portal"
         />
 
         <LoginForm />

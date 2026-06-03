@@ -8,7 +8,7 @@ export const PrivacyHeader = () => {
             <h1>Privacy Policy</h1>
 
             <p>
-                At ELECTRIC NOIR, transparency is our primary currency. 
+                At Mini E-Commerce, transparency is our primary currency. 
                 We believe your data should be protected as the excellence we deliver.
             </p>
         </header>

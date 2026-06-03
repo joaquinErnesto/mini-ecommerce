@@ -1,0 +1,121 @@
+.order-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    padding: 1.5rem;
+
+    border-radius: 18px;
+
+    background:
+      rgba(255,255,255,0.03);
+
+    border:
+      1px solid
+      rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(12px);
+
+    transition:
+      transform .25s ease,
+      border .25s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-3px);
+
+    border-color:
+      rgba(137,172,255,.25);
+}
+
+.order-card-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    flex: 1;
+}
+
+.order-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.order-card-top {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.order-card-top h3 {
+    margin: 0;
+
+    color: white;
+
+    font-size: 1rem;
+}
+
+.order-card-info p {
+    color: #d1d5db;
+}
+
+.order-card-meta {
+    display: flex;
+    gap: 1rem;
+
+    color: #9ca3af;
+
+    font-size: 0.875rem;
+}
+
+.order-card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
+
+.order-total {
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    color: #89acff;
+}
+
+.order-card-right button {
+    border: none;
+
+    cursor: pointer;
+
+    padding: 0.75rem 1rem;
+
+    border-radius: 10px;
+
+    background:
+      rgba(137,172,255,.1);
+
+    color: #89acff;
+
+    font-weight: 600;
+}
+
+.order-card-right button:hover {
+    background: #89acff;
+    color: black;
+}
+
+@media (max-width: 768px) {
+
+    .order-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .order-card-right {
+        align-items: stretch;
+    }
+}

@@ -15,9 +15,9 @@ export const TermsPage = () => {
 
                     <TermsSection
                         number="01"
-                        title="The Digital Curator’s License"
+                        title="The Digital Marketplace License"
                         content={[
-                            "Electric Noir grants you a personal, non-transferable license to access our digital boutique.",
+                            "Mini E-Commerce grants you a personal, non-transferable license to access our online marketplace.",
                             "We reserve the right to revoke access if misuse is detected."
                         ]}
                     />
