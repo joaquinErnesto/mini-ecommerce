@@ -29,9 +29,10 @@ export const OrderCard = ({
       <div className="order-card-left">
 
         <OrderImage
-          image={order.image}
-          productName={
-            order.productName
+          images={
+            order.items.map(
+              item => item.image
+            )
           }
         />
 
@@ -56,7 +57,11 @@ export const OrderCard = ({
           </div>
 
           <p>
-            {order.productName}
+            {order.items[0]?.title}
+
+            {order.items.length > 1 && (
+              ` + ${order.items.length - 1} more`
+            )}
           </p>
 
           <div
@@ -68,7 +73,7 @@ export const OrderCard = ({
             </span>
 
             <span>
-              Qty: {order.quantity}
+              Items: {order.totalItems}
             </span>
 
           </div>

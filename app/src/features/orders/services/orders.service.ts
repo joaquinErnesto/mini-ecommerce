@@ -17,51 +17,41 @@ export const createOrder = (
   items: CartItem[]
 ) => {
 
-  const existingOrders =
-    getOrdersByUser(userId)
+  const order: Order = {
+    id: `ORD-${Date.now()}`,
 
-  const newOrders: Order[] =
-    items.map((item) => ({
-      id:
-        `ORD-${Date.now()}-${item.id}`,
+    userId,
 
-      userId,
+    items: items.map(item => ({
+      productId: item.id,
+      title: item.title,
+      image: item.image,
+      quantity: item.quantity,
+      price: item.price
+    })),
 
-      productName:
-        item.title,
+    totalItems: items.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    ),
 
-      image:
-        item.image,
+    total: items.reduce(
+      (acc, item) =>
+        acc + item.price * item.quantity,
+      0
+    ),
 
-      quantity:
-        item.quantity,
+    status: "Processed",
 
-      total:
-        item.price *
-        item.quantity,
+    date: new Date().toLocaleDateString()
+  }
 
-      status:
-        "Processed",
-
-      date:
-        new Date()
-          .toLocaleDateString()
-    }))
-
-  newOrders.forEach(
-    (order: Order) => {
-
-      saveOrderForUser(
-        userId,
-        order
-      )
-    }
+  saveOrderForUser(
+    userId,
+    order
   )
 
-  return [
-    ...newOrders,
-    ...existingOrders
-  ]
+  return order
 }
 
 /**

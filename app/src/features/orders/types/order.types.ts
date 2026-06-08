@@ -4,16 +4,22 @@ export type OrderStatus =
   | "Delivered"
   | "Cancelled"
 
+export interface OrderItem {
+  productId: number
+  title: string
+  image: string
+  quantity: number
+  price: number
+}
+
 export interface Order {
   id: string
 
   userId: number
 
-  productName: string
+  items: OrderItem[]
 
-  image: string
-
-  quantity: number
+  totalItems: number
 
   total: number
 

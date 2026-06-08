@@ -12,7 +12,7 @@ export const AboutHero = () => {
         <p className="hero-label">Manifesto v.01</p>
 
         <h1>
-          The <span className="text-blue-color italic">Digital</span> Curator
+          The <span className="text-blue-color italic">Product</span> Marketplace
         </h1>
 
         <p>

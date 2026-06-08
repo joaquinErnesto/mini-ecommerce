@@ -5,12 +5,12 @@ export const HeroSection = () => {
 
             <div className="hero-content">
                 <span className="hero-subtitle">
-                    Curated Excellence
+                    Excellence
                 </span>
 
                 <h1>
-                    THE <span className="highlight">DIGITAL</span><br />
-                    CURATOR
+                    THE <span className="highlight">PRODUCT</span><br />
+                    MARKETPLACE
                 </h1>
 
                 <p>

@@ -36,7 +36,7 @@ export const ContactForm = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 text-gray-400 text-xs">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              Curators Online
+              Support Online
             </div>
 
             <button className="btn-primary">

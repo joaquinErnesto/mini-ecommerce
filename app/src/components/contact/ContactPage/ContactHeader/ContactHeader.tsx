@@ -6,12 +6,12 @@ export const ContactHeader = () => {
       </p>
 
       <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
-        Connect with the <span className="text-blue-color">Noir</span>.
+        Connect with Mini E-Commerce.
       </h1>
 
       <p className="text-gray-400 max-w-2xl text-lg leading-relaxed">
-        Whether you're seeking a bespoke curation or need assistance,
-        our digital concierge is at your service.
+        Whether you need help with an order or product selection,
+        our support team is at your service.
       </p>
     </header>
   )
