@@ -1,9 +1,6 @@
-import "./OrderCard.css"
+import { useNavigate } from "react-router-dom"
 
-import {
-  OrderImage
-}
-from "../OrderImage/OrderImage"
+import "./OrderCard.css"
 
 import {
   OrderStatusBadge
@@ -23,18 +20,12 @@ export const OrderCard = ({
   order
 }: Props) => {
 
+  const navigate = useNavigate()
+
   return (
     <article className="order-card">
 
       <div className="order-card-left">
-
-        <OrderImage
-          images={
-            order.items.map(
-              item => item.image
-            )
-          }
-        />
 
         <div
           className="order-card-info"
@@ -95,7 +86,13 @@ export const OrderCard = ({
           )}
         </span>
 
-        <button>
+        <button
+          onClick={() => 
+            navigate(
+              `/profile/orders/${order.id}`
+            )
+          }
+        >
           Details
         </button>
 

@@ -1,15 +1,15 @@
-import { useProfile } from "../hooks/useProfile"
-import { useNavigate } from "react-router-dom"
+import { useProfile } from "../hooks/useProfile";
+import { useNavigate } from "react-router-dom";
 
-import { ProfileLayout } from "../components/ProfileLayout/ProfileLayout"
-import { ProfileSidebar } from "../components/ProfileSidebar/ProfileSidebar"
-import { ProfileSection } from "../components/ProfileSection/ProfileSection"
-import { ProfileHeader } from "../components/ProfileHeader/ProfileHeader"
-import { InfoCard } from "../components/InfoCard/InfoCard"
-import { OrderCard } from "../components/OrderCard/OrderCard"
-import { PreferenceToggle } from "../components/PreferenceToggle/PreferenceToggle"
+import { ProfileLayout } from "../components/ProfileLayout/ProfileLayout";
+import { ProfileSidebar } from "../components/ProfileSidebar/ProfileSidebar";
+import { ProfileSection } from "../components/ProfileSection/ProfileSection";
+import { ProfileHeader } from "../components/ProfileHeader/ProfileHeader";
+import { InfoCard } from "../components/InfoCard/InfoCard";
+import { OrderCard } from "../components/OrderCard/OrderCard";
+import { PreferenceToggle } from "../components/PreferenceToggle/PreferenceToggle";
 
-import "./ProfilePage.css"
+import "./ProfilePage.css";
 
 export const ProfilePage = () => {
 
@@ -128,12 +128,14 @@ export const ProfilePage = () => {
 
           ) : (
 
-            profile.orders.map((order) => (
-              <OrderCard
-                key={order.id}
-                order={order}
-              />
-            ))
+            profile.orders
+              .slice(0, 3)
+              .map((order) => (
+                <OrderCard
+                  key={order.id}
+                  order={order}
+                />
+              ))
 
           )}
 

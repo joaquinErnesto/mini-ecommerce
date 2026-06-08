@@ -60,16 +60,21 @@
 }
 
 .order-card-info p {
-    color: #d1d5db;
+    color: var(--off-white-color);
+
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .order-card-meta {
     display: flex;
     gap: 1rem;
 
-    color: #9ca3af;
+    color: var(--off-gray-color);
 
     font-size: 0.875rem;
+
+    margin-top: .25rem;
 }
 
 .order-card-right {
