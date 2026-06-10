@@ -1,21 +1,36 @@
 import "./ShippingForm.css";
 import { InputField } from "../InputField/InputField";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCheckout } from "../../context/useCheckout";
+import { useAuth } from "../../../auth/context/useAuth";
 import { useCart } from "../../../cart/context/useCart";
+
 import toast from "react-hot-toast";
 
 export const ShippingForm = () => {
-  const { setShipping, setStep } = useCheckout()
+  const { state, setShipping, setStep } = useCheckout()
+  const { user } = useAuth()
   const { items } = useCart()
 
   const [form, setForm] = useState({
-    fullName: "",
-    address: "",
-    city: "",
-    country: "",
-    zipCode: ""
+    fullName: state.shipping.fullName,
+    address: state.shipping.address,
+    city: state.shipping.city,
+    country: state.shipping.country,
+    zipCode: state.shipping.zipCode
   })
+
+  useEffect(() => {
+
+    setForm({
+      fullName: state.shipping.fullName,
+      address: state.shipping.address,
+      city: state.shipping.city,
+      country: state.shipping.country,
+      zipCode: state.shipping.zipCode
+    })
+
+  }, [state.shipping])
 
   const [errors, setErrors] = useState<{ [key: string]: string}>({})
 

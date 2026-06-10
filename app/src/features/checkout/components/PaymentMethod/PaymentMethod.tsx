@@ -1,5 +1,8 @@
 import "./PaymentMethod.css";
-import { useState, useCallback } from "react";
+import { useState, 
+         useCallback,
+         useEffect 
+} from "react";
 import { useCheckout } from "../../context/useCheckout";
 import { PaymentOption } from "../PaymentOption/PaymentOption";
 
@@ -10,25 +13,110 @@ import { TransferPaymentForm } from "./TransferPaymentForm/TransferPaymentForm";
 import toast from "react-hot-toast";
 
 export const PaymentMethod = () => {
-  const [cardNumber, setCardNumber] = useState("")
-  const [cardHolder, setCardHolder] = useState("")
-  const [expMonth, setExpMonth] = useState("")
-  const [expYear, setExpYear] = useState("")
+  const { state, 
+          setPayment, 
+          setStep 
+  } = useCheckout()
+
+  const [cardNumber, setCardNumber] = 
+    useState(
+      state.payment.cardHolder || ""
+    )
+
+  const [cardHolder, setCardHolder] = 
+    useState(
+      state.payment.cardHolder || ""
+    )
+
+  const [expMonth, setExpMonth] = 
+    useState(
+      state.payment.expMonth || ""
+    )
+
+  const [expYear, setExpYear] = 
+    useState(
+      state.payment.expYear || ""
+    )
   
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({})
 
-  const { setPayment, setStep } = useCheckout()
-
-  const [selected, setSelected] = useState<"Card" | "Crypto" | "Transfer" | "">("")
+  const [selected, setSelected] = 
+    useState<
+      "Card" | "Crypto" | "Transfer" | ""
+    >(
+      state.payment.method || ""  
+    )
 
   // Crypto
-  const [walletAddress, setWalletAddress] = useState("")
-  const [network, setNetwork] = useState("")
+  const [walletAddress, setWalletAddress] = 
+    useState(
+      state.payment.walletAddress || ""
+    )
+
+  const [network, setNetwork] = 
+    useState(
+      state.payment.network || ""
+    )
 
   // Transfer
-  const [bankName, setBankName] = useState("")
-  const [accountNumber, setAccountNumber] = useState("")
-  const [accountHolder, setAccountHolder] = useState("")
+  const [bankName, setBankName] = 
+    useState(
+      state.payment.bankName || ""
+    )
+
+  const [accountNumber, setAccountNumber] = 
+    useState(
+      state.payment.accountNumber || ""
+    )
+
+  const [accountHolder, setAccountHolder] = 
+    useState(
+      state.payment.accountHolder || ""
+    )
+  
+  useEffect(() => {
+
+    setSelected(
+      state.payment.method || ""
+    )
+
+    setCardNumber(
+      state.payment.cardNumber || ""
+    )
+
+    setCardHolder(
+      state.payment.cardHolder || ""
+    )
+
+    setExpMonth(
+      state.payment.expMonth || ""
+    )
+
+    setExpYear(
+      state.payment.expYear || ""
+    )
+
+    setWalletAddress(
+      state.payment.walletAddress || ""
+    )
+
+    setNetwork(
+      state.payment.network || ""
+    )
+
+    setBankName(
+      state.payment.bankName || ""
+    )
+
+    setAccountNumber(
+      state.payment.accountNumber || ""
+    )
+
+    setAccountHolder(
+      state.payment.accountHolder || ""
+    )
+
+  }, [state.payment])
 
   type PaymentMethodType = "Card" | "Crypto" | "Transfer"
 

@@ -141,16 +141,30 @@ export const ProfilePage = () => {
 
         </div>
         
-        <div className="view-all-button-container">
-          <button
-            className="view-all-button"
-            onClick={() =>
-              navigate("/profile/orders")
-            }
+        {profile.orders.length > 3 && (
+          <p
+            style={{
+              textAlign: "center",
+              color: "var(--off-gray-color)",
+              marginTop: "var(--spacing-sm)"
+            }}
           >
-            View All
-          </button>
-        </div>
+            Showing 3 of {profile.orders.length} orders
+          </p>
+        )}
+
+        {profile.orders.length > 0 && (
+          <div className="view-all-button-container">
+            <button
+              className="view-all-button"
+              onClick={() =>
+                navigate("/profile/orders")
+              }
+            >
+              View All
+            </button>
+          </div>
+        )}  
 
       </div>
 

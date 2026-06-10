@@ -1,6 +1,6 @@
 import type { CartItem }
 from "../../cart/types/cart.types"
-
+import type { ShippingInfo } from "../../checkout/types/checkout.types"
 import type { Order }
 from "../types/order.types"
 
@@ -14,7 +14,8 @@ import {
  */
 export const createOrder = (
   userId: number,
-  items: CartItem[]
+  items: CartItem[],
+  shipping: ShippingInfo
 ) => {
 
   const order: Order = {
@@ -43,7 +44,9 @@ export const createOrder = (
 
     status: "Processed",
 
-    date: new Date().toLocaleDateString()
+    date: new Date().toLocaleDateString(),
+
+    shipping
   }
 
   saveOrderForUser(

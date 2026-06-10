@@ -59,7 +59,8 @@ export const ReviewStep = () => {
 
         createOrder(
           session.user.id,
-          items
+          items, 
+          state.shipping
         )
       }
 

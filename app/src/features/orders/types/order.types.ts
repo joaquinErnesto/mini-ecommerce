@@ -26,4 +26,12 @@ export interface Order {
   status: OrderStatus
 
   date: string
+
+  shipping: {
+    fullName: string
+    address: string
+    city: string
+    country: string
+    zipCode: string
+  }
 }
