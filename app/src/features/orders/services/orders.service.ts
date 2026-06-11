@@ -68,3 +68,19 @@ export const getUserOrders = (
     userId
   )
 }
+
+/**
+ * GET ORDER BY ID
+ */
+export const getOrderById = (
+  userId: number,
+  orderId: string
+): Order | undefined => {
+
+  const orders =
+    getOrdersByUser(userId)
+
+  return orders.find(
+    (order) => order.id === orderId
+  )
+}

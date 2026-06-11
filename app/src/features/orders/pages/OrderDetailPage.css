@@ -1,0 +1,12 @@
+.order-detail-page {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}

@@ -80,21 +80,6 @@ export const OrderCard = ({
 
       </div>
 
-      <div
-        className="order-card-right"
-      >
-
-        <span
-          className="order-total"
-        >
-          $
-          {order.total.toFixed(
-            2
-          )}
-        </span>
-
-      </div>
-
     </article>
   )
 }

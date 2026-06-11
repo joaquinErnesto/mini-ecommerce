@@ -21,6 +21,8 @@
     transition:
       transform .25s ease,
       border .25s ease;
+    
+      cursor: pointer;
 }
 
 .order-card:hover {
@@ -28,6 +30,10 @@
 
     border-color:
       rgba(137,172,255,.25);
+
+    box-shadow: 
+        0 8px 24px
+      rgba(137, 172, 255, .1)
 }
 
 .order-card-left {
@@ -89,28 +95,6 @@
     font-weight: 700;
 
     color: #89acff;
-}
-
-.order-card-right button {
-    border: none;
-
-    cursor: pointer;
-
-    padding: 0.75rem 1rem;
-
-    border-radius: 10px;
-
-    background:
-      rgba(137,172,255,.1);
-
-    color: #89acff;
-
-    font-weight: 600;
-}
-
-.order-card-right button:hover {
-    background: #89acff;
-    color: black;
 }
 
 @media (max-width: 768px) {

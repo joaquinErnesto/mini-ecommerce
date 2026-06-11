@@ -1,0 +1,18 @@
+.order-summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order-summary-card div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-summary-card span {
+  color: #9ca3af;
+}
+
+.order-summary-card strong {
+  color: white;
+}
