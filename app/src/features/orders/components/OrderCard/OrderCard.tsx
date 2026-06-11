@@ -23,7 +23,14 @@ export const OrderCard = ({
   const navigate = useNavigate()
 
   return (
-    <article className="order-card">
+    <article 
+      className="order-card"
+      onClick={() =>
+        navigate(
+          `/profile/orders/${order.id}`
+        )
+      }
+    >
 
       <div className="order-card-left">
 
@@ -85,16 +92,6 @@ export const OrderCard = ({
             2
           )}
         </span>
-
-        <button
-          onClick={() => 
-            navigate(
-              `/profile/orders/${order.id}`
-            )
-          }
-        >
-          Details
-        </button>
 
       </div>
 

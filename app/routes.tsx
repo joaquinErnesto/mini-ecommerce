@@ -10,6 +10,7 @@ import { ContactPage } from "./src/components/contact/ContactPage";
 import { AboutPage } from "./src/components/about/AboutPage";
 import { CartPage } from "./src/features/cart/pages/CartPage";
 import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
+import { OrderSuccessPage } from "./src/features/checkout/pages/OrderSuccessPage";
 import { CheckoutGuard } from "./src/features/checkout/guards/CheckoutGuard";
 import { LoginPage } from "./src/features/auth/pages/LoginPage";
 import { ProfilePage } from "./src/features/profile/pages/ProfilePage";
@@ -75,6 +76,19 @@ export const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
                 errorElement: <p>Something went wrong loading checkout.</p>
+            },
+            {
+                path: "checkout/success",
+                element: (
+                    <ProtectedRoute>
+                        <OrderSuccessPage />
+                    </ProtectedRoute>
+                ),
+                errorElement: (
+                    <p>
+                        Something went wrong loading order confirmation.
+                    </p>
+                )
             },
             {
                 path: "login",

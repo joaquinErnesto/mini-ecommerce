@@ -64,10 +64,10 @@ export const ReviewStep = () => {
         )
       }
 
-      setStatus("success");
-
       clearCart();
       resetCheckout();
+
+      window.location.href = "/checkout/success";
 
     } catch (error: unknown) {
 
