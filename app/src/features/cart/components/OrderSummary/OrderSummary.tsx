@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useAuth } from "../../../auth/context/useAuth";
+
 import "./OrderSummary.css";
 
 interface Props {
@@ -14,7 +17,25 @@ export const OrderSummary: React.FC<Props> = ({
   shipping,
 }) => {
   const total = subtotal + tax + shipping;
+  
+  const handleCheckout = () => {
+    if (subtotal === 0) return
+
+    if (!isAuthenticated) {
+      navigate("/login", {
+        state: {
+          from: "/checkout"
+        }
+      })
+
+      return
+    }
+
+    navigate("/checkout")
+  }
+
   const navigate = useNavigate()
+  const { isAuthenticated } = useAuth()
 
   return (
     <div className="summary">
@@ -42,13 +63,16 @@ export const OrderSummary: React.FC<Props> = ({
         <span>${total.toFixed(2)}</span>
       </div>
 
+      {!isAuthenticated && (
+        <p className="checkout-login-warning">
+          Login required to complete your purchase.
+        </p>
+      )}
+
       <button 
         className="btn-primary"
         disabled={subtotal === 0}
-        onClick={() => {
-          if (subtotal === 0) return
-          navigate('/checkout')
-        }}  
+        onClick={handleCheckout}  
       >
         Proceed to Checkout
       </button>

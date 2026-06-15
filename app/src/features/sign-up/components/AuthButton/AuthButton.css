@@ -1,0 +1,27 @@
+.auth-button {
+  width: 100%;
+
+  border: none;
+
+  padding: 16px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--blue-color);
+
+  color: var(--white-color);
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: var(--transition-fast);
+}
+
+.auth-button:hover {
+  opacity: 0.9;
+}
+
+.auth-button:active {
+  transform: scale(0.98);
+}

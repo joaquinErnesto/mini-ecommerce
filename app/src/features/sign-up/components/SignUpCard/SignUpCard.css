@@ -1,0 +1,19 @@
+.signup-card {
+  background:
+    rgba(26, 26, 26, 0.7);
+
+  backdrop-filter: blur(20px);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.05);
+
+  border-radius:
+    var(--radius-lg);
+
+  padding: 32px;
+
+  box-shadow:
+    0 30px 60px
+    rgba(137,172,255,0.08);
+}

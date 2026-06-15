@@ -1,8 +1,11 @@
-import { Navigate } from "react-router-dom"
+import { 
+  Navigate,
+  useLocation 
+} from "react-router-dom"
+
 import type { ReactNode } from "react"
 
 import { useAuth } from "../context/useAuth"
-
 import { AuthLoader } from
   "../components/AuthLoader/AuthLoader"
 
@@ -21,6 +24,8 @@ export const GuestRoute = ({
     loading
   } = useAuth()
 
+  const location = useLocation()
+
   /**
    * Checking session
    */
@@ -37,10 +42,14 @@ export const GuestRoute = ({
    * Already authenticated
    */
   if (isAuthenticated) {
+    
+    const redirectTo =
+      location.state?.from ||
+      AUTH_ROUTES.PROFILE
 
     return (
       <Navigate
-        to={AUTH_ROUTES.PROFILE}
+        to={redirectTo}
         replace
       />
     )

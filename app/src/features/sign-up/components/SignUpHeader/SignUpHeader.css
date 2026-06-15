@@ -1,0 +1,14 @@
+.signup-header {
+  margin-bottom: 24px;
+}
+
+.signup-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+
+  margin-bottom: 8px;
+}
+
+.signup-header p {
+  color: var(--light-gray-color);
+}

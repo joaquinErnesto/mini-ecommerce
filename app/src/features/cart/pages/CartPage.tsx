@@ -1,12 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { CartList } from "../components/CartList/CartList";
 import { OrderSummary } from "../components/OrderSummary/OrderSummary";
-import { useCart } from "../context/useCart";
 import { EmptyCart } from "../components/EmptyCart/EmptyCart";
+
+import { useCart } from "../context/useCart";
+import { useAuth } from "../../auth/context/useAuth";
+
 import "./CartPage.css";
 
 export const CartPage: React.FC = () => {
   const { items, updateQuantity, removeItem } = useCart();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -18,6 +25,15 @@ export const CartPage: React.FC = () => {
   if (items.length === 0) {
     return <EmptyCart />
   }
+
+  const handleCheckout = () => {
+    if (!isAuthenticated) {
+      navigate("/login");
+      return;
+    }
+
+    navigate("/checkout");
+  };
   
   return (
     <div className="cart-page">

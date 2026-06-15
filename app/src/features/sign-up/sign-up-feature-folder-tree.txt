@@ -1,0 +1,46 @@
+Listado de rutas de carpetas para el volumen Documentos
+El n£mero de serie del volumen es A328-E5B0
+D:.
+³   sign-up-feature-folder-tree
+³   
+ÃÄÄÄcomponents
+³   ÃÄÄÄAuthButton
+³   ³       AuthButton.css
+³   ³       AuthButton.tsx
+³   ³       
+³   ÃÄÄÄAuthInput
+³   ³       AuthInput.css
+³   ³       AuthInput.tsx
+³   ³       
+³   ÃÄÄÄSignUpCard
+³   ³       SignUpCard.css
+³   ³       SignUpCard.tsx
+³   ³       
+³   ÃÄÄÄSignUpFields
+³   ³       SIgnUpFields.css
+³   ³       SignUpFields.tsx
+³   ³       
+³   ÃÄÄÄSignUpForm
+³   ³       SignUpForm.css
+³   ³       SignUpForm.tsx
+³   ³       
+³   ÃÄÄÄSignUpHeader
+³   ³       SignUpHeader.css
+³   ³       SignUpHeader.tsx
+³   ³       
+³   ÃÄÄÄTrustIndicator
+³   ³       TrustIndicator.css
+³   ³       TrustIndicator.tsx
+³   ³       
+³   ÀÄÄÄTrustIndicators
+³           TrustIndicators.css
+³           TrustIndicators.tsx
+³           
+ÃÄÄÄhooks
+ÃÄÄÄpages
+³       SignUpPage.css
+³       SignUpPage.tsx
+³       
+ÃÄÄÄservices
+ÃÄÄÄtypes
+ÀÄÄÄutils

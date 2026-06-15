@@ -28,3 +28,14 @@
   margin-top: var(--spacing-lg);
   width: 100%;
 }
+
+.checkout-login-warning {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  font-size: 0.9rem;
+
+  color: #fbbf24;
+
+  text-align: center;
+}
