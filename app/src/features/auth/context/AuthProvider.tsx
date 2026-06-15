@@ -10,12 +10,14 @@ import { AuthContext } from "./AuthContext"
 import type {
   AuthUser,
   LoginCredentials,
+  RegisterCredentials,
   AuthStatus,
   AuthSession
 } from "../types/auth.types"
 
 import {
   loginRequest,
+  registerRequest,
   getCurrentUser,
   refreshTokenRequest
 } from "../services/auth.service"
@@ -118,7 +120,150 @@ export const AuthProvider = ({
       }
 
     }, [])
-  
+
+  /**
+   * INITIAL SESSION CHECK
+   */
+  useEffect(() => {
+    restoreSession()
+  }, [restoreSession])
+
+  /**
+   * LOGIN
+   */
+  const login = 
+  useCallback(
+      async (
+      credentials: LoginCredentials
+    ) => {
+
+      try {
+
+        setStatus("checking")
+
+        /**
+         * Get tokens
+         */
+        const tokens =
+          await loginRequest(
+            credentials
+          )
+
+        /**
+         * Inject token
+         */
+        await injectToken(
+          tokens.accessToken
+        )
+
+        /**
+         * Fetch authenticated user
+         */
+        const currentUser =
+          await getCurrentUser()
+
+        /**
+         * Create session
+         */
+        const session:
+          AuthSession = {
+
+          user: currentUser,
+
+          tokens
+        }
+
+        saveSession(session)
+
+        setUser(currentUser)
+
+        setStatus(
+          "authenticated"
+        )
+
+      } catch (error) {
+
+        console.error(
+          "Login failed:",
+          error
+        )
+
+        removeSession()
+
+        setUser(null)
+
+        setStatus(
+          "unauthenticated"
+        )
+
+        throw error
+      }
+    },
+    []
+  )
+
+  /**
+ * REGISTER
+ */
+  const register = useCallback(
+    async (
+      credentials: RegisterCredentials
+    ) => {
+
+      try {
+
+        setStatus("checking")
+
+        await registerRequest(
+          credentials
+        )
+
+        setStatus(
+          "unauthenticated"
+        )
+
+      } catch (error) {
+
+        console.error(
+          "Register failed:",
+          error
+        )
+
+        setStatus(
+          "unauthenticated"
+        )
+
+        throw error
+      }
+    },
+    []
+  )
+
+  /**
+   * LOGOUT
+   */
+  const logout = 
+  useCallback(
+      () => {
+
+      removeSession()
+
+      setUser(null)
+
+      setStatus(
+        "unauthenticated"
+      )
+
+      import(
+        "../../../services/apiClient"
+      ).then(({ apiClient }) => {
+
+        delete apiClient.defaults.headers.common.Authorization
+      })
+    },
+    []
+  )
+
   /**
  * REFRESH ACCESS TOKEN
  */
@@ -183,106 +328,8 @@ export const AuthProvider = ({
         throw error
       }
 
-    }, [])
-
-  /**
-   * INITIAL SESSION CHECK
-   */
-  useEffect(() => {
-    restoreSession()
-  }, [restoreSession])
-
-  /**
-   * LOGIN
-   */
-  const login = async (
-    credentials: LoginCredentials
-  ) => {
-
-    try {
-
-      setStatus("checking")
-
-      /**
-       * Get tokens
-       */
-      const tokens =
-        await loginRequest(
-          credentials
-        )
-
-      /**
-       * Inject token
-       */
-      await injectToken(
-        tokens.accessToken
-      )
-
-      /**
-       * Fetch authenticated user
-       */
-      const currentUser =
-        await getCurrentUser()
-
-      /**
-       * Create session
-       */
-      const session:
-        AuthSession = {
-
-        user: currentUser,
-
-        tokens
-      }
-
-      saveSession(session)
-
-      setUser(currentUser)
-
-      setStatus(
-        "authenticated"
-      )
-
-    } catch (error) {
-
-      console.error(
-        "Login failed:",
-        error
-      )
-
-      removeSession()
-
-      setUser(null)
-
-      setStatus(
-        "unauthenticated"
-      )
-
-      throw error
-    }
-  }
-
-  /**
-   * LOGOUT
-   */
-  const logout = () => {
-
-    removeSession()
-
-    setUser(null)
-
-    setStatus(
-      "unauthenticated"
-    )
-
-    import(
-      "../../../services/apiClient"
-    ).then(({ apiClient }) => {
-
-      delete apiClient.defaults.headers.common.Authorization
-    })
-  }
-
+    }, [logout])
+    
   /**
    * DERIVED STATE
    */
@@ -307,6 +354,8 @@ export const AuthProvider = ({
 
       login,
 
+      register,
+
       logout,
 
       restoreSession,
@@ -315,9 +364,12 @@ export const AuthProvider = ({
     }),
     [
       user,
+      login,
+      logout,
       status,
       isAuthenticated,
       loading,
+      register,
       restoreSession,
       refreshAccessToken
     ]

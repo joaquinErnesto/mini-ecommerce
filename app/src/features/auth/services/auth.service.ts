@@ -8,6 +8,7 @@ import type {
   LoginCredentials,
   LoginResponse,
   RefreshTokenResponse,
+  RegisterCredentials,
   AuthUser
 } from "../types/auth.types"
 
@@ -68,6 +69,34 @@ export const refreshTokenRequest =
 
       throw error
     }
+}
+
+/**
+ * REGISTER CREDENTIALS
+ */
+export const registerRequest = async (
+  userData: RegisterCredentials
+) => {
+
+  try {
+
+    const response =
+      await apiClient.post(
+        AUTH_API.REGISTER,
+        userData
+      )
+
+    return response.data
+
+  } catch (error) {
+
+    console.error(
+      "Register error:",
+      error
+    )
+
+    throw error
+  }
 }
 
 /**

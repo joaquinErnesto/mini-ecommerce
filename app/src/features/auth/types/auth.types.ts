@@ -56,9 +56,21 @@ export interface AuthContextType {
     credentials: LoginCredentials
   ) => Promise<void>
 
+  register: (
+    credentials: RegisterCredentials
+  ) => Promise<void>
+
   logout: () => void
 
   restoreSession: () => Promise<void>
 
   refreshAccessToken: () => Promise<AuthSession>
+}
+
+export interface RegisterCredentials {
+  firstName: string
+  lastName: string
+  email: string
+  username: string
+  password: string
 }

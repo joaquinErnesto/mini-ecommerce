@@ -13,6 +13,7 @@ import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
 import { OrderSuccessPage } from "./src/features/checkout/pages/OrderSuccessPage";
 import { CheckoutGuard } from "./src/features/checkout/guards/CheckoutGuard";
 import { LoginPage } from "./src/features/auth/pages/LoginPage";
+import { SignUpPage } from "./src/features/sign-up/pages/SignUpPage";
 import { ProfilePage } from "./src/features/profile/pages/ProfilePage";
 import { OrdersPage } from "./src/features/orders/pages/OrdersPage";
 import { OrderDetailPage } from "./src/features/orders/pages/OrderDetailPage";
@@ -98,6 +99,15 @@ export const router = createBrowserRouter([
                     </GuestRoute>
                 ),
                 errorElement: <p>Something went wrong loading login.</p>
+            },
+            {
+                path: "signup",
+                element: (
+                    <GuestRoute>
+                        <SignUpPage />
+                    </GuestRoute>
+                ),
+                errorElement: <p>Something went wrong loading sign up.</p>
             },
             {
                 path: "profile",

@@ -9,7 +9,8 @@ export const AUTH_ROUTES = {
 export const AUTH_API = {
   LOGIN: "/auth/login",
   CURRENT_USER: "/auth/me",
-  REFRESH: "/auth/refresh"
+  REFRESH: "/auth/refresh",
+  REGISTER: "/users/add"
 } as const
 
 export const AUTH_MESSAGES = {

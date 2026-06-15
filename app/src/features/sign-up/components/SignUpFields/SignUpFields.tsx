@@ -3,18 +3,28 @@ import { AuthInput } from "../AuthInput/AuthInput"
 import "./SIgnUpFields.css"
 
 interface Props {
-  fullName: string
+  firstName: string
+  lastName: string
   email: string
+  username: string
   password: string
   confirmPassword: string
 
   errors: Record<string, string>
 
-  onFullNameChange: (
+  onFirstNameChange: (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => void
+
+  onLastNameChange: (
     e: React.ChangeEvent<HTMLInputElement>
   ) => void
 
   onEmailChange: (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => void
+
+  onUsernameChange: (
     e: React.ChangeEvent<HTMLInputElement>
   ) => void
 
@@ -28,13 +38,17 @@ interface Props {
 }
 
 export const SignUpFields = ({
-  fullName,
+  firstName,
+  lastName,
   email,
+  username,
   password,
   confirmPassword,
   errors,
-  onFullNameChange,
+  onFirstNameChange,
+  onLastNameChange,
   onEmailChange,
+  onUsernameChange,
   onPasswordChange,
   onConfirmPasswordChange
 }: Props) => {
@@ -42,12 +56,21 @@ export const SignUpFields = ({
   return (
     <>
       <AuthInput
-        label="Full Name"
+        label="First Name"
         icon="person"
-        value={fullName}
-        placeholder="John Doe"
+        value={firstName}
+        placeholder="John"
         error={errors.fullName}
-        onChange={onFullNameChange}
+        onChange={onFirstNameChange}
+      />
+
+      <AuthInput
+        label="Last Name"
+        icon="person"
+        value={lastName}
+        placeholder="Doe"
+        error={errors.fullName}
+        onChange={onLastNameChange}
       />
 
       <AuthInput
@@ -58,6 +81,15 @@ export const SignUpFields = ({
         placeholder="john@example.com"
         error={errors.email}
         onChange={onEmailChange}
+      />
+
+      <AuthInput
+        label="User Name"
+        icon="user"
+        value={username}
+        placeholder="john@example.com"
+        error={errors.email}
+        onChange={onUsernameChange}
       />
 
       <AuthInput

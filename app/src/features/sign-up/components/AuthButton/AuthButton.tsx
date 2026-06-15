@@ -2,20 +2,33 @@ import "./AuthButton.css"
 
 interface Props {
   text: string
-  loading?: boolean
+  
+  disabled?: boolean
+
+  onClick?: () => void
+
+  type?: "button" | "submit"
 }
 
 export const AuthButton = ({
   text,
-  loading
+  disabled = false,
+  onClick,
+  type = "button"
 }: Props) => {
 
   return (
     <button
-      type="submit"
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
       className="auth-button"
     >
-      {loading ? "Loading..." : text}
+      <span>{text}</span>
+
+      <span className="material-symbols-outlined">
+        arrow_fordward
+      </span>
     </button>
   )
 }
