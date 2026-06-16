@@ -66,7 +66,7 @@ export const SignUpFields = ({
 
       <AuthInput
         label="Last Name"
-        icon="person"
+        icon="id_card"
         value={lastName}
         placeholder="Doe"
         error={errors.fullName}
@@ -78,16 +78,16 @@ export const SignUpFields = ({
         icon="alternate_email"
         type="email"
         value={email}
-        placeholder="john@example.com"
+        placeholder="johndoe@example.com"
         error={errors.email}
         onChange={onEmailChange}
       />
 
       <AuthInput
         label="User Name"
-        icon="user"
+        icon="account_circle"
         value={username}
-        placeholder="john@example.com"
+        placeholder="johndoe"
         error={errors.email}
         onChange={onUsernameChange}
       />

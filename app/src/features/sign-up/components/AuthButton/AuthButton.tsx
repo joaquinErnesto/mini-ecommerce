@@ -27,7 +27,7 @@ export const AuthButton = ({
       <span>{text}</span>
 
       <span className="material-symbols-outlined">
-        arrow_fordward
+        arrow_right_alt
       </span>
     </button>
   )
