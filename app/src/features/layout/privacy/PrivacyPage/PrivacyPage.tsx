@@ -1,4 +1,4 @@
-import "../../../assets/styles/privacy.css"
+import "./privacy.css"
 
 import { PrivacyHeader } from "./PrivacyHeader/PrivacyHeader"
 import { SidebarNav } from "./PrivacyLayout/SidebarNav/SidebarNav"

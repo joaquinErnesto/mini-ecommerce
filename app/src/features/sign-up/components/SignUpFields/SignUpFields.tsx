@@ -60,7 +60,7 @@ export const SignUpFields = ({
         icon="person"
         value={firstName}
         placeholder="John"
-        error={errors.fullName}
+        error={errors.firstName}
         onChange={onFirstNameChange}
       />
 
@@ -69,7 +69,7 @@ export const SignUpFields = ({
         icon="id_card"
         value={lastName}
         placeholder="Doe"
-        error={errors.fullName}
+        error={errors.lastName}
         onChange={onLastNameChange}
       />
 
@@ -88,7 +88,7 @@ export const SignUpFields = ({
         icon="account_circle"
         value={username}
         placeholder="johndoe"
-        error={errors.email}
+        error={errors.username}
         onChange={onUsernameChange}
       />
 

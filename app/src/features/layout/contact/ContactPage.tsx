@@ -1,4 +1,4 @@
-import "../../assets/styles/contact.css"
+import "./contact.css"
 
 import { ContactHeader } from "./ContactPage/ContactHeader/ContactHeader"
 import { ContactInfoPanel } from "./ContactPage/ContactInfoPanel/ContactInfoPanel"

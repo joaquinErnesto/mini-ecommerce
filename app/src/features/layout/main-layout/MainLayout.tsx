@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Outlet, Link } from "react-router-dom"
-import { useCart } from "../../features/cart/context/useCart"
+import { useCart } from "../../cart/context/useCart"
 import { useNavigate } from "react-router-dom"
 import "./MainLayout.css"
-import { useAuth } from "../../features/auth/context/useAuth"
+import { useAuth } from "../../auth/context/useAuth"
 
 /* import userImage from "../../assets/images/user/user-1.png" */
 

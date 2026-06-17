@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { getProductById } from "../../../features/products/services/products.api"
-import type { Product } from "../../../features/products/types/products.types"
+import { getProductById } from "../../../products/services/products.api"
+import type { Product } from "../../../products/types/products.types"
 
 export const FeaturedSection = () => {
     const [bigProduct, setBigProduct] = useState<Product | null>(null)

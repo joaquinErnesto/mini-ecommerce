@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import { SignUpFields } from "../SignUpFields/SignUpFields"
 import { AuthButton } from "../AuthButton/AuthButton"
+import { validateRegisterData } from "../../../auth/utils/validation"
 
 import "./SignUpForm.css"
 import { useAuth } from "../../../auth/context/useAuth"
@@ -28,7 +29,7 @@ export const SignUpForm = () => {
   const [confirmPassword, setConfirmPassword] =
     useState("")
 
-  const [errors] =
+  const [errors, setErrors] =
     useState<Record<string, string>>({})
 
   const [loading, setLoading] = useState(false)  
@@ -53,6 +54,25 @@ export const SignUpForm = () => {
     if (password !== confirmPassword) {
       return
     }
+
+    const validationErrors =
+      validateRegisterData(
+        firstName,
+        lastName,
+        email,
+        username,
+        password,
+        confirmPassword
+      )
+
+    if (
+      Object.keys(validationErrors).length > 0
+    ) {
+      setErrors(validationErrors)
+      return
+    }
+
+    setErrors({})
 
     try {
 

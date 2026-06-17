@@ -1,4 +1,4 @@
-import "../../../assets/styles/terms.css"
+import "./terms.css"
 
 import { TermsHeader } from "./TermsHeader/TermsHeader"
 import { TermsSection } from "./TermsSection/TermsSection"

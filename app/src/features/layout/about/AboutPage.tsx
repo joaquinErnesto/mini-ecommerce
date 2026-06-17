@@ -1,4 +1,4 @@
-import "../../assets/styles/about.css"
+import "./about.css"
 
 import { AboutHero } from "./AboutPage/AboutHero/AboutHero"
 import { PhilosophyGrid } from "./AboutPage/PhilosophyGrid/PhilosophyGrid"

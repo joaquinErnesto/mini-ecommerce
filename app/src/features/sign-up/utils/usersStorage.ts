@@ -9,7 +9,7 @@ export interface RegisteredUser
   password: string
 }
 
-export const getUsers = () => {
+export const getUsers = (): RegisteredUser[] => {
 
   const stored =
     localStorage.getItem(

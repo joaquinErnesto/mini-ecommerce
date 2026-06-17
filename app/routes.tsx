@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "./src/components/layout/MainLayout";
+import { MainLayout } from "./src/features/layout/main-layout/MainLayout";
 
 import { ProductsPage } from "./src/features/products/pages/ProductsPage";
 import { ProductDetailPage } from "./src/features/products/pages/ProductDetailPage";
-import { HomePage } from "./src/components/home/HomePage/HomePage";
-import { PrivacyPage } from "./src/components/privacy/PrivacyPage/PrivacyPage";
-import { TermsPage } from "./src/components/terms/TermsPage/TermsPage";
-import { ContactPage } from "./src/components/contact/ContactPage";
-import { AboutPage } from "./src/components/about/AboutPage";
+import { HomePage } from "./src/features/layout/home/HomePage/HomePage";
+import { PrivacyPage } from "./src/features/layout/privacy/PrivacyPage/PrivacyPage";
+import { TermsPage } from "./src/features/layout/terms/TermsPage/TermsPage";
+import { ContactPage } from "./src/features/layout/contact/ContactPage";
+import { AboutPage } from "./src/features/layout/about/AboutPage";
 import { CartPage } from "./src/features/cart/pages/CartPage";
 import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
 import { OrderSuccessPage } from "./src/features/checkout/pages/OrderSuccessPage";

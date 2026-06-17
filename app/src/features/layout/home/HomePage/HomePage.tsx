@@ -1,4 +1,4 @@
-import "../../../assets/styles/home.css"
+import "./home.css"
 
 import { HeroSection } from "../HeroSection/HeroSection"
 import { FeaturedSection } from "../FeaturedSection/FeaturedSection"
