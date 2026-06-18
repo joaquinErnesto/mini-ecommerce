@@ -34,4 +34,6 @@ export interface DummyProductApi {
     description: string
     price: number
     thumbnail: string
+    category: string
+    rating: number
 }

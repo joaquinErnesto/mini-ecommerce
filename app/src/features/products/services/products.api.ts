@@ -16,7 +16,8 @@ export const getProducts = async (): Promise<Product[]> => {
             title: p.title,
             description: p.description,
             price: p.price,
-            image: p.thumbnail
+            image: p.thumbnail,
+            category: p.category
         }))
     } catch(error) {
         console.error("Error fetching products: ", error)

@@ -11,6 +11,7 @@ import { useCart } from "../../cart/context/useCart";
 
 export const ProductsPage = () => {
     const [search, setSearch] = useState("")
+    const [selectedCategory, setSelectedCategory] = useState("all")
     
     const {
         products,
@@ -19,24 +20,46 @@ export const ProductsPage = () => {
         refetch
     } = useProducts();
 
+    const categories = [
+        "all",
+        ...new Set(
+            products.map(
+                (product) => product.category
+            )
+        )
+    ]
+
     const { addToCart } = useCart();
 
     const filteredProducts =
         products.filter((product) => {
 
-            const query =
-            search.toLowerCase()
+            const matchesSearch =
+                product.title
+                    .toLowerCase()
+                    .includes(
+                        search.toLowerCase()
+                    )
+
+                ||
+
+                product.description
+                    .toLowerCase()
+                    .includes(
+                        search.toLowerCase()
+                    )
+
+            const matchesCategory =
+                selectedCategory === "all"
+
+                ||
+
+                product.category ===
+                selectedCategory
 
             return (
-            product.title
-                .toLowerCase()
-                .includes(query)
-
-            ||
-
-            product.description
-                .toLowerCase()
-                .includes(query)
+                matchesSearch &&
+                matchesCategory
             )
         })
 
@@ -123,6 +146,37 @@ export const ProductsPage = () => {
                     {" "}
                     product(s) found
                 </p>
+
+                <div className="products-filters">
+
+                    <select
+                        value={selectedCategory}
+                        onChange={(e) =>
+                        setSelectedCategory(
+                            e.target.value
+                        )
+                        }
+                    >
+
+                        {categories.map((category) => (
+                        <option
+                            key={category}
+                            value={category}
+                        >
+                            {category
+                                .replace( "-", " " )
+                                .replace(
+                                    /\b\w/g,
+                                    (letter) =>
+                                        letter.toUpperCase()
+                                )
+                            }
+                        </option>
+                        ))}
+
+                    </select>
+
+                    </div>
 
                 {filteredProducts.length > 0 ? (
                     <div className="products-grid">

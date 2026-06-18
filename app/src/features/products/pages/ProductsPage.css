@@ -104,3 +104,32 @@ h1 {
 
     font-size: var(--letter-size-md);
 }
+
+.products-filters {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.products-filters select {
+    background-color:
+      var(--medium-black-color);
+
+    color:
+      var(--white-color);
+
+    border:
+      var(--product-card-border);
+
+    border-radius:
+      var(--radius-md);
+
+    padding:
+      var(--spacing-sm)
+      var(--spacing-md);
+
+    cursor: pointer;
+
+    min-width: 220px;
+}
