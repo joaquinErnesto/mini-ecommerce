@@ -1,12 +1,17 @@
+import { useState } from "react";
+
 import { useProducts } from "../hooks/useProducts";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 import { ProductCardSkeleton } from "../components/ProductCardSkeleton/ProductCardSkeleton";
+import { SearchBar } from "../components/SearchBar/SearchBar";
 
 import "./ProductsPage.css";
 
 import { useCart } from "../../cart/context/useCart";
 
 export const ProductsPage = () => {
+    const [search, setSearch] = useState("")
+    
     const {
         products,
         loading,
@@ -15,6 +20,25 @@ export const ProductsPage = () => {
     } = useProducts();
 
     const { addToCart } = useCart();
+
+    const filteredProducts =
+        products.filter((product) => {
+
+            const query =
+            search.toLowerCase()
+
+            return (
+            product.title
+                .toLowerCase()
+                .includes(query)
+
+            ||
+
+            product.description
+                .toLowerCase()
+                .includes(query)
+            )
+        })
 
     // LOADING STATE
     if (loading) {
@@ -89,15 +113,45 @@ export const ProductsPage = () => {
                     Products
                 </h1>
 
-                <div className="products-grid">
-                    {products.map((product) => (
+                <SearchBar
+                    value={search}
+                    onChange={setSearch}
+                />
+
+                <p className="products-counter">
+                    {filteredProducts.length}
+                    {" "}
+                    product(s) found
+                </p>
+
+                {filteredProducts.length > 0 ? (
+                    <div className="products-grid">
+
+                    {filteredProducts.map((product) => (
                         <ProductCard
-                            key={product.id}
-                            product={product}
-                            onAddToCart={addToCart}
+                        key={product.id}
+                        product={product}
+                        onAddToCart={addToCart}
                         />
                     ))}
-                </div>
+
+                    </div>
+
+                ) : (
+
+                    <div className="products-state-container">
+
+                    <h2>
+                        No matching products
+                    </h2>
+
+                    <p>
+                        Try another search term.
+                    </p>
+
+                    </div>
+
+                )}
             </div>
         </div>
     );

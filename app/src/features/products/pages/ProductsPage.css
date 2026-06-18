@@ -96,3 +96,11 @@ h1 {
 .retry-button:active {
     transform: scale(0.98);
 }
+
+.products-counter {
+    margin-top: var(--spacing-md);
+
+    color: var(--off-gray-color);
+
+    font-size: var(--letter-size-md);
+}
