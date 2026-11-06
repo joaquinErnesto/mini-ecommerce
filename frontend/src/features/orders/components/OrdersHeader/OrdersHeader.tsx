@@ -1,34 +1,37 @@
+import { Link } from "react-router-dom"
+
 import "./OrdersHeader.css"
 
-interface OrdersHeaderProps {
-  totalOrders: number
-}
-
-export const OrdersHeader = ({
-  totalOrders
-}: OrdersHeaderProps) => {
-
+export const OrdersHeader = () => {
   return (
-    <section className="orders-header">
+    <header className="orders-hero">
+      <p className="orders-kicker">
+        <span className="orders-kicker-dot" aria-hidden="true" />
+        Order archive
+      </p>
 
-      <span className="orders-header-badge">
-        Acquisitions
-      </span>
-
-      <div className="orders-header-content">
-
+      <div className="orders-hero-row">
         <div>
-          <h1>
-            Order History
+          <h1 className="orders-title">
+            Orders
+            <span className="orders-title-accent">.</span>
           </h1>
 
-          <p>
-            {totalOrders} orders found
+          <p className="orders-lede">
+            Every order, from pending to delivered, in one place.
           </p>
         </div>
 
+        <Link className="orders-continue" to="/products">
+          Continue shopping
+          <span
+            className="material-symbols-outlined"
+            aria-hidden="true"
+          >
+            arrow_forward
+          </span>
+        </Link>
       </div>
-
-    </section>
+    </header>
   )
 }

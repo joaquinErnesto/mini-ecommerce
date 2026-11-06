@@ -1,105 +1,98 @@
-import { useNavigate } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 
-import { getSession }
-from "../../auth/utils/authStorage"
-
-import {
-  getOrdersByUser
-}
-from "../../orders/utils/ordersStorage"
+import { getSession } from "../../auth/utils/authStorage"
+import { getOrdersByUser } from "../../orders/utils/ordersStorage"
+import { formatPrice } from "../../products/utils/productFormat"
 
 import "./OrderSuccessPage.css"
 
 export const OrderSuccessPage = () => {
+    const session = getSession()
 
-  const navigate = useNavigate()
+    if (!session) {
+        return <Navigate to="/" replace />
+    }
 
-  const session = getSession()
+    const orders = getOrdersByUser(session.user.id)
+    const latestOrder = orders[0]
 
-  if (!session) {
-    navigate("/")
-    return null
-  }
+    if (!latestOrder) {
+        return <Navigate to="/" replace />
+    }
 
-  const orders =
-    getOrdersByUser(
-      session.user.id
+    return (
+        <div className="order-success-page">
+            <div className="order-success-card">
+                <div className="order-success-mark" aria-hidden="true">
+                    <span className="material-symbols-outlined">check</span>
+                </div>
+
+                <p className="order-success-kicker">Thank you</p>
+
+                <h1>
+                    Order confirmed
+                    <span className="order-success-accent">.</span>
+                </h1>
+
+                <p className="order-success-lede">
+                    We've received your order and saved it to your account.
+                    From here, we take it.
+                </p>
+
+                <dl className="order-success-details">
+                    <div>
+                        <dt>Order number</dt>
+                        <dd>{latestOrder.id}</dd>
+                    </div>
+
+                    <div>
+                        <dt>Date</dt>
+                        <dd>{latestOrder.date}</dd>
+                    </div>
+
+                    <div>
+                        <dt>Total</dt>
+                        <dd>{formatPrice(latestOrder.total)}</dd>
+                    </div>
+
+                    <div>
+                        <dt>Items</dt>
+                        <dd>{latestOrder.totalItems}</dd>
+                    </div>
+
+                    <div className="order-success-detail-full">
+                        <dt>Shipping to</dt>
+                        <dd>
+                            {latestOrder.shipping.fullName}
+                            {latestOrder.shipping.city
+                                ? `, ${latestOrder.shipping.city}`
+                                : ""}
+                        </dd>
+                    </div>
+                </dl>
+
+                <div className="order-success-actions">
+                    <Link
+                        className="order-success-button"
+                        to="/profile/orders"
+                    >
+                        View my orders
+                        <span
+                            className="material-symbols-outlined"
+                            aria-hidden="true"
+                        >
+                            arrow_forward
+                        </span>
+                    </Link>
+
+                    <Link
+                        className="order-success-button order-success-button--ghost"
+                        to="/products"
+                    >
+                        Continue shopping
+                    </Link>
+                </div>
+            </div>
+        </div>
     )
-
-  const latestOrder =
-    orders[0]
-
-  if (!latestOrder) {
-    navigate("/")
-    return null
-  }
-
-  return (
-    <div className="order-success-page">
-
-      <div className="success-card">
-
-        <h1>
-          ✓ Order Confirmed
-        </h1>
-
-        <div className="success-details">
-
-          <div>
-            <span>Order Number</span>
-            <strong>{latestOrder.id}</strong>
-          </div>
-
-          <div>
-            <span>Date</span>
-            <strong>{latestOrder.date}</strong>
-          </div>
-
-          <div>
-            <span>Total</span>
-            <strong>
-              ${latestOrder.total.toFixed(2)}
-            </strong>
-          </div>
-
-          <div>
-            <span>Items</span>
-            <strong>
-              {latestOrder.totalItems}
-            </strong>
-          </div>
-
-          <div>
-            <span>Shipping To</span>
-            <strong>
-              {latestOrder.shipping.fullName}
-            </strong>
-          </div>
-
-        </div>
-
-        <div className="success-actions">
-
-          <button
-            onClick={() =>
-              navigate("/profile/orders")
-            }
-          >
-            View My Orders
-          </button>
-
-          <button
-            onClick={() =>
-              navigate("/products")
-            }
-          >
-            Continue Shopping
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-  )
 }

@@ -1,10 +1,9 @@
 .login-form {
-  display: flex;
-  flex-direction: column;
-
-  gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .login-form-button {
-  padding-top: 8px;
+    margin-top: 6px;
 }

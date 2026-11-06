@@ -7,48 +7,49 @@ export type OrderFilter =
   | "Delivered"
   | "Cancelled"
 
-interface Props {
-  activeFilter: OrderFilter
-
-  onChange: (
-    filter: OrderFilter
-  ) => void
-}
-
-const filters: OrderFilter[] = [
+const FILTERS: OrderFilter[] = [
   "All",
   "Pending",
   "Processed",
   "Delivered",
-  "Cancelled"
+  "Cancelled",
 ]
+
+interface Props {
+  activeFilter: OrderFilter
+  counts: Record<OrderFilter, number>
+  onChange: (filter: OrderFilter) => void
+}
 
 export const OrdersFilters = ({
   activeFilter,
-  onChange
+  counts,
+  onChange,
 }: Props) => {
-
   return (
-    <section className="orders-filters">
+    <div
+      className="orders-filters"
+      role="group"
+      aria-label="Filter orders by status"
+    >
+      {FILTERS.map((filter) => {
+        const isActive = activeFilter === filter
 
-      {filters.map((filter) => (
-
-        <button
-          key={filter}
-          className={
-            activeFilter === filter
-              ? "active"
-              : ""
-          }
-          onClick={() =>
-            onChange(filter)
-          }
-        >
-          {filter}
-        </button>
-
-      ))}
-
-    </section>
+        return (
+          <button
+            key={filter}
+            type="button"
+            className={`orders-filter ${isActive ? "is-active" : ""}`}
+            aria-pressed={isActive}
+            onClick={() => onChange(filter)}
+          >
+            {filter}
+            <span className="orders-filter-count">
+              {counts[filter]}
+            </span>
+          </button>
+        )
+      })}
+    </div>
   )
 }

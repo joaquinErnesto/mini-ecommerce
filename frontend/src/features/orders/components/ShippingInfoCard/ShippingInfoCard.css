@@ -1,0 +1,42 @@
+.shipping-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.shipping-info-icon {
+    flex: none;
+
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(40, 100, 255, 0.22);
+    border-radius: 10px;
+
+    background: rgba(40, 100, 255, 0.1);
+    color: var(--blue-color);
+
+    font-size: 19px;
+}
+
+.shipping-info-copy {
+    min-width: 0;
+}
+
+.shipping-info-name {
+    margin-bottom: 4px;
+
+    color: var(--white-color);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.shipping-info-copy p:not(.shipping-info-name) {
+    color: var(--orders-muted, rgba(255, 255, 255, 0.58));
+    font-size: 13px;
+    line-height: 1.6;
+}

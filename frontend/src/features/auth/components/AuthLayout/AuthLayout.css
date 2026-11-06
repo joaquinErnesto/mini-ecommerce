@@ -1,22 +1,201 @@
 .auth-layout {
-  min-height: 100vh;
+    --auth-ink: #0b0c10;
+    --auth-surface: #14161c;
+    --auth-line: rgba(255, 255, 255, 0.09);
+    --auth-line-strong: rgba(255, 255, 255, 0.17);
+    --auth-muted: rgba(255, 255, 255, 0.58);
+    --auth-faint: rgba(255, 255, 255, 0.48);
+    --auth-blue-text: #8fb2ff;
+    --auth-paper: #f3f5f9;
+    --auth-paper-deep: #e2e7ee;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
 
-  position: relative;
-  overflow: hidden;
+    min-height: calc(100vh - 130px);
 
-  padding: var(--spacing-lg);
+    margin: -30px -20px -20px;
+    padding: clamp(36px, 6vw, 76px) 20px;
 
-  background-color: var(--background-color);
+    color: var(--white-color);
+    background:
+        radial-gradient(780px 480px at 88% -8%, rgba(40, 100, 255, 0.12), transparent 62%),
+        var(--auth-ink);
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.auth-layout-content {
-  width: 100%;
-  max-width: 480px;
+body:has(.auth-layout) {
+    background-color: #0b0c10;
+}
 
-  position: relative;
-  z-index: 10;
+.auth-layout :focus-visible {
+    outline: 2px solid var(--blue-color);
+    outline-offset: 3px;
+}
+
+.auth-layout-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 430px);
+    align-items: center;
+    gap: clamp(40px, 7vw, 96px);
+
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+/* ================= BRAND PANEL ================= */
+
+.auth-brand {
+    max-width: 560px;
+}
+
+.auth-brand-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    color: var(--auth-blue-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.auth-brand-kicker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--blue-color);
+    box-shadow: 0 0 0 4px rgba(40, 100, 255, 0.16);
+}
+
+.auth-brand-title {
+    margin-top: clamp(18px, 2.4vw, 28px);
+
+    color: var(--white-color);
+    font-size: clamp(3rem, 5.6vw, 5rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+}
+
+.auth-brand-period {
+    color: var(--blue-color);
+}
+
+.auth-brand-lede {
+    max-width: 42ch;
+    margin-top: 20px;
+
+    color: var(--auth-muted);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    line-height: 1.7;
+}
+
+.auth-brand-plate {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: min(100%, 258px);
+    aspect-ratio: 1 / 1;
+    margin-top: clamp(22px, 3vw, 32px);
+    padding: clamp(20px, 3vw, 30px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+
+    background:
+        radial-gradient(65% 60% at 50% 42%, #ffffff 0%, rgba(255, 255, 255, 0) 74%),
+        linear-gradient(
+            155deg,
+            var(--auth-paper) 0%,
+            var(--auth-paper-deep) 100%
+        );
+
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.auth-brand-plate img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    mix-blend-mode: multiply;
+}
+
+.auth-brand-caption {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+
+    padding: 5px 9px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+
+    background: rgba(10, 12, 16, 0.84);
+    backdrop-filter: blur(8px);
+
+    color: var(--white-color);
+    font-size: 10.5px;
+    font-weight: 600;
+}
+
+.auth-brand-foot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 22px;
+
+    color: var(--auth-faint);
+    font-size: 12.5px;
+}
+
+.auth-brand-foot::before {
+    content: "";
+
+    width: 24px;
+    height: 1px;
+
+    background: var(--auth-line-strong);
+}
+
+/* ================= CONTENT ================= */
+
+.auth-layout-content {
+    width: 100%;
+    max-width: 430px;
+    justify-self: end;
+}
+
+@media (max-width: 960px) {
+    .auth-layout {
+        align-items: flex-start;
+    }
+
+    .auth-layout-inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .auth-brand {
+        display: none;
+    }
+
+    .auth-layout-content {
+        max-width: 460px;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-layout {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
 }

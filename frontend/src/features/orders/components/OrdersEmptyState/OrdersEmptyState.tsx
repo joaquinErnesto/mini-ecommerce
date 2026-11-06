@@ -1,36 +1,59 @@
-import { useNavigate }
-from "react-router-dom"
+import { Link } from "react-router-dom"
+
+import type { OrderFilter } from "../OrdersFilters/OrdersFIlters"
 
 import "./OrdersEmptyState.css"
 
-export const OrdersEmptyState = () => {
+interface Props {
+  hasOrders: boolean
+  filter: OrderFilter
+  onReset: () => void
+}
 
-  const navigate =
-    useNavigate()
-
+export const OrdersEmptyState = ({
+  hasOrders,
+  filter,
+  onReset,
+}: Props) => {
   return (
-    <div className="orders-empty">
+    <section className="orders-empty">
+      <div className="orders-empty-plate" aria-hidden="true">
+        <span className="material-symbols-outlined">receipt_long</span>
+      </div>
 
-      <span className="material-symbols-outlined">
-        inventory_2
-      </span>
+      <div className="orders-empty-copy">
+        <h2>
+          {hasOrders ? `No ${filter.toLowerCase()} orders.` : "No orders yet."}
+        </h2>
 
-      <h2>
-        No Orders Found
-      </h2>
+        <p>
+          {hasOrders
+            ? "Nothing sits in this view right now. Clear the filter to see your whole history."
+            : "When you place your first order, it will live here with its status, items, and total."}
+        </p>
 
-      <p>
-        You haven't placed any orders yet.
-      </p>
+        <div className="orders-empty-actions">
+          {hasOrders ? (
+            <button type="button" className="orders-button" onClick={onReset}>
+              Show all orders
+            </button>
+          ) : (
+            <Link className="orders-button" to="/products">
+              Browse the catalogue
+              <span className="material-symbols-outlined" aria-hidden="true">
+                arrow_forward
+              </span>
+            </Link>
+          )}
 
-      <button
-        onClick={() =>
-          navigate("/products")
-        }
-      >
-        Go Shopping
-      </button>
-
-    </div>
+          <Link
+            className="orders-button orders-button--ghost"
+            to={hasOrders ? "/products" : "/"}
+          >
+            {hasOrders ? "Continue shopping" : "Back home"}
+          </Link>
+        </div>
+      </div>
+    </section>
   )
 }

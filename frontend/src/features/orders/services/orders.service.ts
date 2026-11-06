@@ -18,6 +18,14 @@ export const createOrder = (
   shipping: ShippingInfo
 ) => {
 
+  const subtotal = items.reduce(
+    (acc, item) =>
+      acc + item.price * item.quantity,
+    0
+  )
+
+  const tax = subtotal * 0.08
+
   const order: Order = {
     id: `ORD-${Date.now()}`,
 
@@ -36,11 +44,7 @@ export const createOrder = (
       0
     ),
 
-    total: items.reduce(
-      (acc, item) =>
-        acc + item.price * item.quantity,
-      0
-    ),
+    total: subtotal + tax,
 
     status: "Processed",
 

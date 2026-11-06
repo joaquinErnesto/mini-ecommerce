@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+
 import toast from "react-hot-toast"
 
 import { AuthInput } from "../AuthInput/AuthInput"
@@ -12,105 +13,107 @@ import { AUTH_MESSAGES, AUTH_ROUTES } from "../../constants/auth.constants"
 import "./LoginForm.css"
 
 export const LoginForm = () => {
+  const navigate = useNavigate()
+  const { login } = useAuth()
 
-    const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
 
-    const { login } = useAuth()
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  })
 
-    const [loading, setLoading] = useState(false)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
 
-    const [form, setForm] = useState({
-        username: "",
-        password: ""
+    setForm((current) => ({
+      ...current,
+      [name]: value,
+    }))
+
+    setErrors((current) => {
+      if (!(name in current)) return current
+
+      const next = { ...current }
+      delete next[name]
+      return next
     })
+  }
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement>
-    ) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        })
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (loading) return
+
+    const nextErrors: Record<string, string> = {}
+
+    if (!form.username.trim()) {
+      nextErrors.username = "Enter your username"
     }
 
-    const handleSubmit = async (
-        e: React.FormEvent
-    ) => {
-        e.preventDefault()
-
-        if (loading) return
-        
-        if (
-            !form.username.trim() || 
-            !form.password.trim()
-        ) {
-            toast.error("All fields are required")
-            return
-        }
-
-        try {
-
-            setLoading(true)
-
-            await login({
-                username: form.username,
-                password: form.password
-            })
-
-            toast.success(AUTH_MESSAGES.LOGIN_SUCCESS)
-
-            navigate(AUTH_ROUTES.PROFILE)
-
-        } catch (error) {
-
-            console.error(error)
-
-            toast.error(AUTH_MESSAGES.LOGIN_ERROR)
-
-        } finally {
-            setLoading(false)
-        }
+    if (!form.password.trim()) {
+      nextErrors.password = "Enter your password"
     }
 
-    return (
-        <form
-            className="login-form"
-            onSubmit={handleSubmit}
-        >
+    setErrors(nextErrors)
 
-            <AuthInput
-                name="username"
-                label="Username"
-                icon="alternate_email"
-                placeholder="Enter your username"
-                value={form.username}
-                onChange={handleChange}
-            />
+    if (Object.keys(nextErrors).length > 0) return
 
-            <AuthInput
-                name="password"
-                label="Password"
-                type="password"
-                icon="lock"
-                placeholder="••••••••"
-                value={form.password}
-                onChange={handleChange}
-            />
+    try {
+      setLoading(true)
 
-            <div className="login-form-button">
+      await login({
+        username: form.username,
+        password: form.password,
+      })
 
-                <AuthButton
-                    type="submit"
-                    disabled={loading}
-                    text={
-                        loading
-                            ? "LOGGING IN..."
-                            : "LOG IN"
-                    }
-                />
+      toast.success(AUTH_MESSAGES.LOGIN_SUCCESS)
 
-            </div>
+      navigate(AUTH_ROUTES.PROFILE)
+    } catch (error) {
+      console.error(error)
+      toast.error(AUTH_MESSAGES.LOGIN_ERROR)
+    } finally {
+      setLoading(false)
+    }
+  }
 
-        </form>
-    )
+  return (
+    <form className="login-form" onSubmit={handleSubmit} noValidate>
+      <AuthInput
+        name="username"
+        label="Username"
+        icon="alternate_email"
+        placeholder="Enter your username"
+        value={form.username}
+        onChange={handleChange}
+        error={errors.username}
+        autoComplete="username"
+        required
+      />
+
+      <AuthInput
+        name="password"
+        label="Password"
+        type="password"
+        icon="lock"
+        placeholder="Enter your password"
+        value={form.password}
+        onChange={handleChange}
+        error={errors.password}
+        autoComplete="current-password"
+        required
+      />
+
+      <div className="login-form-button">
+        <AuthButton
+          type="submit"
+          loading={loading}
+          disabled={loading}
+          text={loading ? "Signing in..." : "Sign in"}
+        />
+      </div>
+    </form>
+  )
 }

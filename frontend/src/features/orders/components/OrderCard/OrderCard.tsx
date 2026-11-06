@@ -1,85 +1,62 @@
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+
+import { formatPrice } from "../../../products/utils/productFormat"
+
+import type { Order } from "../../types/order.types"
+
+import { OrderImage } from "../OrderImage/OrderImage"
+import { OrderStatusBadge } from "../OrderStatusBadge/OrderStatusBadge"
 
 import "./OrderCard.css"
-
-import {
-  OrderStatusBadge
-}
-from "../OrderStatusBadge/OrderStatusBadge"
-
-import type {
-  Order
-}
-from "../../types/order.types"
 
 interface Props {
   order: Order
 }
 
-export const OrderCard = ({
-  order
-}: Props) => {
-
-  const navigate = useNavigate()
+export const OrderCard = ({ order }: Props) => {
+  const firstItem = order.items[0]
+  const extraItems = Math.max(order.items.length - 1, 0)
 
   return (
-    <article 
-      className="order-card"
-      onClick={() =>
-        navigate(
-          `/profile/orders/${order.id}`
-        )
-      }
-    >
+    <article className="order-card">
+      <Link
+        className="order-card-link"
+        to={`/profile/orders/${order.id}`}
+      >
+        <OrderImage images={order.items.map((item) => item.image)} />
 
-      <div className="order-card-left">
-
-        <div
-          className="order-card-info"
-        >
-
-          <div
-            className="order-card-top"
-          >
-
-            <h3>
-              #{order.id}
-            </h3>
-
-            <OrderStatusBadge
-              status={
-                order.status
-              }
-            />
-
+        <div className="order-card-body">
+          <div className="order-card-top">
+            <h3>Order #{order.id}</h3>
+            <OrderStatusBadge status={order.status} />
           </div>
 
-          <p>
-            {order.items[0]?.title}
-
-            {order.items.length > 1 && (
-              ` + ${order.items.length - 1} more`
-            )}
+          <p className="order-card-summary">
+            {firstItem?.title ?? "Order"}
+            {extraItems > 0 ? ` + ${extraItems} more` : ""}
           </p>
 
-          <div
-            className="order-card-meta"
-          >
-
+          <div className="order-card-meta">
+            <span>{order.date}</span>
             <span>
-              {order.date}
+              {order.totalItems}{" "}
+              {order.totalItems === 1 ? "item" : "items"}
             </span>
-
-            <span>
-              Items: {order.totalItems}
-            </span>
-
           </div>
-
         </div>
 
-      </div>
+        <div className="order-card-aside">
+          <span className="order-card-total">
+            {formatPrice(order.total)}
+          </span>
 
+          <span className="order-card-arrow" aria-hidden="true">
+            <span className="material-symbols-outlined">
+              north_east
+            </span>
+          </span>
+        </div>
+      </Link>
     </article>
   )
 }

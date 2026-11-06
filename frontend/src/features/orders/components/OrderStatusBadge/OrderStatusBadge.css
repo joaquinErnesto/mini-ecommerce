@@ -1,66 +1,49 @@
 .order-status-badge {
     display: inline-flex;
     align-items: center;
+    gap: 6px;
 
-    padding: 0.35rem 0.75rem;
+    padding: 4px 9px;
+
+    border: 1px solid transparent;
+    border-radius: 999px;
+
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.order-status-badge::before {
+    content: "";
+
+    width: 5px;
+    height: 5px;
 
     border-radius: 999px;
 
-    font-size: 0.75rem;
-    font-weight: 700;
-
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    background: currentColor;
 }
 
-/* Delivered */
-
-.status-delivered {
-    color: #22c55e;
-
-    background:
-      rgba(34, 197, 94, 0.1);
-
-    border:
-      1px solid
-      rgba(34, 197, 94, 0.2);
+.order-status-badge.status-delivered {
+    border-color: rgba(34, 197, 94, 0.22);
+    background: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
 }
 
-/* Processed */
-
-.status-processed {
-    color: #89acff;
-
-    background:
-      rgba(137, 172, 255, 0.1);
-
-    border:
-      1px solid
-      rgba(137, 172, 255, 0.2);
+.order-status-badge.status-processed {
+    border-color: rgba(40, 100, 255, 0.22);
+    background: rgba(40, 100, 255, 0.1);
+    color: #8fb2ff;
 }
 
-/* Pending */
-
-.status-pending {
-    color: #f59e0b;
-
-    background:
-      rgba(245, 158, 11, 0.1);
-
-    border:
-      1px solid
-      rgba(245, 158, 11, 0.2);
+.order-status-badge.status-pending {
+    border-color: rgba(245, 158, 11, 0.22);
+    background: rgba(245, 158, 11, 0.1);
+    color: #fbbf24;
 }
 
-/* Cancelled */
-
-.status-cancelled {
-    color: #ef4444;
-
-    background:
-      rgba(239, 68, 68, 0.1);
-
-    border:
-      1px solid
-      rgba(239, 68, 68, 0.2);
+.order-status-badge.status-cancelled {
+    border-color: rgba(239, 68, 68, 0.22);
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
 }

@@ -1,36 +1,93 @@
-.order-detail-header {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.order-detail-hero {
+    padding: clamp(22px, 3vw, 32px) 0 clamp(24px, 3vw, 34px);
 }
 
-.back-button {
-  width: fit-content;
+.order-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 
-  background: transparent;
-  border: none;
+    color: var(--orders-blue-text, #8fb2ff);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
 
-  cursor: pointer;
-
-  color: #89acff;
-
-  font-weight: 600;
+    transition: color 0.2s ease;
 }
 
-.header-content {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-
-  gap: 1rem;
+.order-detail-back:hover {
+    color: var(--white-color);
 }
 
-.header-content h1 {
-  margin: 0;
-  color: white;
+.order-detail-back .material-symbols-outlined {
+    font-size: 17px;
 }
 
-.header-content p {
-  color: #9ca3af;
+.order-detail-kicker {
+    margin-top: clamp(20px, 3vw, 34px);
+
+    color: var(--orders-blue-text, #8fb2ff);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.order-detail-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    margin-top: 10px;
+}
+
+.order-detail-title-row h1 {
+    color: var(--white-color);
+    font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+
+    overflow-wrap: anywhere;
+}
+
+.order-detail-id {
+    color: var(--orders-muted, rgba(255, 255, 255, 0.58));
+}
+
+.order-detail-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 12px;
+
+    color: var(--orders-faint, rgba(255, 255, 255, 0.48));
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+}
+
+.order-detail-meta-line {
+    width: 24px;
+    height: 1px;
+
+    background: var(--orders-line-strong, rgba(255, 255, 255, 0.17));
+}
+
+.order-detail-title-row > .order-status-badge {
+    flex: none;
+    margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+    .order-detail-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .order-detail-title-row > .order-status-badge {
+        margin-top: 0;
+    }
 }

@@ -1,23 +1,26 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
-import { useAuth } from "../../../auth/context/useAuth";
+import { useAuth } from "../../../auth/context/useAuth"
+import { formatPrice } from "../../../products/utils/productFormat"
 
-import "./OrderSummary.css";
+import "./OrderSummary.css"
 
 interface Props {
-  subtotal: number;
-  tax: number;
-  shipping: number;
+  subtotal: number
+  tax: number
+  shipping: number
 }
 
-export const OrderSummary: React.FC<Props> = ({
+export const OrderSummary = ({
   subtotal,
   tax,
   shipping,
-}) => {
-  const total = subtotal + tax + shipping;
-  
+}: Props) => {
+  const total = subtotal + tax + shipping
+
+  const navigate = useNavigate()
+  const { isAuthenticated } = useAuth()
+
   const handleCheckout = () => {
     if (subtotal === 0) return
 
@@ -34,48 +37,76 @@ export const OrderSummary: React.FC<Props> = ({
     navigate("/checkout")
   }
 
-  const navigate = useNavigate()
-  const { isAuthenticated } = useAuth()
-
   return (
-    <div className="summary">
-      <h2>Order Summary</h2>
+    <aside
+      className="cart-summary"
+      aria-labelledby="cart-summary-title"
+    >
+      <div className="cart-summary-head">
+        <h2 id="cart-summary-title">Order summary</h2>
 
-      <div className="summary-row">
-        <span>Subtotal</span>
-        <span>${subtotal.toFixed(2)}</span>
+        <span className="cart-summary-pill">
+          <span
+            className="material-symbols-outlined"
+            aria-hidden="true"
+          >
+            lock
+          </span>
+          Secure
+        </span>
       </div>
 
-      <div className="summary-row">
-        <span>Tax</span>
-        <span>${tax.toFixed(2)}</span>
-      </div>
+      <dl className="cart-summary-rows">
+        <div className="cart-summary-row">
+          <dt>Subtotal</dt>
+          <dd>{formatPrice(subtotal)}</dd>
+        </div>
 
-      <div className="summary-row">
-        <span>Shipping</span>
-        <span>{shipping === 0 ? "Free" : `$${shipping}`}</span>
-      </div>
+        <div className="cart-summary-row">
+          <dt>Tax (8%)</dt>
+          <dd>{formatPrice(tax)}</dd>
+        </div>
 
-      <hr />
+        <div className="cart-summary-row">
+          <dt>Shipping</dt>
+          <dd className="is-free">
+            {shipping === 0 ? "Free" : formatPrice(shipping)}
+          </dd>
+        </div>
+      </dl>
 
-      <div className="summary-total">
+      <div className="cart-summary-total">
         <span>Total</span>
-        <span>${total.toFixed(2)}</span>
+        <strong>{formatPrice(total)}</strong>
       </div>
 
-      {!isAuthenticated && (
-        <p className="checkout-login-warning">
-          Login required to complete your purchase.
-        </p>
-      )}
+      <p className="cart-summary-note">
+        <span
+          className="material-symbols-outlined"
+          aria-hidden="true"
+        >
+          {isAuthenticated ? "lock" : "login"}
+        </span>
 
-      <button 
-        className="btn-primary"
+        {isAuthenticated
+          ? "Encrypted checkout. Your details stay private."
+          : "You'll sign in to finish checkout."}
+      </p>
+
+      <button
+        type="button"
+        className="cart-checkout"
+        onClick={handleCheckout}
         disabled={subtotal === 0}
-        onClick={handleCheckout}  
       >
-        Proceed to Checkout
+        Proceed to checkout
+        <span
+          className="material-symbols-outlined"
+          aria-hidden="true"
+        >
+          arrow_forward
+        </span>
       </button>
-    </div>
-  );
-};
+    </aside>
+  )
+}

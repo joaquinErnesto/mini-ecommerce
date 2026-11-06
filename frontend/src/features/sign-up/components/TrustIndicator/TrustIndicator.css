@@ -1,21 +1,18 @@
 .trust-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 
-  gap: 8px;
+    min-width: 0;
+
+    color: var(--auth-faint, rgba(255, 255, 255, 0.48));
+    font-size: 10.5px;
+    line-height: 1.35;
 }
 
-.trust-indicator span:first-child {
-  font-size: 24px;
-}
+.trust-indicator .material-symbols-outlined {
+    flex: none;
 
-.trust-indicator span:last-child {
-  font-size: 10px;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-
-  text-align: center;
+    color: var(--auth-blue-text, #8fb2ff);
+    font-size: 16px;
 }

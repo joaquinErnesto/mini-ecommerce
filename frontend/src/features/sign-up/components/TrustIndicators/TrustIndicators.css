@@ -1,10 +1,10 @@
 .trust-indicators {
-  margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+    margin-top: 22px;
+    padding-top: 18px;
 
-  gap: 16px;
-
-  opacity: 0.5;
+    border-top: 1px solid var(--auth-line, rgba(255, 255, 255, 0.09));
 }

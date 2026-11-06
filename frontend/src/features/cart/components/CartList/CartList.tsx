@@ -1,23 +1,16 @@
-import React from "react";
-import { CartItem } from "../CartItem/CartItem";
-import "./CartList.css";
+import { CartItem } from "../CartItem/CartItem"
 
-interface Item {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
+import type { CartItem as CartItemData } from "../../types/cart.types"
+
+import "./CartList.css"
 
 interface Props {
-  items: Item[];
-  onUpdate: (id: number, delta: number) => void;
-  onRemove: (id: number) => void;
+  items: CartItemData[]
+  onUpdate: (id: number, delta: number) => void
+  onRemove: (id: number) => void
 }
 
-export const CartList: React.FC<Props> = ({ items, onUpdate, onRemove }) => {
+export const CartList = ({ items, onUpdate, onRemove }: Props) => {
   return (
     <div className="cart-list">
       {items.map((item) => (
@@ -30,5 +23,5 @@ export const CartList: React.FC<Props> = ({ items, onUpdate, onRemove }) => {
         />
       ))}
     </div>
-  );
-};
+  )
+}

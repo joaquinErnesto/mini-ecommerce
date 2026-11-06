@@ -7,16 +7,22 @@ interface Props {
 }
 
 export const OrderCard = ({ order }: Props) => {
+  const firstItem = order.items[0]
+  const extraItems = Math.max(order.items.length - 1, 0)
+
   return (
     <article className="order-card-container">
-      {/* <img
-        src={order.image}
-        alt={order.productName}
-      /> */}
+      {firstItem?.image ? (
+        <img
+          src={firstItem.image}
+          alt=""
+        />
+      ) : null}
 
       <div className="order-card-info">
         <h3>
-          {order.productName}
+          {firstItem?.title ?? "Order"}
+          {extraItems > 0 ? ` + ${extraItems} more` : ""}
         </h3>
 
         <p>

@@ -1,28 +1,35 @@
 .auth-footer {
-  margin-top: 32px;
-  padding-top: 32px;
+    margin-top: 24px;
+    padding-top: 20px;
 
-  border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid var(--auth-line, rgba(255, 255, 255, 0.09));
 
-  text-align: center;
+    text-align: center;
 }
 
 .auth-footer p {
-  color: var(--medium-gray-color);
-
-  font-size: 14px;
+    color: var(--auth-muted, rgba(255, 255, 255, 0.58));
+    font-size: 13px;
 }
 
 .auth-footer a {
-  margin-left: 8px;
+    margin-left: 6px;
 
-  color: var(--blue-color);
+    color: var(--auth-blue-text, #8fb2ff);
+    font-weight: 600;
+    text-decoration: none;
 
-  font-weight: bold;
-
-  text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .auth-footer a:hover {
-  text-decoration: underline;
+    color: var(--white-color);
+    text-decoration: underline;
+}
+
+.trust-indicators + .auth-footer {
+    margin-top: 16px;
+    padding-top: 0;
+
+    border-top: none;
 }

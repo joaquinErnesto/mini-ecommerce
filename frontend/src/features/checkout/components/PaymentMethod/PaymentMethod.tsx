@@ -20,7 +20,7 @@ export const PaymentMethod = () => {
 
   const [cardNumber, setCardNumber] = 
     useState(
-      state.payment.cardHolder || ""
+      state.payment.cardNumber || ""
     )
 
   const [cardHolder, setCardHolder] = 
@@ -134,7 +134,19 @@ export const PaymentMethod = () => {
     const newErrors = validate()
 
     if (Object.keys(newErrors).length > 0) {
-      toast.error("Please fix the payment form errors")
+      setTouched({
+        cardNumber: true,
+        cardHolder: true,
+        expMonth: true,
+        expYear: true,
+        walletAddress: true,
+        network: true,
+        bankName: true,
+        accountNumber: true,
+        accountHolder: true
+      })
+
+      toast.error("Please check the payment fields")
 
       return
     }
@@ -152,7 +164,6 @@ export const PaymentMethod = () => {
       accountHolder
     })
 
-    toast.success("Payment method saved")
     setStep(3)
   }
 
@@ -318,30 +329,6 @@ export const PaymentMethod = () => {
 
   const errors = validate()
 
-  const isValid =
-    selected === "Card"
-      ? !!(
-          cardNumber &&
-          cardHolder &&
-          expMonth &&
-          expYear &&
-          Object.keys(errors).length === 0
-        )
-      : selected === "Crypto"
-      ? !!(
-          walletAddress &&
-          network &&
-          Object.keys(errors).length === 0
-        )
-      : selected === "Transfer"
-      ? !!(
-          bankName &&
-          accountNumber &&
-          accountHolder &&
-          Object.keys(errors).length === 0
-        )
-      : false
-
   const formatCardNumber = (value: string) => {
     // remove everything except digits
     const digits = value.replace(/\D/g, "")
@@ -395,103 +382,108 @@ export const PaymentMethod = () => {
   }
   
   return (
-    <div className="payment-method">
-      <h2>Payment Method</h2>
+    <form
+      className="payment-method"
+      onSubmit={(event) => {
+        event.preventDefault()
+        handleContinue()
+      }}
+      noValidate
+    >
+      <header className="checkout-step-head">
+        <h2>Payment method</h2>
+        <p>Choose how you'd like to pay. Every transaction is encrypted.</p>
+      </header>
 
-      <div className="options">
-        <PaymentOption 
+      <div className="payment-options">
+        <PaymentOption
           label="Card"
-          selected={selected === "Card"} 
+          description="Visa, Mastercard"
+          icon="credit_card"
+          selected={selected === "Card"}
           onClick={() => handleSelect("Card")}
         />
 
-        <PaymentOption 
-          label="Crypto" 
+        <PaymentOption
+          label="Crypto"
+          description="BTC, ETH, SOL"
+          icon="currency_bitcoin"
           selected={selected === "Crypto"}
           onClick={() => handleSelect("Crypto")}
         />
 
-        <PaymentOption 
+        <PaymentOption
           label="Transfer"
+          description="Bank transfer"
+          icon="account_balance"
           selected={selected === "Transfer"}
           onClick={() => handleSelect("Transfer")}
         />
       </div>
 
-      {/* Dynamic Payment Form */}
-        <div className="payment-form">
+      <div className="payment-form">
+        {selected === "Card" && (
+          <CardPaymentForm
+            cardNumber={cardNumber}
+            cardHolder={cardHolder}
+            expMonth={expMonth}
+            expYear={expYear}
+            touched={touched}
+            errors={errors}
+            onCardNumberChange={handleCardNumberChange}
+            onCardHolderChange={handleCardHolderChange}
+            setExpMonth={setExpMonth}
+            setExpYear={setExpYear}
+            setTouched={setTouched}
+          />
+        )}
 
-          {selected === "Card" && (
-            <CardPaymentForm
-              cardNumber={cardNumber}
-              cardHolder={cardHolder}
-              expMonth={expMonth}
-              expYear={expYear}
+        {selected === "Crypto" && (
+          <CryptoPaymentForm
+            walletAddress={walletAddress}
+            network={network}
+            touched={touched}
+            errors={errors}
+            setWalletAddress={setWalletAddress}
+            setNetwork={setNetwork}
+            setTouched={setTouched}
+          />
+        )}
 
-              touched={touched}
-              errors={errors}
+        {selected === "Transfer" && (
+          <TransferPaymentForm
+            bankName={bankName}
+            accountNumber={accountNumber}
+            accountHolder={accountHolder}
+            touched={touched}
+            errors={errors}
+            setBankName={setBankName}
+            setAccountHolder={setAccountHolder}
+            onAccountNumberChange={handleAccountNumberChange}
+            setTouched={setTouched}
+          />
+        )}
+      </div>
 
-              onCardNumberChange={handleCardNumberChange}
-              onCardHolderChange={handleCardHolderChange}
-
-              setExpMonth={setExpMonth}
-              setExpYear={setExpYear}
-
-              setTouched={setTouched}
-            />
-          )}
-
-          {selected === "Crypto" && (
-            <CryptoPaymentForm
-              walletAddress={walletAddress}
-              network={network}
-
-              touched={touched}
-              errors={errors}
-
-              setWalletAddress={setWalletAddress}
-              setNetwork={setNetwork}
-
-              setTouched={setTouched}
-            />
-          )}
-
-          {selected === "Transfer" && (
-            <TransferPaymentForm
-              bankName={bankName}
-              accountNumber={accountNumber}
-              accountHolder={accountHolder}
-
-              touched={touched}
-              errors={errors}
-
-              setBankName={setBankName}
-              setAccountHolder={setAccountHolder}
-
-              onAccountNumberChange={handleAccountNumberChange}
-
-              setTouched={setTouched}
-            />
-          )}
-
-        </div>
-      
-      <div className="action-buttons">
-        <button 
-          className="btn-secondary" 
+      <div className="checkout-actions">
+        <button
+          type="button"
+          className="checkout-button checkout-button--ghost"
           onClick={() => setStep(1)}
         >
           Back
         </button>
-        
-        <button 
-          className="btn-primary"
-          onClick={handleContinue}
-          disabled={!isValid}
-        >
-          Continue
+
+        <button type="submit" className="checkout-button">
+          Continue to review
+          <span
+            className="material-symbols-outlined"
+            aria-hidden="true"
+          >
+            arrow_forward
+          </span>
         </button>
       </div>
-    </div>
-  );
-};
+    </form>
+  )
+}

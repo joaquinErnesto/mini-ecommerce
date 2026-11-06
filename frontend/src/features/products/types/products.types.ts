@@ -37,4 +37,6 @@ export interface DummyProductApi {
     category: string
     rating: number
     discountPercentage?: number
+    brand?: string
+    stock?: number
 }

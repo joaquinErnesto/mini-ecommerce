@@ -1,41 +1,178 @@
-.summary {
-  background: var(--medium-black-color);
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--medium-gray-color);
+.cart-summary {
+    padding: 22px;
+
+    border: 1px solid var(--cart-line, rgba(255, 255, 255, 0.09));
+    border-radius: 18px;
+
+    background:
+        radial-gradient(80% 100% at 0% 0%, rgba(40, 100, 255, 0.13), transparent 58%),
+        linear-gradient(155deg, #151821 0%, #101217 100%);
 }
 
-.summary h2 {
-  margin-bottom: 20px;
+.cart-summary-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid var(--cart-line, rgba(255, 255, 255, 0.09));
 }
 
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  color: #aaa;
+.cart-summary-head h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
-.summary-total {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  margin-top: 20px;
-  font-size: 18px;
+.cart-summary-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 9px;
+
+    border: 1px solid rgba(40, 100, 255, 0.28);
+    border-radius: 999px;
+
+    background: rgba(40, 100, 255, 0.1);
+    color: var(--cart-blue-text, #8fb2ff);
+
+    font-size: 10.5px;
+    font-weight: 600;
 }
 
-.checkout-btn {
-  margin-top: var(--spacing-lg);
-  width: 100%;
+.cart-summary-pill .material-symbols-outlined {
+    font-size: 13px;
 }
 
-.checkout-login-warning {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.cart-summary-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
-  font-size: 0.9rem;
+    margin: 18px 0;
+}
 
-  color: #fbbf24;
+.cart-summary-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+}
 
-  text-align: center;
+.cart-summary-row dt {
+    color: var(--cart-muted, rgba(255, 255, 255, 0.58));
+    font-size: 13.5px;
+}
+
+.cart-summary-row dd {
+    margin: 0;
+
+    color: var(--white-color);
+    font-size: 13.5px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.cart-summary-row dd.is-free {
+    color: #4ade80;
+}
+
+.cart-summary-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--cart-line, rgba(255, 255, 255, 0.09));
+}
+
+.cart-summary-total > span {
+    color: var(--cart-muted, rgba(255, 255, 255, 0.58));
+    font-size: 14px;
+}
+
+.cart-summary-total strong {
+    color: var(--white-color);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+}
+
+.cart-summary-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    margin-top: 16px;
+
+    color: var(--cart-faint, rgba(255, 255, 255, 0.48));
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.cart-summary-note .material-symbols-outlined {
+    flex: none;
+
+    margin-top: 1px;
+
+    color: var(--cart-blue-text, #8fb2ff);
+    font-size: 16px;
+}
+
+.cart-checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: 100%;
+    min-height: 52px;
+    margin-top: 18px;
+
+    border: 1px solid var(--blue-color);
+    border-radius: 999px;
+
+    background: var(--blue-color);
+    color: var(--white-color);
+
+    font: inherit;
+    font-size: 14.5px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 12px 30px rgba(40, 100, 255, 0.22);
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.cart-checkout .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.cart-checkout:hover:not(:disabled) {
+    border-color: #1f5ae8;
+    background: #1f5ae8;
+    transform: translateY(-2px);
+}
+
+.cart-checkout:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cart-checkout:hover:not(:disabled) {
+        transform: none;
+    }
 }

@@ -1,110 +1,154 @@
 .order-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    overflow: hidden;
 
-    gap: 1.5rem;
-
-    padding: 1.5rem;
-
+    border: 1px solid var(--orders-line, rgba(255, 255, 255, 0.09));
     border-radius: 18px;
 
-    background:
-      rgba(255,255,255,0.03);
-
-    border:
-      1px solid
-      rgba(255,255,255,0.05);
-
-    backdrop-filter: blur(12px);
+    background: var(--orders-surface, #14161c);
 
     transition:
-      transform .25s ease,
-      border .25s ease;
-    
-      cursor: pointer;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
 }
 
 .order-card:hover {
+    border-color: rgba(40, 100, 255, 0.5);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
     transform: translateY(-3px);
-
-    border-color:
-      rgba(137,172,255,.25);
-
-    box-shadow: 
-        0 8px 24px
-      rgba(137, 172, 255, .1)
 }
 
-.order-card-left {
-    display: flex;
+.order-card:focus-within {
+    border-color: rgba(40, 100, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(40, 100, 255, 0.2);
+}
+
+.order-card-link {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    gap: 1rem;
+    gap: 20px;
 
-    flex: 1;
+    padding: 18px 20px;
+
+    color: inherit;
+    text-decoration: none;
 }
 
-.order-card-info {
+.order-card-link:focus-visible {
+    outline: none;
+}
+
+.order-card-body {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 6px;
+
+    min-width: 0;
 }
 
 .order-card-top {
     display: flex;
-    gap: 0.75rem;
     align-items: center;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .order-card-top h3 {
-    margin: 0;
-
-    color: white;
-
-    font-size: 1rem;
+    color: var(--white-color);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
 }
 
-.order-card-info p {
-    color: var(--off-white-color);
+.order-card-summary {
+    display: -webkit-box;
+    overflow: hidden;
 
-    font-size: 1rem;
-    font-weight: 500;
+    color: var(--orders-muted, rgba(255, 255, 255, 0.58));
+    font-size: 13px;
+    line-height: 1.5;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .order-card-meta {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
 
-    color: var(--off-gray-color);
-
-    font-size: 0.875rem;
-
-    margin-top: .25rem;
+    color: var(--orders-faint, rgba(255, 255, 255, 0.48));
+    font-size: 11.5px;
+    font-variant-numeric: tabular-nums;
 }
 
-.order-card-right {
+.order-card-aside {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 14px;
+    flex: none;
 }
 
-.order-total {
-    font-size: 1.4rem;
+.order-card-total {
+    color: var(--yellow-color);
+    font-size: 1.05rem;
     font-weight: 700;
-
-    color: #89acff;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
-@media (max-width: 768px) {
+.order-card-arrow {
+    display: grid;
+    place-items: center;
 
-    .order-card {
-        flex-direction: column;
-        align-items: stretch;
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid var(--orders-line-strong, rgba(255, 255, 255, 0.17));
+    border-radius: 999px;
+
+    color: var(--orders-muted, rgba(255, 255, 255, 0.58));
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.order-card-arrow .material-symbols-outlined {
+    font-size: 17px;
+}
+
+.order-card:hover .order-card-arrow {
+    border-color: var(--blue-color);
+    background: var(--blue-color);
+    color: var(--white-color);
+}
+
+@media (max-width: 700px) {
+    .order-card-link {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 14px;
+
+        padding: 16px;
     }
 
-    .order-card-right {
-        align-items: stretch;
+    .order-card-aside {
+        grid-column: 1 / -1;
+
+        justify-content: space-between;
+
+        padding-top: 12px;
+
+        border-top: 1px solid var(--orders-line, rgba(255, 255, 255, 0.09));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .order-card:hover {
+        transform: none;
     }
 }

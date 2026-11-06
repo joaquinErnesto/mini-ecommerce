@@ -1,32 +1,39 @@
-import "./AuthButton.css";
+import "./AuthButton.css"
 
 interface Props {
-  text: string;
-  onClick?: () => void;
-
-  type?: "button" | "submit";
-
-  disabled?: boolean;
+  text: string
+  onClick?: () => void
+  type?: "button" | "submit"
+  disabled?: boolean
+  loading?: boolean
 }
 
 export const AuthButton = ({
   text,
   onClick,
   type = "button",
-  disabled = false
+  disabled = false,
+  loading = false,
 }: Props) => {
   return (
     <button
       type={type}
-      disabled={disabled}
+      disabled={disabled || loading}
       className="auth-button"
       onClick={onClick}
+      aria-busy={loading}
     >
+      {loading ? (
+        <span className="auth-button-spinner" aria-hidden="true" />
+      ) : null}
+
       <span>{text}</span>
 
-      <span className="material-symbols-outlined">
-        arrow_right_alt
-      </span>
+      {!loading ? (
+        <span className="material-symbols-outlined" aria-hidden="true">
+          arrow_forward
+        </span>
+      ) : null}
     </button>
-  );
-};
+  )
+}

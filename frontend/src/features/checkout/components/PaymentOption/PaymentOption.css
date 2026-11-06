@@ -1,19 +1,81 @@
 .payment-option {
-  flex: 1;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid var(--medium-gray-color);
-  background: var(--medium-black-color);
-  color: var(--white-color);
-  cursor: pointer;
+    position: relative;
 
-  transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+
+    padding: 16px;
+
+    border: 1px solid var(--checkout-line, rgba(255, 255, 255, 0.09));
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--white-color);
+
+    font: inherit;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .payment-option:hover {
-  border-color: var(--white-color);
+    border-color: var(--checkout-line-strong, rgba(255, 255, 255, 0.17));
+    background: rgba(255, 255, 255, 0.04);
 }
 
-.payment-option.active {
-  border: 2px solid var(--blue-color);
+.payment-option.is-selected {
+    border-color: var(--blue-color);
+    background: rgba(40, 100, 255, 0.08);
+
+    box-shadow: inset 0 0 0 1px rgba(40, 100, 255, 0.2);
+}
+
+.payment-option-icon {
+    color: var(--checkout-faint, rgba(255, 255, 255, 0.48));
+    font-size: 22px;
+}
+
+.payment-option.is-selected .payment-option-icon {
+    color: var(--checkout-blue-text, #8fb2ff);
+}
+
+.payment-option-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.payment-option-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.payment-option-description {
+    color: var(--checkout-muted, rgba(255, 255, 255, 0.58));
+    font-size: 11.5px;
+    line-height: 1.4;
+}
+
+.payment-option-indicator {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+
+    color: var(--checkout-faint, rgba(255, 255, 255, 0.48));
+}
+
+.payment-option-indicator .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.payment-option.is-selected .payment-option-indicator {
+    color: var(--blue-color);
 }

@@ -1,4 +1,4 @@
-import { InputField } from "../../InputField/InputField";
+import { InputField } from "../../InputField/InputField"
 import "./CardPaymentForm.css"
 
 interface CardPaymentFormProps {
@@ -41,7 +41,7 @@ export const CardPaymentForm = ({
   return (
     <>
       <InputField
-        label="Card Number"
+        label="Card number"
         name="cardNumber"
         value={cardNumber}
         onChange={onCardNumberChange}
@@ -53,11 +53,14 @@ export const CardPaymentForm = ({
         }
         error={touched.cardNumber ? errors.cardNumber : ""}
         placeholder="1234 5678 9012 3456"
+        inputMode="numeric"
+        autoComplete="cc-number"
+        required
         full
       />
 
       <InputField
-        label="Card Holder"
+        label="Card holder"
         name="cardHolder"
         value={cardHolder}
         onChange={onCardHolderChange}
@@ -69,6 +72,8 @@ export const CardPaymentForm = ({
         }
         error={touched.cardHolder ? errors.cardHolder : ""}
         placeholder="John Doe"
+        autoComplete="cc-name"
+        required
         full
       />
 
@@ -90,6 +95,9 @@ export const CardPaymentForm = ({
           }
           error={touched.expMonth ? errors.expMonth : ""}
           placeholder="MM"
+          inputMode="numeric"
+          autoComplete="cc-exp-month"
+          required
         />
 
         <InputField
@@ -109,6 +117,9 @@ export const CardPaymentForm = ({
           }
           error={touched.expYear ? errors.expYear : ""}
           placeholder="YYYY"
+          inputMode="numeric"
+          autoComplete="cc-exp-year"
+          required
         />
       </div>
     </>

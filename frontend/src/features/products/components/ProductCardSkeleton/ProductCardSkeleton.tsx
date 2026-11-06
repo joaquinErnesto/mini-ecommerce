@@ -1,17 +1,20 @@
-import "./ProductCardSkeleton.css";
+import "./ProductCardSkeleton.css"
 
 export const ProductCardSkeleton = () => {
-  return (
-    <div className="product-card-skeleton">
-      <div className="skeleton skeleton-image"></div>
+    return (
+        <div className="product-card-skeleton" aria-hidden="true">
+            <div className="product-card-skeleton-media skeleton" />
 
-      <div className="skeleton skeleton-title"></div>
+            <div className="product-card-skeleton-body">
+                <span className="skeleton product-card-skeleton-meta" />
+                <span className="skeleton product-card-skeleton-title" />
+                <span className="skeleton product-card-skeleton-rating" />
+            </div>
 
-      <div className="skeleton skeleton-description"></div>
-
-      <div className="skeleton skeleton-price"></div>
-
-      <div className="skeleton skeleton-button"></div>
-    </div>
-  );
-};
+            <div className="product-card-skeleton-foot">
+                <span className="skeleton product-card-skeleton-price" />
+                <span className="skeleton product-card-skeleton-button" />
+            </div>
+        </div>
+    )
+}

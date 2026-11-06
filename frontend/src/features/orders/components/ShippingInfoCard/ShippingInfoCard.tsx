@@ -1,47 +1,26 @@
-import { InfoCard }
-from "../../../profile/components/InfoCard/InfoCard"
+import type { Order } from "../../types/order.types"
 
-import type {
-  Order
-}
-from "../../types/order.types"
+import "./ShippingInfoCard.css"
 
 interface Props {
   order: Order
 }
 
-export const ShippingInfoCard = ({
-  order
-}: Props) => {
-
+export const ShippingInfoCard = ({ order }: Props) => {
   return (
-    <>
+    <div className="shipping-info-card">
+      <span className="shipping-info-icon material-symbols-outlined" aria-hidden="true">
+        local_shipping
+      </span>
 
-      <InfoCard
-        label="Full Name"
-        value={order.shipping.fullName}
-      />
-
-      <InfoCard
-        label="Address"
-        value={order.shipping.address}
-      />
-
-      <InfoCard
-        label="City"
-        value={order.shipping.city}
-      />
-
-      <InfoCard
-        label="Country"
-        value={order.shipping.country}
-      />
-
-      <InfoCard
-        label="Zip Code"
-        value={order.shipping.zipCode}
-      />
-
-    </>
+      <div className="shipping-info-copy">
+        <p className="shipping-info-name">{order.shipping.fullName}</p>
+        <p>{order.shipping.address}</p>
+        <p>
+          {order.shipping.city}, {order.shipping.country}{" "}
+          {order.shipping.zipCode}
+        </p>
+      </div>
+    </div>
   )
 }

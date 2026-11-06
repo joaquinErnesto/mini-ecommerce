@@ -1,4 +1,4 @@
-import { InputField } from "../../InputField/InputField";
+import { InputField } from "../../InputField/InputField"
 import "./CryptoPaymentForm.css"
 
 interface CryptoPaymentFormProps {
@@ -28,10 +28,12 @@ export const CryptoPaymentForm = ({
 
   setTouched
 }: CryptoPaymentFormProps) => {
+  const networkError = touched.network ? errors.network : ""
+
   return (
     <>
       <InputField
-        label="Wallet Address"
+        label="Wallet address"
         name="walletAddress"
         value={walletAddress}
         onChange={(e) =>
@@ -53,29 +55,56 @@ export const CryptoPaymentForm = ({
             : ""
         }
         placeholder="0x1234..."
+        autoComplete="off"
+        required
         full
       />
 
-      <select
-        value={network}
-        onChange={(e) => setNetwork(e.target.value)}
-        onBlur={() =>
-          setTouched((prev) => ({
-            ...prev,
-            network: true
-          }))
-        }
-        className="select-field"
-      >
-        <option value="">Select network</option>
-        <option value="Ethereum">Ethereum</option>
-        <option value="Bitcoin">Bitcoin</option>
-        <option value="Solana">Solana</option>
-      </select>
+      <div className={`input-field full ${networkError ? "error" : ""}`}>
+        <label htmlFor="network">Network</label>
 
-      {touched.network && errors.network && (
-        <span className="error">{errors.network}</span>
-      )}
+        <div className="select-wrap">
+          <select
+            id="network"
+            name="network"
+            value={network}
+            onChange={(e) => setNetwork(e.target.value)}
+            onBlur={() =>
+              setTouched((prev) => ({
+                ...prev,
+                network: true
+              }))
+            }
+            aria-invalid={Boolean(networkError)}
+            aria-describedby={
+              networkError ? "network-error" : undefined
+            }
+            className="select-field"
+            required
+          >
+            <option value="">Select network</option>
+            <option value="Ethereum">Ethereum</option>
+            <option value="Bitcoin">Bitcoin</option>
+            <option value="Solana">Solana</option>
+          </select>
+
+          <span
+            className="material-symbols-outlined"
+            aria-hidden="true"
+          >
+            expand_more
+          </span>
+        </div>
+
+        {networkError ? (
+          <span
+            className="input-field-error"
+            id="network-error"
+          >
+            {networkError}
+          </span>
+        ) : null}
+      </div>
     </>
   )
 }

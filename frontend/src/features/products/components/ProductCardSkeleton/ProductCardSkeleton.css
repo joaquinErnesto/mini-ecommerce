@@ -1,53 +1,80 @@
 .product-card-skeleton {
-  flex: 0 1 220px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
-  max-width: 250px;
+    border: 1px solid var(--catalog-line, rgba(255, 255, 255, 0.09));
+    border-radius: 18px;
 
-  padding: var(--spacing-md);
-
-  border-radius: var(--radius-md);
-
-  background: var(--medium-black-color);
-
-  border: var(--product-card-border);
+    background: var(--catalog-surface, #14161c);
 }
 
 .skeleton {
-  border-radius: var(--radius-sm);
-
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,.08) 25%,
-    rgba(255,255,255,.18) 50%,
-    rgba(255,255,255,.08) 75%
-  );
-
-  background-size: 200% 100%;
-
-  animation: shimmer 1.5s infinite linear;
+    border-radius: 8px;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.06) 25%,
+        rgba(255, 255, 255, 0.13) 50%,
+        rgba(255, 255, 255, 0.06) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
 }
 
-.skeleton-image {
-  height: 180px;
-  margin-bottom: var(--spacing-md);
+.product-card-skeleton-media {
+    aspect-ratio: 1 / 1;
+
+    border-radius: 0;
+    background: linear-gradient(
+        90deg,
+        #e7ebf1 25%,
+        #f5f7fa 50%,
+        #e7ebf1 75%
+    );
+    background-size: 200% 100%;
 }
 
-.skeleton-title {
-  height: 20px;
-  margin-bottom: var(--spacing-sm);
+.product-card-skeleton-body {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    padding: 18px 18px 12px;
 }
 
-.skeleton-description {
-  height: 50px;
-  margin-bottom: var(--spacing-sm);
+.product-card-skeleton-meta {
+    width: 38%;
+    height: 9px;
 }
 
-.skeleton-price {
-  height: 20px;
-  width: 40%;
-  margin-bottom: var(--spacing-md);
+.product-card-skeleton-title {
+    width: 82%;
+    height: 13px;
 }
 
-.skeleton-button {
-  height: 40px;
+.product-card-skeleton-rating {
+    width: 45%;
+    height: 12px;
+    margin-top: 5px;
+}
+
+.product-card-skeleton-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-top: auto;
+    padding: 8px 18px 18px;
+}
+
+.product-card-skeleton-price {
+    width: 64px;
+    height: 15px;
+}
+
+.product-card-skeleton-button {
+    width: 76px;
+    height: 36px;
+    border-radius: 999px;
 }

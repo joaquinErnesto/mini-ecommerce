@@ -1,4 +1,4 @@
-import { InputField } from "../../InputField/InputField";
+import { InputField } from "../../InputField/InputField"
 import "./TransferPaymentForm.css"
 
 interface TransferPaymentFormProps {
@@ -39,7 +39,7 @@ export const TransferPaymentForm = ({
   return (
     <>
       <InputField
-        label="Bank Name"
+        label="Bank name"
         name="bankName"
         value={bankName}
         onChange={(e) =>
@@ -57,11 +57,13 @@ export const TransferPaymentForm = ({
         }
         error={touched.bankName ? errors.bankName : ""}
         placeholder="Bank of America"
+        autoComplete="organization"
+        required
         full
       />
 
       <InputField
-        label="Account Number"
+        label="Account number"
         name="accountNumber"
         value={accountNumber}
         onChange={onAccountNumberChange}
@@ -76,12 +78,15 @@ export const TransferPaymentForm = ({
             ? errors.accountNumber
             : ""
         }
-        placeholder="123456789"
+        placeholder="1234 5678 9012 3456 7890"
+        inputMode="numeric"
+        autoComplete="off"
+        required
         full
       />
 
       <InputField
-        label="Account Holder"
+        label="Account holder"
         name="accountHolder"
         value={accountHolder}
         onChange={(e) =>
@@ -103,6 +108,8 @@ export const TransferPaymentForm = ({
             : ""
         }
         placeholder="John Doe"
+        autoComplete="name"
+        required
         full
       />
     </>

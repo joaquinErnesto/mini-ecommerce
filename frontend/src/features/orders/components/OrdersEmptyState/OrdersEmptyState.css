@@ -1,48 +1,80 @@
 .orders-empty {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(180px, 0.55fr) minmax(0, 1fr);
     align-items: center;
+    gap: clamp(28px, 5vw, 56px);
 
-    gap: 1rem;
+    margin-top: 10px;
+    padding: clamp(24px, 4vw, 44px);
 
-    padding: 4rem 2rem;
+    border: 1px solid var(--orders-line, rgba(255, 255, 255, 0.09));
+    border-radius: 24px;
 
-    text-align: center;
+    background:
+        radial-gradient(70% 100% at 0% 0%, rgba(40, 100, 255, 0.1), transparent 58%),
+        linear-gradient(150deg, #151821 0%, #101217 100%);
+}
 
+.orders-empty-plate {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 1 / 1;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 20px;
 
-    border:
-      1px dashed
-      rgba(255,255,255,.15);
+    background:
+        radial-gradient(65% 60% at 50% 42%, #ffffff 0%, rgba(255, 255, 255, 0) 74%),
+        linear-gradient(
+            155deg,
+            var(--orders-paper, #f3f5f9) 0%,
+            var(--orders-paper-deep, #e2e7ee) 100%
+        );
+
+    color: #1f2937;
 }
 
-.orders-empty .material-symbols-outlined {
-    font-size: 4rem;
-
-    color: #89acff;
+.orders-empty-plate .material-symbols-outlined {
+    font-size: 56px;
 }
 
-.orders-empty h2 {
-    color: white;
+.orders-empty-copy h2 {
+    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
 }
 
-.orders-empty p {
-    color: #9ca3af;
+.orders-empty-copy p {
+    max-width: 48ch;
+    margin-top: 12px;
+
+    color: var(--orders-muted, rgba(255, 255, 255, 0.58));
+    line-height: 1.7;
 }
 
-.orders-empty button {
-    border: none;
+.orders-empty-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 
-    cursor: pointer;
+    margin-top: 24px;
+}
 
-    padding:
-      .9rem 1.5rem;
+@media (max-width: 700px) {
+    .orders-empty {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
 
-    border-radius: 12px;
+    .orders-empty-plate {
+        max-width: 170px;
+    }
 
-    background: #89acff;
-
-    color: black;
-
-    font-weight: 700;
+    .orders-empty-plate .material-symbols-outlined {
+        font-size: 46px;
+    }
 }

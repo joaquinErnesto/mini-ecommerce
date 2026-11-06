@@ -20,7 +20,9 @@ export const getProducts = async (): Promise<Product[]> => {
             category: p.category,
 
             discountPercentage: p.discountPercentage,
-            rating: p.rating
+            rating: p.rating,
+            brand: p.brand,
+            stock: p.stock
         }))
     } catch(error) {
         console.error("Error fetching products: ", error)

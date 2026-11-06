@@ -1,15 +1,18 @@
-import "./ShippingForm.css";
-import { InputField } from "../InputField/InputField";
-import { useState, useEffect } from "react";
-import { useCheckout } from "../../context/useCheckout";
-import { useAuth } from "../../../auth/context/useAuth";
-import { useCart } from "../../../cart/context/useCart";
+import { useEffect, useState } from "react"
+import type { FormEvent } from "react"
+import { Link } from "react-router-dom"
 
-import toast from "react-hot-toast";
+import { InputField } from "../InputField/InputField"
+
+import { useCheckout } from "../../context/useCheckout"
+import { useCart } from "../../../cart/context/useCart"
+
+import toast from "react-hot-toast"
+
+import "./ShippingForm.css"
 
 export const ShippingForm = () => {
   const { state, setShipping, setStep } = useCheckout()
-  const { user } = useAuth()
   const { items } = useCart()
 
   const [form, setForm] = useState({
@@ -21,7 +24,6 @@ export const ShippingForm = () => {
   })
 
   useEffect(() => {
-
     setForm({
       fullName: state.shipping.fullName,
       address: state.shipping.address,
@@ -29,163 +31,181 @@ export const ShippingForm = () => {
       country: state.shipping.country,
       zipCode: state.shipping.zipCode
     })
-
   }, [state.shipping])
 
-  const [errors, setErrors] = useState<{ [key: string]: string}>({})
+  const [errors, setErrors] = useState<{ [key: string]: string }>({})
+  const [touched, setTouched] = useState<{ [key: string]: boolean }>({})
 
-  const [touched, setTouched] = useState<{ [key: string]: boolean}>({})
+  const validate = (data = form) => {
+    const newErrors: { [key: string]: string } = {}
+
+    if (!data.fullName.trim()) {
+      newErrors.fullName = "Full name is required"
+    } else if (data.fullName.trim().length < 3) {
+      newErrors.fullName = "Enter at least 3 characters"
+    }
+
+    if (!data.address.trim()) {
+      newErrors.address = "Street address is required"
+    }
+
+    if (!data.city.trim()) {
+      newErrors.city = "City is required"
+    }
+
+    if (!data.country.trim()) {
+      newErrors.country = "Country is required"
+    }
+
+    if (!data.zipCode.trim()) {
+      newErrors.zipCode = "ZIP code is required"
+    } else if (!/^\d{5}$/.test(data.zipCode)) {
+      newErrors.zipCode = "Use a 5-digit ZIP code"
+    }
+
+    return newErrors
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedForm = {
       ...form,
       [e.target.name]: e.target.value
-    };
-
-    setForm(updatedForm);
-
-    const newErrors = validate(updatedForm);
-    setErrors(newErrors);
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    setTouched({ ...touched, [e.target.name]: true })
-  }
-  
-  const handleSubmit = () => {
-    if (!items.length) {
-      toast.error("Your cart is empty");
-      return;
     }
 
-    const newErrors = validate();
+    setForm(updatedForm)
+    setErrors(validate(updatedForm))
+  }
 
-    setErrors(newErrors);
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setTouched((prev) => ({
+      ...prev,
+      [e.target.name]: true
+    }))
+  }
 
-    // 🔥 mark all fields as touched
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    if (!items.length) {
+      toast.error("Your cart is empty")
+      return
+    }
+
+    const newErrors = validate()
+
+    setErrors(newErrors)
     setTouched({
       fullName: true,
       address: true,
       city: true,
       country: true,
       zipCode: true
-    });
+    })
 
-    if (Object.keys(newErrors).length > 0) return;
+    if (Object.keys(newErrors).length > 0) {
+      toast.error("Please check the highlighted fields")
+      return
+    }
 
-    toast.success("Shipping information saved")
-    setShipping(form);
-    setStep(2);
-  };
-
-  const validate = (data = form) => {
-  const newErrors: { [key: string]: string } = {};
-
-  if (!data.fullName.trim()) {
-    newErrors.fullName = "Full name is required";
-  } else if (data.fullName.length < 3) {
-    newErrors.fullName = "Too short";
+    setShipping(form)
+    setStep(2)
   }
-
-  if (!data.address.trim()) {
-    newErrors.address = "Address is required";
-  }
-
-  if (!data.city.trim()) {
-    newErrors.city = "City is required";
-  }
-
-  if (!data.country.trim()) {
-    newErrors.country = "Country is required";
-  }
-
-  if (!data.zipCode.trim()) {
-    newErrors.zipCode = "Zip code is required";
-  } else if (!/^\d{5}$/.test(data.zipCode)) {
-    newErrors.zipCode = "Invalid zip code (5 digits)";
-  }
-
-  return newErrors;
-};
-
-  const isValid =
-    items.length > 0 &&
-    form.fullName &&
-    form.address &&
-    form.city &&
-    form.country &&
-    form.zipCode;
 
   return (
-    <div className="shipping-form">
-      <h2>Shipping Information</h2>
+    <form
+      className="shipping-form"
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      <header className="checkout-step-head">
+        <h2>Shipping details</h2>
+        <p>Where should we send your order?</p>
+      </header>
 
-      <div className="grid">
-        <InputField 
-          label="Full Name"
+      <div className="checkout-fields">
+        <InputField
+          label="Full name"
           name="fullName"
           value={form.fullName}
           onChange={handleChange}
-          onBlur={handleBlur} 
+          onBlur={handleBlur}
           placeholder="John Doe"
-          full 
+          autoComplete="name"
+          required
+          full
           error={touched.fullName ? errors.fullName : ""}
         />
 
-        <InputField 
-          label="Address" 
+        <InputField
+          label="Street address"
           name="address"
           value={form.address}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder="123 Main St" 
+          placeholder="123 Main St"
+          autoComplete="street-address"
+          required
           full
           error={touched.address ? errors.address : ""}
         />
 
-        <InputField 
-          label="City" 
+        <InputField
+          label="City"
           name="city"
           value={form.city}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder="New York" 
-          full 
+          placeholder="New York"
+          autoComplete="address-level2"
+          required
           error={touched.city ? errors.city : ""}
         />
 
-        <InputField 
-          label="Country"
-          name="country"
-          value={form.country}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="USA"
-          full
-          error={touched.country ? errors.country : ""} 
-        />
-
-        <InputField 
-          label="Zip Code" 
+        <InputField
+          label="ZIP code"
           name="zipCode"
           value={form.zipCode}
           onChange={handleChange}
           onBlur={handleBlur}
           placeholder="10001"
+          autoComplete="postal-code"
+          inputMode="numeric"
+          required
+          error={touched.zipCode ? errors.zipCode : ""}
+        />
+
+        <InputField
+          label="Country"
+          name="country"
+          value={form.country}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="United States"
+          autoComplete="country-name"
+          required
           full
-          error={touched.zipCode ? errors.zipCode : ""} 
+          error={touched.country ? errors.country : ""}
         />
       </div>
 
-      <div className="form-actions">
-        <button 
-          className="btn-primary"
-          onClick={handleSubmit}
-          disabled={!isValid}
+      <div className="checkout-actions">
+        <Link
+          className="checkout-button checkout-button--ghost"
+          to="/cart"
         >
-          {items.length === 0 ? "Add items to cart" : "Continue"}
+          Back to bag
+        </Link>
+
+        <button type="submit" className="checkout-button">
+          Continue to payment
+          <span
+            className="material-symbols-outlined"
+            aria-hidden="true"
+          >
+            arrow_forward
+          </span>
         </button>
       </div>
-    </div>
-  );
-};
+    </form>
+  )
+}
