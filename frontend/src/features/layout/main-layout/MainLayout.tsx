@@ -472,23 +472,22 @@ export const MainLayout = () => {
                         </p>
                     </div>
 
-                    <nav className="footer-column" aria-label="Shop links">
-                        <h3>Shop</h3>
-                        <Link to="/products">The catalogue</Link>
-                        <Link to="/cart">Your bag</Link>
-                    </nav>
+                    <div className="footer-links">
+                        <nav className="footer-column" aria-label="Shop links">
+                            <Link to="/products">The catalogue</Link>
+                            <Link to="/cart">Your bag</Link>
+                        </nav>
 
-                    <nav className="footer-column" aria-label="Company links">
-                        <h3>Company</h3>
-                        <Link to="/about">About</Link>
-                        <Link to="/contact">Contact</Link>
-                    </nav>
+                        <nav className="footer-column" aria-label="Company links">
+                            <Link to="/about">About</Link>
+                            <Link to="/contact">Contact</Link>
+                        </nav>
 
-                    <nav className="footer-column" aria-label="Legal links">
-                        <h3>Legal</h3>
-                        <Link to="/privacy">Privacy</Link>
-                        <Link to="/terms">Terms</Link>
-                    </nav>
+                        <nav className="footer-column" aria-label="Legal links">
+                            <Link to="/privacy">Privacy</Link>
+                            <Link to="/terms">Terms</Link>
+                        </nav>
+                    </div>
                 </div>
 
                 <div className="footer-bottom">

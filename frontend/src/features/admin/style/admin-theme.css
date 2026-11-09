@@ -1,0 +1,21 @@
+:root {
+    /* Admin dashboard surfaces */
+    --admin-surface-color: #1a1a1a;
+    --admin-surface-variant: #262626;
+    --admin-surface-hover: #2c2c2c;
+
+    /* Admin dashboard accents */
+    --admin-primary-color: #89acff;
+    --admin-secondary-color: #fdd400;
+    --admin-tertiary-color: #ffbd5c;
+
+    /* Admin dashboard borders */
+    --admin-border-color: rgba(255, 255, 255, 0.05);
+    --admin-border-strong: rgba(255, 255, 255, 0.1);
+
+    /* Sidebar */
+    --admin-sidebar-width: 260px;
+
+    /* Header */
+    --admin-header-height: 88px;
+}
