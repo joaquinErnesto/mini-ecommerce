@@ -1,21 +1,40 @@
 :root {
-    /* Admin dashboard surfaces */
-    --admin-surface-color: #1a1a1a;
-    --admin-surface-variant: #262626;
-    --admin-surface-hover: #2c2c2c;
+    /* =========================================
+       ADMIN DASHBOARD TOKENS
+       Mirrors the Electric Noir language used by
+       the storefront (ink ground, paper plates,
+       blue accent, golden prices).
+    ========================================= */
 
-    /* Admin dashboard accents */
+    /* Surfaces */
+    --admin-ink: #0b0c10;
+    --admin-surface-color: #14161c;
+    --admin-surface-variant: #1a1d24;
+    --admin-surface-hover: rgba(255, 255, 255, 0.06);
+
+    /* Accents */
     --admin-primary-color: #89acff;
-    --admin-secondary-color: #fdd400;
+    --admin-secondary-color: #ffb414;
     --admin-tertiary-color: #ffbd5c;
+    --admin-blue: #2864ff;
+    --admin-paper: #f3f5f9;
+    --admin-paper-deep: #e2e7ee;
 
-    /* Admin dashboard borders */
-    --admin-border-color: rgba(255, 255, 255, 0.05);
-    --admin-border-strong: rgba(255, 255, 255, 0.1);
+    /* Borders */
+    --admin-border-color: rgba(255, 255, 255, 0.09);
+    --admin-border-strong: rgba(255, 255, 255, 0.17);
 
-    /* Sidebar */
-    --admin-sidebar-width: 260px;
+    /* Text */
+    --admin-muted: rgba(255, 255, 255, 0.58);
+    --admin-faint: rgba(255, 255, 255, 0.48);
 
-    /* Header */
-    --admin-header-height: 88px;
+    /* Layout */
+    --admin-sidebar-width: 256px;
+    --admin-header-height: 76px;
+    --admin-site-header-height: 65px;
+
+    /* Radius */
+    --admin-radius-sm: 10px;
+    --admin-radius-md: 14px;
+    --admin-radius-lg: 20px;
 }

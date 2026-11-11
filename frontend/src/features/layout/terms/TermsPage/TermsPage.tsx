@@ -6,7 +6,7 @@ import { TermsCTA } from "./TermsCTA/TermsCTA"
 
 export const TermsPage = () => {
     return (
-        <main className="terms">
+        <div className="terms">
             <div className="terms-container">
 
                 <TermsHeader />
@@ -14,47 +14,52 @@ export const TermsPage = () => {
                 <div className="terms-content">
 
                     <TermsSection
+                        id="license"
                         number="01"
-                        title="The Digital Marketplace License"
+                        title="The digital marketplace licence"
                         content={[
-                            "Mini E-Commerce grants you a personal, non-transferable license to access our online marketplace.",
-                            "We reserve the right to revoke access if misuse is detected."
+                            "Mini E-Commerce grants you a personal, non-transferable licence to browse and buy from this marketplace.",
+                            "You may not resell, scrape, or reproduce the catalogue. We reserve the right to revoke access where misuse is detected."
                         ]}
                     />
 
                     <TermsSection
+                        id="intellectual-property"
                         number="02"
-                        title="Intellectual Property Rights"
+                        title="Intellectual property rights"
                         content={[
-                            "All designs, code, and assets are protected by copyright laws.",
-                            "Unauthorized reproduction is strictly prohibited."
+                            "All designs, photography, code, and written content on this site are protected by copyright.",
+                            "You are welcome to share links. Reproducing or redistributing the work without written permission is not allowed."
                         ]}
                     />
 
                     <TermsSection
+                        id="payments"
                         number="03"
-                        title="Acquisition and Payments"
+                        title="Acquisition and payments"
                         content={[
-                            "Prices include taxes where applicable.",
-                            "All limited edition sales are final."
+                            "Prices are shown in USD and include applicable taxes where required.",
+                            "Limited-edition and made-to-order sales are final once confirmed. Please review your order carefully before paying."
                         ]}
                     />
 
                     <TermsSection
+                        id="privacy"
                         number="04"
-                        title="Privacy & Data Custodianship"
+                        title="Privacy and data custodianship"
                         content={[
-                            "We do not sell your personal data.",
-                            "Your information is handled securely."
+                            "We do not sell your personal data. It is used to fulfil orders, provide support, and keep the store secure.",
+                            "Read the Privacy Policy for the full picture of what we collect and the rights you have over it."
                         ]}
                     />
 
                     <TermsSection
+                        id="liability"
                         number="05"
-                        title="Limitation of Liability"
+                        title="Limitation of liability"
                         content={[
-                            "We are not liable for indirect damages.",
-                            "Platform is provided as-is."
+                            "We are not liable for indirect or consequential damages arising from use of the store.",
+                            "The platform is provided as-is, and we do not warrant uninterrupted availability."
                         ]}
                     />
 
@@ -63,6 +68,6 @@ export const TermsPage = () => {
                 <TermsCTA />
 
             </div>
-        </main>
+        </div>
     )
 }

@@ -1,23 +1,27 @@
 type Props = {
   name: string
   role: string
-  image: string
 }
 
-export const TeamMember = ({ name, role, image }: Props) => {
+const initialsOf = (name: string) =>
+  name
+    .split(" ")
+    .map((part) => part.charAt(0))
+    .join("")
+    .slice(0, 2)
+    .toUpperCase()
+
+export const TeamMember = ({ name, role }: Props) => {
   return (
-    <div className="text-center group">
-      <div className="team-avatar">
-        <img src={image} className="w-full h-full object-cover" />
+    <article className="about-member">
+      <div className="about-member-media">
+        <span className="about-member-fallback" aria-hidden="true">
+          {initialsOf(name)}
+        </span>
       </div>
 
-      <h4 className="text-white font-bold uppercase text-sm tracking-widest">
-        {name}
-      </h4>
-
-      <p className="text-blue-color text-xs mt-1">
-        {role}
-      </p>
-    </div>
+      <h3>{name}</h3>
+      <p>{role}</p>
+    </article>
   )
 }

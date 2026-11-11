@@ -17,6 +17,8 @@ import { SignUpPage } from "./src/features/sign-up/pages/SignUpPage";
 import { ProfilePage } from "./src/features/profile/pages/ProfilePage";
 import { OrdersPage } from "./src/features/orders/pages/OrdersPage";
 import { OrderDetailPage } from "./src/features/orders/pages/OrderDetailPage";
+import { AdminDashboardLayout } from "./src/features/admin/components/AdminDashboardLayout/AdminDashboardLayout";
+import { AdminDashboardPage } from "./src/features/admin/pages/AdminDashboardPage";
 
 import { ProtectedRoute } from "./src/features/auth/guards/ProtectedRoutes";
 import { GuestRoute } from "./src/features/auth/guards/GuestRoutes";
@@ -135,6 +137,22 @@ export const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
                 errorElement: <p>Something went wrong loading order details.</p>
+            },
+            {
+                path: "/admin",
+                element: (
+                    <ProtectedRoute>
+                        <AdminDashboardLayout />
+                    </ProtectedRoute>
+                ),
+                errorElement: <p>Something went wrong loading the admin dashboard.</p>,
+                children: [
+                    {
+                        index: true,
+                        element: <AdminDashboardPage />,
+                        errorElement: <p>Something went wrong loading dashboard data.</p>
+                    }
+                ]
             }
         ]
     }

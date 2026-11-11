@@ -1,52 +1,106 @@
+import { useState } from "react"
+import { toast } from "react-hot-toast"
+
 export const ContactForm = () => {
+  const [sent, setSent] = useState(false)
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    setSent(true)
+    event.currentTarget.reset()
+
+    toast.success("Message sent. We’ll be in touch soon.")
+  }
+
   return (
-    <section className="lg:col-span-8">
-      <div className="bg-[#131313] p-8 md:p-12 rounded-xl border border-white/5">
+    <section className="contact-form-panel" aria-labelledby="contact-form-title">
+      <header className="contact-form-head">
+        <p className="contact-kicker">
+          <span className="contact-kicker-dot" aria-hidden="true" />
+          Send a note
+        </p>
 
-        <form className="space-y-8">
+        <h2 id="contact-form-title">Tell us what you need.</h2>
 
-          {/* ROW */}
-          <div className="grid md:grid-cols-2 gap-8">
+        <p>
+          A few details help us route your message to the right person.
+        </p>
+      </header>
+
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <div className="contact-form-row">
+          <label className="contact-field">
+            <span>Full name</span>
             <input
-              placeholder="Full Name"
-              className="input"
+              name="name"
+              type="text"
+              placeholder="Ada Lovelace"
+              autoComplete="name"
+              required
             />
+          </label>
+
+          <label className="contact-field">
+            <span>Email</span>
             <input
-              placeholder="Email"
+              name="email"
               type="email"
-              className="input"
+              placeholder="you@example.com"
+              autoComplete="email"
+              required
             />
-          </div>
+          </label>
+        </div>
 
-          {/* SUBJECT */}
-          <select className="input">
-            <option>Curated Collection Inquiry</option>
-            <option>Shipping & Logistics</option>
-            <option>Partnership</option>
-          </select>
+        <label className="contact-field">
+          <span>Subject</span>
 
-          {/* MESSAGE */}
+          <span className="contact-select">
+            <select name="subject" defaultValue="collection">
+              <option value="collection">Curated collection inquiry</option>
+              <option value="shipping">Shipping &amp; logistics</option>
+              <option value="partnership">Partnership</option>
+              <option value="other">Something else</option>
+            </select>
+
+            <span className="material-symbols-outlined" aria-hidden="true">
+              expand_more
+            </span>
+          </span>
+        </label>
+
+        <label className="contact-field">
+          <span>Message</span>
           <textarea
-            placeholder="Your message..."
+            name="message"
             rows={6}
-            className="input resize-none"
+            placeholder="Tell us a little about what you’re looking for."
+            required
           />
+        </label>
 
-          {/* FOOTER */}
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2 text-gray-400 text-xs">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              Support Online
-            </div>
+        <div className="contact-form-foot">
+          <p className="contact-status">
+            <span className="contact-status-dot" aria-hidden="true" />
+            Support online
+          </p>
 
-            <button className="btn-primary">
-              SEND MESSAGE
-            </button>
-          </div>
+          <button className="contact-submit" type="submit">
+            Send message
+            <span className="material-symbols-outlined" aria-hidden="true">
+              arrow_forward
+            </span>
+          </button>
+        </div>
 
-        </form>
-
-      </div>
+        {sent ? (
+          <p className="contact-form-note" role="status">
+            Thanks — your note is on its way. We’ll reply within one business
+            day.
+          </p>
+        ) : null}
+      </form>
     </section>
   )
 }

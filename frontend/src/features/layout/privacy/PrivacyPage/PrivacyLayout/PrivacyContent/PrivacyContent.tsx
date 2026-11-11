@@ -10,49 +10,58 @@ export const PrivacyContent = () => {
             {/* SECTION 1 */}
             <SectionBlock id="introduction" title="01. Introduction">
                 <p>
-                    This Privacy Policy describes how your personal information is collected...
+                    This policy explains what Mini E-Commerce collects, why we
+                    collect it, and the choices you have. It applies to the
+                    storefront, your account, and any conversation you have
+                    with our support team.
+                </p>
+                <p>
+                    We keep this document short on purpose. If something is
+                    unclear, write to us and we will explain it plainly.
                 </p>
             </SectionBlock>
 
             {/* SECTION 2 */}
-            <SectionBlock id="collection" title="02. Information We Collect">
-                <div className="info-grid">
+            <SectionBlock id="collection" title="02. Information we collect">
+                <div className="privacy-info-grid">
                     <InfoCard
-                        title="Device Information"
-                        text="We collect browser, IP, timezone..."
+                        title="Device information"
+                        text="Browser type, IP address, timezone, and the pages you visit while you shop."
                     />
                     <InfoCard
-                        title="Order Information"
-                        text="We collect name, address, payment..."
+                        title="Order information"
+                        text="Your name, delivery address, and a confirmation of payment from our payment provider."
                     />
                 </div>
             </SectionBlock>
 
             {/* SECTION 3 */}
-            <SectionBlock id="usage" title="03. How We Use Your Data">
+            <SectionBlock id="usage" title="03. How we use your data">
                 <FeatureItem
-                    title="Fulfillment of Orders"
-                    text="Processing payments and shipping"
+                    title="Fulfilment of orders"
+                    text="Processing payments, preparing your parcel, and keeping you updated on delivery."
                 />
                 <FeatureItem
                     title="Communication"
-                    text="Providing updates and offers"
+                    text="Answering your questions and, only if you opt in, sharing the occasional new edit."
                 />
                 <FeatureItem
                     title="Security"
-                    text="Fraud prevention and monitoring"
+                    text="Detecting fraud and keeping the store stable for everyone who uses it."
                 />
             </SectionBlock>
 
             {/* SECTION 4 */}
             <SectionBlock id="security" title="04. Security">
-                <div className="security-box">
-                    "We use strong encryption to protect your data."
+                <div className="privacy-security">
+                    “Every connection is encrypted in transit, and payment
+                    details are handled by our payment partners. We never store
+                    full card numbers on our servers.”
                 </div>
             </SectionBlock>
 
             {/* SECTION 5 */}
-            <SectionBlock id="rights" title="05. Your Rights">
+            <SectionBlock id="rights" title="05. Your rights">
                 <RightsList />
             </SectionBlock>
 

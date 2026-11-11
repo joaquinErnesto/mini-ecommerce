@@ -1,32 +1,62 @@
-import { Tag } from "../Tag/Tag"
+const principles = [
+  {
+    icon: "filter_alt",
+    title: "Edited, not endless",
+    text: "Every product earns its place. No filler catalogue, no infinite scroll — just a short list worth your attention."
+  },
+  {
+    icon: "diamond",
+    title: "Made to be kept",
+    text: "We favour pieces with weight, honesty, and a long life over trend cycles and disposable design."
+  },
+  {
+    icon: "support_agent",
+    title: "Quiet service",
+    text: "Clear pricing, careful packing, and a real person on the other end when you need one."
+  }
+]
 
 export const PhilosophyGrid = () => {
   return (
-    <section className="philosophy">
-
-      <div className="grid md:grid-cols-12 gap-6">
-
-        {/* BIG CARD */}
-        <div className="card col-span-8">
-          <h2>The Anti-Template</h2>
-          <p>
-            Built for the selective. A private gallery experience.
+    <section
+      className="about-philosophy"
+      aria-labelledby="about-philosophy-title"
+    >
+      <header className="about-section-head">
+        <div>
+          <p className="about-kicker">
+            <span className="about-kicker-dot" aria-hidden="true" />
+            Our philosophy
           </p>
 
-          <div className="flex gap-3 mt-6">
-            <Tag label="Minimalism" />
-            <Tag label="Intent" />
-            <Tag label="Curation" />
-          </div>
+          <h2 id="about-philosophy-title" className="about-section-title">
+            Fewer things,
+            <br />
+            chosen well.
+          </h2>
         </div>
 
-        {/* IMAGE */}
-        <div className="image-card col-span-4">
-          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCZVxVPRsXlmwuh___wQHWg7Q28QPCNh3WryYq6OOadZwJaB0cEkFN1yOy01zmZaAEOkRnk2dHfSnSQZmB6ZLoVM7ZAXGF3-queCe3tdljp0D8TDXlHT8mLb84jvuLz8iO5fxmTQMZgQ3lrVt5IiZZsDRNcXnB8v8RxF08PvewhOhhUXfiYc_7ICpoW8NixEErtR7G6YAywKP0MYfxiBwrhdt3TNimyxr8_Prn1xdyN1mcAQ2oOCAVB16bss7CfuL7TLXM6ZCeey_A" />
-        </div>
+        <p className="about-section-lede">
+          A marketplace can be calm. We built one around restraint: a
+          considered edit, honest information, and a shop that respects your
+          time instead of competing for it.
+        </p>
+      </header>
 
+      <div className="about-principles">
+        {principles.map((principle) => (
+          <article className="about-principle" key={principle.title}>
+            <span className="about-principle-icon" aria-hidden="true">
+              <span className="material-symbols-outlined">
+                {principle.icon}
+              </span>
+            </span>
+
+            <h3>{principle.title}</h3>
+            <p>{principle.text}</p>
+          </article>
+        ))}
       </div>
-
     </section>
   )
 }

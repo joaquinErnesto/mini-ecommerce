@@ -1,13 +1,13 @@
 type Props = {
+    id: string
     number: string
     title: string
     content: string[]
 }
 
-export const TermsSection = ({ number, title, content }: Props) => {
+export const TermsSection = ({ id, number, title, content }: Props) => {
     return (
-        <section className="terms-section">
-
+        <section className="terms-section" id={id}>
             <div className="terms-section-left">
                 <span className="terms-number">{number}</span>
             </div>
@@ -19,7 +19,6 @@ export const TermsSection = ({ number, title, content }: Props) => {
                     <p key={index}>{text}</p>
                 ))}
             </div>
-
         </section>
     )
 }

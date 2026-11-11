@@ -8,9 +8,8 @@ export const SectionBlock = ({ id, title, children }: Props) => {
     return (
         <section id={id} className="privacy-section">
             <h2>{title}</h2>
-            <div className="section-content">
-                {children}
-            </div>
+
+            <div className="privacy-section-body">{children}</div>
         </section>
     )
 }

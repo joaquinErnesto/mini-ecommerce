@@ -5,7 +5,7 @@ type Props = {
 
 export const InfoCard = ({ title, text }: Props) => {
     return (
-        <div className="info-card">
+        <div className="privacy-info-card">
             <h3>{title}</h3>
             <p>{text}</p>
         </div>
