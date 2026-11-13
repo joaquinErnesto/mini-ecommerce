@@ -1,5 +1,4 @@
 import type { ReactNode } from "react"
-import "./ProfileLayout.css"
 
 interface Props {
   sidebar: ReactNode
@@ -11,14 +10,14 @@ export const ProfileLayout = ({
   children
 }: Props) => {
   return (
-    <main className="profile-layout-container">
-      <aside className="profile-layout-sidebar">
+    <div className="profile-grid">
+      <aside className="profile-aside">
         {sidebar}
       </aside>
 
-      <section className="profile-layout-content">
+      <div className="profile-main">
         {children}
-      </section>
-    </main>
+      </div>
+    </div>
   )
 }

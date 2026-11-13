@@ -1,0 +1,241 @@
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: clamp(20px, 2.6vw, 26px);
+
+    border: 1px solid var(--profile-line, rgba(255, 255, 255, 0.09));
+    border-radius: 20px;
+
+    background: var(--profile-surface, #14161c);
+}
+
+/* ================= IDENTITY ================= */
+
+.profile-sidebar-identity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--profile-line, rgba(255, 255, 255, 0.09));
+}
+
+.profile-sidebar-avatar {
+    display: grid;
+    place-items: center;
+    flex: none;
+
+    width: 58px;
+    height: 58px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--profile-line-strong, rgba(255, 255, 255, 0.17));
+    border-radius: 999px;
+
+    background: rgba(40, 100, 255, 0.16);
+
+    color: var(--profile-blue-text, #8fb2ff);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.profile-sidebar-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.profile-sidebar-name {
+    min-width: 0;
+}
+
+.profile-sidebar-name h2 {
+    overflow: hidden;
+
+    color: var(--white-color);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-sidebar-name p {
+    overflow: hidden;
+
+    margin-top: 3px;
+
+    color: var(--profile-faint, rgba(255, 255, 255, 0.48));
+    font-size: 12px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-sidebar-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 8px;
+    padding: 3px 9px;
+
+    border: 1px solid rgba(40, 100, 255, 0.22);
+    border-radius: 999px;
+
+    background: rgba(40, 100, 255, 0.1);
+    color: var(--profile-blue-text, #8fb2ff);
+
+    font-size: 10.5px;
+    font-weight: 600;
+}
+
+.profile-sidebar-role::before {
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 999px;
+
+    background: currentColor;
+}
+
+/* ================= NAVIGATION ================= */
+
+.profile-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    width: 100%;
+    padding: 10px 12px;
+
+    border: 1px solid transparent;
+    border-radius: 12px;
+
+    background: transparent;
+    color: var(--profile-muted, rgba(255, 255, 255, 0.58));
+
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.profile-sidebar-link .material-symbols-outlined {
+    font-size: 19px;
+
+    opacity: 0.8;
+
+    transition: opacity 0.2s ease;
+}
+
+.profile-sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--white-color);
+}
+
+.profile-sidebar-link:hover .material-symbols-outlined {
+    opacity: 1;
+}
+
+.profile-sidebar-link.is-active {
+    border-color: rgba(40, 100, 255, 0.28);
+
+    background: rgba(40, 100, 255, 0.12);
+    color: var(--profile-blue-text, #8fb2ff);
+}
+
+.profile-sidebar-link.is-active .material-symbols-outlined {
+    opacity: 1;
+}
+
+/* ================= SIGN OUT ================= */
+
+.profile-sidebar-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: 100%;
+    min-height: 42px;
+    padding: 0 16px;
+
+    border: 1px solid var(--profile-line-strong, rgba(255, 255, 255, 0.17));
+    border-radius: 999px;
+
+    background: transparent;
+    color: var(--profile-muted, rgba(255, 255, 255, 0.58));
+
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.profile-sidebar-logout .material-symbols-outlined {
+    font-size: 17px;
+}
+
+.profile-sidebar-logout:hover {
+    border-color: rgba(239, 68, 68, 0.45);
+    background: rgba(239, 68, 68, 0.08);
+    color: #f87171;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+    .profile-sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .profile-sidebar-link {
+        width: auto;
+        flex: none;
+
+        padding: 9px 14px;
+
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 520px) {
+    .profile-sidebar-identity {
+        padding-bottom: 16px;
+    }
+
+    .profile-sidebar-logout {
+        width: 100%;
+    }
+}

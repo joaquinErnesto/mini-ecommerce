@@ -12,24 +12,28 @@ export const PreferenceToggle = ({
   checked
 }: Props) => {
   return (
-    <div className="preference-toggle-container">
-      <div>
-        <h4>
+    <div className="profile-preference">
+      <div className="profile-preference-copy">
+        <h3>
           {title}
-        </h4>
+        </h3>
 
         <p>
           {description}
         </p>
       </div>
 
-      <label className="switch">
+      <label className="profile-switch">
         <input
           type="checkbox"
           defaultChecked={checked}
+          aria-label={title}
         />
 
-        <span className="slider"></span>
+        <span
+          className="profile-switch-track"
+          aria-hidden="true"
+        />
       </label>
     </div>
   )

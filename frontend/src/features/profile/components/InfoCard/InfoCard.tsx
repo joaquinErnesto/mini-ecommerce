@@ -10,14 +10,14 @@ export const InfoCard = ({
   value
 }: Props) => {
   return (
-    <div className="info-card-container">
-      <label>
+    <div className="profile-info">
+      <dt>
         {label}
-      </label>
+      </dt>
 
-      <div>
+      <dd>
         {value}
-      </div>
+      </dd>
     </div>
   )
 }

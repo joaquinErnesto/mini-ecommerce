@@ -1,8 +1,18 @@
-.profile-section-container {
-  background: rgba(20, 20, 20, 0.9);
+.profile-panel {
+    padding: clamp(22px, 3vw, 30px);
 
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
+    border: 1px solid var(--profile-line, rgba(255, 255, 255, 0.09));
+    border-radius: 20px;
 
-  padding: 2rem;
+    background: var(--profile-surface, #14161c);
+
+    scroll-margin-top: 110px;
+}
+
+.profile-panel--danger {
+    border-color: rgba(239, 68, 68, 0.28);
+
+    background:
+        linear-gradient(180deg, rgba(239, 68, 68, 0.07), transparent 65%),
+        var(--profile-surface, #14161c);
 }
