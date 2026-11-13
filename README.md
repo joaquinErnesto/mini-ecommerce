@@ -24,6 +24,7 @@ A frontend-first e-commerce portfolio project: browse a curated catalogue, build
 - [The problem this project solves](#the-problem-this-project-solves)
 - [At a glance](#at-a-glance)
 - [Run it locally](#run-it-locally)
+- [Deploying to Vercel](#deploying-to-vercel)
 - [Demo accounts](#demo-accounts)
 - [Five-minute walkthrough](#five-minute-walkthrough)
 - [Test data for checkout](#test-data-for-checkout)
@@ -117,6 +118,31 @@ There is no `.env` file. The API base URL is hard-coded in [`frontend/src/servic
 ```ts
 baseURL: "https://dummyjson.com"
 ```
+
+### Deploying to Vercel
+
+This is a client-side single-page application, so the host must answer unknown paths with `index.html`. Without that fallback, a direct visit to a nested route — for example `/checkout/success`, `/profile/orders` or `/products/7` — returns Vercel's `404: NOT_FOUND`, because the static build contains no file at that path.
+
+[`frontend/vercel.json`](frontend/vercel.json) provides the fallback:
+
+```json
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
+
+Project settings used for the deployment:
+
+| Setting | Value |
+|---|---|
+| Root Directory | `frontend` |
+| Framework Preset | Vite |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+
+`vercel.json` is only read from the configured **Root Directory**, which is why it lives in `frontend/` rather than at the repository root. If a project is configured with the repository root instead, move the file there and use `cd frontend && npm install` / `cd frontend && npm run build` with `frontend/dist` as the output directory.
+
+Only the first load of a deep link needs the rewrite. Once the app is running, navigation is handled client-side by React Router.
 
 ---
 
@@ -312,6 +338,7 @@ mini-ecommerce/
 │     ├─ services/
 │     │  └─ apiClient.ts          # Axios instance, token injection, refresh queue
 │     ├─ assets/styles/global.css # design tokens and global styles
+│     ├─ components/RouteLoader/  # fallback shown while a route chunk loads
 │     └─ features/
 │        ├─ admin/                # dashboard, layout, sidebar, mock data
 │        ├─ auth/                 # context, guards, login, storage, services
@@ -332,6 +359,10 @@ mini-ecommerce/
 │  └─ mobile/                     # 16 screenshots at 390 px @2x
 └─ README.md
 ```
+
+### Code splitting
+
+Every page is loaded with `React.lazy`, and `MainLayout` plus `AdminDashboardLayout` provide the `Suspense` boundaries. The initial download therefore carries only the app shell and the page being visited; each route gets its own JavaScript chunk, and page CSS is split alongside it. Shared helpers used by several routes (order storage, price formatting, rating stars) are emitted once and reused.
 
 ### Request and session lifecycle
 
@@ -409,7 +440,7 @@ These are deliberate scope boundaries or known gaps, not hidden surprises.
 8. **Admin mock statuses do not match customer order statuses.** The dashboard uses Paid/Pending/Shipped/Delivered; customer orders use Pending/Processed/Delivered/Cancelled.
 9. **Profile preferences and danger-zone actions are inert.** The toggles and "Delete Account" button are visual only.
 10. **Reviews are read-only.** There is no review submission flow.
-11. **No automated tests or CI.** The build is type-checked, but there are no unit, integration or E2E suites yet. The production build also warns about a JavaScript chunk larger than 500 kB because there is no route-level code splitting.
+11. **No automated tests or CI.** The build is type-checked, but there are no unit, integration or E2E suites yet.
 12. **Network dependency.** Product images, fonts and API data come from external services, so the app needs an internet connection and is affected by third-party downtime.
 13. **Legal and editorial copy is fictional.** Privacy, Terms and About text exist to demonstrate layout and are not legal advice.
 

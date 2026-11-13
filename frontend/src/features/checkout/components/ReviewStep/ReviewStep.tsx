@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { useCheckout } from "../../context/useCheckout"
 import { useCart } from "../../../cart/context/useCart"
@@ -26,6 +26,7 @@ const getShortValue = (value: string, start = 8, end = 6) => {
 export const ReviewStep = () => {
   const { state, setStep, resetCheckout } = useCheckout()
   const { items, clearCart } = useCart()
+  const navigate = useNavigate()
 
   const [status, setStatus] = useState<ReviewStatus>("idle")
 
@@ -95,10 +96,20 @@ export const ReviewStep = () => {
         createOrder(session.user.id, items, state.shipping)
       }
 
+      setStatus("success")
+
+      /**
+       * Leave the checkout route synchronously, before clearing the bag:
+       * otherwise CheckoutGuard sees an empty cart and redirects to
+       * /products before the confirmation page can mount.
+       */
+      navigate("/checkout/success", {
+        replace: true,
+        flushSync: true
+      })
+
       clearCart()
       resetCheckout()
-
-      window.location.href = "/checkout/success"
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error("ORDER FAILED:", error.message)

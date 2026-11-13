@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import {
     Link,
     NavLink,
@@ -9,6 +9,8 @@ import {
 
 import { useCart } from "../../cart/context/useCart"
 import { useAuth } from "../../auth/context/useAuth"
+
+import { RouteLoader } from "../../../components/RouteLoader/RouteLoader"
 
 import "./MainLayout.css"
 
@@ -445,7 +447,9 @@ export const MainLayout = () => {
 
             <main id="main-content">
                 <div>
-                    <Outlet />
+                    <Suspense fallback={<RouteLoader />}>
+                        <Outlet />
+                    </Suspense>
                 </div>
             </main>
 

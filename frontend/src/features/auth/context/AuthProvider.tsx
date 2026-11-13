@@ -7,6 +7,8 @@ import {
 
 import { AuthContext } from "./AuthContext"
 
+import { apiClient } from "../../../services/apiClient"
+
 import type {
   AuthUser,
   LoginCredentials,
@@ -254,12 +256,7 @@ export const AuthProvider = ({
         "unauthenticated"
       )
 
-      import(
-        "../../../services/apiClient"
-      ).then(({ apiClient }) => {
-
-        delete apiClient.defaults.headers.common.Authorization
-      })
+      delete apiClient.defaults.headers.common.Authorization
     },
     []
   )
@@ -387,11 +384,6 @@ export const AuthProvider = ({
 const injectToken = async (
   token: string
 ) => {
-
-  const { apiClient } =
-    await import(
-      "../../../services/apiClient"
-    )
 
   apiClient.defaults.headers.common.Authorization =
     `Bearer ${token}`

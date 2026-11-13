@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { AdminSidebar } from "../AdminSidebar/AdminSidebar";
 import { AdminIcon } from "../AdminIcon/AdminIcon";
+
+import { RouteLoader } from "../../../../components/RouteLoader/RouteLoader";
 
 import { adminProfileMock } from "../../data/admin.mock";
 
@@ -30,7 +32,9 @@ export function AdminDashboardLayout() {
 
             <div className="admin-dashboard__main">
                 <div className="admin-dashboard__content">
-                    <Outlet />
+                    <Suspense fallback={<RouteLoader />}>
+                        <Outlet />
+                    </Suspense>
                 </div>
             </div>
 

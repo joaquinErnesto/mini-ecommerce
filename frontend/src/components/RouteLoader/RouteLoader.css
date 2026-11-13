@@ -1,0 +1,47 @@
+.route-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 52vh;
+    padding: 48px 16px;
+
+    color: inherit;
+}
+
+.route-loader-spinner {
+    width: 20px;
+    height: 20px;
+
+    border: 2px solid currentColor;
+    border-top-color: var(--blue-color);
+    border-radius: 999px;
+
+    opacity: 0.75;
+
+    animation: route-loader-spin 0.8s linear infinite;
+}
+
+.route-loader-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    opacity: 0.6;
+}
+
+@keyframes route-loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .route-loader-spinner {
+        animation-duration: 0.01ms;
+    }
+}

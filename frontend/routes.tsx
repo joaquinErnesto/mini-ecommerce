@@ -1,27 +1,107 @@
+import { lazy } from "react";
+import type { ComponentType } from "react";
+
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "./src/features/layout/main-layout/MainLayout";
 
-import { ProductsPage } from "./src/features/products/pages/ProductsPage";
-import { ProductDetailPage } from "./src/features/products/pages/ProductDetailPage";
-import { HomePage } from "./src/features/layout/home/HomePage/HomePage";
-import { PrivacyPage } from "./src/features/layout/privacy/PrivacyPage/PrivacyPage";
-import { TermsPage } from "./src/features/layout/terms/TermsPage/TermsPage";
-import { ContactPage } from "./src/features/layout/contact/ContactPage";
-import { AboutPage } from "./src/features/layout/about/AboutPage";
-import { CartPage } from "./src/features/cart/pages/CartPage";
-import { CheckoutPage } from "./src/features/checkout/pages/CheckoutPage";
-import { OrderSuccessPage } from "./src/features/checkout/pages/OrderSuccessPage";
+/* Layouts and guards stay in the initial bundle: they render on every route. */
 import { CheckoutGuard } from "./src/features/checkout/guards/CheckoutGuard";
-import { LoginPage } from "./src/features/auth/pages/LoginPage";
-import { SignUpPage } from "./src/features/sign-up/pages/SignUpPage";
-import { ProfilePage } from "./src/features/profile/pages/ProfilePage";
-import { OrdersPage } from "./src/features/orders/pages/OrdersPage";
-import { OrderDetailPage } from "./src/features/orders/pages/OrderDetailPage";
-import { AdminDashboardLayout } from "./src/features/admin/components/AdminDashboardLayout/AdminDashboardLayout";
-import { AdminDashboardPage } from "./src/features/admin/pages/AdminDashboardPage";
-
 import { ProtectedRoute } from "./src/features/auth/guards/ProtectedRoutes";
 import { GuestRoute } from "./src/features/auth/guards/GuestRoutes";
+import { AdminDashboardLayout } from "./src/features/admin/components/AdminDashboardLayout/AdminDashboardLayout";
+
+/**
+ * Every page is split into its own chunk, so the initial download only
+ * contains the shell plus the page that is actually requested.
+ */
+function lazyPage<M, K extends keyof M>(
+    loader: () => Promise<M>,
+    name: K
+) {
+    return lazy(async () => ({
+        default: (await loader())[name] as ComponentType
+    }));
+}
+
+const HomePage = lazyPage(
+    () => import("./src/features/layout/home/HomePage/HomePage"),
+    "HomePage"
+);
+
+const PrivacyPage = lazyPage(
+    () => import("./src/features/layout/privacy/PrivacyPage/PrivacyPage"),
+    "PrivacyPage"
+);
+
+const TermsPage = lazyPage(
+    () => import("./src/features/layout/terms/TermsPage/TermsPage"),
+    "TermsPage"
+);
+
+const ContactPage = lazyPage(
+    () => import("./src/features/layout/contact/ContactPage"),
+    "ContactPage"
+);
+
+const AboutPage = lazyPage(
+    () => import("./src/features/layout/about/AboutPage"),
+    "AboutPage"
+);
+
+const ProductsPage = lazyPage(
+    () => import("./src/features/products/pages/ProductsPage"),
+    "ProductsPage"
+);
+
+const ProductDetailPage = lazyPage(
+    () => import("./src/features/products/pages/ProductDetailPage"),
+    "ProductDetailPage"
+);
+
+const CartPage = lazyPage(
+    () => import("./src/features/cart/pages/CartPage"),
+    "CartPage"
+);
+
+const CheckoutPage = lazyPage(
+    () => import("./src/features/checkout/pages/CheckoutPage"),
+    "CheckoutPage"
+);
+
+const OrderSuccessPage = lazyPage(
+    () => import("./src/features/checkout/pages/OrderSuccessPage"),
+    "OrderSuccessPage"
+);
+
+const LoginPage = lazyPage(
+    () => import("./src/features/auth/pages/LoginPage"),
+    "LoginPage"
+);
+
+const SignUpPage = lazyPage(
+    () => import("./src/features/sign-up/pages/SignUpPage"),
+    "SignUpPage"
+);
+
+const ProfilePage = lazyPage(
+    () => import("./src/features/profile/pages/ProfilePage"),
+    "ProfilePage"
+);
+
+const OrdersPage = lazyPage(
+    () => import("./src/features/orders/pages/OrdersPage"),
+    "OrdersPage"
+);
+
+const OrderDetailPage = lazyPage(
+    () => import("./src/features/orders/pages/OrderDetailPage"),
+    "OrderDetailPage"
+);
+
+const AdminDashboardPage = lazyPage(
+    () => import("./src/features/admin/pages/AdminDashboardPage"),
+    "AdminDashboardPage"
+);
 
 export const router = createBrowserRouter([
     {
